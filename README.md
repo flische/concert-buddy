@@ -11,5 +11,5 @@ https://docs.google.com/document/u/1/d/e/2PACX-1vQV3hU2WtbXdT88AsV3056LB17mxUGvf
 - Rebecca Martin
 
 ### mentors
-- 
-- 
+- Scott
+- Collette
