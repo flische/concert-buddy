@@ -16,7 +16,9 @@
 .carousel-container .slider .slide {
     height: 100%;
 }
-
+.carousel-container .slider .slide {
+    background-color: papayawhip;
+}
 .carousel-container .slider .slide>img {
     height: 100%;
     width: auto;
