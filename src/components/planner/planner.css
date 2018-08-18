@@ -1,0 +1,35 @@
+.concert-overview,
+.attendees {
+    margin: 0 auto;
+    padding: 1%;
+    background-color: white;
+    color: #2A363B;
+    width: 80%;
+    margin-bottom: 2%;
+    min-height: 20vh;
+}
+
+.attendees>div>span {
+    margin: 5%;
+}
+
+.concert-overview>p {
+    margin: 0;
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 601px) {
+    .concert-overview,
+    .attendees {
+        padding: 1%;
+        width: 45%;
+        margin-bottom: 2%;
+        min-height: 10vh;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .bottom-content {
+        margin-top: 8%;
+    }
+}

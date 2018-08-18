@@ -1,0 +1,24 @@
+.carousel {
+    height: 200px;
+    width: 40%;
+    border-radius: 2%;
+    background-color: white;
+    box-shadow: 0 5px #979696;
+    margin: 0 auto;
+    color: #2A363B;
+    text-align: center;
+}
+
+@media only screen and (min-width: 601px) {
+    .carousel {
+        margin-bottom: 1%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .carousel {
+        height: 125px;
+        width: 85%;
+        border-radius: 2%;
+    }
+}

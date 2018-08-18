@@ -1,0 +1,38 @@
+.newtrip {
+    height: 100%;
+    margin: 0 auto;
+}
+
+.tripname {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.concert-info {
+    background-color: #FFFFFF;
+    color: #2A363B;
+    margin: 0 auto;
+    border-radius: 2%;
+    background-color: white;
+    box-shadow: 0 5px #979696;
+}
+
+.concert-info>p {
+    padding-left: 15px;
+}
+
+@media only screen and (min-width: 601px) {
+    .concert-info {
+        width: 45%;
+        margin: 0 auto;
+    }
+    .concert-info>p {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .concert-info {
+        width: 85%;
+    }
+}
