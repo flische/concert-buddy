@@ -1,6 +1,7 @@
 .invite-friends {
     height: 100%;
     margin: 0 auto;
+    margin-top: 5em;
 }
 
 .invite-emails {
@@ -10,4 +11,11 @@
 
 .email-container {
     text-align: center;
+}
+
+.green {
+    border: 5px solid green;
+}
+.red {
+    border: 5px solid red;
 }

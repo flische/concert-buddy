@@ -8,32 +8,27 @@ class Planner extends Component {
             <div className="bottom-content">
                 <div className="title">
                     HOWARD'S TRIP
-            </div>
-
-
+                </div>
                 <div className="concert-overview">
-                    <p>
-                        <b>Concert: </b>
-                        <span>Taylor Swift</span>
-                    </p>
-                    <p>
-                        <b>Date: </b>
-                        <span>May 20, 2019</span>
-                    </p>
-                    <p>
-                        <b>Location: </b>
-                        <span>Anaheim, CA</span>
-                    </p>
+                    <div>
+                        <h2>Concert: Taylor Swift</h2>
+                    </div>
+                    <div>
+                        <h2>Date: May, 24, 2019</h2>
+                    </div>
+                    <div>
+                        <h2>Location: Anaheim, CA</h2>
+                    </div>
                 </div>
                 <div className="title">WHO'S GOING?</div>
                 <div className="attendees">
-                    <div>
-                        <span>TIEN</span>
-                        <span>REBECCA</span>
-                        <span>FEDERICO</span>
+                    <div className="leftSide">
+                        <h2>TIEN</h2>
+                        <h2>FEDERICO</h2>
                     </div>
-                    <div>
-                        <span>KEVIN</span>
+                    <div className="rightSide">
+                        <h2>REBECCA</h2>
+                        <h2>HOWARD</h2>
                     </div>
                 </div>
 
