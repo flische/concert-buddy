@@ -13,7 +13,7 @@ export default () => {
             {imageArray.map((image, index) => {
                 return(
                 
-                    <img src={image}/>
+                    <img key={image} src={image}/>
                 
                 )
             })}

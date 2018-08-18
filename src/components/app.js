@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Header from './header/';
 import SearchConcerts from './search-concerts/';
 import InviteFriends from './invite/';
@@ -8,20 +8,51 @@ import Landing from './landing/';
 import SignUp from './sign-up/';
 import Planner from './planner/';
 
-const App = () => {
-    return (
-        <div className='main'>
-            <Header />
-            <Route exact path='/' component={Landing} />
-            <Route path='/search-concerts' component={SearchConcerts} />
-            <Route path='/invite' component={InviteFriends} />
-            <Route path='/login' component={Login} />
-            <Route path='/sign-up' component={SignUp} />
-            <Route path='/planner' component={Planner} />
+class App extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isHome: false
+        }
+    }
+    componentDidMount() {
+        console.log(this.props)
+        if(this.props.location.pathname === '/'){
+            this.setState({
+                isHome: true
+            })
+        } else {
+            this.setState({
+                isHome: false
+            })
+        }
+        this.props.history.listen((location) => {
+            if(location.pathname === '/'){
+                this.setState({
+                    isHome: true
+                })
+            } else {
+                this.setState({
+                    isHome: false
+                })
+            }
+        })
+    }
+    render() {
+        return (
+            <div className='main'>
+                {this.state.isHome ? null : <Header />}
+                <Route exact path='/' component={Landing} />
+                <Route path='/search-concerts' component={SearchConcerts} />
+                <Route path='/invite' component={InviteFriends} />
+                <Route path='/login' component={Login} />
+                <Route path='/sign-up' component={SignUp} />
+                <Route path='/planner' component={Planner} />
 
-        </div>
-    );
+            </div>
+        );
+    }
 }
-
-export default App;
+const appWithRouter = withRouter(App)
+export default appWithRouter;
 
