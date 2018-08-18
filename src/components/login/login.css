@@ -1,0 +1,31 @@
+.a-tag {
+    display: block;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: #FFFFFF 0px 0px 2px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.a-tag>a {
+    text-decoration: none;
+    color: white;
+}
+
+.logo-holder {
+    text-align: center;
+}
+
+.login {
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .logo-holder>img {
+        max-width: 200px;
+    }
+    .login {
+        margin: 55px 0 auto;
+    }
+}

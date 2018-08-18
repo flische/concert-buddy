@@ -1,0 +1,44 @@
+.concert-part-a>p,
+.concert-part-b>p {
+    color: #FF847C;
+}
+
+.concert-part-a>p>span,
+.concert-part-b>p>span {
+    color: #FFFFFF;
+}
+
+.concert-results {
+    margin: 0 auto;
+    padding: 1%;
+    width: 80%;
+    margin-bottom: 2%;
+    min-height: 20vh;
+}
+
+.hr {
+    margin: 0 auto;
+    width: 80%;
+}
+
+@media only screen and (min-width: 601px) {
+    .concert-result-container {
+        display: inline-block;
+        width: 40%;
+    }
+    .concert-part-a>p,
+    .concert-part-b>p {
+        display: block;
+        text-align: center;
+    }
+    .concert-results {
+        margin: 0 auto;
+        font-size: 24px;
+        width: 60%;
+        text-align: center;
+    }
+    .results {
+        margin: 0 auto;
+        text-align: center;
+    }
+}

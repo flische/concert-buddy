@@ -1,0 +1,30 @@
+.dropdown {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #2A363B;
+}
+
+.date {
+    font-size: 20px;
+    color: #2A363B;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.date-holder {
+    margin: 0
+}
+
+@media only screen and (min-width: 601px) {
+    .dropdown {
+        margin: 10px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .dropdown {
+        margin: 0 auto;
+    }
+}
