@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './login.css'
 import logo from '../../images/logo.png';
 import { Link } from 'react-router-dom';
+import { formatPostData } from '../../helpers';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -20,13 +22,27 @@ class Login extends Component {
     handleChange(event) {
         const { name, value } = event.target;
         const { form } = this.state;
-        this.setState({ form: { ...form, [name]: value } });
+        this.setState({ form: {...form, [name]: value } });
     }
 
-    handleFormSubmit(event) {
+    async handleFormSubmit(event) {
         event.preventDefault();
-        console.log('Called handleFormSubmit: ', this.state.form);
-
+       const {email,password} = this.state.form;
+        var dataToSend = {
+            email: email,
+            password: password,
+        }
+       
+          const params = formatPostData(dataToSend)
+    
+        
+        await axios.post('http://localhost:8000/loginCheck.php', params);
+        // console.log(email);
+        // console.log(password);
+        console.log('Called handleFormSubmit: ', this.state.form)
+  
+        
+        
         const newState = {
             form: {
                 email: '',
@@ -36,7 +52,6 @@ class Login extends Component {
         this.setState(newState);
 
     }
-
     render() {
         const { email, password } = this.state.form;
         return (
