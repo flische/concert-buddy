@@ -7,6 +7,8 @@ import Login from './login/';
 import Landing from './landing/';
 import SignUp from './sign-up/';
 import Planner from './planner/';
+import ConcertResults from './concert-results/';
+import ConcertDetails from './concert-details/';
 
 const App = () => {
     return (
@@ -14,6 +16,8 @@ const App = () => {
             <Header />
             <Route exact path='/' component={Landing} />
             <Route path='/search-concerts' component={SearchConcerts} />
+            <Route path='/concert-results' component={ConcertResults} />
+            <Route path='/concert-details' component={ConcertDetails} />
             <Route path='/invite' component={InviteFriends} />
             <Route path='/login' component={Login} />
             <Route path='/sign-up' component={SignUp} />
