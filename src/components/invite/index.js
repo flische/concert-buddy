@@ -14,6 +14,10 @@ class InviteFriends extends Component {
                 email4: '',
                 email5: '',
                 email6: ''
+            },
+            valid: {
+                green: 'green',
+                red: 'red'
             }
         }
 
@@ -23,9 +27,9 @@ class InviteFriends extends Component {
     handleChange(event) {
         const { name, value } = event.target;
         const { form } = this.state;
+        console.log(value); 
         this.setState({ form: { ...form, [name]: value } });
     }
-
     handleFormSubmit(event) {
         event.preventDefault();
         console.log('Called handleFormSubmit: ', this.state.form);
@@ -51,9 +55,8 @@ class InviteFriends extends Component {
                 <div className="invite-friends">
                     <form onSubmit={(event) => { this.handleFormSubmit(event) }}>
                         <div className="invite-emails">
-
                             <div className="email-container">
-                                <input type="text" className="standard-input" placeholder="Enter Email Address" name="email1" value={email1} onChange={this.handleChange} />
+                                <input type="text" className="standard-input green" placeholder="Enter Email Address" name="email1" value={email1} onChange={this.handleChange} />
                                 <input type="text" className="standard-input" placeholder="Enter Email Address" name="email2" value={email2} onChange={this.handleChange} />
                                 <input type="text" className="standard-input" placeholder="Enter Email Address" name="email3" value={email3} onChange={this.handleChange} />
                             </div>

@@ -16,7 +16,6 @@ class Login extends Component {
 
         this.handleChange = this.handleChange.bind(this);
     }
-
     handleChange(event) {
         const { name, value } = event.target;
         const { form } = this.state;
