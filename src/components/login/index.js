@@ -19,11 +19,20 @@ class Login extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    async checkLoginStatus(initialCheck=false) { 
+        await axios.post('api/checkUserLoggedIn.php');
+    }
+
+    componentDidMount() {
+        this.checkLoginStatus(true);
+    }
+ 
     handleChange(event) {
         const { name, value } = event.target;
         const { form } = this.state;
         this.setState({ form: {...form, [name]: value } });
     }
+    
 
     async handleFormSubmit(event) {
         event.preventDefault();
@@ -36,9 +45,8 @@ class Login extends Component {
           const params = formatPostData(dataToSend)
     
         
-        await axios.post('http://localhost:8000/loginCheck.php', params);
-        // console.log(email);
-        // console.log(password);
+        await axios.post('api/loginCheck.php', params);
+
         console.log('Called handleFormSubmit: ', this.state.form)
   
         
@@ -64,10 +72,14 @@ class Login extends Component {
                     <h1>CONCERT BUDDY</h1>
                     <h3>Plan Your Concert Trip</h3>
                 </div>
-                <form onSubmit={(event) => { this.handleFormSubmit(event) }}>
+                <form onSubmit={(event) => { this.handleFormSubmit(event)
+                                             this.checkLoginStatus(); }}>
                     <div className="inputs">
                         <input className="standard-input" type="email" placeholder="Enter Your Email" name="email" value={email} onChange={this.handleChange} />
                         <input className="standard-input" type="password" placeholder="Enter Your Password" name="password" value={password} onChange={this.handleChange} />
+                        <div className="response">
+
+                        </div>
                     </div>
                     <div className="buttons">
                         <button className="pink-btn">LOGIN</button>

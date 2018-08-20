@@ -5,3 +5,10 @@
 .signup-inputs {
     text-align: center;
 }
+.hidden {
+    display:none;
+}
+
+.show {
+    text-align: center;
+}

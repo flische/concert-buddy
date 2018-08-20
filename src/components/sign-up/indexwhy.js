@@ -12,7 +12,7 @@ class SignUp extends Component {
                 name: '',
                 password: '',
                 passwordCheck: '',
-                matching: 'null',
+                matching: true,
 
             }
         }
@@ -22,39 +22,20 @@ class SignUp extends Component {
 
     }
     handleChange(event) {
-        debugger;
         const { name, value } = event.target;
         const { form } = this.state;
-        const { password, passwordCheck } = this.state.form; 
-        this.setState({
-            form: {...form, [name]: value}
-       
-            
-        });
-        this.checkMatching();
-    }
-    checkMatching() { 
-        const { password, passwordCheck } = this.state.form; 
-        if (passwordCheck === password) {
-            this.setState({
-               form: {
-                matching: true }});
-        }
-        else {
-            debugger;
-            this.setState({ 
-                form: {matching: false }});
-        }
+        this.setState({ form: {...form, [name]: value } });
      
       
     }
+
     async handleFormSubmit(event) {
         event.preventDefault();
           const {email, name, password, passwordCheck} = this.state.form;
-          if (password === passwordCheck) {
+          if (password !== passwordCheck) {
             this.setState({
                 form: {
-                    matching: true,
+                    matching: false,
                 }
             });
         }
@@ -88,9 +69,9 @@ class SignUp extends Component {
                         </div>
                         <div className="signup-inputs">
                             <input type="text" style={this.state.form.matching ? correctStyle : incorrectStyle} className="standard-input" placeholder="Choose Password" name ="password" value={password} onChange={this.handleChange} />
-                            <input type="text" style={this.state.form.matching ? correctStyle : incorrectStyle} className="standard-input" placeholder="Confirm Password" name ="passwordCheck" value={passwordCheck} onChange={this.handleChange}/>
+                            <input type="text" className="standard-input" placeholder="Confirm Password" name ="passwordCheck" value={passwordCheck} onChange={this.handleChange}/>
                         </div>
-                            <p className={this.state.form.matching ? 'hidden': 'show'}>  Passwords Are not Matching! </p>
+                            <p style={this.state.from.matching ? "display: none ": "display: block"}>  Invalid Login </p>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                     </form>
                 </div>
