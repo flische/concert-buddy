@@ -7,6 +7,8 @@ import Login from './login/';
 import Landing from './landing/';
 import SignUp from './sign-up/';
 import Planner from './planner/';
+import ConcertResults from './concert-results/';
+import ConcertDetails from './concert-details/';
 
 class App extends React.Component {
     constructor(props) {
@@ -48,6 +50,7 @@ class App extends React.Component {
                 <Route path='/login' component={Login} />
                 <Route path='/sign-up' component={SignUp} />
                 <Route path='/planner' component={Planner} />
+
 
             </div>
         );
