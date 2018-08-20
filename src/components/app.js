@@ -18,8 +18,7 @@ class App extends React.Component {
         }
     }
     componentDidMount() {
-        // console.log(this.props)
-        if(this.props.location.pathname === '/'){
+        if (this.props.location.pathname === '/') {
             this.setState({
                 isHome: true
             })
@@ -29,7 +28,7 @@ class App extends React.Component {
             })
         }
         this.props.history.listen((location) => {
-            if(location.pathname === '/'){
+            if (location.pathname === '/') {
                 this.setState({
                     isHome: true
                 })
@@ -46,11 +45,12 @@ class App extends React.Component {
                 {this.state.isHome ? null : <Header />}
                 <Route exact path='/' component={Landing} />
                 <Route path='/search-concerts' component={SearchConcerts} />
+                <Route path='/concert-results' component={ConcertResults} />
+                <Route path='/concert-details' component={ConcertDetails} />
                 <Route path='/invite' component={InviteFriends} />
                 <Route path='/login' component={Login} />
                 <Route path='/sign-up' component={SignUp} />
                 <Route path='/planner' component={Planner} />
-
 
             </div>
         );
@@ -58,4 +58,3 @@ class App extends React.Component {
 }
 const appWithRouter = withRouter(App)
 export default appWithRouter;
-
