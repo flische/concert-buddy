@@ -93,6 +93,7 @@ class ConcertResults extends Component {
                 latitude={item._embedded.venues[0].location.latitude}
                 longitude={item._embedded.venues[0].location.longitude}
                 image={item.images[0].url}
+                queryString={this.props.history.location.search}
             />
 
         });
