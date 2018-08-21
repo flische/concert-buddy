@@ -20,6 +20,7 @@ class Login extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+
     async checkLoginStatus(initialCheck=false) { 
        const resp = await axios.post('api/checkUserLoggedIn.php');
        if(resp.data.success) { 
@@ -44,6 +45,7 @@ class Login extends Component {
         return <Redirect to='/planner' />
     }
 }
+
     handleChange(event) {
         const { name, value } = event.target;
         const { form } = this.state;

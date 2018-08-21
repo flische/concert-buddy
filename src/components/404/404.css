@@ -1,0 +1,8 @@
+.center{
+    text-align: center;
+    color: white;
+    color: #FF847C;
+    /* text-shadow: #FFFFFF 1px 1px 3px; */
+    -webkit-font-smoothing: antialiased;
+    margin-top: 20%;
+}
