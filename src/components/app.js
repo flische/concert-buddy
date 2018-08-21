@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, withRouter, Switch } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
+import {Switch} from 'react-router-dom'
 import Header from './header/';
 import SearchConcerts from './search-concerts/';
 import InviteFriends from './invite/';
@@ -43,8 +44,8 @@ class App extends React.Component {
     render() {
         return (
             <div className='main'>
-                <Switch>
                     {this.state.isHome ? null : <Header />}
+                    <Switch>
                     <Route exact path='/' component={Landing} />
                     <Route path='/search-concerts' component={SearchConcerts} />
                     <Route path='/concert-results' component={ConcertResults} />
@@ -54,7 +55,7 @@ class App extends React.Component {
                     <Route path='/sign-up' component={SignUp} />
                     <Route path='/planner' component={Planner} />
                     <Route component = {NotFound} />
-                </Switch>
+                    </Switch>
             </div>
         );
     }
