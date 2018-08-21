@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
+import {Switch} from 'react-router-dom'
 import Header from './header/';
 import SearchConcerts from './search-concerts/';
 import InviteFriends from './invite/';
@@ -9,6 +10,7 @@ import SignUp from './sign-up/';
 import Planner from './planner/';
 import ConcertResults from './concert-results/';
 import ConcertDetails from './concert-details/';
+import NotFound from '../components/404';
 
 class App extends React.Component {
     constructor(props) {
@@ -42,16 +44,18 @@ class App extends React.Component {
     render() {
         return (
             <div className='main'>
-                {this.state.isHome ? null : <Header />}
-                <Route exact path='/' component={Landing} />
-                <Route path='/search-concerts' component={SearchConcerts} />
-                <Route path='/concert-results' component={ConcertResults} />
-                <Route path='/concert-details' component={ConcertDetails} />
-                <Route path='/invite' component={InviteFriends} />
-                <Route path='/login' component={Login} />
-                <Route path='/sign-up' component={SignUp} />
-                <Route path='/planner' component={Planner} />
-
+                    {this.state.isHome ? null : <Header />}
+                    <Switch>
+                    <Route exact path='/' component={Landing} />
+                    <Route path='/search-concerts' component={SearchConcerts} />
+                    <Route path='/concert-results' component={ConcertResults} />
+                    <Route path='/concert-details' component={ConcertDetails} />
+                    <Route path='/invite' component={InviteFriends} />
+                    <Route path='/login' component={Login} />
+                    <Route path='/sign-up' component={SignUp} />
+                    <Route path='/planner' component={Planner} />
+                    <Route component = {NotFound} />
+                    </Switch>
             </div>
         );
     }
