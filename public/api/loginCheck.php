@@ -1,11 +1,8 @@
 <?php
 session_start();
-echo session_id();
 header("Access-Control-Allow-Origin: *");
-print_r($_POST);
-print($_POST['email']);
 $email = $_POST['email'];
-$password = $_POST['password']; 
+$password = sha1($_POST['password']); 
 
 $output = [ 
     'success'=> false, 

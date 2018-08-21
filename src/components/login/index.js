@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './login.css'
 import logo from '../../images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { formatPostData } from '../../helpers';
 import axios from 'axios';
 
@@ -13,20 +13,37 @@ class Login extends Component {
             form: {
                 email: '',
                 password: ''
-            }
+            },
+            redirect: false,
         }
 
         this.handleChange = this.handleChange.bind(this);
     }
 
     async checkLoginStatus(initialCheck=false) { 
-        await axios.post('api/checkUserLoggedIn.php');
+       const resp = await axios.post('api/checkUserLoggedIn.php');
+       if(resp.data.success) { 
+           this.setState({
+               redirect:  true,
+           });
+
+       }
+       else {
+        this.setState({
+            redirect:  false,
+        });
+       }
     }
 
     componentDidMount() {
         this.checkLoginStatus(true);
     }
- 
+
+    renderRedirect() {
+        if (this.state.redirect) {
+        return <Redirect to='/planner' />
+    }
+}
     handleChange(event) {
         const { name, value } = event.target;
         const { form } = this.state;
@@ -63,9 +80,13 @@ class Login extends Component {
     render() {
         const { email, password } = this.state.form;
         return (
+          
+               
+           
             <div className="login">
+              {this.renderRedirect()}
                 <div className="logo-holder">
-
+              
                     <img src={logo} />
 
 

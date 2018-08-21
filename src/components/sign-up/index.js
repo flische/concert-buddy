@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './sign-up.css';
+import { formatPostData } from '../../helpers';
+import axios from 'axios';
 
 class SignUp extends Component {
     constructor(props) {
@@ -14,7 +16,7 @@ class SignUp extends Component {
                 passwordCheck: '',
                 matching: 'null',
 
-            }
+            },
         }
     }
     componentDidUpdate() {
@@ -22,7 +24,6 @@ class SignUp extends Component {
 
     }
     handleChange(event) {
-        debugger;
         const { name, value } = event.target;
         const { form } = this.state;
         const { password, passwordCheck } = this.state.form; 
@@ -31,30 +32,34 @@ class SignUp extends Component {
        
             
         });
-        this.checkMatching();
+        // this.checkMatching();
     }
-    checkMatching() { 
-        const { password, passwordCheck } = this.state.form; 
-        if (passwordCheck === password) {
-            this.setState({
-               form: {
-                matching: true }});
-        }
-        else {
-            debugger;
-            this.setState({ 
-                form: {matching: false }});
-        }
+    // checkMatching() { 
+    //     const { form } = this.state;
+    //     const { password, passwordCheck } = this.state.form; 
+    //     if (passwordCheck === password) {
+    //         this.setState({
+    //            form: {...form, 
+    //             matching: true }});
+    //     }
+    //     else {
+    //         this.setState({ 
+    //             form: {...form, 
+    //                 matching: false }});
+    //     }
      
       
-    }
+    // }
     async handleFormSubmit(event) {
         event.preventDefault();
+        console.log(this.state);
           const {email, name, password, passwordCheck} = this.state.form;
-          if (password === passwordCheck) {
+          console.log(password);
+          console.log(passwordCheck);
+          if (password !== passwordCheck) {
             this.setState({
                 form: {
-                    matching: true,
+                    matching: false,
                 }
             });
         }
@@ -64,10 +69,15 @@ class SignUp extends Component {
               name: name,
               password, password, 
           }
-          console.log(dataToSend);
-            
-           }
+       const params = formatPostData(dataToSend);
+       console.log(dataToSend);
+           const resp = await axios.post('api/addUser.php', params);
+            console.log(resp);
+            if (resp.data.success) {
+                document.getElementById('signupForm').empty().text("Successfully Signed please sign in")
+            }
         }
+    }
     render() {
         const {email, name, password, passwordCheck, matching} = this.state.form;
         const correctStyle = {
@@ -81,7 +91,7 @@ class SignUp extends Component {
                 <div className="title">SIGN UP FOR <br />CONCERT BUDDY</div>
 
                 <div className="signup">
-                    <form onSubmit={(event) => { this.handleFormSubmit(event) } }>
+                    <form id="signupForm" onSubmit={(event) => { this.handleFormSubmit(event) } }>
                         <div className="signup-inputs">
                             <input type="text" className="standard-input" placeholder="Enter Email Address" name="email" value={email} onChange={this.handleChange}/>
                             <input type="text" className="standard-input" placeholder="Enter Your Name"  name="name" value={name} onChange={this.handleChange}/>

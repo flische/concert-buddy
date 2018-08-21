@@ -1,9 +1,18 @@
 <?php
 session_start();
-echo session_id();
-
-header("Access-Control-Allow-Origin: *");
-print("checking...");
-print_r($_SESSION);
+$output = [
+    'success'=> false,
+    'error'=> [],
+];
+if (empty($_SESSION)) {
+    $output['error'] = "User is not logged in";
+    die();
+}
+else { 
+    $output['success'] = true;
+    $output['data'] = $_SESSION['user_data'];
+}
+$output = json_encode($output);
+print($output);
 
 ?>
