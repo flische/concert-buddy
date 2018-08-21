@@ -2,14 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ConcertItem = (props) => {
-
     function convertDateFormat(yyddmm) {
         var newDate = yyddmm.split('-');
         var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
         return returnDate;
     }
     let formattedDate = convertDateFormat(props.date);
+
     return (
+
 
         <div className="concert-result-container">
             <div className="concert-results">
@@ -35,7 +36,7 @@ const ConcertItem = (props) => {
                 </div>
             </div>
             <div className="buttons">
-                <Link to={`/concert-details/?id=${props.id}`}><button className="white-btn" >DETAILS</button></Link>
+                <Link to={`/concert-details/${props.queryString}&id=${props.id}`}><button className="white-btn" >DETAILS</button></Link>
 
             </div>
             <div className='hr'><hr /></div>

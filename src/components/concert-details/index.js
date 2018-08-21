@@ -18,26 +18,17 @@ class ConcertDetails extends Component {
     }
 
     parseParameters() {
-        //const queryString = this.props.history.location.search;
         var queryObject = {};
         var pair = null;
-        //get the query string, omitting the "?"
         var sPageURL = window.location.search.substring(1),
-            //use the ampersand as a separator
             qArr = sPageURL.split('&');
-        //each element in qArr is not a key/val pair
-        //so we need to turn each one of these pairs
-        //into a two-element array
+
         for (var i = 0; i < qArr.length; i++) {
-            //use the "=" as a separator
+
             pair = qArr[i].split('=');
-            //pair is now a two-element array
-            //so the "key" is the first element of that array
-            //and the "val" is the second element
-            //so now we just add this "pair" to our return object
             queryObject[pair[0]] = pair[1];
         };
-        //return the new object
+
         this.callTicketMaster(queryObject);
         return queryObject;
     }
@@ -88,9 +79,8 @@ class ConcertDetails extends Component {
 
 
     render() {
+        console.log('props in details page: ', this.props);
         const concert = this.state.concerts;
-        console.log('concert details: ', concert);
-
 
         if (concert._embedded === undefined) {
             return <h1>Loading...</h1>;
@@ -145,7 +135,7 @@ class ConcertDetails extends Component {
                 <div className="buttons">
                     <a href={concert.url} target='_blank'><button className="white-btn">BUY TICKETS</button></a>
                     <button className="pink-btn">CREATE A TRIP</button>
-                    <button className="white-btn">BACK TO RESULTS</button>
+                    <Link to={`/concert-results/${this.props.location.search}`}><button className="white-btn">BACK TO RESULTS</button></Link>
                 </div>
 
 
