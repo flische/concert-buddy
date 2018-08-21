@@ -60,7 +60,7 @@ class SearchConcerts extends Component {
                                     <option value="pop">POP</option>
                                     <option value="r-b">R&B</option>
                                 </select>
-                            </div>
+                          </div>
                         </div>
                         <div className="title">DATE RANGE</div>
                         <div className="date-holder">
