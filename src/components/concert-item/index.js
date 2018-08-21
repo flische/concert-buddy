@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 
 const ConcertItem = (props) => {
 
+    function convertDateFormat(yyddmm) {
+        var newDate = yyddmm.split('-');
+        var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
+        return returnDate;
+    }
+    let formattedDate = convertDateFormat(props.date);
     return (
 
         <div className="concert-result-container">
@@ -14,7 +20,7 @@ const ConcertItem = (props) => {
                     </p>
                     <p>
                         <b>Date: </b>
-                        <span>{props.date}</span>
+                        <span>{formattedDate}</span>
                     </p>
                 </div>
                 <div className="concert-part-b">

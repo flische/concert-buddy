@@ -29,3 +29,8 @@
         margin: 0 auto;
     }
 }
+
+.dropdown-center{
+    text-align-last: center;
+    text-align: center;
+ }

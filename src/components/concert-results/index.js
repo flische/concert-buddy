@@ -76,6 +76,8 @@ class ConcertResults extends Component {
     }
 
     render() {
+        console.log('props history concert results: ', this.props.history);
+
         const concert = this.state.concerts.map((item, index) => {
             return <ConcertItem
                 key={index}

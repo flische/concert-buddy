@@ -80,6 +80,13 @@ class ConcertDetails extends Component {
         return timeValue;
     }
 
+    convertDateFormat = (yyddmm) => {
+        var newDate = yyddmm.split('-');
+        var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
+        return returnDate;
+    }
+
+
     render() {
         const concert = this.state.concerts;
         console.log('concert details: ', concert);
@@ -90,7 +97,8 @@ class ConcertDetails extends Component {
         }
         const cityState = concert._embedded.venues[0].city.name + ', ' + concert._embedded.venues[0].state.stateCode;
         let eventTime = this.convertTime(concert.dates.start.localTime);
-
+        let convertedDate = this.convertDateFormat(concert.dates.start.localDate);
+        console.log('props history concert details: ', this.props);
         return (
             <div className="details">
 
@@ -126,7 +134,7 @@ class ConcertDetails extends Component {
 
                         <p>
                             <b>Date: </b>
-                            <span>{concert.dates.start.localDate}</span>
+                            <span>{convertedDate}</span>
                         </p>
                         <p>
                             <b>Time: </b>
@@ -136,7 +144,7 @@ class ConcertDetails extends Component {
                 </div>
                 <div className="buttons">
                     <a href={concert.url} target='_blank'><button className="white-btn">BUY TICKETS</button></a>
-                    <button className="pink-btn">ADD TO PLANNER</button>
+                    <button className="pink-btn">CREATE A TRIP</button>
                     <button className="white-btn">BACK TO RESULTS</button>
                 </div>
 
