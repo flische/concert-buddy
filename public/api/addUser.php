@@ -1,11 +1,9 @@
 <?php 
-print_r($_POST);
 $email = $_POST['email'];
 $password = sha1($_POST['password']);
 $name = $_POST['name'];
 $output = [
     'success' => false,
-    'error'=>[],
 ];
 if (empty($email)) {
     $output['error'][] = "Missing Email";

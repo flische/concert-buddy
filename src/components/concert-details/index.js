@@ -39,8 +39,8 @@ class ConcertDetails extends Component {
             URL = URL + '&id=' + object.id;
         }
         await axios.get(URL).then((resp) => {
+            console.log('test:', resp);
             this.setState({
-
                 concerts: resp.data._embedded.events[0],
                 url: URL
 
