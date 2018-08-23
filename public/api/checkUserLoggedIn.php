@@ -11,8 +11,7 @@ if (empty($_SESSION)) {
 else { 
     $output['success'] = true;
     $output['data'] = $_SESSION['user_data'];
+    print(json_encode($output));
+    // header('location: http://localhost:3000/planner/');
 }
-$output = json_encode($output);
-print($output);
-
 ?>

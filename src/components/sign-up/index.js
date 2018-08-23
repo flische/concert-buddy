@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './sign-up.css';
 import { formatPostData } from '../../helpers';
 import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 
 class SignUp extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class SignUp extends Component {
                 matching: 'null',
 
             },
+            redirect: false,
         }
     }
     componentDidUpdate() {
@@ -50,17 +52,20 @@ class SignUp extends Component {
      
       
     // }
+    renderRedirect() {
+        if (this.state.redirect) {
+        return <Redirect to='/login' />
+    }
+}
     async handleFormSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
           const {email, name, password, passwordCheck} = this.state.form;
-          console.log(password);
-          console.log(passwordCheck);
           if (password !== passwordCheck) {
             this.setState({
                 form: {
                     matching: false,
-                }
+                },
+                redirect: false
             });
         }
         else {
@@ -70,11 +75,12 @@ class SignUp extends Component {
               password, password, 
           }
        const params = formatPostData(dataToSend);
-       console.log(dataToSend);
            const resp = await axios.post('api/addUser.php', params);
-            console.log(resp);
             if (resp.data.success) {
-                document.getElementById('signupForm').empty().text("Successfully Signed please sign in")
+                console.log("here")
+                this.setState({
+                    redirect: true,
+                });
             }
         }
     }
@@ -88,6 +94,7 @@ class SignUp extends Component {
         }
         return (
             <div>
+                {this.renderRedirect()}
                 <div className="title">SIGN UP FOR <br />CONCERT BUDDY</div>
 
                 <div className="signup">
