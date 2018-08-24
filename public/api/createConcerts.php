@@ -10,13 +10,14 @@ $lat = $_POST["latitude"];
 $long = $_POST["longitude"];
 $img = $_POST["image"];
 
+require_once("mysqlconnect.php");
 $output = [
     'success' => false,
 ];
-$query = "INSERT INTO `concerts`(`Name`,`Artist`,`Address`,`Date`,`Time`,`longitude`,`latitude`,`img`) 
-                        VALUES ($venue, $artist, $address , $date, $time, $long, $lat, $img)";
+$query = "INSERT INTO `concerts`(`venue`,`artist`,`address`,`date`,`time`,`longitude`,`latitude`,`img`) 
+                        VALUES ('$venue', '$artist', '$address' , '$date', '$time', '$long', '$lat', '$img')";
 $result = mysqli_query($conn, $query);
- if (mysqli_affected_rows($conn)) {
+ if (mysqli_affected_rows($conn) > 0) {
      $output['success'] = true;
      $output['ID'] = mysqli_insert_id($conn);
  }

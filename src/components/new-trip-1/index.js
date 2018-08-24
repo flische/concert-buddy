@@ -58,12 +58,14 @@ class NewTrip1 extends Component {
     
         const params = formatPostData(dataToSend);
             console.log(dataToSend);
-        const trip = await axios.post('api/createConcerts.php', params);
-        const tripdata= trip.data
+        const concert = await axios.post('api/createConcerts.php', params);
+        const concertID = concert.data.ID;
         const dataToSend2 = {
             trip_name: "howards super fun trip wow",
-            tripID: tripdata,
+            ID: concertID,
         }
+        const params2 = formatPostData(dataToSend2);
+        const trip = await axios.post('api/createTrip.php', params2);
     }
     render() {
         return (
