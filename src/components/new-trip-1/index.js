@@ -3,23 +3,16 @@ import './new-trip-1.css'
 import './new-trip-1.css';
 import axios from 'axios';
 import  {formatPostData } from '../../helpers';
+import { connect } from 'react-redux';
+import {get_concert_details} from '../../actions';
 
 // import formatPostData from '../helpers';
 
 
 class NewTrip1 extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            concerts: {},
-            url: ''
-        };
-
-        // this.concertID = '';
-    }
+  
     componentDidMount() {
-        this.parseParameters();
+        // this.parseParameters();
     }
     parseParameters() {
         var queryObject = {};
@@ -32,17 +25,12 @@ class NewTrip1 extends Component {
             pair = qArr[i].split('=');
             queryObject[pair[0]] = pair[1];
         }
-
-        this.callTicketMaster(queryObject);
         return queryObject;
     }
 
 
-    async callTicketMaster() {
-        let URL = 'https://app.ticketmaster.com/discovery/v2/events.jsonp?apikey=86PZJxmHAum8VeEH8EJBOCjucnSAVyGR&id=Z7r9jZ1Ae8AGe';
-        
-        const response = await axios.get(URL)
-        const concertData = response.data._embedded.events[0];
+    async createTrip() {
+        const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
             date : concertData.dates.start.localDate,
@@ -68,6 +56,7 @@ class NewTrip1 extends Component {
         const trip = await axios.post('api/createTrip.php', params2);
     }
     render() {
+        console.log(this.props.concert);
         return (
             <div className="newtrip">
                 <div className="title">
@@ -103,15 +92,21 @@ class NewTrip1 extends Component {
                 <div className="tripname">
                     <input type="text" className="standard-input" placeholder="Name Your Trip" />
                 </div>
-                <div className="buttons">
+                <div className="btn">
 
-                    <button className="pink-btn" onClick={this.callTicketMaster}>CREATE YOUR TRIP!</button>
+                    <Link to="/planner"><button className="pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP!</button></Link>
 
                 </div>
             </div>
 
         );
+        
     }
 }
 
-export default NewTrip1;
+function mapStateToProps(state) {
+    return {
+        concert: state.concertDetails.concert
+    }
+}
+export default connect(mapStateToProps, {get_concert_details: get_concert_details})(NewTrip1);
