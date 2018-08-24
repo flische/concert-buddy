@@ -1,19 +1,23 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 // $userID = $_SESSION["ID"];
 $venue = $_POST["venue"];
-$date =  $_POST["dateTime"];
-$img = $_POST["img"];
-$lat = $_POST["lat"];
-$long = $_POST["long"]
+$artist = $_POST["artist"];
 $address = $_POST["address"];
-$artist = $_POST['artist'];
+$date =  $_POST["date"];
+$time = $_POST["time"];
+$lat = $_POST["latitude"];  
+$long = $_POST["longitude"];
+$img = $_POST["image"];
+
+require_once("mysqlconnect.php");
 $output = [
-    'success' = false,
+    'success' => false,
 ];
-$query = "INSERT INTO `concerts`(`venuename`,`artist`,`address`,`date`,`time`,`longitude`,`latitude`,`img`) 
-                        VALUES ('$venue','$artist','$address','$date','$time', '$longitude', '$latitude', '$img')";
-$result = mysqli_query($conn, $result);
- if ( num_affected_rows($conn) {
+$query = "INSERT INTO `concerts`(`venue`,`artist`,`address`,`date`,`time`,`longitude`,`latitude`,`img`) 
+                        VALUES ('$venue', '$artist', '$address' , '$date', '$time', '$long', '$lat', '$img')";
+$result = mysqli_query($conn, $query);
+ if (mysqli_affected_rows($conn) > 0) {
      $output['success'] = true;
      $output['ID'] = mysqli_insert_id($conn);
  }

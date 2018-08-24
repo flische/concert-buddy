@@ -4,6 +4,7 @@ import ConcertItem from '../concert-item';
 import axios from 'axios';
 
 
+
 class ConcertResults extends Component {
     constructor(props) {
         super(props);
@@ -93,15 +94,14 @@ class ConcertResults extends Component {
                 latitude={item._embedded.venues[0].location.latitude}
                 longitude={item._embedded.venues[0].location.longitude}
                 image={item.images[0].url}
-                queryString={this.props.history.location.search}
-            />
+                queryString={this.props.history.location.search}/>
 
         });
         return (
             <div className="results">
                 <div className="title">CONCERT RESULTS</div>
                 {concert}
-                <div className="buttons"><button className="pink-btn">SEE MORE RESULTS</button></div>
+                
             </div >
         );
     }
