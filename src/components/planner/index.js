@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import './planner.css'
+import Axios from 'axios';
+
+async function appendGoing() {
+    const peopleGoing = await Axios.post('api/checkUserTrips.php', params);
+    
+}
 
 
 class Planner extends Component {
