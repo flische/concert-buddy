@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import './concert-details.css'
-import axios from 'axios';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { get_concert_details } from '../../actions';
+
+
 
 class ConcertDetails extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            concerts: {},
-            url: ''
-        }
-    }
-
     componentDidMount() {
         this.parseParameters();
     }
@@ -29,24 +23,7 @@ class ConcertDetails extends Component {
             queryObject[pair[0]] = pair[1];
         };
 
-        this.callTicketMaster(queryObject);
-        return queryObject;
-    }
-
-    async callTicketMaster(object) {
-        let URL = 'https://app.ticketmaster.com/discovery/v2/events.jsonp?apikey=86PZJxmHAum8VeEH8EJBOCjucnSAVyGR';
-        if (object.id) {
-            URL = URL + '&id=' + object.id;
-        }
-        await axios.get(URL).then((resp) => {
-            this.setState({
-
-                concerts: resp.data._embedded.events[0],
-                url: URL
-
-            });
-        });
-
+        this.props.get_concert_details(queryObject);
     }
 
     convertTime = (militaryTime) => {
@@ -79,8 +56,8 @@ class ConcertDetails extends Component {
 
 
     render() {
-        console.log('props in details page: ', this.props);
-        const concert = this.state.concerts;
+        console.log('this.props: ', this.props.concert);
+        const concert = this.props.concert;
 
         if (concert._embedded === undefined) {
             return <h1>Loading...</h1>;
@@ -88,7 +65,7 @@ class ConcertDetails extends Component {
         const cityState = concert._embedded.venues[0].city.name + ', ' + concert._embedded.venues[0].state.stateCode;
         let eventTime = this.convertTime(concert.dates.start.localTime);
         let convertedDate = this.convertDateFormat(concert.dates.start.localDate);
-        console.log('props history concert details: ', this.props);
+
         return (
             <div className="details">
 
@@ -145,4 +122,10 @@ class ConcertDetails extends Component {
     }
 }
 
-export default ConcertDetails;
+function mapStateToProps(state) {
+    return {
+        concert: state.concertDetails.concert
+    }
+}
+
+export default connect(mapStateToProps, { get_concert_details: get_concert_details })(ConcertDetails);
