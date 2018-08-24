@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class ConcertDetails extends Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
             concerts: {},
             url: ''
@@ -15,6 +15,7 @@ class ConcertDetails extends Component {
 
     componentDidMount() {
         this.parseParameters();
+        console.log('props', this.props);
     }
 
     parseParameters() {
@@ -134,7 +135,7 @@ class ConcertDetails extends Component {
                 </div>
                 <div className="buttons">
                     <a href={concert.url} target='_blank'><button className="white-btn">BUY TICKETS</button></a>
-                    <button className="pink-btn">CREATE A TRIP</button>
+                    <Link to='/new-trip-1'><button className="pink-btn" >Create a trip</button></Link>
                     <Link to={`/concert-results/${this.props.location.search}`}><button className="white-btn">BACK TO RESULTS</button></Link>
                 </div>
 

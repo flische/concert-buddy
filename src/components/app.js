@@ -11,7 +11,7 @@ import Planner from './planner/';
 import ConcertResults from './concert-results/';
 import ConcertDetails from './concert-details/';
 import NotFound from '../components/404';
-
+import NewTrip1 from '../components/new-trip-1';
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -54,6 +54,7 @@ class App extends React.Component {
                     <Route path='/login' component={Login} />
                     <Route path='/sign-up' component={SignUp} />
                     <Route path='/planner' component={Planner} />
+                    <Route path='/new-trip-1' component={NewTrip1}/>
                     <Route component = {NotFound} />
                     </Switch>
             </div>
