@@ -22,7 +22,6 @@ class ConcertDetails extends Component {
             pair = qArr[i].split('=');
             queryObject[pair[0]] = pair[1];
         };
-
         this.props.get_concert_details(queryObject);
     }
 

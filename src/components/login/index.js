@@ -23,6 +23,7 @@ class Login extends Component {
 
     async checkLoginStatus(initialCheck=false) { 
        const resp = await axios.post('api/checkUserLoggedIn.php');
+       console.log(resp);
        if(resp.data.success) { 
            this.setState({
                redirect:  true,
@@ -81,6 +82,7 @@ class Login extends Component {
     }
     render() {
         const { email, password } = this.state.form;
+        console.log(this.state);
         return (
           
                
