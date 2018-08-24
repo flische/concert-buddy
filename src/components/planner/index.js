@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import { get_concert_details } from '../../actions';
 import './planner.css';
+
 
 class Planner extends Component {
 
