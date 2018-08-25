@@ -106,8 +106,8 @@ class ConcertResults extends Component {
                     <Link to='/search-concerts'><div className="btn pink-btn">BACK TO SEARCH</div></Link>
                 </div>
             </div>
-               
-            </div >
+
+
 
         );
     }
