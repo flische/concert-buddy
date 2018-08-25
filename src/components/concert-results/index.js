@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './concert-results.css'
 import ConcertItem from '../concert-item';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 
 class ConcertResults extends Component {
@@ -85,24 +85,30 @@ class ConcertResults extends Component {
                 id={item.id}
                 artist={item.name}
                 date={item.dates.start.localDate}
-                time={item.dates.start.localTime}
                 venue={item._embedded.venues[0].name}
-                address={item._embedded.venues[0].address.line1}
                 city={item._embedded.venues[0].city.name}
                 state={item._embedded.venues[0].state.stateCode}
-                zip={item._embedded.venues[0].postalCode}
-                latitude={item._embedded.venues[0].location.latitude}
-                longitude={item._embedded.venues[0].location.longitude}
-                image={item.images[0].url}
-                queryString={this.props.history.location.search}/>
+                queryString={this.props.history.location.search}
+            />
+
 
         });
         return (
             <div className="results">
                 <div className="title">CONCERT RESULTS</div>
+                <a href="#top" className="up">
+                    <div className="test">
+                        <p>UP</p>
+                    </div></a>
                 {concert}
-                
+
+                <div className="buttons">
+                    <Link to='/search-concerts'><div className="btn pink-btn">BACK TO SEARCH</div></Link>
+                </div>
+            </div>
+               
             </div >
+
         );
     }
 }
