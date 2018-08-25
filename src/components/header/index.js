@@ -8,7 +8,7 @@ import Nav from '../nav';
 const Header = () => {
     return (
 
-        <div className="top-content">
+        <div className="top-content" id="top">
             <div className="top-link">
                 <a href="#">
                     <img src={logo} />

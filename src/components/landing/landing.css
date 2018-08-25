@@ -16,9 +16,11 @@
 .carousel-container .slider .slide {
     height: 100%;
 }
+
 .carousel-container .slider .slide {
-    background-color: papayawhip;
+    background-color: #2A363B;
 }
+
 .carousel-container .slider .slide>img {
     height: 100%;
     width: auto;
@@ -27,9 +29,22 @@
 .carousel .slide img {
     width: auto !important;
 }
+
+.landing {
+    text-align: center;
+    height: 100vh;
+}
+
+.landing-logo>img {
+    margin-top: 20px;
+}
+
 @media only screen and (min-width: 601px) {
-    .carousel {
-        /* margin-bottom: 1%; */
+    .control-dots {
+        display: none;
+    }
+    ul.slider.animated {
+        overflow: visible;
     }
 }
 
