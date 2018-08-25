@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { get_concert_details } from '../../actions';
 
-
-
 class ConcertDetails extends Component {
     componentDidMount() {
         this.parseParameters();
+        console.log('props', this.props);
     }
 
     parseParameters() {
@@ -109,9 +108,11 @@ class ConcertDetails extends Component {
                     </div>
                 </div>
                 <div className="buttons">
+
                     <a href={concert.url} target='_blank'><div className=" btn white-btn">BUY TICKETS</div></a>
                     <div className=" btn pink-btn">CREATE A TRIP</div>
                     <Link to={`/concert-results/${this.props.location.search}`}><div className=" btn white-btn">BACK TO RESULTS</div></Link>
+
                 </div>
 
 

@@ -1,8 +1,62 @@
 import React, { Component } from 'react';
 import './new-trip-1.css'
+import './new-trip-1.css';
+import axios from 'axios';
+import  {formatPostData } from '../../helpers';
+import { connect } from 'react-redux';
+import {get_concert_details} from '../../actions';
+
+// import formatPostData from '../helpers';
+
 
 class NewTrip1 extends Component {
+  
+    componentDidMount() {
+        // this.parseParameters();
+    }
+    parseParameters() {
+        var queryObject = {};
+        var pair = null;
+        var sPageURL = window.location.search.substring(1),
+            qArr = sPageURL.split('&');
+
+        for (var i = 0; i < qArr.length; i++) {
+
+            pair = qArr[i].split('=');
+            queryObject[pair[0]] = pair[1];
+        }
+        return queryObject;
+    }
+
+
+    async createTrip() {
+        const concertData = this.props.concert;
+        const dataToSend = {
+            artist: concertData.name,
+            date : concertData.dates.start.localDate,
+            time : concertData.dates.start.localTime,
+            venue : concertData._embedded.venues[0].name,
+            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' 
+            + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
+            latitude : concertData._embedded.venues[0].location.latitude,
+            longitude : concertData._embedded.venues[0].location.longitude,
+            image: concertData.images[0].url,
+            
+            }
+    
+        const params = formatPostData(dataToSend);
+            console.log(dataToSend);
+        const concert = await axios.post('api/createConcerts.php', params);
+        const concertID = concert.data.ID;
+        const dataToSend2 = {
+            trip_name: "howards super fun trip wow",
+            ID: concertID,
+        }
+        const params2 = formatPostData(dataToSend2);
+        const trip = await axios.post('api/createTrip.php', params2);
+    }
     render() {
+        console.log(this.props.concert);
         return (
             <div className="newtrip">
                 <div className="title">
@@ -38,15 +92,21 @@ class NewTrip1 extends Component {
                 <div className="tripname">
                     <input type="text" className="standard-input" placeholder="Name Your Trip" />
                 </div>
-                <div className="buttons">
+                <div className="btn">
 
-                    <button className="pink-btn">CREATE YOUR TRIP!</button>
+                    <Link to="/planner"><button className="pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP!</button></Link>
 
                 </div>
             </div>
 
         );
+        
     }
 }
 
-export default NewTrip1;
+function mapStateToProps(state) {
+    return {
+        concert: state.concertDetails.concert
+    }
+}
+export default connect(mapStateToProps, {get_concert_details: get_concert_details})(NewTrip1);

@@ -4,6 +4,7 @@ import ConcertItem from '../concert-item';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
 class ConcertResults extends Component {
     constructor(props) {
         super(props);
@@ -90,6 +91,7 @@ class ConcertResults extends Component {
                 queryString={this.props.history.location.search}
             />
 
+
         });
         return (
             <div className="results">
@@ -99,10 +101,14 @@ class ConcertResults extends Component {
                         <p>UP</p>
                     </div></a>
                 {concert}
+
                 <div className="buttons">
                     <Link to='/search-concerts'><div className="btn pink-btn">BACK TO SEARCH</div></Link>
                 </div>
             </div>
+               
+            </div >
+
         );
     }
 }
