@@ -110,7 +110,7 @@ class ConcertDetails extends Component {
                 <div className="buttons">
 
                     <a href={concert.url} target='_blank'><div className=" btn white-btn">BUY TICKETS</div></a>
-                    <div className=" btn pink-btn">CREATE A TRIP</div>
+                    <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link>
                     <Link to={`/concert-results/${this.props.location.search}`}><div className=" btn white-btn">BACK TO RESULTS</div></Link>
 
                 </div>
