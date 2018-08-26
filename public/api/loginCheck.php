@@ -27,6 +27,4 @@ else {
 }
 
 $output = json_encode($output);
-print($output);
-print_r($_SESSION);
 ?>

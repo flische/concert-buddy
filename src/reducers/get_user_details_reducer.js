@@ -1,16 +1,18 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    concert: {}
+   details: {}
 };
 
 export default function (state = DEFAULT_STATE, action) {
     switch (action.type) {
-        case types.GET_CONCERT_DETAILS:
+        case types.GET_USER_DETAILS:
+        const tripObject = action.payload.data.data[0];
             return {
-                ...state, concert: action.payload.data._embedded.events[0]
+                ...state, 
+                details: tripObject,
             }
         default:
             return state;
+        }
     }
-}

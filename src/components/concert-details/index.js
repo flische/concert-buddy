@@ -7,7 +7,6 @@ import { get_concert_details } from '../../actions';
 class ConcertDetails extends Component {
     componentDidMount() {
         this.parseParameters();
-        console.log('props', this.props);
     }
 
     parseParameters() {
@@ -53,8 +52,7 @@ class ConcertDetails extends Component {
     }
 
 
-    render() {
-        console.log('this.props: ', this.props.concert);
+    render() {ß
         const concert = this.props.concert;
 
         if (concert._embedded === undefined) {

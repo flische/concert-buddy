@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
 import './new-trip-1.css'
 import axios from 'axios';
-import { formatPostData } from '../../helpers';
-import { connect } from 'react-redux';
-import { get_concert_details } from '../../actions';
 import { Link } from 'react-router-dom';
-
-// import formatPostData from '../helpers';
-
+import  {formatPostData } from '../../helpers';
+import { connect } from 'react-redux';
+import {get_concert_details, create_trip} from '../../actions';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 class NewTrip1 extends Component {
+    
+    handleAddItem = async (values) => {
 
-    componentDidMount() {
-        // this.parseParameters();
+        await this.createTrip(values);
+
     }
+
+    renderInput( props ){
+               return (
+                   <div className="">
+                       <div className="">
+                           <label>{props.label}</label>
+                           <input {...props.input} type="text"/>
+                       </div>
+                   </div>
+               )
+           }
+
     parseParameters() {
         var queryObject = {};
         var pair = null;
@@ -28,30 +40,32 @@ class NewTrip1 extends Component {
         return queryObject;
     }
 
+    async createTrip(values) {
 
-    async createTrip() {
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
-            date: concertData.dates.start.localDate,
-            time: concertData.dates.start.localTime,
-            venue: concertData._embedded.venues[0].name,
-            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
-            latitude: concertData._embedded.venues[0].location.latitude,
-            longitude: concertData._embedded.venues[0].location.longitude,
-            image: concertData.images[0].url,
 
-        }
+            date : concertData.dates.start.localDate,
+            time : concertData.dates.start.localTime,
+            venue : concertData._embedded.venues[0].name,
+            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
+            latitude : concertData._embedded.venues[0].location.latitude,
+            longitude : concertData._embedded.venues[0].location.longitude,
+            image: concertData.images[0].url,
+            }
+
+
         const params = formatPostData(dataToSend);
-        console.log(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
         const concertID = concert.data.ID;
+
         const dataToSend2 = {
-            trip_name: "howards super fun trip wow",
+            trip_name: this.props.tripNameValue,
             ID: concertID,
         }
         const params2 = formatPostData(dataToSend2);
-        const trip = await axios.post('api/createTrip.php', params2);
+        const newTrip = await axios.post('api/createTrip.php', params2);
     }
     convertTime = (militaryTime) => {
         if (!militaryTime) {
@@ -80,12 +94,10 @@ class NewTrip1 extends Component {
         return returnDate;
     }
     render() {
-        const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
 
-        // console.log(this.convertTime)
 
-        // let eventTime = this.convertTime(this.props.concert.dates.start.localTime);
-        // let convertedDate = this.convertDateFormat(this.props.concert.dates.start.localDate);
+        const { handleSubmit } = this.props;
+
 
         return (
             <div className="newtrip">
@@ -95,41 +107,42 @@ class NewTrip1 extends Component {
                 <div className="concert-info">
                     <p>
                         <b>Concert: </b>
-                        <span>{this.props.concert.name}</span>
+                        <span>Taylor Swift</span>
                     </p>
                     <p>
                         <b>Venue: </b>
-                        <span>{this.props.concert._embedded.venues[0].name}</span>
+                        <span>Honda Center</span>
                     </p>
                     <p>
                         <b>Address: </b>
-                        <span>{this.props.concert._embedded.venues[0].address.line1}</span>
+                        <span>2695 E Katella Ave</span>
                     </p>
                     <p>
                         <b>City, State: </b>
-                        <span>{cityState}</span>
+                        <span>Anaheim, CA 92806</span>
                     </p>
 
                     <p>
                         <b>Date: </b>
-                        <span>{this.props.concert.dates.start.localDate}</span>
+                        <span>May 20, 2019</span>
                     </p>
                     <p>
                         <b>Time: </b>
-                        <span>{this.props.concert.dates.start.localTime}</span>
+                        <span>7:00PM</span>
                     </p>
                 </div>
                 <div className="tripname">
-                    <input type="text" className="standard-input" placeholder="Name Your Trip" />
-                </div>
-                <div className="buttons">
-                    <div className="btn"><Link to="/planner"><button className="pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP!</button></Link></div>
-
+                    <form onSubmit={handleSubmit(this.handleAddItem)}>
+                        <Field name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput}/>
+                        <div className="">
+                            <div className="">
+                            <Link to='/planner'><button className="pink-btn">CREATE YOUR TRIP!</button></Link>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-
         );
-
     }
 }
 
@@ -138,4 +151,20 @@ function mapStateToProps(state) {
         concert: state.concertDetails.concert
     }
 }
-export default connect(mapStateToProps, { get_concert_details: get_concert_details })(NewTrip1);
+
+NewTrip1 = reduxForm({
+    form: 'create_trip',
+    // validate: validate
+})(NewTrip1);
+
+const selector = formValueSelector('create_trip');
+
+NewTrip1 = connect( state => {
+    const tripNameValue = selector(state, 'trip_name');
+
+    return {
+        tripNameValue
+    };
+})(NewTrip1);
+
+export default connect(mapStateToProps, {get_concert_details: get_concert_details, create_trip: create_trip})(NewTrip1);
