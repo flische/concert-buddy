@@ -6,13 +6,10 @@ export default () => {
     const center = {
         color: 'lightblue'
     }
-    const imageCSS = {
-        width: '90%'
-    }
     return (
         <div>
             <div className ="center">
-                <img style={imageCSS} src={image} />
+                <img className="img404" src={image} /><br/>
                 <Link style={center} to ="/">Return To Home Page </Link>
             </div>
         </div>

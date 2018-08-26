@@ -36,42 +36,12 @@ class NewTrip1 extends Component {
             date: concertData.dates.start.localDate,
             time: concertData.dates.start.localTime,
             venue: concertData._embedded.venues[0].name,
-            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + ''
-                + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
+            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
             latitude: concertData._embedded.venues[0].location.latitude,
             longitude: concertData._embedded.venues[0].location.longitude,
             image: concertData.images[0].url,
 
         }
-
-        convertTime = (militaryTime) => {
-            if (!militaryTime) {
-                return;
-            }
-            var time = militaryTime;
-            time = time.split(':');
-            var hours = Number(time[0]);
-            var minutes = Number(time[1]);
-            var seconds = Number(time[2]);
-            var timeValue;
-            if (hours > 0 && hours <= 12) {
-                timeValue = "" + hours;
-            } else if (hours > 12) {
-                timeValue = "" + (hours - 12);
-            } else if (hours == 0) {
-                timeValue = "12";
-            }
-            timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
-            timeValue += (hours >= 12) ? " P.M." : " A.M.";
-            return timeValue;
-        }
-
-        convertDateFormat = (yyddmm) => {
-            var newDate = yyddmm.split('-');
-            var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
-            return returnDate;
-        }
-
         const params = formatPostData(dataToSend);
         console.log(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
@@ -83,10 +53,36 @@ class NewTrip1 extends Component {
         const params2 = formatPostData(dataToSend2);
         const trip = await axios.post('api/createTrip.php', params2);
     }
+    convertTime = (militaryTime) => {
+        if (!militaryTime) {
+            return;
+        }
+        var time = militaryTime;
+        time = time.split(':');
+        var hours = Number(time[0]);
+        var minutes = Number(time[1]);
+        var seconds = Number(time[2]);
+        var timeValue;
+        if (hours > 0 && hours <= 12) {
+            timeValue = "" + hours;
+        } else if (hours > 12) {
+            timeValue = "" + (hours - 12);
+        } else if (hours == 0) {
+            timeValue = "12";
+        }
+        timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+        timeValue += (hours >= 12) ? " P.M." : " A.M.";
+        return timeValue;
+    }
+    convertDateFormat = (yyddmm) => {
+        var newDate = yyddmm.split('-');
+        var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
+        return returnDate;
+    }
     render() {
         const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
 
-        console.log(this.convertTime)
+        // console.log(this.convertTime)
 
         // let eventTime = this.convertTime(this.props.concert.dates.start.localTime);
         // let convertedDate = this.convertDateFormat(this.props.concert.dates.start.localDate);
