@@ -136,7 +136,8 @@ class NewTrip1 extends Component {
                         <Field name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput}/>
                         <div className="">
                             <div className="">
-                            <Link to='/planner'><button className="pink-btn">CREATE YOUR TRIP!</button></Link>
+                            <button className="pink-btn">CREATE YOUR TRIP!</button>
+                            {/* <Link to='/planner'><button className="pink-btn">CREATE YOUR TRIP!</button></Link> */}
                             </div>
                         </div>
                     </form>
