@@ -1,8 +1,36 @@
-.center{
-    text-align: center;
+/* .center{ */
+    /* text-align: center;
     color: white;
-    color: #FF847C;
+    color: #FF847C; */
     /* text-shadow: #FFFFFF 1px 1px 3px; */
-    -webkit-font-smoothing: antialiased;
+    /* -webkit-font-smoothing: antialiased;
     margin-top: 20%;
+} */
+
+@media only screen and (max-width: 600px) {
+    .center {
+        text-align: center;
+        color: white;
+        color: #FF847C;
+
+        -webkit-font-smoothing: antialiased;
+        margin-top: 20%;
+    }
+    .img404{
+        width:90%
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .center {
+        text-align: center;
+        color: white;
+        color: #FF847C;
+        -webkit-font-smoothing: antialiased;
+        margin-top: 2%;
+    }
+    .img404{
+        height: 300px;
+        width: 300px;
+    }
 }

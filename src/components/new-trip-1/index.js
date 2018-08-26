@@ -45,6 +45,7 @@ class NewTrip1 extends Component {
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
+
             date : concertData.dates.start.localDate,
             time : concertData.dates.start.localTime,
             venue : concertData._embedded.venues[0].name,
@@ -53,6 +54,7 @@ class NewTrip1 extends Component {
             longitude : concertData._embedded.venues[0].location.longitude,
             image: concertData.images[0].url,
             }
+
 
         const params = formatPostData(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
@@ -65,9 +67,37 @@ class NewTrip1 extends Component {
         const params2 = formatPostData(dataToSend2);
         const newTrip = await axios.post('api/createTrip.php', params2);
     }
+    convertTime = (militaryTime) => {
+        if (!militaryTime) {
+            return;
+        }
+        var time = militaryTime;
+        time = time.split(':');
+        var hours = Number(time[0]);
+        var minutes = Number(time[1]);
+        var seconds = Number(time[2]);
+        var timeValue;
+        if (hours > 0 && hours <= 12) {
+            timeValue = "" + hours;
+        } else if (hours > 12) {
+            timeValue = "" + (hours - 12);
+        } else if (hours == 0) {
+            timeValue = "12";
+        }
+        timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+        timeValue += (hours >= 12) ? " P.M." : " A.M.";
+        return timeValue;
+    }
+    convertDateFormat = (yyddmm) => {
+        var newDate = yyddmm.split('-');
+        var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
+        return returnDate;
+    }
     render() {
 
+
         const { handleSubmit } = this.props;
+
 
         return (
             <div className="newtrip">
