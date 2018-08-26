@@ -52,6 +52,15 @@ class Planner extends Component {
         timeValue += (hours >= 12) ? " P.M." : " A.M.";
         return timeValue;
     }
+
+
+    convertDateFormat = (yyddmm) => {
+        var newDate = yyddmm.split('-');
+        var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
+        return returnDate;
+    }
+
+
     render() {
         const user_concert = this.props.user_concert;
         const whosgoing = this.displayUsersGoing();
@@ -63,9 +72,11 @@ class Planner extends Component {
         if (user_concert === undefined) {
             return <h1>Loading...</h1>;
         }
+
        
         let eventTime = this.convertTime(user_concert.time);
         // let convertedDate = this.convertDateFormat(user_concert.date);
+
         return (
 
             <div className="bottom-content">

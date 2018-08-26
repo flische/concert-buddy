@@ -2,6 +2,7 @@ import types from './types';
 import axios from 'axios';
 import {formatPostData} from '../helpers'
 
+
 export function get_concert_details(object) {
     var URL = 'https://app.ticketmaster.com/discovery/v2/events.jsonp?apikey=86PZJxmHAum8VeEH8EJBOCjucnSAVyGR';
     if (object.id) {
@@ -14,6 +15,7 @@ export function get_concert_details(object) {
         payload: resp
     }
 }
+
 
 export async function get_user_details(userID) {
         const dataToSend = {
@@ -30,6 +32,17 @@ export async function get_user_details(userID) {
 }
 
 
+export async function create_trip(trip){
+
+
+
+    const response = await axios.post('api/createTrip.php', trip);
+    
+    return {
+        type: types.CREATE_TRIP,
+        payload: response
+    };
+}
 
 
 
