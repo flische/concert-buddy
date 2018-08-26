@@ -1,10 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { get_concert_details } from '../../actions';
+// import { get_user_concert_details } from '../../actions';
+import { get_user_details} from '../../actions';
 import './planner.css';
-
+import axios from 'axios';
+import {formatPostData} from '../../helpers';
 
 class Planner extends Component {
+    componentDidMount() { 
+        this.checkUserTrips();
+        
+    }
+
+    async checkUserTrips (){
+        const resp = await axios.post('api/checkUserLoggedIn.php')
+        this.props.get_user_details(resp.data.data[0].ID);
+    
+
+    }
+
+   async displayUsersGoing() {
+       const id = this.props.user_concert.trip_id;
+       var dataToSend = {
+           tripID: id,
+       }
+       const params = formatPostData(dataToSend);
+       const resp = await axios.post('api/checkWhosGoing.php', params)
+    console.log(resp.data);
+   
+   }
+
 
     convertTime = (militaryTime) => {
         if (!militaryTime) {
@@ -28,37 +53,48 @@ class Planner extends Component {
         return timeValue;
     }
 
+
     convertDateFormat = (yyddmm) => {
         var newDate = yyddmm.split('-');
         var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
         return returnDate;
     }
 
-    render() {
-        
-        const concert = this.props.concert;
 
-        if (concert._embedded === undefined) {
+    render() {
+        const user_concert = this.props.user_concert;
+        const whosgoing = this.displayUsersGoing();
+        
+        
+        
+
+
+        if (user_concert === undefined) {
             return <h1>Loading...</h1>;
         }
-        const cityState = concert._embedded.venues[0].city.name + ', ' + concert._embedded.venues[0].state.stateCode;
-        let eventTime = this.convertTime(concert.dates.start.localTime);
-        let convertedDate = this.convertDateFormat(concert.dates.start.localDate);
+
        
+        let eventTime = this.convertTime(user_concert.time);
+        // let convertedDate = this.convertDateFormat(user_concert.date);
+
         return (
+
             <div className="bottom-content">
+              
                 <div className="title">
-                    HOWARD'S TRIP
+                   <h1> {user_concert.trip_name}</h1>
+                   
                 </div>
+
                 <div className="concert-overview">
                     <div>
-                        <h2>Concert: {concert.name}</h2>
+                        <h2>Concert: {user_concert.artist}</h2>
                     </div>
                     <div>
-                        <h2>Date: {convertedDate} @ {eventTime}</h2>
+                        <h2>Date: {user_concert.date} @ {eventTime}</h2>
                     </div>
                     <div>
-                        <h2>Location: {concert._embedded.venues[0].address.line1 + ', ' + concert._embedded.venues[0].city.name + ''}</h2>
+                        <h2>Location: {user_concert.address + ''}</h2>
                     </div>
                 </div>
                 <div className="title">WHO'S GOING?</div>
@@ -77,15 +113,16 @@ class Planner extends Component {
                     <button className="white-btn">******</button>
                     <button className="pink-btn">******</button>
                 </div>
-            </div>
+                
+               </div>
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        concert: state.concertDetails.concert
+        user_concert: state.user.details,
     }
 }
 
-export default connect(mapStateToProps, { get_concert_details: get_concert_details })(Planner);
+export default connect(mapStateToProps, { get_user_details: get_user_details })(Planner);

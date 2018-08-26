@@ -56,7 +56,13 @@ class NewTrip1 extends Component {
         const trip = await axios.post('api/createTrip.php', params2);
     }
     render() {
-        console.log(this.props.concert);
+
+        const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
+
+        // let eventTime = this.convertTime(this.props.concert.dates.start.localTime);
+        // let convertedDate = this.convertDateFormat(this.props.concert.dates.start.localDate);
+
+
         return (
             <div className="newtrip">
                 <div className="title">
