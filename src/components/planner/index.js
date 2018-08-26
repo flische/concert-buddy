@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import { get_concert_details } from '../../actions';
 import './planner.css';
@@ -35,9 +34,6 @@ class Planner extends Component {
         return returnDate;
     }
 
-
-
-
     render() {
         
         const concert = this.props.concert;
@@ -48,19 +44,7 @@ class Planner extends Component {
         const cityState = concert._embedded.venues[0].city.name + ', ' + concert._embedded.venues[0].state.stateCode;
         let eventTime = this.convertTime(concert.dates.start.localTime);
         let convertedDate = this.convertDateFormat(concert.dates.start.localDate);
-        // artist: concertData.name,
-        //     date : concertData.dates.start.localDate,
-        //     time : concertData.dates.start.localTime,
-        //     venue : concertData._embedded.venues[0].name,
-        //     address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' 
-        //     + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
-        //     latitude : concertData._embedded.venues[0].location.latitude,
-        //     longitude : concertData._embedded.venues[0].location.longitude,
-        //     image: concertData.images[0].url,
-
-
-
-
+       
         return (
             <div className="bottom-content">
                 <div className="title">
