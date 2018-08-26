@@ -86,8 +86,6 @@ class NewTrip1 extends Component {
     render() {
         const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
 
-        console.log(this.convertTime)
-
         // let eventTime = this.convertTime(this.props.concert.dates.start.localTime);
         // let convertedDate = this.convertDateFormat(this.props.concert.dates.start.localDate);
 

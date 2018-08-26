@@ -23,18 +23,6 @@ class Login extends Component {
 
     async checkLoginStatus(initialCheck=false) { 
        const resp = await axios.post('api/checkUserLoggedIn.php');
-       console.log(resp);
-       if(resp.data.success) { 
-           this.setState({
-               redirect:  true,
-           });
-
-       }
-       else {
-        this.setState({
-            redirect:  false,
-        });
-       }
     }
 
     componentDidMount() {
@@ -66,11 +54,7 @@ class Login extends Component {
     
         
         await axios.post('api/loginCheck.php', params);
-
-        console.log('Called handleFormSubmit: ', this.state.form)
-  
-        
-        
+                
         const newState = {
             form: {
                 email: '',
@@ -78,17 +62,18 @@ class Login extends Component {
             }
         }
         this.setState(newState);
+        this.checkLoginStatus();
+        this.renderRedirect();
 
     }
     render() {
         const { email, password } = this.state.form;
-        console.log(this.state);
         return (
           
                
            
             <div className="login">
-              {this.renderRedirect()}
+             
                 <div className="logo-holder">
               
                     <img src={logo} />
@@ -97,8 +82,7 @@ class Login extends Component {
                     <h1>CONCERT BUDDY</h1>
                     <h3>Plan Your Concert Trip</h3>
                 </div>
-                <form onSubmit={(event) => { this.handleFormSubmit(event)
-                                             this.checkLoginStatus(); }}>
+                <form onSubmit={(event) => { this.handleFormSubmit(event) }}>
                     <div className="inputs">
                         <input className="standard-input" type="email" placeholder="Enter Your Email" name="email" value={email} onChange={this.handleChange} />
                         <input className="standard-input" type="password" placeholder="Enter Your Password" name="password" value={password} onChange={this.handleChange} />
