@@ -7,18 +7,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Landing = () => {
     return (
-        <div className="login">
-            <div className="logo-holder">
-
+        <div className="landing">
+            <div className="logo-holder landing-logo">
                 <img src={logo} />
-
-
                 <h1>CONCERT BUDDY</h1>
                 <h3>Plan Your Concert Trip</h3>
             </div>
 
 
-            
+
             <div className="carousel-container">
                 <MyCarousel />
             </div>

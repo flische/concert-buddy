@@ -36,7 +36,7 @@ const ConcertItem = (props) => {
                 </div>
             </div>
             <div className="buttons">
-                <Link to={`/concert-details/${props.queryString}&id=${props.id}`}><button className="white-btn" >DETAILS</button></Link>
+                <Link to={`/concert-details${props.queryString}&id=${props.id}`}><div className=" btn white-btn" >DETAILS</div></Link>
 
             </div>
             <div className='hr'><hr /></div>

@@ -1,31 +1,19 @@
 import React, { Component } from 'react';
 import './new-trip-1.css'
+import './new-trip-1.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import  {formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
-import {get_concert_details, create_trip} from '../../actions';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import {get_concert_details} from '../../actions';
+
+
+
 
 class NewTrip1 extends Component {
-    
-    handleAddItem = async (values) => {
-
-        await this.createTrip(values);
-
+  
+    componentDidMount() {
+        // this.parseParameters();
     }
-
-    renderInput( props ){
-               return (
-                   <div className="">
-                       <div className="">
-                           <label>{props.label}</label>
-                           <input {...props.input} type="text"/>
-                       </div>
-                   </div>
-               )
-           }
-
     parseParameters() {
         var queryObject = {};
         var pair = null;
@@ -40,35 +28,35 @@ class NewTrip1 extends Component {
         return queryObject;
     }
 
-    async createTrip(values) {
 
+    async createTrip() {
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
             date : concertData.dates.start.localDate,
             time : concertData.dates.start.localTime,
             venue : concertData._embedded.venues[0].name,
-            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
+            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' 
+            + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
             latitude : concertData._embedded.venues[0].location.latitude,
             longitude : concertData._embedded.venues[0].location.longitude,
             image: concertData.images[0].url,
+            
             }
-
+    
         const params = formatPostData(dataToSend);
+            console.log(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
         const concertID = concert.data.ID;
-
         const dataToSend2 = {
-            trip_name: this.props.tripNameValue,
+            trip_name: "howards super fun trip wow",
             ID: concertID,
         }
         const params2 = formatPostData(dataToSend2);
-        const newTrip = await axios.post('api/createTrip.php', params2);
+        const trip = await axios.post('api/createTrip.php', params2);
     }
     render() {
-
-        const { handleSubmit } = this.props;
-
+        console.log(this.props.concert);
         return (
             <div className="newtrip">
                 <div className="title">
@@ -102,17 +90,17 @@ class NewTrip1 extends Component {
                     </p>
                 </div>
                 <div className="tripname">
-                    <form onSubmit={handleSubmit(this.handleAddItem)}>
-                        <Field name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput}/>
-                        <div className="">
-                            <div className="">
-                            <Link to='/planner'><button className="pink-btn">CREATE YOUR TRIP!</button></Link>
-                            </div>
-                        </div>
-                    </form>
+                    <input type="text" className="standard-input" placeholder="Name Your Trip" />
+                </div>
+                <div className="btn">
+
+                    <Link to="/planner"><button className="pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP!</button></Link>
+
                 </div>
             </div>
+
         );
+        
     }
 }
 
@@ -121,20 +109,4 @@ function mapStateToProps(state) {
         concert: state.concertDetails.concert
     }
 }
-
-NewTrip1 = reduxForm({
-    form: 'create_trip',
-    // validate: validate
-})(NewTrip1);
-
-const selector = formValueSelector('create_trip');
-
-NewTrip1 = connect( state => {
-    const tripNameValue = selector(state, 'trip_name');
-
-    return {
-        tripNameValue
-    };
-})(NewTrip1);
-
-export default connect(mapStateToProps, {get_concert_details: get_concert_details, create_trip: create_trip})(NewTrip1);
+export default connect(mapStateToProps, {get_concert_details: get_concert_details})(NewTrip1);
