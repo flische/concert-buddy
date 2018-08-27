@@ -15,4 +15,4 @@ export default function (state = DEFAULT_STATE, action) {
         default:
             return state;
         }
-    }
+    }   

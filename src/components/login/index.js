@@ -23,6 +23,10 @@ class Login extends Component {
 
     async checkLoginStatus(initialCheck=false) { 
        const resp = await axios.post('api/checkUserLoggedIn.php');
+       if (resp.data.success) {
+        
+           this.setState({redirect: true});
+       }
     }
 
     componentDidMount() {
@@ -69,16 +73,10 @@ class Login extends Component {
     render() {
         const { email, password } = this.state.form;
         return (
-          
-               
-           
             <div className="login">
-             
-                <div className="logo-holder">
-              
+            {this.renderRedirect()}
+                <div className="logo-holder">            
                     <img src={logo} />
-
-
                     <h1>CONCERT BUDDY</h1>
                     <h3>Plan Your Concert Trip</h3>
                 </div>

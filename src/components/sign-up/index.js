@@ -34,24 +34,8 @@ class SignUp extends Component {
        
             
         });
-        // this.checkMatching();
     }
-    // checkMatching() { 
-    //     const { form } = this.state;
-    //     const { password, passwordCheck } = this.state.form; 
-    //     if (passwordCheck === password) {
-    //         this.setState({
-    //            form: {...form, 
-    //             matching: true }});
-    //     }
-    //     else {
-    //         this.setState({ 
-    //             form: {...form, 
-    //                 matching: false }});
-    //     }
-     
-      
-    // }
+  
     renderRedirect() {
         if (this.state.redirect) {
         return <Redirect to='/login' />

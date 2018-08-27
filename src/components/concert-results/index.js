@@ -16,7 +16,8 @@ class ConcertResults extends Component {
     }
 
     componentDidMount() {
-        this.parseParameters();
+        this.callTicketMaster(this.parseParameters());
+       
     }
 
     parseParameters() {
@@ -40,11 +41,10 @@ class ConcertResults extends Component {
             queryObject[pair[0]] = pair[1];
         };
         //return the new object
-        this.callTicketMaster(queryObject);
         return queryObject;
     }
 
-    callTicketMaster(object) {
+   async callTicketMaster(object) {
 
         let URL = 'https://app.ticketmaster.com/discovery/v2/events.jsonp?apikey=86PZJxmHAum8VeEH8EJBOCjucnSAVyGR';
 
@@ -77,9 +77,18 @@ class ConcertResults extends Component {
     }
 
     render() {
-        //console.log('props history concert results: ', this.props.history);
-
+        console.log(this.state.concerts)
+        // if(!this.state.concerts){
+        //     return (
+        //         <div>Loading</div>
+        //     )
+        // }
+        // debugger;
         const concert = this.state.concerts.map((item, index) => {
+
+            console.log('Embedded Venues:', item._embedded.venues[0]);
+          
+            
             return <ConcertItem
                 key={index}
                 id={item.id}
