@@ -9,7 +9,7 @@ export default combineReducers(
         //concertDetails could be named whatever you want - it just needs to have a value of the reducer that you import
         concertDetails: concertDetailsReducer,
 
-        user: userDetailsReducer
+        user: userDetailsReducer,
 
         form: formReducer
 
