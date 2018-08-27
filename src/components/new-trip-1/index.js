@@ -21,6 +21,7 @@ class NewTrip1 extends Component {
                        <div className="">
                            <label>{props.label}</label>
                            <input {...props.input} type="text"/>
+                           <p>{props.meta.touched && props.meta.error}</p>
                        </div>
                    </div>
                )
@@ -137,6 +138,10 @@ class NewTrip1 extends Component {
                         <div className="">
                             <div className="">
                             <button className="pink-btn">CREATE YOUR TRIP!</button>
+
+
+                            {/* <Link to='/planner'><button className="pink-btn">CREATE YOUR TRIP!</button></Link> */}
+
                             </div>
                         </div>
                     </form>
@@ -144,6 +149,27 @@ class NewTrip1 extends Component {
             </div>
         );
     }
+}
+
+function validate(values){
+    // Redux Form will look at the properties below and see if they match any of the Field name (inputs) //
+    // you can do any kind of check in here that you want! to validate input //
+    // for example, RegEx for validating proper email or password! //
+
+    const { trip_name } = values;
+
+    const errors = {};
+    console.log(trip_name);
+    if(trip_name){
+        if(trip_name.length < 3){
+            errors.trip_name = 'Please enter a trip name of 3 or more characters in length!'
+        }
+    }
+    // if(!trip_name){
+    //     errors.trip_name = 'Please name your trip!'
+    // }
+   
+    return errors;
 }
 
 function mapStateToProps(state) {
@@ -154,7 +180,7 @@ function mapStateToProps(state) {
 
 NewTrip1 = reduxForm({
     form: 'create_trip',
-    // validate: validate
+    validate: validate
 })(NewTrip1);
 
 const selector = formValueSelector('create_trip');

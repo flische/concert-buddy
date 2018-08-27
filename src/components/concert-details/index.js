@@ -52,7 +52,9 @@ class ConcertDetails extends Component {
     }
 
 
-    render() {
+
+    render(){ 
+
         const concert = this.props.concert;
 
         if (concert._embedded === undefined) {
