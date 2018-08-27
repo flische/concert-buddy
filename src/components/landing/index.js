@@ -13,37 +13,15 @@ const Landing = () => {
                 <h1>CONCERT BUDDY</h1>
                 <h3>Plan Your Concert Trip</h3>
             </div>
-
-
-
             <div className="carousel-container">
                 <MyCarousel />
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div className="buttons">
-                <button className="pink-btn"><Link to='/login'>LOGIN</Link></button>
-                <button className="white-btn"><Link to="/search-concerts">SEARCH CONCERTS</Link></button>
+                <Link to='/login'><div className="btn pink-btn">LOGIN</div></Link>
+                <Link to="/search-concerts"><div className="btn white-btn">SEARCH CONCERTS</div></Link>
             </div>
         </div>
     );
 }
-
 
 export default Landing;
