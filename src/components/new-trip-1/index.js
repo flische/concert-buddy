@@ -2,29 +2,29 @@ import React, { Component } from 'react';
 import './new-trip-1.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import  {formatPostData } from '../../helpers';
+import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
-import {get_concert_details, create_trip} from '../../actions';
+import { get_concert_details, create_trip } from '../../actions';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 class NewTrip1 extends Component {
-    
+
     handleAddItem = async (values) => {
 
         await this.createTrip(values);
 
     }
 
-    renderInput( props ){
-               return (
-                   <div className="">
-                       <div className="">
-                           <label>{props.label}</label>
-                           <input {...props.input} type="text"/>
-                       </div>
-                   </div>
-               )
-           }
+    renderInput(props) {
+        return (
+            <div className="">
+                <div className="">
+                    <label>{props.label}</label>
+                    <input {...props.input} type="text" />
+                </div>
+            </div>
+        )
+    }
 
     parseParameters() {
         var queryObject = {};
@@ -46,14 +46,14 @@ class NewTrip1 extends Component {
         const dataToSend = {
             artist: concertData.name,
 
-            date : concertData.dates.start.localDate,
-            time : concertData.dates.start.localTime,
-            venue : concertData._embedded.venues[0].name,
+            date: concertData.dates.start.localDate,
+            time: concertData.dates.start.localTime,
+            venue: concertData._embedded.venues[0].name,
             address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
-            latitude : concertData._embedded.venues[0].location.latitude,
-            longitude : concertData._embedded.venues[0].location.longitude,
+            latitude: concertData._embedded.venues[0].location.latitude,
+            longitude: concertData._embedded.venues[0].location.longitude,
             image: concertData.images[0].url,
-            }
+        }
 
 
         const params = formatPostData(dataToSend);
@@ -94,7 +94,10 @@ class NewTrip1 extends Component {
         return returnDate;
     }
     render() {
-
+        const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
+        const time = this.convertTime(this.props.concert.dates.start.localTime);
+        const date = this.convertDateFormat(this.props.concert.dates.start.localDate);
+        console.log(date);
 
         const { handleSubmit } = this.props;
 
@@ -107,37 +110,35 @@ class NewTrip1 extends Component {
                 <div className="concert-info">
                     <p>
                         <b>Concert: </b>
-                        <span>Taylor Swift</span>
+                        <span>{this.props.concert.name}</span>
                     </p>
                     <p>
                         <b>Venue: </b>
-                        <span>Honda Center</span>
+                        <span>{this.props.concert._embedded.venues[0].name}</span>
                     </p>
                     <p>
                         <b>Address: </b>
-                        <span>2695 E Katella Ave</span>
+                        <span>{this.props.concert._embedded.venues[0].address.line1}</span>
                     </p>
                     <p>
                         <b>City, State: </b>
-                        <span>Anaheim, CA 92806</span>
+                        <span>{cityState}</span>
                     </p>
 
                     <p>
                         <b>Date: </b>
-                        <span>May 20, 2019</span>
+                        <span>{date}</span>
                     </p>
                     <p>
                         <b>Time: </b>
-                        <span>7:00PM</span>
+                        <span>{time}</span>
                     </p>
                 </div>
                 <div className="tripname">
                     <form onSubmit={handleSubmit(this.handleAddItem)}>
-                        <Field name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput}/>
-                        <div className="">
-                            <div className="">
-                            <Link to='/planner'><button className="pink-btn">CREATE YOUR TRIP!</button></Link>
-                            </div>
+                        <Field className="standard-input" name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput} />
+                        <div className="buttons">
+                            <Link to="/planner"><div className="btn pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP! </div></Link>
                         </div>
                     </form>
                 </div>
@@ -159,7 +160,7 @@ NewTrip1 = reduxForm({
 
 const selector = formValueSelector('create_trip');
 
-NewTrip1 = connect( state => {
+NewTrip1 = connect(state => {
     const tripNameValue = selector(state, 'trip_name');
 
     return {
@@ -167,4 +168,4 @@ NewTrip1 = connect( state => {
     };
 })(NewTrip1);
 
-export default connect(mapStateToProps, {get_concert_details: get_concert_details, create_trip: create_trip})(NewTrip1);
+export default connect(mapStateToProps, { get_concert_details: get_concert_details, create_trip: create_trip })(NewTrip1);
