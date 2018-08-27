@@ -50,7 +50,7 @@ class NewTrip1 extends Component {
             date : concertData.dates.start.localDate,
             time : concertData.dates.start.localTime,
             venue : concertData._embedded.venues[0].name,
-            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
+            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + ' ' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
             latitude : concertData._embedded.venues[0].location.latitude,
             longitude : concertData._embedded.venues[0].location.longitude,
             image: concertData.images[0].url,
@@ -138,7 +138,10 @@ class NewTrip1 extends Component {
                         <div className="">
                             <div className="">
                             <button className="pink-btn">CREATE YOUR TRIP!</button>
+
+
                             {/* <Link to='/planner'><button className="pink-btn">CREATE YOUR TRIP!</button></Link> */}
+
                             </div>
                         </div>
                     </form>

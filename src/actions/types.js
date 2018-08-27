@@ -6,5 +6,4 @@ export default {
     GET_USER_DETAILS: 'get_user_details',
 
     CREATE_TRIP: 'create_trip'
-
 };
