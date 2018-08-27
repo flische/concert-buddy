@@ -46,7 +46,7 @@ class ConcertResults extends Component {
 
    async callTicketMaster(object) {
 
-        let URL = 'https://app.ticketmaster.com/discovery/v2/events.jsonp?apikey=86PZJxmHAum8VeEH8EJBOCjucnSAVyGR';
+        let URL = 'https://app.ticketmaster.com/discovery/v2/events.jsonp?countryCode=US&apikey=86PZJxmHAum8VeEH8EJBOCjucnSAVyGR';
 
         if (isNaN(object.city_zip)) {
             URL = URL + '&city=' + object.city_zip;

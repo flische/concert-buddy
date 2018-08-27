@@ -8,12 +8,9 @@ const ConcertItem = (props) => {
         return returnDate;
     }
     let formattedDate = convertDateFormat(props.date);
-    if (props.state === undefined) {
-        return <h1>Loading...</h1>
-    }
-    return (
-       
 
+    return (
+   
         <div className="concert-result-container">
             <div className="concert-results">
                 <div className="concert-part-a">
