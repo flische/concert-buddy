@@ -8,9 +8,8 @@ const ConcertItem = (props) => {
         return returnDate;
     }
     let formattedDate = convertDateFormat(props.date);
-
+    console.log(props.state);
     return (
-
 
         <div className="concert-result-container">
             <div className="concert-results">
