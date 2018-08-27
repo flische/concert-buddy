@@ -1,8 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+session_start();
 $concertID = $_POST['ID'];
 $tripName = $_POST['trip_name'];
-$userID = 1;
+$userID = $_SESSION['user_data'][0]['ID'];
+
 
 require_once("mysqlconnect.php");
 $output = [
@@ -22,16 +24,24 @@ else {
 
 $query2 = "INSERT INTO `user_trip_overview`(`user_id`,`trip_id`) VALUES ('$userID', '$tripID')"; 
 $result2 = mysqli_query($conn, $query2);
+if ($result2) {
 if (mysqli_affected_rows($conn)) {
     $output['success'] = true;
     print("successfuly added both");
+    print($userID);
+    print($tripID);
 }
 else {
     $output['error'] = "Unable to add User and Associated Trip";
     die();
 }
+}
+else {
+    print("query error");
+    $error = mysqli_error();
+    $output['error'] = $error;
+
+}
 
 print(json_encode($output));
-
-
 ?>

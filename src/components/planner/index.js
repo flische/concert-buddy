@@ -7,8 +7,18 @@ import axios from 'axios';
 import {formatPostData} from '../../helpers';
 
 class Planner extends Component {
+    constructor(props) { 
+        super(props);
+
+        this.state = {
+            peopleGoing: '',
+
+        }
+    }
     componentDidMount() { 
         this.checkUserTrips();
+        
+      
         
     }
 
@@ -25,9 +35,7 @@ class Planner extends Component {
            tripID: id,
        }
        const params = formatPostData(dataToSend);
-       const resp = await axios.post('api/checkWhosGoing.php', params)
-    console.log(resp.data);
-   
+       const resp = await axios.post('api/checkWhosGoing.php', params);
    }
 
 
@@ -54,17 +62,22 @@ class Planner extends Component {
     }
 
 
-    convertDateFormat = (yyddmm) => {
-        var newDate = yyddmm.split('-');
-        var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
-        return returnDate;
-    }
-
-
     render() {
         const user_concert = this.props.user_concert;
         const whosgoing = this.displayUsersGoing();
-        
+        console.log(whosgoing);
+        // const leftSide = whosgoing.map((name,index) => {
+           
+        //     if (index % 2 !== 0) {
+        //     return <h2>{name}</h2> 
+        //     }
+        // });
+        // const rightSide = whosgoing.map((name,index) => {
+           
+        //     if (index % 2 === 0)  {
+        //     return <h2>{name}</h2> 
+        //     }
+        // });
         
         
 
@@ -75,7 +88,7 @@ class Planner extends Component {
 
        
         let eventTime = this.convertTime(user_concert.time);
-        // let convertedDate = this.convertDateFormat(user_concert.date);
+      
 
         return (
 
@@ -100,12 +113,10 @@ class Planner extends Component {
                 <div className="title">WHO'S GOING?</div>
                 <div className="attendees">
                     <div className="leftSide">
-                        <h2>TIEN</h2>
-                        <h2>FEDERICO</h2>
+                        {/* {leftSide} */}
                     </div>
                     <div className="rightSide">
-                        <h2>REBECCA</h2>
-                        <h2>HOWARD</h2>
+                        {/* {rightSide} */}
                     </div>
                 </div>
                 <div className="buttons">
