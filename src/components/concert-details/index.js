@@ -53,7 +53,9 @@ class ConcertDetails extends Component {
 
 
 
+
     render(){ 
+
 
         const concert = this.props.concert;
 
