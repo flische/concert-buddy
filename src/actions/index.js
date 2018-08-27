@@ -35,8 +35,7 @@ export async function get_user_details(userID) {
 export async function create_trip(trip){
 
 
-
-    const response = await axios.post('api/createTrip.php', trip);
+    // const response = await axios.post('api/createTrip.php', trip);
     
     return {
         type: types.CREATE_TRIP,

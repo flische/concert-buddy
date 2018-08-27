@@ -15,16 +15,19 @@ class NewTrip1 extends Component {
 
     }
 
-    renderInput(props) {
-        return (
-            <div className="">
-                <div className="">
-                    <label>{props.label}</label>
-                    <input {...props.input} type="text" />
-                </div>
-            </div>
-        )
-    }
+
+    renderInput( props ){
+               return (
+                   <div className="">
+                       <div className="">
+                           <label>{props.label}</label>
+                           <input {...props.input} type="text"/>
+                           <p>{props.meta.touched && props.meta.error}</p>
+                       </div>
+                   </div>
+               )
+           }
+
 
     parseParameters() {
         var queryObject = {};
@@ -45,13 +48,12 @@ class NewTrip1 extends Component {
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
-
-            date: concertData.dates.start.localDate,
-            time: concertData.dates.start.localTime,
-            venue: concertData._embedded.venues[0].name,
-            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + '' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
-            latitude: concertData._embedded.venues[0].location.latitude,
-            longitude: concertData._embedded.venues[0].location.longitude,
+            date : concertData.dates.start.localDate,
+            time : concertData.dates.start.localTime,
+            venue : concertData._embedded.venues[0].name,
+            address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + ' ' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
+            latitude : concertData._embedded.venues[0].location.latitude,
+            longitude : concertData._embedded.venues[0].location.longitude,
             image: concertData.images[0].url,
         }
 
@@ -147,6 +149,27 @@ class NewTrip1 extends Component {
     }
 }
 
+function validate(values){
+    // Redux Form will look at the properties below and see if they match any of the Field name (inputs) //
+    // you can do any kind of check in here that you want! to validate input //
+    // for example, RegEx for validating proper email or password! //
+
+    const { trip_name } = values;
+
+    const errors = {};
+    console.log(trip_name);
+    if(trip_name){
+        if(trip_name.length < 3){
+            errors.trip_name = 'Please enter a trip name of 3 or more characters in length!'
+        }
+    }
+    // if(!trip_name){
+    //     errors.trip_name = 'Please name your trip!'
+    // }
+   
+    return errors;
+}
+
 function mapStateToProps(state) {
     return {
         concert: state.concertDetails.concert
@@ -155,7 +178,7 @@ function mapStateToProps(state) {
 
 NewTrip1 = reduxForm({
     form: 'create_trip',
-    // validate: validate
+    validate: validate
 })(NewTrip1);
 
 const selector = formValueSelector('create_trip');
