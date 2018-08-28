@@ -5,38 +5,53 @@ import { get_user_details} from '../../actions';
 import './planner.css';
 import axios from 'axios';
 import {formatPostData} from '../../helpers';
+import {Link, Redirect} from 'react-router-dom'
 
 class Planner extends Component {
+
     constructor(props) { 
+
         super(props);
 
         this.state = {
-            peopleGoing: '',
+            redirect: false,
+            going: []
+
 
         }
     }
     componentDidMount() { 
-        this.checkUserTrips();
-        
-      
-        
+       this.checkLoginStatus();
+       this.checkUserTrips();  
+
+
+    
+       
+       
     }
+
+
+    componentDidUpdate() {
+       
+  
+    }
+    async checkLoginStatus(initialCheck=false) { 
+        const resp = await axios.post('api/checkUserLoggedIn.php');
+        if (resp.data.error) {
+         
+            this.setState({redirect: true});
+        }
+     }
 
     async checkUserTrips (){
         const resp = await axios.post('api/checkUserLoggedIn.php')
         this.props.get_user_details(resp.data.data[0].ID);
-    
-
+        console.log(this.props.details);
+   
+   
     }
 
-   async displayUsersGoing() {
-       const id = this.props.user_concert.trip_id;
-       var dataToSend = {
-           tripID: id,
-       }
-       const params = formatPostData(dataToSend);
-       const resp = await axios.post('api/checkWhosGoing.php', params);
-   }
+ 
 
 
     convertTime = (militaryTime) => {
@@ -60,40 +75,64 @@ class Planner extends Component {
         timeValue += (hours >= 12) ? " P.M." : " A.M.";
         return timeValue;
     }
+    renderRedirect() {
+        if (this.state.redirect) {
+        return <Redirect to='/login' />
+    }
+}
 
 
     render() {
         const user_concert = this.props.user_concert;
-        const whosgoing = this.displayUsersGoing();
-        console.log(whosgoing);
-        // const leftSide = whosgoing.map((name,index) => {
-           
-        //     if (index % 2 !== 0) {
-        //     return <h2>{name}</h2> 
-        //     }
-        // });
-        // const rightSide = whosgoing.map((name,index) => {
-           
-        //     if (index % 2 === 0)  {
-        //     return <h2>{name}</h2> 
-        //     }
-        // });
-        
-        
+        const arrayOfPeopleGoing = this.props.users_attending;
+   
+        console.log('people going: ', arrayOfPeopleGoing);
+        if(!arrayOfPeopleGoing) {
+            return (
+                <h1>Loading...</h1>
+            )
+        }
 
-
-        if (user_concert === undefined) {
+        else if(arrayOfPeopleGoing) {
+            // debugger;
+            var evenArray = [];
+            var oddArray =[];
+            for(let i = 0; i < arrayOfPeopleGoing.length; i++){
+                if(i % 2 === 0){
+                    evenArray.push(arrayOfPeopleGoing[i])
+                } else {
+                    oddArray.push(arrayOfPeopleGoing[i])
+                }
+            }
+            console.log('even', evenArray)
+        }
+       
+       
+        if (!user_concert) {
             return <h1>Loading...</h1>;
+        }
+        if (user_concert === null) {
+            return  (
+                <div className="title">
+                    <h1> No Current Trips</h1>
+                    <div className="concert-overview">
+                        <div>
+                            <h2>Please create a concert</h2>
+                            <Link to="/search-concerts"><div className="btn pink-btn">Search Concerts</div></Link>
+                        </div>
+                    </div>
+                </div>
+            )
         }
 
        
         let eventTime = this.convertTime(user_concert.time);
-      
+
 
         return (
 
             <div className="bottom-content">
-              
+              {this.renderRedirect()}
                 <div className="title">
                    <h1> {user_concert.trip_name}</h1>
                    
@@ -112,11 +151,16 @@ class Planner extends Component {
                 </div>
                 <div className="title">WHO'S GOING?</div>
                 <div className="attendees">
+
+                    <ul>
+                        {evenArray}
+                    </ul>
+
                     <div className="leftSide">
-                        {/* {leftSide} */}
+                        
                     </div>
                     <div className="rightSide">
-                        {/* {rightSide} */}
+
                     </div>
                 </div>
                 <div className="buttons">
@@ -133,6 +177,7 @@ class Planner extends Component {
 function mapStateToProps(state) {
     return {
         user_concert: state.user.details,
+        users_attending: state.user.going
     }
 }
 

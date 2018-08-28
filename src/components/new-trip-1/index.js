@@ -43,8 +43,8 @@ class NewTrip1 extends Component {
         return queryObject;
     }
 
-    async createTrip(values) {
-
+    async createTrip(event) {
+        event.stopPropogation();
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
