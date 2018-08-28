@@ -1,12 +1,5 @@
 .carousel-container {
     height: 40%
-    /* width: 40%; */
-    /* border-radius: 2%;
-    background-color: white; */
-    /* box-shadow: 0 5px #979696; */
-    /* margin: 0 auto; */
-    /* color: #2A363B;
-    text-align: center; */
 }
 
 .carousel-container>div,
@@ -37,6 +30,14 @@
 
 .landing-logo>img {
     margin-top: 20px;
+}
+
+.carousel .control-dots {
+    position: absolute;
+    bottom: 0;
+    margin: 10px 0;
+    text-align: center;
+    width: 90% !important;
 }
 
 @media only screen and (min-width: 601px) {

@@ -26,8 +26,9 @@ class ConcertResults extends Component {
         var pair = null;
         //get the query string, omitting the "?"
         var sPageURL = window.location.search.substring(1),
+        
             //use the ampersand as a separator
-            qArr = sPageURL.split('&');
+            qArr = sPageURL.split('&'); console.log(sPageURL)
         //each element in qArr is not a key/val pair
         //so we need to turn each one of these pairs
         //into a two-element array
@@ -66,18 +67,15 @@ class ConcertResults extends Component {
             URL = URL + '&endDateTime=' + object.end_date + 'T23:59:00Z';
         }
 
-        axios.get(URL).then((resp) => {
+        const resp = await axios.get(URL);
             this.setState({
                 url: URL,
                 concerts: resp.data._embedded.events
-
             });
-        });
-
     }
 
     render() {
-        console.log(this.state.concerts)
+        // console.log(this.state.concerts)
         // if(!this.state.concerts){
         //     return (
         //         <div>Loading</div>
@@ -86,7 +84,7 @@ class ConcertResults extends Component {
         // debugger;
         const concert = this.state.concerts.map((item, index) => {
 
-            console.log('Embedded Venues:', item._embedded.venues[0]);
+            // console.log('Embedded Venues:', item._embedded.venues[0]);
           
             
             return <ConcertItem
