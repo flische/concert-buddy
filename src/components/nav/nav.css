@@ -24,7 +24,8 @@
         background-color: #FFFFFF;
     }
     li {
-        float: left;
+        /* float: left; */
+        display: inline-block;
     }
     li .navlink {
         display: block;
