@@ -15,31 +15,19 @@ class Planner extends Component {
 
         this.state = {
             redirect: false,
-            going: []
-
-
         }
     }
     componentDidMount() { 
        this.checkLoginStatus();
        this.checkUserTrips();  
-
-
-    
-       
-       
     }
 
-
-    componentDidUpdate() {
-       
-  
-    }
     async checkLoginStatus(initialCheck=false) { 
         const resp = await axios.post('api/checkUserLoggedIn.php');
+        console.log(resp);
         if (resp.data.error) {
          
-            this.setState({redirect: true});
+            this.setState({redirect: !this.state.redirect});
         }
      }
 
@@ -47,12 +35,7 @@ class Planner extends Component {
         const resp = await axios.post('api/checkUserLoggedIn.php')
         this.props.get_user_details(resp.data.data[0].ID);
         console.log(this.props.details);
-   
-   
     }
-
- 
-
 
     convertTime = (militaryTime) => {
         if (!militaryTime) {
@@ -81,37 +64,24 @@ class Planner extends Component {
     }
 }
 
-
     render() {
         const user_concert = this.props.user_concert;
         const arrayOfPeopleGoing = this.props.users_attending;
-   
         console.log('people going: ', arrayOfPeopleGoing);
-        if(!arrayOfPeopleGoing) {
-            return (
-                <h1>Loading...</h1>
-            )
-        }
 
-        else if(arrayOfPeopleGoing) {
-            // debugger;
+        if(arrayOfPeopleGoing) {
             var evenArray = [];
             var oddArray =[];
             for(let i = 0; i < arrayOfPeopleGoing.length; i++){
                 if(i % 2 === 0){
-                    evenArray.push(arrayOfPeopleGoing[i])
+                    evenArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 } else {
-                    oddArray.push(arrayOfPeopleGoing[i])
+                    oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 }
             }
             console.log('even', evenArray)
         }
-       
-       
         if (!user_concert) {
-            return <h1>Loading...</h1>;
-        }
-        if (user_concert === null) {
             return  (
                 <div className="title">
                     <h1> No Current Trips</h1>
@@ -130,14 +100,11 @@ class Planner extends Component {
 
 
         return (
-
             <div className="bottom-content">
               {this.renderRedirect()}
                 <div className="title">
                    <h1> {user_concert.trip_name}</h1>
-                   
                 </div>
-
                 <div className="concert-overview">
                     <div>
                         <h2>Concert: {user_concert.artist}</h2>
@@ -151,16 +118,11 @@ class Planner extends Component {
                 </div>
                 <div className="title">WHO'S GOING?</div>
                 <div className="attendees">
-
-                    <ul>
-                        {evenArray}
-                    </ul>
-
                     <div className="leftSide">
-                        
+                        {evenArray}
                     </div>
                     <div className="rightSide">
-
+                        {oddArray}                    
                     </div>
                 </div>
                 <div className="buttons">
