@@ -15,44 +15,23 @@ class Planner extends Component {
 
         this.state = {
             redirect: false,
-            going: []
-
-
         }
     }
     componentDidMount() { 
        this.checkLoginStatus();
        this.checkUserTrips();  
-
-
-    
-       
-       
-    }
-
-
-    componentDidUpdate() {
-       
-  
     }
     async checkLoginStatus(initialCheck=false) { 
         const resp = await axios.post('api/checkUserLoggedIn.php');
         if (resp.data.error) {
-         
             this.setState({redirect: true});
         }
      }
 
     async checkUserTrips (){
-        const resp = await axios.post('api/checkUserLoggedIn.php')
+        const resp = await axios.post('api/checkUserLoggedIn.php');
         this.props.get_user_details(resp.data.data[0].ID);
-        console.log(this.props.details);
-   
-   
     }
-
- 
-
 
     convertTime = (militaryTime) => {
         if (!militaryTime) {
@@ -85,16 +64,9 @@ class Planner extends Component {
     render() {
         const user_concert = this.props.user_concert;
         const arrayOfPeopleGoing = this.props.users_attending;
-   
-        console.log('people going: ', arrayOfPeopleGoing);
-        if(!arrayOfPeopleGoing) {
-            return (
-                <h1>Loading...</h1>
-            )
-        }
+        let eventTime = this.convertTime(user_concert.time);
 
-        else if(arrayOfPeopleGoing) {
-            // debugger;
+      if(arrayOfPeopleGoing) {
             var evenArray = [];
             var oddArray =[];
             for(let i = 0; i < arrayOfPeopleGoing.length; i++){
@@ -106,14 +78,11 @@ class Planner extends Component {
             }
             console.log('even', evenArray)
         }
-       
-       
-        if (!user_concert) {
-            return <h1>Loading...</h1>;
-        }
-        if (user_concert === null) {
+        console.log(user_concert);
+        if (Object.getOwnPropertyNames(user_concert).length === 0) {
             return  (
                 <div className="title">
+                {this.renderRedirect()}
                     <h1> No Current Trips</h1>
                     <div className="concert-overview">
                         <div>
@@ -125,8 +94,8 @@ class Planner extends Component {
             )
         }
 
+       else {
        
-        let eventTime = this.convertTime(user_concert.time);
 
 
         return (
@@ -172,6 +141,7 @@ class Planner extends Component {
                </div>
         );
     }
+}
 }
 
 function mapStateToProps(state) {
