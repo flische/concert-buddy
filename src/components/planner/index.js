@@ -74,9 +74,9 @@ class Planner extends Component {
             var oddArray =[];
             for(let i = 0; i < arrayOfPeopleGoing.length; i++){
                 if(i % 2 === 0){
-                    evenArray.push(<h2>{arrayOfPeopleGoing[i]}</h2>)
+                    evenArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 } else {
-                    oddArray.push(<h2>{arrayOfPeopleGoing[i]}</h2>)
+                    oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 }
             }
             console.log('even', evenArray)
