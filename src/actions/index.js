@@ -18,18 +18,32 @@ export function get_concert_details(object) {
 
 
 export async function get_user_details(userID) {
+    
         const dataToSend = {
             userID: userID,
           }
           const params = formatPostData(dataToSend)
           
          const userTrips  =  await axios.post('api/checkUserTrips.php', params);
+            const id = userTrips.data.data[0].trip_id;
+            var dataToSend2 = {
+                tripID: id,
+            }
+            const params2 = formatPostData(dataToSend2);
+            const going =  await axios.post('api/checkWhosGoing.php', params2)
+            const whosgoing = going.data.data;
+            const payload = {
+                userTrips: userTrips,
+                whosgoing: whosgoing
+            };
+        
           return {
               type: types.GET_USER_DETAILS,
-              payload: userTrips
+              payload: payload
           }
 
 }
+
 
 
 export async function create_trip(trip){
