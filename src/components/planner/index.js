@@ -26,15 +26,18 @@ class Planner extends Component {
         const resp = await axios.post('api/checkUserLoggedIn.php');
         console.log(resp);
         if (resp.data.error) {
+
+            this.setState({redirect: true});
+
          
-            this.setState({redirect: !this.state.redirect});
+
         }
      }
 
     async checkUserTrips (){
-        const resp = await axios.post('api/checkUserLoggedIn.php')
+        const resp = await axios.post('api/checkUserLoggedIn.php');
         this.props.get_user_details(resp.data.data[0].ID);
-        console.log(this.props.details);
+
     }
 
     convertTime = (militaryTime) => {
@@ -67,9 +70,10 @@ class Planner extends Component {
     render() {
         const user_concert = this.props.user_concert;
         const arrayOfPeopleGoing = this.props.users_attending;
-        console.log('people going: ', arrayOfPeopleGoing);
 
+        let eventTime = this.convertTime(user_concert.time);
         if(arrayOfPeopleGoing) {
+
             var evenArray = [];
             var oddArray =[];
             for(let i = 0; i < arrayOfPeopleGoing.length; i++){
@@ -79,11 +83,17 @@ class Planner extends Component {
                     oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 }
             }
-            console.log('even', evenArray)
+
         }
-        if (!user_concert) {
+
+
+        if (Object.getOwnPropertyNames(user_concert).length === 0) {
+
+ 
+
             return  (
                 <div className="title">
+                {this.renderRedirect()}
                     <h1> No Current Trips</h1>
                     <div className="concert-overview">
                         <div>
@@ -95,8 +105,8 @@ class Planner extends Component {
             )
         }
 
+       else {
        
-        let eventTime = this.convertTime(user_concert.time);
 
 
         return (
@@ -134,6 +144,7 @@ class Planner extends Component {
                </div>
         );
     }
+}
 }
 
 function mapStateToProps(state) {

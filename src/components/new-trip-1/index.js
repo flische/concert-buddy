@@ -40,11 +40,9 @@ class NewTrip1 extends Component {
             pair = qArr[i].split('=');
             queryObject[pair[0]] = pair[1];
         }
-        return queryObject;
-    }
+        return queryObject;    }
 
     async createTrip(event) {
-        event.stopPropogation();
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
@@ -68,6 +66,7 @@ class NewTrip1 extends Component {
         }
         const params2 = formatPostData(dataToSend2);
         const newTrip = await axios.post('api/createTrip.php', params2);
+        this.props.history.push('/planner');
     }
     convertTime = (militaryTime) => {
         if (!militaryTime) {
@@ -140,12 +139,12 @@ class NewTrip1 extends Component {
                     <form onSubmit={handleSubmit(this.handleAddItem)}>
                         <Field className="standard-input" name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput} />
                         <div className="buttons">
-                            <Link to="/planner"><div className="btn pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP! </div></Link>
+                            <button className="btn pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP! </button>
                         </div>
                     </form>
                 </div>
             </div>
-        );
+        );ß
     }
 }
 
