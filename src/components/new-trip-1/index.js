@@ -18,10 +18,10 @@ class NewTrip1 extends Component {
 
     renderInput( props ){
                return (
-                   <div className="">
-                       <div className="">
+                   <div>
+                       <div>
                            <label>{props.label}</label>
-                           <input {...props.input} type="text"/>
+                           <input className="standard-input" {...props.input} type="text"/>
                            <p>{props.meta.touched && props.meta.error}</p>
                        </div>
                    </div>
@@ -138,7 +138,7 @@ class NewTrip1 extends Component {
                 </div>
                 <div className="tripname">
                     <form onSubmit={handleSubmit(this.handleAddItem)}>
-                        <Field className="standard-input" name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput} />
+                        <Field name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput} />
                         <div className="buttons">
                             <Link to="/planner"><div className="btn pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP! </div></Link>
                         </div>
