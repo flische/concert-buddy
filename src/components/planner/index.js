@@ -21,16 +21,23 @@ class Planner extends Component {
        this.checkLoginStatus();
        this.checkUserTrips();  
     }
+
     async checkLoginStatus(initialCheck=false) { 
         const resp = await axios.post('api/checkUserLoggedIn.php');
+        console.log(resp);
         if (resp.data.error) {
+
             this.setState({redirect: true});
+
+         
+
         }
      }
 
     async checkUserTrips (){
         const resp = await axios.post('api/checkUserLoggedIn.php');
         this.props.get_user_details(resp.data.data[0].ID);
+
     }
 
     convertTime = (militaryTime) => {
@@ -60,26 +67,30 @@ class Planner extends Component {
     }
 }
 
-
     render() {
         const user_concert = this.props.user_concert;
         const arrayOfPeopleGoing = this.props.users_attending;
-        let eventTime = this.convertTime(user_concert.time);
 
-      if(arrayOfPeopleGoing) {
+        let eventTime = this.convertTime(user_concert.time);
+        if(arrayOfPeopleGoing) {
+
             var evenArray = [];
             var oddArray =[];
             for(let i = 0; i < arrayOfPeopleGoing.length; i++){
                 if(i % 2 === 0){
-                    evenArray.push(arrayOfPeopleGoing[i])
+                    evenArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 } else {
-                    oddArray.push(arrayOfPeopleGoing[i])
+                    oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 }
             }
-            console.log('even', evenArray)
+
         }
-        console.log(user_concert);
+
+
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
+
+ 
+
             return  (
                 <div className="title">
                 {this.renderRedirect()}
@@ -99,14 +110,11 @@ class Planner extends Component {
 
 
         return (
-
             <div className="bottom-content">
               {this.renderRedirect()}
                 <div className="title">
                    <h1> {user_concert.trip_name}</h1>
-                   
                 </div>
-
                 <div className="concert-overview">
                     <div>
                         <h2>Concert: {user_concert.artist}</h2>
@@ -120,16 +128,11 @@ class Planner extends Component {
                 </div>
                 <div className="title">WHO'S GOING?</div>
                 <div className="attendees">
-
-                    <ul>
-                        {evenArray}
-                    </ul>
-
                     <div className="leftSide">
-                        
+                        {evenArray}
                     </div>
                     <div className="rightSide">
-
+                        {oddArray}                    
                     </div>
                 </div>
                 <div className="buttons">
