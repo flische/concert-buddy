@@ -1,5 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+session_start();
+print_r($_SERVER);
 require_once('email_config.php');
 // require_once('mysqlconnect.php');
 require '../../PHPMailer/src/PHPMailer.php';
@@ -8,6 +10,7 @@ require '../../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 $name = "Howard";
 $query = "www.concertbuddy.app/invited?=";
+$trip_id = 1;
 // print_r($_SERVER); Ask Scoot and collete to set up information
 function token() {
  $output = '';
@@ -54,17 +57,38 @@ $mail->isHTML(true);                    // Set email format to HTML
 
 $mail->Subject = 'You have been invited to Concert Buddy!';
 $mail->Body    = "Hello <br>  
-You have been invited to $name\'s trip. This will hold all the information in the trip below. 
-Click the link provided below to sign up and join the trip. Welcome to concert buddy!<br>".$query.$token."<br>"; 
+You have been invited to $name's trip. This will hold all the information in the trip below. 
+Click the link provided below to sign up and join the trip. Welcome to concert buddy!<br><br><br><a href=\"".$query.$token."\">Accept Trip</a><br>"; 
 
-$mail->AltBody = "Hello <br>  
-You have been invited to $name\'s trip. This will hold all the information in the trip below. 
-Click the link provided below to sign up and join the trip. Welcome to concert buddy!<br>".$query.$token."<br>"; 
+$mail->AltBody = "Hello 
+You have been invited to $name's trip. This will hold all the information in the trip below. 
+Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$query.$token; 
 
 if(!$mail->send()) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
+    // print(json_encode($token));
 } else {
     echo 'Message has been sent';
 }
+
+print(json_encode($token));
+
+// function createTripToken($trip_id, $token) {
+//     $output = [
+//         'success'=> false,
+//     ];
+//     $query = "INSERT INTO `triptokens`(`trip_id`,`token`)VALUES('$trip_id', '$token')";
+//     $result = mysqli_query($conn, $result); 
+//     if($result) {
+//         if(mysqli_affected_rows($conn) > 0) {
+//             $output['success'] = true;
+            
+
+//         }
+//     }
+//     else {
+//         echo ("database error! ");
+//     }
+// }
 ?>
