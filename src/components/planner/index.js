@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { get_user_concert_details } from '../../actions';
-import { get_user_details} from '../../actions';
+import { get_user_details } from '../../actions';
 import './planner.css';
 import axios from 'axios';
-import {formatPostData} from '../../helpers';
-import {Link, Redirect} from 'react-router-dom'
+import { formatPostData } from '../../helpers';
+import { Link, Redirect } from 'react-router-dom'
 
 class Planner extends Component {
 
-    constructor(props) { 
+    constructor(props) {
 
         super(props);
 
@@ -17,24 +17,24 @@ class Planner extends Component {
             redirect: false,
         }
     }
-    componentDidMount() { 
-       this.checkLoginStatus();
-       this.checkUserTrips();  
+    componentDidMount() {
+        this.checkLoginStatus();
+        this.checkUserTrips();
     }
 
-    async checkLoginStatus(initialCheck=false) { 
+    async checkLoginStatus(initialCheck = false) {
         const resp = await axios.post('api/checkUserLoggedIn.php');
         console.log(resp);
         if (resp.data.error) {
 
-            this.setState({redirect: true});
+            this.setState({ redirect: true });
 
-         
+
 
         }
-     }
+    }
 
-    async checkUserTrips (){
+    async checkUserTrips() {
         const resp = await axios.post('api/checkUserLoggedIn.php');
         this.props.get_user_details(resp.data.data[0].ID);
 
@@ -63,21 +63,21 @@ class Planner extends Component {
     }
     renderRedirect() {
         if (this.state.redirect) {
-        return <Redirect to='/login' />
+            return <Redirect to='/login' />
+        }
     }
-}
 
     render() {
         const user_concert = this.props.user_concert;
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);
-        if(arrayOfPeopleGoing) {
+        if (arrayOfPeopleGoing) {
 
             var evenArray = [];
-            var oddArray =[];
-            for(let i = 0; i < arrayOfPeopleGoing.length; i++){
-                if(i % 2 === 0){
+            var oddArray = [];
+            for (let i = 0; i < arrayOfPeopleGoing.length; i++) {
+                if (i % 2 === 0) {
                     evenArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 } else {
                     oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
@@ -89,11 +89,11 @@ class Planner extends Component {
 
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
 
- 
 
-            return  (
+
+            return (
                 <div className="title">
-                {this.renderRedirect()}
+                    {this.renderRedirect()}
                     <h1> No Current Trips</h1>
                     <div className="concert-overview">
                         <div>
@@ -105,46 +105,46 @@ class Planner extends Component {
             )
         }
 
-       else {
-       
+        else {
 
 
-        return (
-            <div className="bottom-content">
-              {this.renderRedirect()}
-                <div className="title">
-                   <h1> {user_concert.trip_name}</h1>
+
+            return (
+                <div className="bottom-content">
+                    {this.renderRedirect()}
+                    <div className="title">
+                        <h1> {user_concert.trip_name}</h1>
+                    </div>
+                    <div className="concert-overview">
+                        <div>
+                            <h2>Concert: {user_concert.artist}</h2>
+                        </div>
+                        <div>
+                            <h2>Date: {user_concert.date} @ {eventTime}</h2>
+                        </div>
+                        <div>
+                            <h2>Location: {user_concert.address + ''}</h2>
+                        </div>
+                    </div>
+                    <div className="title">WHO'S GOING?</div>
+                    <div className="attendees">
+                        <div className="leftSide">
+                            {evenArray}
+                        </div>
+                        <div className="rightSide">
+                            {oddArray}
+                        </div>
+                    </div>
+                    <div className="buttons">
+                        <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
+                        <button className="white-btn">******</button>
+                        <button className="pink-btn">******</button>
+                    </div>
+
                 </div>
-                <div className="concert-overview">
-                    <div>
-                        <h2>Concert: {user_concert.artist}</h2>
-                    </div>
-                    <div>
-                        <h2>Date: {user_concert.date} @ {eventTime}</h2>
-                    </div>
-                    <div>
-                        <h2>Location: {user_concert.address + ''}</h2>
-                    </div>
-                </div>
-                <div className="title">WHO'S GOING?</div>
-                <div className="attendees">
-                    <div className="leftSide">
-                        {evenArray}
-                    </div>
-                    <div className="rightSide">
-                        {oddArray}                    
-                    </div>
-                </div>
-                <div className="buttons">
-                    <button className="pink-btn">******</button>
-                    <button className="white-btn">******</button>
-                    <button className="pink-btn">******</button>
-                </div>
-                
-               </div>
-        );
+            );
+        }
     }
-}
 }
 
 function mapStateToProps(state) {
