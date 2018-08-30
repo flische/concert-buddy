@@ -26,7 +26,8 @@
 }
 
 .mark-complete-btn,
-.completed-btn {
+.completed-btn,
+.toggle-btn {
     width: 250px;
     height: 45px;
     border-radius: 5px;
@@ -43,4 +44,12 @@
     text-transform: none;
     text-indent: 0px;
     display: inline-block;
+}
+
+.collapse {
+    display: none
+}
+
+.collapse.in {
+    display: block
 }

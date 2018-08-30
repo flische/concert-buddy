@@ -56,9 +56,28 @@ $mail->addReplyTo('example@gmail.com');    // Add a reply-to address
 $mail->isHTML(true);                    // Set email format to HTML
 
 $mail->Subject = 'You have been invited to Concert Buddy!';
-$mail->Body    = "Hello <br>  
-You have been invited to $name's trip. This will hold all the information in the trip below. 
-Click the link provided below to sign up and join the trip. Welcome to concert buddy!<br><br><br><a href=\"".$query.$token."\">Accept Trip</a><br>"; 
+// $mail->Body    = "Hello <br>  
+// You have been invited to $name's trip. This will hold all the information in the trip below. 
+// Click the link provided below to sign up and join the trip. Welcome to concert buddy!<br><br><br><a href=\"".$query.$token."\">Accept Trip</a><br>"; 
+
+$mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
+<header style='color:white;background-color: #2A363B; height: 100px; text-align: center;'>
+    <img src='images/logo.png' style='height: 75px; margin-left: 10px; margin-top: 10px; float: left;'>
+    <h2 style='color: #FF847C; display: inline-block; padding-top: 15px;'>CONCERT
+        BUDDY</h2>
+</header>
+<div style='color: #2A363B; margin-top: 30px;'>
+    <p>Hello!</p>
+    <p>You have been invited by your friend, [USER NAME] to go to [CONCERT INFO]. Click the link below to accept or
+        decline the invitation.</p>
+    <div style='text-align: center;'>
+        <a href=\"".$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
+    </div>
+    <p>Enjoy the concert!</p>
+    <p>-Your friends at Concert Buddy</p>
+</div>
+</body>";
+
 
 $mail->AltBody = "Hello 
 You have been invited to $name's trip. This will hold all the information in the trip below. 
