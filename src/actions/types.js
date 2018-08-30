@@ -5,5 +5,7 @@ export default {
 
     GET_USER_DETAILS: 'get_user_details',
 
-    CREATE_TRIP: 'create_trip'
+    CREATE_TRIP: 'create_trip',
+
+    SEND_INVITES: 'send_invites'
 };

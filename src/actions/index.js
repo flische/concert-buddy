@@ -44,7 +44,19 @@ export async function get_user_details(userID) {
 
 }
 
+export async function send_email_invites (emails){
+    console.log("emails action: ",emails)
+    const dataToSend = {
+        emails
+    }
+    const params = formatPostData(dataToSend);
+    const response = await axios.post('', params);
+    return {
+        type: types.SEND_INVITES,
+        payload: response
+    }
 
+}
 
 export async function create_trip(trip){
 
