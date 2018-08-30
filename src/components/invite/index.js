@@ -18,7 +18,6 @@ class InviteFriends extends Component {
         } else {
             return;
         }
-            
         })
         return (
             <div className="invite-emails">
@@ -63,18 +62,20 @@ function validate(values){
     const {emails} = values;
     const errors = {};
     const emailErrors = [];
-    if (emails && !emails[0]) {
-        emailErrors.push('Please enter at least one email address')
+    // original test ->  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!(/^@+$/.test(emails))) {
+        emailErrors.push('Please enter a valid email address')
     }
     if(emailErrors.length){
         errors.emails = emailErrors
     }
+
     return errors;
 }
 
 InviteFriends = reduxForm({
     form: 'invite-friends',
-    validate,
+    // validate,
     initialValues: {
         emails: [''],
     }
