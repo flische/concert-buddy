@@ -5,6 +5,7 @@ import Input from './input';
 import {connect} from 'react-redux';
 import {send_email_invites} from '../../actions'
 
+
 class InviteFriends extends Component {
     renderEmails(props){
         //  console.log(props);
@@ -43,6 +44,7 @@ class InviteFriends extends Component {
     }
     render(){
         const{handleSubmit, reset} = this.props;
+
         return (
             <div>
                 <form onSubmit={handleSubmit(this.inviteFriends.bind(this))}>
@@ -56,6 +58,12 @@ class InviteFriends extends Component {
         )
     }
 }
+//function mapStateToProps(state) {
+//    return {
+//    user_concert: state.user.details,
+//    
+//    }
+//}
 
 InviteFriends = reduxForm({
     form: 'invite-friends',
@@ -65,3 +73,4 @@ InviteFriends = reduxForm({
 
 })(InviteFriends);
 export default connect(null, {send_email_invites})(InviteFriends)
+
