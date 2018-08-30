@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './invite.css';
+import { connect } from 'react-redux';
+import { get_concert_details } from '../../actions';
 
 
 class InviteFriends extends Component {
@@ -49,6 +51,7 @@ class InviteFriends extends Component {
 
     render() {
         const { email1, email2, email3, email4, email5, email6 } = this.state.form;
+        console.log(this.props.user_concert);
         return (
             <div>
                 <div className="title">INVITE FRIENDS</div>
@@ -77,5 +80,11 @@ class InviteFriends extends Component {
         );
     }
 }
+function mapStateToProps(state) {
+    return {
+    user_concert: state.user.details,
+    
+    }
+}
 
-export default InviteFriends;
+export default connect(mapStateToProps, null)(InviteFriends);
