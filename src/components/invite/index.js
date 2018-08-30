@@ -35,7 +35,7 @@ class InviteFriends extends Component {
         for(var i = 0; i < array.length; i++){
             array[i] = "";
         }
-        // this.props.send_email_invites(values.emails);
+        this.props.send_email_invites(values.emails);
     }
     submitForm(values){
         // console.log(this.props);
