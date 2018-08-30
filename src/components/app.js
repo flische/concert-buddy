@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
-import {Switch} from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import Header from './header/';
 import SearchConcerts from './search-concerts/';
 import InviteFriends from './invite/';
@@ -12,6 +12,7 @@ import ConcertResults from './concert-results/';
 import ConcertDetails from './concert-details/';
 import NotFound from '../components/404';
 import NewTrip1 from '../components/new-trip-1';
+import Responsibilities from '../components/responsibility-board';
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -44,8 +45,8 @@ class App extends React.Component {
     render() {
         return (
             <div className='main'>
-                    {this.state.isHome ? null : <Header />}
-                    <Switch>
+                {this.state.isHome ? null : <Header />}
+                <Switch>
                     <Route exact path='/' component={Landing} />
                     <Route path='/search-concerts' component={SearchConcerts} />
                     <Route path='/concert-results' component={ConcertResults} />
@@ -54,9 +55,10 @@ class App extends React.Component {
                     <Route path='/login' component={Login} />
                     <Route path='/sign-up' component={SignUp} />
                     <Route path='/planner' component={Planner} />
-                    <Route path='/new-trip-1' component={NewTrip1}/>
-                    <Route component = {NotFound} />
-                    </Switch>
+                    <Route path='/new-trip-1' component={NewTrip1} />
+                    <Route path='/responsibilities' component={Responsibilities} />
+                    <Route component={NotFound} />
+                </Switch>
             </div>
         );
     }

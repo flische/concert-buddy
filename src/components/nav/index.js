@@ -2,25 +2,25 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './nav.css';
 
-class Nav extends React.Component{
-    
-    constructor(props){
+class Nav extends React.Component {
+
+    constructor(props) {
         super(props)
     }
     state = {
         isOpen: false
     }
-    handleClick(){
+    handleClick() {
         this.setState({
             isOpen: !this.state.isOpen
         })
     }
-    render(){
+    render() {
         return (
 
             <nav role="navigation">
                 <div id="menuToggle">
-                    <input onClick={this.handleClick.bind(this)} className="opacity" type="checkbox" checked={this.state.isOpen}/>
+                    <input onClick={this.handleClick.bind(this)} className="opacity" type="checkbox" checked={this.state.isOpen} />
                     <span></span>
                     <span></span>
                     <span></span>
@@ -40,14 +40,17 @@ class Nav extends React.Component{
                         <li>
                             <NavLink onClick={this.handleClick.bind(this)} to="/invite" className="navlink">INVITE FRIENDS</NavLink>
                         </li>
+                        <li>
+                            <NavLink onClick={this.handleClick.bind(this)} to="/responsibilities" className="navlink">RESPONSIBILITIES</NavLink>
+                        </li>
                     </ul>
                 </div>
             </nav>
 
 
-        ); 
+        );
     }
-    
+
 }
 
 export default Nav;
