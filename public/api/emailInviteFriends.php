@@ -1,17 +1,20 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
-print_r($_SERVER);
+$_POST = json_decode(file_get_contents('php://input'), true);
+$emails = $_POST['emails'];
+$trip_id = $_POST['trip'];
+
 require_once('email_config.php');
-// require_once('mysqlconnect.php');
+require_once('mysqlconnect.php');
 require '../../PHPMailer/src/PHPMailer.php';
 require '../../PHPMailer/src/SMTP.php';
 require '../../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 $name = "Howard";
 $query = "www.concertbuddy.app/invited?=";
-$trip_id = 1;
-// print_r($_SERVER); Ask Scoot and collete to set up information
+$trip_id = 30;
+
 function token() {
  $output = '';
  $alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
@@ -46,10 +49,10 @@ $options = array(
 $mail->smtpConnect($options);
 $mail->From = 'concertbuddy.mailserver@gmail.com';     // sender's email address (shows in "From" field)
 $mail->FromName = "Concert Buddy";         // sender's name (shows in "From" field)
-// foreach ($_POST['email'] as $value) {
-//     return $mail->addAddress("$value", "$name");
-// } 
-$mail->addAddress("tmpham1@uci.edu","Tien");
+foreach ($emails as $value) {
+ $mail->addAddress("$value");
+} 
+// $mail->addAddress("tmpham1@uci.edu","Tien");
 $mail->addReplyTo('example@gmail.com');    // Add a reply-to address
                                           // Add attachments
                                          // Optional name
@@ -93,21 +96,22 @@ if(!$mail->send()) {
 
 print(json_encode($token));
 
-// function createTripToken($trip_id, $token) {
-//     $output = [
-//         'success'=> false,
-//     ];
-//     $query = "INSERT INTO `triptokens`(`trip_id`,`token`)VALUES('$trip_id', '$token')";
-//     $result = mysqli_query($conn, $result); 
-//     if($result) {
-//         if(mysqli_affected_rows($conn) > 0) {
-//             $output['success'] = true;
+
+    $output = [
+        'success'=> false,
+    ];
+    $query = "INSERT INTO `triptokens`(`trip_id`,`tokens`) VALUES ('$trip_id', '$token')";
+    $result = mysqli_query($conn, $query); 
+    if($result) {
+        if(mysqli_affected_rows($conn) > 0) {
+            $output['success'] = true;
             
 
-//         }
-//     }
-//     else {
-//         echo ("database error! ");
-//     }
-// }
+        }
+        
+    }
+    else {
+        echo ("database error! ");
+    }
+    print(json_encode($output));
 ?>

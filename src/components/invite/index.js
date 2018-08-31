@@ -29,13 +29,14 @@ class InviteFriends extends Component {
     }
     inviteFriends(values){
         const array = values.emails; 
+        console.log(array);
         for(var i = 0; i < array.length; i++){
             if(array[i] === undefined){
                 array.splice(i, 1);
                 console.log(array);
             } 
         }
-
+    
         this.props.send_email_invites(array);
     }
     render(){

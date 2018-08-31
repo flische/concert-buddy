@@ -28,8 +28,7 @@ if ($result2) {
 if (mysqli_affected_rows($conn)) {
     $output['success'] = true;
     print("successfuly added both");
-    print($userID);
-    print($tripID);
+
 }
 else {
     $output['error'] = "Unable to add User and Associated Trip";

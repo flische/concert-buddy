@@ -45,11 +45,13 @@ export async function get_user_details(userID) {
 }
 
 export async function send_email_invites (emails){
-    console.log("emails action: ",emails)
     const dataToSend = {
-        emails
+        emails: emails,
+        trip: 1,
     }
-    const params = formatPostData(dataToSend);
+    const params = JSON.stringify(dataToSend)
+    // const params = formatPostData(dataToSend);
+    console.log(params);
     const response = await axios.post('api/emailInviteFriends.php', params);
     return {
         type: types.SEND_INVITES,
