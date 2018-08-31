@@ -93,6 +93,20 @@ button {
     margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+    .buttons {
+        margin-top: 2%;
+    }
+    .inputs {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+    .standard-input {
+        margin: 10px auto;
+        display: inline-block;
+    }
+}
+
 .standard-input {
     margin: 10px;
     width: 300px;
@@ -127,16 +141,3 @@ h3 {
     }
 }
 
-@media only screen and (max-width: 600px) {
-    .buttons {
-        margin-top: 2%;
-    }
-    .inputs {
-        margin-top: 35px;
-        margin-bottom: 35px;
-    }
-    .standard-input {
-        margin: 10px auto;
-        display: block;
-    }
-}
