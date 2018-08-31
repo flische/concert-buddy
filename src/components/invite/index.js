@@ -44,6 +44,7 @@ class InviteFriends extends Component {
     inviteFriends(values){
         this.showModal();
         const array = values.emails; 
+        console.log(array);
         for(var i = 0; i < array.length; i++){
             if(array[i] === undefined){
                 array.splice(i, 1);
