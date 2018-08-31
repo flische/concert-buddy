@@ -148,6 +148,7 @@ class Planner extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log('user concert: ', state.user.details);
     return {
         user_concert: state.user.details,
         users_attending: state.user.going
