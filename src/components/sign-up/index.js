@@ -61,7 +61,6 @@ class SignUp extends Component {
        const params = formatPostData(dataToSend);
            const resp = await axios.post('api/addUser.php', params);
             if (resp.data.success) {
-                console.log("here")
                 this.setState({
                     redirect: true,
                 });
@@ -88,8 +87,8 @@ class SignUp extends Component {
                             <input type="text" className="standard-input" placeholder="Enter Your Name"  name="name" value={name} onChange={this.handleChange}/>
                         </div>
                         <div className="signup-inputs">
-                            <input type="text" style={this.state.form.matching ? correctStyle : incorrectStyle} className="standard-input" placeholder="Choose Password" name ="password" value={password} onChange={this.handleChange} />
-                            <input type="text" style={this.state.form.matching ? correctStyle : incorrectStyle} className="standard-input" placeholder="Confirm Password" name ="passwordCheck" value={passwordCheck} onChange={this.handleChange}/>
+                            <input type="text" style={this.state.form.matching ? correctStyle : incorrectStyle} className="standard-input" placeholder="Choose Password" name ="password" type="password" value={password} onChange={this.handleChange} />
+                            <input type="text" style={this.state.form.matching ? correctStyle : incorrectStyle} className="standard-input" placeholder="Confirm Password" name ="passwordCheck" type="password" value={passwordCheck} onChange={this.handleChange}/>
                         </div>
                             <p className={this.state.form.matching ? 'hidden': 'show'}>  Passwords Are not Matching! </p>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>

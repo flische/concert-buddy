@@ -15,7 +15,6 @@ class NewTrip1 extends Component {
 
     }
 
-
     renderInput( props ){
                return (
                    <div>
@@ -139,7 +138,7 @@ class NewTrip1 extends Component {
                     <form onSubmit={handleSubmit(this.handleAddItem)}>
                         <Field name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput} />
                         <div className="buttons">
-                            <button className="btn pink-btn" onClick={this.createTrip.bind(this)}>CREATE YOUR TRIP! </button>
+                            <button className="btn pink-btn">CREATE YOUR TRIP! </button>
                         </div>
                     </form>
                 </div>
