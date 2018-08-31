@@ -13,6 +13,9 @@ import ConcertDetails from './concert-details/';
 import NotFound from '../components/404';
 import NewTrip1 from '../components/new-trip-1';
 import Responsibilities from '../components/responsibility-board';
+import AddResponsibility from '../components/add-responsibility';
+
+
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -57,6 +60,7 @@ class App extends React.Component {
                     <Route path='/planner' component={Planner} />
                     <Route path='/new-trip-1' component={NewTrip1} />
                     <Route path='/responsibilities' component={Responsibilities} />
+                    <Route path='/add-responsibility' component={AddResponsibility} />
                     <Route component={NotFound} />
                 </Switch>
             </div>

@@ -53,3 +53,13 @@
 .collapse.in {
     display: block
 }
+
+.edit {
+    text-align: right;
+    margin-right: 30px;
+    margin-top: 20px;
+    font-weight: 700;
+    color: #2A363B;
+    
+
+}
