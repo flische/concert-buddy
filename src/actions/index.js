@@ -50,7 +50,7 @@ export async function send_email_invites (emails){
         emails
     }
     const params = formatPostData(dataToSend);
-    const response = await axios.post('', params);
+    const response = await axios.post('api/emailInviteFriends.php', params);
     return {
         type: types.SEND_INVITES,
         payload: response
