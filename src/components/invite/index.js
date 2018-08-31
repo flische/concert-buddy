@@ -8,21 +8,18 @@ import {send_email_invites} from '../../actions'
 
 class InviteFriends extends Component {
     renderEmails(props){
-        //  console.log(props);
         const{fields} = props;
         const emails = fields.map((name, index) => {
-            if(index < 10){
+            if(index < 6){
             return(
-                <Field key ={name} name={name} label={`Email ${index + 1}`} component={Input} />
+                <Field key ={name} name={name} component={Input} />
             )
         } else {
             return;
         }
-            
         })
-
         return (
-            <div>
+            <div className="invite-emails">
                 {emails}
                 <div className="invite-emails" title="Add Recipient" onClick={()=>{fields.push()}}>
                     <button type="button" className="pink-btn">ADD MORE</button>
@@ -31,16 +28,15 @@ class InviteFriends extends Component {
         )
     }
     inviteFriends(values){
-        console.log(values.emails);
-        const array = values.emails;
+        const array = values.emails; 
         for(var i = 0; i < array.length; i++){
-            array[i] = "";
+            if(array[i] === undefined){
+                array.splice(i, 1);
+                console.log(array);
+            } 
         }
-        this.props.send_email_invites(values.emails);
-    }
-    submitForm(values){
-        // console.log(this.props);
-        
+
+        this.props.send_email_invites(array);
     }
     render(){
         const{handleSubmit, reset} = this.props;
@@ -58,17 +54,26 @@ class InviteFriends extends Component {
         )
     }
 }
-//function mapStateToProps(state) {
-//    return {
-//    user_concert: state.user.details,
-//    
-//    }
-//}
+
+// if (!(/^@+$/.test(emails))) {
+//     emailErrors.push('Please enter a valid email address')
+// }
+// if (emailErrors.length) {
+//     errors.emails = emailErrors
+// }
+
+// function validate(values){
+//     const {emails} = values; console.log(emails);
+//     const errors = {};
+//     const emailErrors = [];
+
+// }
 
 InviteFriends = reduxForm({
     form: 'invite-friends',
+    // validate,
     initialValues: {
-        emails: ['']
+        emails: [''],
     }
 
 })(InviteFriends);
