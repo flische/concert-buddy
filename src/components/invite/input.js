@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 export default (props) => {
     const {label, input,  meta: {touched, error}} = props; 
