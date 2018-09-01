@@ -24,7 +24,7 @@ class Planner extends Component {
 
     async checkLoginStatus(initialCheck = false) {
         const resp = await axios.post('api/checkUserLoggedIn.php');
-        console.log(resp);
+
         if (resp.data.error) {
 
             this.setState({ redirect: true });
