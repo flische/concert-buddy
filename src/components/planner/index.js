@@ -69,6 +69,7 @@ class Planner extends Component {
 
     render() {
         const user_concert = this.props.user_concert;
+        console.log(user_concert);
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);

@@ -42,18 +42,23 @@ class InviteFriends extends Component {
         )
     }
     inviteFriends(values){
-        this.showModal();
         const array = values.emails; 
         console.log(array);
-        for(var i = 0; i < array.length; i++){
-            if(array[i] === undefined){
+        for(let i = 0; i < array.length; i++){
+            if(array[i] !== undefined && array[i] !== ""){
+                this.showModal();
+                array[i] = "";
+            } else if(array.length > 1 && array[i] === undefined) {
                 array.splice(i, 1);
-                console.log(array);
-            } 
+                array[i] = "";
+
+            }
         }
+        console.log(array);
         this.props.send_email_invites(array);
     }
     render(){
+
         const{handleSubmit, reset} = this.props;
         const pStyle = {
             color: 'dodgerblue',
