@@ -8,7 +8,7 @@ const RespItem = (props) => {
             <div className="x">&times;</div>
             {props.completed ? <p><s>{props.title}</s></p> : <p>{props.title}</p>}
 
-            <p>Assigned to:<span><b>{props.person}</b></span></p>
+            <p>Assigned to:<span><b>{props.name}</b></span></p>
 
             <div>
                 <button className="toggle-btn" onClick={props.toggle}>DETAILS</button>

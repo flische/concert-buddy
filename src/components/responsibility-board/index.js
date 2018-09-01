@@ -3,16 +3,18 @@ import { get_user_concert_details } from '../../actions';
 import { Link } from 'react-router-dom';
 import RespItem from '../resp-item';
 import respData from './dummy-responsibilities';
+import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 class Responsibilities extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             open: false,
             responsibilities: []
+
         };
 
         this.toggle = this.toggle.bind(this);
@@ -20,14 +22,24 @@ class Responsibilities extends Component {
     }
 
     componentDidMount() {
-        this.checkResponsibilities(this.props.user_concert.trip_id);
+        this.checkResponsibilities();
     }
 
-    async checkResponsibilities(id) {
+    async checkResponsibilities() {
         //make call to database to retrieve array of resp objects
-        console.log('check responsibilities called: ', id);
-        //const resp = await axios.get('api/get_responsibilities.php');
-        //this.props.get_responsibilites(resp.???)
+        const dataToSend = {
+            trip_id: this.props.user_concert.trip_id
+        }
+
+        const params = formatPostData(dataToSend);
+
+        const resp = await axios.post('api/get_responsibilities.php', params);
+        console.log('resp on resp-board: ', resp);
+
+        this.setState({
+            responsibilities: resp.data.data
+        })
+
     }
 
     toggle() {
@@ -44,15 +56,15 @@ class Responsibilities extends Component {
     }
 
     render() {
-        console.log(this.props);
-        const respItem = respData.map((item) => {
+        const resp = this.state.responsibilities
+        const respItem = resp.map((item) => {
 
             return <RespItem
-                key={item.id}
-                id={item.id}
+                key={item.ID}
+                id={item.ID}
                 title={item.title}
                 details={item.details}
-                person={item.person}
+                person={item.name}
                 completed={item.completed}
                 toggle={this.toggle}
                 itemCompleted={this.itemCompleted}
