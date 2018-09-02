@@ -28,7 +28,7 @@ class Login extends Component {
            this.setState({redirect: true});
        }
     }
-
+    
     componentDidMount() {
         this.checkLoginStatus(true);
     }
@@ -48,13 +48,13 @@ class Login extends Component {
 
     async handleFormSubmit(event) {
         event.preventDefault();
-       const {email,password} = this.state.form;
+        const {email,password} = this.state.form;
         var dataToSend = {
             email: email,
             password: password,
         }
        
-          const params = formatPostData(dataToSend)
+        const params = formatPostData(dataToSend)
     
         
         await axios.post('api/loginCheck.php', params);

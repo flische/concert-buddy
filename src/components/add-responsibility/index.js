@@ -3,8 +3,6 @@ import './add-responsibility.css';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
-import { create_trip } from '../../actions';
-
 
 class AddResponsibility extends Component {
     constructor(props) {
@@ -44,7 +42,7 @@ class AddResponsibility extends Component {
 
         const params = formatPostData(dataToSend);
         const resp = axios.post('api/add_responsibilities.php', params);
-        console.log('response on add resp page: ', resp);
+        console.log('response on add responsibilities page: ', resp);
 
 
         const newState = {
@@ -61,7 +59,7 @@ class AddResponsibility extends Component {
     }
     render() {
 
-        console.log('props on add resp page: ', this.props);
+        console.log('props on add responsibilities page: ', this.props);
         const { title, details, name, } = this.state.form;
         return (
             <div>

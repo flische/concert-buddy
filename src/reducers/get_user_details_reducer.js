@@ -11,12 +11,12 @@ export default function (state = DEFAULT_STATE, action) {
         const tripObject = action.payload.userTrips.data.data[0];
         const whosgoing = action.payload.whosgoing;
         
-            return {
-                ...state, 
-                details: tripObject,
-                going: whosgoing
+        return {
+            ...state, 
+            details: tripObject,
+            going: whosgoing
             }
         default:
-            return state;
-        }
-    }   
+        return state;
+    }
+}   

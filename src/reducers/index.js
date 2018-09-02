@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import concertDetailsReducer from './get_concert_detail_reducer';
 import userDetailsReducer from './get_user_details_reducer';
+import user_auth_reducer from './user_auth_reducer';
 
 
 export default combineReducers(
@@ -10,6 +11,8 @@ export default combineReducers(
         concertDetails: concertDetailsReducer,
 
         user: userDetailsReducer,
+
+        userAuth: user_auth_reducer,
 
         form: formReducer
 
