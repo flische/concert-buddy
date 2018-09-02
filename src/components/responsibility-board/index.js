@@ -80,7 +80,7 @@ class Responsibilities extends Component {
                 id={item.ID}
                 title={item.title}
                 details={item.details}
-                person={item.name}
+                name={item.name}
                 completed={item.completed}
                 toggle={this.toggle}
                 itemCompleted={this.itemCompleted}

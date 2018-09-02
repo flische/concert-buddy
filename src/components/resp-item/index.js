@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const RespItem = (props) => {
     return (
-        <div className={"responsibilities" + (props.completed ? ' completed' : '')}>
+        <div className={"responsibilities" + (props.completed !== "0" ? ' completed' : '')}>
             <div className="x">&times;</div>
-            {props.completed ? <p><s>{props.title}</s></p> : <p>{props.title}</p>}
+            {props.completed !== "0" ? <p><s>{props.title}</s></p> : <p>{props.title}</p>}
 
-            <p>Assigned to:<span><b>{props.name}</b></span></p>
+            <p>Assigned to: <span><b>{props.name}</b></span></p>
 
             <div>
                 <button className="toggle-btn" onClick={props.toggle}>DETAILS</button>
@@ -19,7 +19,7 @@ const RespItem = (props) => {
             </div>
 
             <div className="mark-complete-btn pink-btn" onClick={props.itemCompleted}>MARK COMPLETE</div>
-            <div className="edit">EDIT</div>
+            <Link to={`/edit-responsibility?ID=${props.id}`}><div className="edit">EDIT</div></Link>
 
         </div>
     )
