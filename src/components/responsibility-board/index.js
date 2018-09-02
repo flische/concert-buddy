@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { get_user_concert_details } from '../../actions';
 import { Link } from 'react-router-dom';
 import RespItem from '../resp-item';
-import respData from './dummy-responsibilities';
+import './responsibility-board.css';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -57,6 +57,22 @@ class Responsibilities extends Component {
 
     render() {
         const resp = this.state.responsibilities
+
+        if (!resp) {
+            return (
+                <div>
+                    <div className="title">RESPONSIBILITIES</div>
+                    <div className="no-resp-main">
+                        <div className="no-resp">
+                            No Responsibilities</div></div>
+                    <div className="buttons">
+                        <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
+                        <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
+                    </div>
+                </div>
+            );
+        }
+
         const respItem = resp.map((item) => {
 
             return <RespItem
