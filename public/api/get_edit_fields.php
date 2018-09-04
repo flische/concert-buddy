@@ -11,7 +11,7 @@ $output = [
     'success'=>false,
 ];
 $query = "SELECT * FROM `responsib`
- WHERE  `trip_id` = '$tripID' AND `ID` = 'edit_id";
+ WHERE  `trip_id` = '$tripID' AND `ID` = '$editID'";
 
 $result = mysqli_query($conn, $query);
 

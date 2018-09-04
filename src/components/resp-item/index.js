@@ -3,7 +3,6 @@ import './resp-item.css';
 import { Link } from 'react-router-dom';
 
 const RespItem = (props) => {
-    console.log('props in resp item: ', props);
     return (
         <div className={"responsibilities" + (props.completed !== "0" ? ' completed' : '')}>
             <div className="x" onClick={() => { props.showModal(props.id) }}>&times;</div>
@@ -21,7 +20,7 @@ const RespItem = (props) => {
             </div>
 
             <div className="mark-complete-btn pink-btn" onClick={props.itemCompleted}>MARK COMPLETE</div>
-            <Link to={`/edit-responsibility?ID=${props.id}`}><div className="edit">EDIT</div></Link>
+            <Link to={`/edit-responsibility?edit_id=${props.id}`}><div className="edit">EDIT</div></Link>
 
         </div>
     )

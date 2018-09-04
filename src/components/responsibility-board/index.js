@@ -63,20 +63,18 @@ class Responsibilities extends Component {
     }
 
     deleteItem = async (id) => {
-        debugger;
+
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id,
             id: id
         }
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/delete_responsibilities.php', params);
-        console.log('delete resp:', resp);
 
         this.checkResponsibilities();
     }
 
     render() {
-        console.log('props in responsibility board: ', this.props);
         const resp = this.state.responsibilities
 
 

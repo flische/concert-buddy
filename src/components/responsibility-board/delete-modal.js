@@ -9,8 +9,6 @@ const DeleteModal = ({ handleClose, show, deleteItem, props }) => {
         backgroundColor: 'red'
     }
 
-    console.log('props in delete modal: ', props);
-
     return (
 
         <div className={showHideClassName}>
