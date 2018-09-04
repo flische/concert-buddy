@@ -64,7 +64,10 @@ export async function create_trip(trip){
     };
 }
 
+export async function delete_responsibility(id){
 
-
-
+    return {
+        type: types.DELETE_RESPONSIBILITY,
+    }
+}
 

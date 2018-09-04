@@ -7,5 +7,7 @@ export default {
 
     CREATE_TRIP: 'create_trip',
 
-    SEND_INVITES: 'send_invites'
+    SEND_INVITES: 'send_invites',
+    
+    DELETE_RESPONSIBILITY: 'delete_responsibility'
 };
