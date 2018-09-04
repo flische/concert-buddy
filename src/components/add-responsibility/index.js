@@ -44,8 +44,6 @@ class AddResponsibility extends Component {
 
         const params = formatPostData(dataToSend);
         const resp = axios.post('api/add_responsibilities.php', params);
-        console.log('response on add resp page: ', resp);
-
 
         const newState = {
             form: {
@@ -60,8 +58,6 @@ class AddResponsibility extends Component {
         this.props.history.push('/responsibilities');
     }
     render() {
-
-        console.log('props on add resp page: ', this.props);
         const { title, details, name, } = this.state.form;
         return (
             <div>
