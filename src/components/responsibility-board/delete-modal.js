@@ -7,7 +7,8 @@ const DeleteModal = (props) => {
     const showHideClassName = show ? 'delete-modal display-block' : 'delete-modal display-none';
     const buttonStyle = {
         color: 'white',
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+        width: '85%'
     }
 
     console.log('PROPS INSIDE THE DELETE MODAL!!!!!!!!!!!!', props);
@@ -17,8 +18,10 @@ const DeleteModal = (props) => {
 
         <div className={showHideClassName}>
             <section className="delete-modal-main">
+                <p>Are you sure you want to delete this responsibility?</p>
+
                 <div className="buttons"><div style={buttonStyle} className="btn" onClick={() => deleteItem(id)}>DELETE</div>
-                    <button className="pink-btn" onClick={handleClose}>CLOSE</button>
+                    <button className="blue-btn" onClick={handleClose}>CLOSE</button>
                 </div>
             </section>
         </div>

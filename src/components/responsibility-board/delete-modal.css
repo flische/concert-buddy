@@ -8,6 +8,7 @@
 }
 
 .delete-modal-main {
+    width: 94%;
     border-radius: 2%;
     position: fixed;
     background: white;
@@ -27,3 +28,10 @@
     display: none;
 }
 
+.blue-btn{
+    background-color: powderblue;
+    box-shadow: 0 5px powderblue;
+    border-color: powderblue;
+    color: white;
+    text-shadow: #FFFFFF 0px 0px 2px;
+}
