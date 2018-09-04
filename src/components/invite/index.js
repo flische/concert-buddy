@@ -43,14 +43,15 @@ class InviteFriends extends Component {
     }
     inviteFriends(values){
         const array = values.emails; 
-        console.log(array);
+        console.log("initial array", array);
         for(let i = 0; i < array.length; i++){
             if(array[i] !== undefined && array[i] !== ""){
                 this.showModal();
-                array[i] = "";
+                console.log("first if loop", array)
             } else if(array.length > 1 && array[i] === undefined) {
                 array.splice(i, 1);
                 array[i] = "";
+                console.log("2nd if undefined", array)
 
             }
         }

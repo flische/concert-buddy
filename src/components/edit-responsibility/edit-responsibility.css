@@ -1,0 +1,17 @@
+.add-resp-form {
+    margin: 0 auto;
+   }
+
+.resp-form {
+   margin-top: 10%;
+}
+
+.standard-textarea {
+ margin: 0 auto;
+ width: 300px;
+ border-radius: 5px;
+ text-align: left;
+ font-size: 20px;
+ font-family: 'Roboto', sans-serif;
+ display: block;
+}
