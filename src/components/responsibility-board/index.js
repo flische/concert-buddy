@@ -63,11 +63,11 @@ class Responsibilities extends Component {
     }
 
     deleteItem = async (id) => {
-
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id,
             id: id
         }
+        console.log('Delete Item Called:', dataToSend);
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/delete_responsibilities.php', params);
 
@@ -122,9 +122,9 @@ class Responsibilities extends Component {
                     <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
                     <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                 </div>
-                <DeleteModal show={this.state.show} handleClose={this.hideModal} deleteItem={this.deleteItem} tripid={this.props.user_concert.trip_id} props={this.props} >
+                {/* <DeleteModal show={this.state.show} handleClose={this.hideModal} deleteItem={this.deleteItem} tripid={this.props.user_concert.trip_id} props={this.props} >
                     <p>Are you sure you want to delete this responsibility?</p>
-                </DeleteModal>
+                </DeleteModal> */}
             </div>
 
         );
