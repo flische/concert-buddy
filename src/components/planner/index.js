@@ -72,7 +72,6 @@ class Planner extends Component {
             width: '90%'
         }
         const user_concert = this.props.user_concert;
-        console.log(user_concert);
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);
@@ -152,7 +151,6 @@ class Planner extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('user concert: ', state.user.details);
     return {
         user_concert: state.user.details,
         users_attending: state.user.going

@@ -3,9 +3,11 @@ import './resp-item.css';
 import { Link } from 'react-router-dom';
 
 const RespItem = (props) => {
+    console.log('props in resp item: ', props);
     return (
         <div className={"responsibilities" + (props.completed !== "0" ? ' completed' : '')}>
-            <div className="x">&times;</div>
+            <div className="x" onClick={() => { props.showModal(props.id) }}>&times;</div>
+
             {props.completed !== "0" ? <p><s>{props.title}</s></p> : <p>{props.title}</p>}
 
             <p>Assigned to: <span><b>{props.name}</b></span></p>
@@ -26,3 +28,4 @@ const RespItem = (props) => {
 }
 
 export default RespItem;
+
