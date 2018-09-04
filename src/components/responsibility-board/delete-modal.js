@@ -11,9 +11,6 @@ const DeleteModal = (props) => {
         width: '85%'
     }
 
-    console.log('PROPS INSIDE THE DELETE MODAL!!!!!!!!!!!!', props);
-
-
     return (
 
         <div className={showHideClassName}>

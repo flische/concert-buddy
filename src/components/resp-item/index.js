@@ -36,15 +36,18 @@ class RespItem extends Component {
                     <div className={"collapse" + (this.props.open ? ' in' : '')}>
                         <div>{this.props.details}</div>
                     </div>
+
                 </div>
                 <div className="mark-complete-btn pink-btn" onClick={this.props.itemCompleted}>MARK COMPLETE</div>
-                <Link to={`/edit-responsibility?ID=${this.props.id}`}><div className="edit">EDIT</div></Link>
+                <Link to={`/edit-responsibility?edit_id=${this.props.id}`}><div className="edit">EDIT</div></Link>
                 <DeleteModal show={this.state.show} handleClose={this.hideModal} deleteItem={this.props.deleteItem} id={this.props.id}>
                     <p>Are you sure you want to delete this responsibility?</p>
                 </DeleteModal>
             </div>
+
         )
     }
+
 }
 
 export default RespItem;

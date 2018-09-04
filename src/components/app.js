@@ -14,6 +14,7 @@ import NotFound from '../components/404';
 import NewTrip1 from '../components/new-trip-1';
 import Responsibilities from '../components/responsibility-board';
 import AddResponsibility from '../components/add-responsibility';
+import EditResponsibility from '../components/edit-responsibility';
 
 
 class App extends React.Component {
@@ -61,6 +62,7 @@ class App extends React.Component {
                     <Route path='/new-trip-1' component={NewTrip1} />
                     <Route path='/responsibilities' component={Responsibilities} />
                     <Route path='/add-responsibility' component={AddResponsibility} />
+                    <Route path='/edit-responsibility' component={EditResponsibility} />
                     <Route component={NotFound} />
                 </Switch>
             </div>
