@@ -35,8 +35,7 @@ class Planner extends Component {
     }
 
     async checkUserTrips() {
-        const resp = await axios.post('api/checkUserLoggedIn.php');
-        this.props.get_user_details(resp.data.data[0].ID);
+        this.props.get_user_details();
 
     }
 
