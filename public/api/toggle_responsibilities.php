@@ -3,7 +3,8 @@ header("Access-Control-Allow-Origin: *");
 session_start();
 
 $taskID  = $_POST['ID']; //required unique id of task to delete targeted task 
-$completed = (int) $_POST['completed'];
+$completed = (int) json_decode($_POST['completed']);
+print($completed);
 if ($completed === 0) {
   
     $completed = 1;
@@ -17,6 +18,7 @@ $output = [
     'success'=>false,
 ];
 $query = "UPDATE `responsib` SET `completed`= $completed WHERE `ID`= '$taskID'";
+
 $result = mysqli_query($conn, $query);
 if($result) {
 if (mysqli_affected_rows($conn) > 0) {
