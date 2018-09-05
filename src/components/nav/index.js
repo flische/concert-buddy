@@ -50,7 +50,7 @@ class Nav extends Component {
                         <NavLink onClick={this.handleClick.bind(this)} to="/responsibilities" className="navlink">RESPONSIBILITIES</NavLink>
                     </li>
                     <li>
-                        <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/sign-in" className="navlink">SIGN OUT</NavLink>
+                        <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/" className="navlink">SIGN OUT</NavLink>
                     </li>
                 </Fragment>
            );

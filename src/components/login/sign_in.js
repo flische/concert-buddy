@@ -38,7 +38,7 @@ class SignIn extends Component {
                     </div>
                 </div>              
                 <div className="buttons">
-                    <button className="pink-btn" onClick={reset}>LOGIN</button>
+                    <button className="pink-btn">LOGIN</button>
                     <p>{authError}</p>
                 </div>
             </form>

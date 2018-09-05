@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { Switch } from 'react-router-dom'
 import Header from './header/';
@@ -19,9 +19,10 @@ import redirect from '../hoc/redirect';
 import EditResponsibility from '../components/edit-responsibility';
 
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+
         this.state = {
             isHome: false
         }
@@ -58,7 +59,7 @@ class App extends React.Component {
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
                     <Route path='/invite' component={InviteFriends} />
-                    <Route path='/sign-in' component={redirect(SignIn, '/planner')} />
+                    <Route path='/sign-in' component={redirect(SignIn, '/')} />
                     <Route path='/sign-up' component={redirect(SignUp, '/sign-in')} />
                     <Route path='/planner' component={auth(Planner)} />
                     <Route path='/new-trip-1' component={NewTrip1} />
