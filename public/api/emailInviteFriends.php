@@ -6,7 +6,6 @@ print($host);
 $_POST = json_decode(file_get_contents('php://input'), true);
 $emails = $_POST['emails'];
 $trip_id = $_SESSION['tripData'][0]['trip_id'];
-print($trip_id);
 require_once('email_config.php');
 require_once('mysqlconnect.php');
 require '../../PHPMailer/src/PHPMailer.php';
@@ -14,7 +13,7 @@ require '../../PHPMailer/src/SMTP.php';
 require '../../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 $name = "Howard";
-$query = "/invited?=";
+$query = "/acceptance-page?token=";
 
 
 function token() {
@@ -76,7 +75,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
     <p>You have been invited by your friend, [USER NAME] to go to [CONCERT INFO]. Click the link below to accept or
         decline the invitation.</p>
     <div style='text-align: center;'>
-        <a href=\"".$host.$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
+        <a href=\"http://".$host.$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
     </div>
     <p>Enjoy the concert!</p>
     <p>-Your friends at Concert Buddy</p>
