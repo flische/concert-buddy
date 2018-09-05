@@ -3,6 +3,7 @@ import './edit-responsibility.css';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
+import Loader from '../loader';
 
 class EditResponsibility extends Component {
     constructor(props) {
@@ -12,7 +13,6 @@ class EditResponsibility extends Component {
                 title: '',
                 details: '',
                 name: '',
-
                 trip_id: this.props.trip_info.trip_id,
                 ID: ''
             }
@@ -38,11 +38,10 @@ class EditResponsibility extends Component {
             qArr = sPageURL.split('&');
 
         for (var i = 0; i < qArr.length; i++) {
-
             pair = qArr[i].split('=');
             queryObject[pair[0]] = pair[1];
         };
-        console.log('query object: ', queryObject);
+
         this.getEditFields(queryObject);
     }
 
@@ -51,43 +50,38 @@ class EditResponsibility extends Component {
             edit_id: object.edit_id,
             trip_id: this.props.trip_info.trip_id
         }
-        console.log('data to send: ', dataToSend);
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/get_edit_fields.php', params);
-        console.log('resp for get edit fields: ', resp);
 
         this.setState({
             form: {
+                ID: resp.data.data[0].ID,
                 title: resp.data.data[0].title,
                 details: resp.data.data[0].details,
                 name: resp.data.data[0].name,
-
-                ID: resp.data.data[0].ID,
                 trip_id: this.props.trip_info.trip_id,
-
             }
         });
     }
 
     handleFormSubmit(event) {
         event.preventDefault();
-
         this.submitChanges();
 
     }
 
     async submitChanges() {
         const dataToSend = {
+            ID: this.state.form.ID,
             title: this.state.form.title,
             details: this.state.form.details,
             name: this.state.form.name,
-            trip_id: this.props.trip_info.trip_id,
-            ID: this.state.form.ID
+            trip_id: this.props.trip_info.trip_id
+
         }
 
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/edit_responsibilities.php', params);
-        console.log('resp for get submit edit: ', resp);
         const newState = {
             form: {
                 title: '',
@@ -102,6 +96,12 @@ class EditResponsibility extends Component {
         this.props.history.push('/responsibilities');
     }
     render() {
+        if (!this.state.form.title) {
+            return (
+                <Loader />
+            )
+        }
+
         const { title, details, name, } = this.state.form;
         return (
             <div>

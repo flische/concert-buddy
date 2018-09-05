@@ -18,8 +18,7 @@ import auth from '../hoc/auth';
 import redirect from '../hoc/redirect';
 import EditResponsibility from '../components/edit-responsibility';
 
-
-class App extends Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
 

@@ -4,7 +4,6 @@ session_start();
 
 $taskID  = $_POST['ID']; //required unique id of task to delete targeted task 
 $completed = (int) $_POST['completed'];
-
 if ($completed === 0) {
   
     $completed = 1;
@@ -17,22 +16,18 @@ require_once('mysqlconnect.php');
 $output = [
     'success'=>false,
 ];
-$query = "UPDATE `responsib` SET `completed`= $completed WHERE `ID`= '$taskID'" 
-;
+$query = "UPDATE `responsib` SET `completed`= $completed WHERE `ID`= '$taskID'";
 $result = mysqli_query($conn, $query);
 if($result) {
 if (mysqli_affected_rows($conn) > 0) {
     $output['success'] = true;
     print("True or False Toggled");
-}
+  }
 else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error!".$error;
+  }
 }
  $output = json_encode($output);
  print($output);
-}
-else {
-    
-}
 ?> 

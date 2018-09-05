@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { get_user_concert_details } from '../../actions';
 import { get_user_details } from '../../actions';
 import './planner.css';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom';
+import Loader from '../loader';
 
 class Planner extends Component {
 
@@ -28,8 +28,6 @@ class Planner extends Component {
         if (resp.data.error) {
 
             this.setState({ redirect: true });
-
-
 
         }
     }
@@ -92,8 +90,6 @@ class Planner extends Component {
 
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
 
-
-
             return (
                 <div className="title">
                     {this.renderRedirect()}
@@ -108,47 +104,49 @@ class Planner extends Component {
             )
         }
 
-        else {
-
-
-
+        if (this.props.user_concert === null) {
             return (
-                <div className="bottom-content">
-                    {this.renderRedirect()}
-                    <div className="title">
-                        <h1> {user_concert.trip_name}</h1>
+                <Loader />
+            )
+        }
+
+        return (
+            <div className="bottom-content">
+                {this.renderRedirect()}
+                <div className="title">
+                    <h1> {user_concert.trip_name}</h1>
+                </div>
+                <div className="concert-overview">
+                    <div>
+                        <h2>Concert: {user_concert.artist}</h2>
                     </div>
-                    <div className="concert-overview">
-                        <div>
-                            <h2>Concert: {user_concert.artist}</h2>
-                        </div>
-                        <div>
-                            <h2>Date: {user_concert.date} @ {eventTime}</h2>
-                        </div>
-                        <div>
-                            <h2>Location: {user_concert.address + ''}</h2>
-                        </div>
+                    <div>
+                        <h2>Date: {user_concert.date} @ {eventTime}</h2>
                     </div>
-                    <div className="title">WHO'S GOING?</div>
-                    <div className="attendees">
-                        <div className="leftSide">
-                            {evenArray}
-                        </div>
-                        <div className="rightSide">
-                            {oddArray}
-                        </div>
+                    <div>
+                        <h2>Location: {user_concert.address + ''}</h2>
                     </div>
-                    <div className="buttons">
-                        <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
-                        <button className="white-btn">******</button>
-                        <button className="pink-btn">******</button>
+                </div>
+                <div className="title">WHO'S GOING?</div>
+                <div className="attendees">
+                    <div className="leftSide">
+                        {evenArray}
                     </div>
+                    <div className="rightSide">
+                        {oddArray}
+                    </div>
+                </div>
+                <div className="buttons">
+                    <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
+                    <Link to="/invite"><div className="btn white-btn">INVITE FRIENDS</div></Link>
 
                 </div>
-            );
-        }
+
+            </div>
+        );
     }
 }
+
 
 function mapStateToProps(state) {
     return {
