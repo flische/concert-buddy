@@ -1,24 +1,29 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
-print_r($_POST);
+
 $taskID  = $_POST['ID']; //required unique id of task to delete targeted task 
-$title = $_POST['title'];
-$details = $_POST['details'];
-$name = $_POST['name'];
+$completed = (int) $_POST['completed'];
+
+if ($completed === 0) {
+  
+    $completed = 1;
+}
+else {
+    $completed = 0;
+}
 
 require_once('mysqlconnect.php');
 $output = [
     'success'=>false,
 ];
-$query = "UPDATE `responsib` SET `title`= '$title',`details`='$details',`name`='$name' WHERE `ID`= '$taskID'" 
+$query = "UPDATE `responsib` SET `completed`= $completed WHERE `ID`= '$taskID'" 
 ;
-print_r($query);
 $result = mysqli_query($conn, $query);
-
+if($result) {
 if (mysqli_affected_rows($conn) > 0) {
     $output['success'] = true;
-    print("successfuly edited files");
+    print("True or False Toggled");
 }
 else {
     $error = mysqli_error($conn);
@@ -26,14 +31,8 @@ else {
 }
  $output = json_encode($output);
  print($output);
-
+}
+else {
+    
+}
 ?> 
-
-
-
-
-
-
-
-
-
