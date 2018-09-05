@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './acceptance-page.css'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import { parseParameters } from '../../helpers';
+import { formatPostData } from '../../helpers';
 
 class AcceptancePage extends Component{
     constructor(props){
@@ -12,14 +12,28 @@ class AcceptancePage extends Component{
         }
 
     }
+    getToken(string){
+        var obj = {};
+        var array = string.split('=');
+        obj['token'] = array[1].slice(1);
+        return obj;
+    }
     componentDidMount(){
-        this.getConcertDetails(parseParameters())    
+        let pageURL = window.location.search.substring(1);
+        console.log(pageURL);
+        var test = this.getConcertDetails(this.getToken(pageURL));
+        console.log('test', test)
     }
     async getConcertDetails(object){
-        const tripDetails = await axios.post('api/invited.php', object);
+        let params = formatPostData(object);
+        const tripDetails = await axios.post('api/invited.php', params);
         console.log(tripDetails);
+        this.setState({
+            trip: tripDetails
+        })
     }
     render(){
+        console.log(this.state.trip);
         return (
             <div className="container">
                  <div className="detailsHeader title">
