@@ -6,13 +6,14 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index';
 import reduxPromise from 'redux-promise';
+import think from './middleware/think';
 import types from './actions/types';
 
-const store = createStore(rootReducer, {}, applyMiddleware(reduxPromise));
+const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));
 
-if(localStorage.getItem('token')){
-    store.dispatch( { type: types.SIGN_IN } );
-}
+// if(localStorage.getItem('token')){
+//     store.dispatch( { type: types.SIGN_IN } );
+// }
 
 ReactDOM.render(
     <Provider store={store}>

@@ -1,38 +1,50 @@
+import './login.css';
+import logo from '../../images/logo.png';
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signIn } from '../actions';
-import Input from './input';
+import { signIn } from '../../actions';
+import Input from '../input';
 
 class SignIn extends Component {
     
     login = (values) =>{
-        console.log('Login Values:', values);
 
-        this.props.signIn(values); //<-- making a real call to the server and making a real acct for you!
+        this.props.signIn(values); 
+    }
+
+    componentDidMount() {
+        this.props.authError;
+
     }
 
     render(){
-        const { handleSubmit, authError } = this.props;
+        const { handleSubmit, authError, reset } = this.props;
 
         return (
             
-        <div>    
-            <h1 className="center">Sign In</h1>
+        <div className="login">    
+            <div className="logo-holder">            
+                <img src={logo} />
+                <h1>CONCERT BUDDY</h1>
+                <h3>Plan Your Concert Trip</h3>
+            </div>
             <form onSubmit={handleSubmit(this.login)}> 
-                <div className="row">
-                    <Field className="col-6 offset-3" name="email" component={Input} label="Email"/>
-                </div>
-                <div className="row">
-                    <Field type="password" className="col-6 offset-3" name="password" component={Input} label="Password"/>
-                </div>
-                <div className="row">
-                    <div className="d-flex col-6 offset-3 justify-content-end">
-                        <button className="btn blue darken-2">Sign In</button>
-                        <p className="red-text">{authError}</p>
+                <div className="inputs">
+                    <Field name="email" component={Input} className="standard-input" placeholder="Enter Your Email" label="Email"/>
+                    <Field name="password" type="password" className="standard-input" placeholder="Enter Your Password" component={Input} label="Password"/>
+                    <div className="response">
                     </div>
+                </div>              
+                <div className="buttons">
+                    <button className="pink-btn" onClick={reset}>LOGIN</button>
+                    <p>{authError}</p>
                 </div>
             </form>
+            <div className="buttons">
+                <div className="a-tag"> <Link to="/sign-up">SIGN UP!</Link></div>
+            </div>
         </div>    
         )
     }
@@ -44,20 +56,19 @@ function validate(values){
 
     if(!email) errors.email = 'Please enter your email address';
     
-    if(!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
+    if(!password) errors.password = 'Please choose a password'; 
 
     return errors;
 }
 
 SignIn = reduxForm({
     form: 'sign-in',
-    validate       // <-- same thing as line below! since it's the same name!
-    // validate: validate
+    validate: validate      
 })(SignIn);
 
 function mapStateToProps(state){
     return {
-        authError: state.user.error
+        authError: state.userAuth.error
     }
 }
 

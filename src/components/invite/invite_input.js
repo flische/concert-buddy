@@ -5,8 +5,9 @@ export default (props) => {
     return (
         <div>
             <label>{label}</label>
-            <input className="invite-emails" placeholder="Enter email address" autoComplete="off" className="standard-input" {...input} type={ type || 'text' } />
+            <input className="invite-emails standard-input" placeholder="Enter email address" autoComplete="off" {...input} type={ type || 'text' } />
             <p>{touched && error}</p>
         </div>
     )
 }
+

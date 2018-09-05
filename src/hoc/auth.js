@@ -24,7 +24,7 @@ export default function (WrappedComponent, path ='/'){
     
     function  mapStateToProps(state){
         return {
-            auth: state.user.auth
+            auth: state.userAuth.auth
         }
     }
     return connect(mapStateToProps)(Auth);

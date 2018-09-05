@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './login.css'
+import './login.css';
 import logo from '../../images/logo.png';
 import { Link, Redirect } from 'react-router-dom';
 import { formatPostData } from '../../helpers';
@@ -8,7 +8,7 @@ import axios from 'axios';
 class Login extends Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
             form: {
                 email: '',
@@ -68,7 +68,6 @@ class Login extends Component {
         this.setState(newState);
         this.checkLoginStatus();
         this.renderRedirect();
-
     }
     render() {
         const { email, password } = this.state.form;
