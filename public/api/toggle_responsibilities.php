@@ -2,8 +2,8 @@
 header("Access-Control-Allow-Origin: *");
 session_start();
 
-$taskID  = 24; //$_POST['ID']; //required unique id of task to delete targeted task 
-$completed = (int) false;
+$taskID  = $_POST['ID']; //required unique id of task to delete targeted task 
+$completed = (int) $_POST['completed'];
 
 if ($completed === 0) {
   

@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
-$tripID  = 1;//$_POST["trip_id"];
+$tripID  = $_POST["trip_id"];
 $output = [
     'success'=> false,
 ];
