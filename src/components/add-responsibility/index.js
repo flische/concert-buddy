@@ -42,7 +42,6 @@ class AddResponsibility extends Component {
 
         const params = formatPostData(dataToSend);
         const resp = axios.post('api/add_responsibilities.php', params);
-
         const newState = {
             form: {
                 title: '',

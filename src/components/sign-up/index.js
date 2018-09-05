@@ -8,7 +8,7 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-
+        
         this.state = {
             form: {
                 email: '',
@@ -38,7 +38,7 @@ class SignUp extends Component {
   
     renderRedirect() {
         if (this.state.redirect) {
-        return <Redirect to='/login' />
+        return <Redirect to='/sign-in' />
     }
 }
     async handleFormSubmit(event) {
@@ -53,14 +53,14 @@ class SignUp extends Component {
             });
         }
         else {
-          const dataToSend = {
+            const dataToSend = {
               email: email,
               name: name,
-              password: password, 
-          }
-       const params = formatPostData(dataToSend);
-       console.log(params)
-           const resp = await axios.post('api/addUser.php', params);
+              password: password 
+            };
+            const params = formatPostData(dataToSend);
+            const resp = await axios.post('api/addUser.php', params);
+
             if (resp.data.success) {
                 this.setState({
                     redirect: true,

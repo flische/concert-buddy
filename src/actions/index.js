@@ -17,6 +17,7 @@ export function get_concert_details(object) {
 }
 
 
+
 export async function get_user_details() {
     // const dataToSend = {
     //     userID: userID,
@@ -38,7 +39,6 @@ export async function get_user_details() {
         type: types.GET_USER_DETAILS,
         payload: payload
     }
-
 }
 
 export async function send_email_invites (emails){
@@ -63,9 +63,71 @@ export async function create_trip(trip){
 }
 
 export async function delete_responsibility(id){
-
-    return {
+      return {
         type: types.DELETE_RESPONSIBILITY,
     }
 }
 
+
+export const signIn = credentials => async dispatch => {
+    
+    try {
+        const { email, password } = credentials;
+
+        const dataToSend = {
+            email: email,
+            password: password
+        };
+        const params = formatPostData(dataToSend);
+       
+        const response = await axios.post('api/loginCheck.php', params);
+
+        if (response.data.success) {
+            dispatch({ type: types.SIGN_IN} );
+    
+        } else {
+            dispatch({
+                type: types.AUTH_ERROR,
+                error: 'Invalid email and/or password'
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: types.AUTH_ERROR,
+            error: 'Invalid email and/or password'
+        });
+    }
+}
+
+export const signUp = credentials => async dispatch => {
+    try {
+        const dataToSend = {
+            email: email,
+            name: name,
+            password: password  
+            };
+        const credentials = formatPostData(dataToSend);
+        const resp = await axios.post('api/addUser.php', credentials);
+        console.log('Sign Up response: ', response);
+        if (resp.data.success) {
+
+            dispatch({ type: types.SIGN_UP} );
+        } else {
+            dispatch({
+                type: types.AUTH_ERROR,
+                error: 'Error creating account'
+            });
+        }
+
+    } catch(error){
+        dispatch( {
+            type: types.AUTH_ERROR,
+            error: 'Error creating account'
+        });
+    }   
+}
+
+export const signOut = () => {
+    
+    return { type: types.SIGN_OUT }
+};

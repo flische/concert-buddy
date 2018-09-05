@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './login.css'
+import './login.css';
 import logo from '../../images/logo.png';
 import { Link, Redirect } from 'react-router-dom';
 import { formatPostData } from '../../helpers';
@@ -8,7 +8,7 @@ import axios from 'axios';
 class Login extends Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
             form: {
                 email: '',
@@ -28,7 +28,7 @@ class Login extends Component {
            this.setState({redirect: true});
        }
     }
-
+    
     componentDidMount() {
         this.checkLoginStatus(true);
     }
@@ -48,13 +48,13 @@ class Login extends Component {
 
     async handleFormSubmit(event) {
         event.preventDefault();
-       const {email,password} = this.state.form;
+        const {email,password} = this.state.form;
         var dataToSend = {
             email: email,
             password: password,
         }
        
-          const params = formatPostData(dataToSend)
+        const params = formatPostData(dataToSend)
     
         
         await axios.post('api/loginCheck.php', params);
@@ -68,7 +68,6 @@ class Login extends Component {
         this.setState(newState);
         this.checkLoginStatus();
         this.renderRedirect();
-
     }
     render() {
         const { email, password } = this.state.form;
