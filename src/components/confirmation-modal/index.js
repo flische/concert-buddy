@@ -1,5 +1,5 @@
 import React from 'react';
-import './confirmation-modal.css'
+import './confirmation_modal.css'
 import {Link} from 'react-router-dom';
 
 const Modal = ({handleClose, show, children}) => {

@@ -60,11 +60,12 @@ class Planner extends Component {
     }
     renderRedirect() {
         if (this.state.redirect) {
-            return <Redirect to='/login' />
+            return <Redirect to='/sign-in' />
         }
     }
 
     render() {
+        console.log(this.props.user_concert);
         const buttonStyle = {
             width: '90%'
         }
