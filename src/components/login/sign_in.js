@@ -10,7 +10,7 @@ import Input from '../input';
 class SignIn extends Component {
     
     login = (values) =>{
-
+        console.log("login page here");
         this.props.signIn(values); 
     }
 
@@ -38,7 +38,7 @@ class SignIn extends Component {
                     </div>
                 </div>              
                 <div className="buttons">
-                    <button className="pink-btn" onClick={reset}>LOGIN</button>
+                    <button className="pink-btn">LOGIN</button>
                     <p>{authError}</p>
                 </div>
             </form>
