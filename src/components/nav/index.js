@@ -47,6 +47,9 @@ class Nav extends React.Component {
                         <li>
                             <NavLink onClick={this.handleClick.bind(this)} to="/responsibilities" className="navlink">RESPONSIBILITIES</NavLink>
                         </li>
+                        <li>
+                            <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
+                        </li>
                     </ul>
                 </div>
             </nav>

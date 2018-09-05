@@ -16,6 +16,7 @@ import Responsibilities from '../components/responsibility-board';
 import AddResponsibility from '../components/add-responsibility';
 import EditResponsibility from '../components/edit-responsibility';
 import AcceptancePage from '../components/acceptance-page';
+import AboutPage from '../components/about';
 
 class App extends React.Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class App extends React.Component {
                     <Route path='/add-responsibility' component={AddResponsibility} />
                     <Route path='/edit-responsibility' component={EditResponsibility} />
                     <Route path='/acceptance-page' component = {AcceptancePage} />
-                    <Route component={NotFound} />
+                    <Route path='/about-page' component = {AboutPage} />
                 </Switch>
             </div>
         );

@@ -9,7 +9,7 @@ import reduxPromise from 'redux-promise';
 
 
 import AcceptancePage from './components/acceptance-page'
-
+import AboutPage from './components/about';
 const store = createStore(rootReducer, {}, applyMiddleware(reduxPromise));
 
 ReactDOM.render(
