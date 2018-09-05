@@ -9,16 +9,19 @@ import reduxPromise from 'redux-promise';
 import think from './middleware/think';
 import types from './actions/types';
 
+
+import AcceptancePage from './components/acceptance-page'
+import AboutPage from './components/about';
+
 const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));
 
-// if(localStorage.getItem('token')){
-//     store.dispatch( { type: types.SIGN_IN } );
-// }
+
+
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <App />
+            <AcceptancePage />
         </Router>
     </Provider>,
     document.getElementById('root')
