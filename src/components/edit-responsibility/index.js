@@ -10,11 +10,11 @@ class EditResponsibility extends Component {
         super(props);
         this.state = {
             form: {
-                title: '',
-                details: '',
-                name: '',
+                title: null,
+                details: null,
+                name: null,
                 trip_id: this.props.trip_info.trip_id,
-                ID: ''
+                ID: null
             }
         }
 
@@ -96,7 +96,7 @@ class EditResponsibility extends Component {
         this.props.history.push('/responsibilities');
     }
     render() {
-        if (!this.state.form.title) {
+        if (this.state.form.title === null) {
             return (
                 <Loader />
             )
