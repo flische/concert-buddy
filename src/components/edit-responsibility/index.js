@@ -55,10 +55,10 @@ class EditResponsibility extends Component {
 
         this.setState({
             form: {
+                ID: resp.data.data[0].ID,
                 title: resp.data.data[0].title,
                 details: resp.data.data[0].details,
                 name: resp.data.data[0].name,
-                ID: resp.data.data[0].ID,
                 trip_id: this.props.trip_info.trip_id,
             }
         });
@@ -72,11 +72,12 @@ class EditResponsibility extends Component {
 
     async submitChanges() {
         const dataToSend = {
+            ID: this.state.form.ID,
             title: this.state.form.title,
             details: this.state.form.details,
             name: this.state.form.name,
-            trip_id: this.props.trip_info.trip_id,
-            ID: this.state.form.ID
+            trip_id: this.props.trip_info.trip_id
+
         }
 
         const params = formatPostData(dataToSend);

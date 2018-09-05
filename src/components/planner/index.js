@@ -103,7 +103,7 @@ class Planner extends Component {
             )
         }
 
-        if (!user_concert) {
+        if (this.props.user_concert === null) {
             return (
                 <Loader />
             )
@@ -137,8 +137,8 @@ class Planner extends Component {
                 </div>
                 <div className="buttons">
                     <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
-                    <button className="white-btn">******</button>
-                    <button className="pink-btn">******</button>
+                    <Link to="/invite"><div className="btn white-btn">INVITE FRIENDS</div></Link>
+
                 </div>
 
             </div>
