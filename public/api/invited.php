@@ -26,6 +26,6 @@ else {
     $output['error'] = "Database Error! + $error";
 }
  $output = json_encode($output);
- print($output);
+ print($output)
 
 ?> 
