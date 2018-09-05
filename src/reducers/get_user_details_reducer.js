@@ -1,7 +1,7 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-   details: {}
+    details: {}
 };
 
 export default function (state = DEFAULT_STATE, action) {

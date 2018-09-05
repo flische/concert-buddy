@@ -60,6 +60,7 @@ class SignUp extends Component {
             };
             const params = formatPostData(dataToSend);
             const resp = await axios.post('api/addUser.php', params);
+
             if (resp.data.success) {
                 this.setState({
                     redirect: true,

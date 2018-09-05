@@ -1,7 +1,7 @@
 .invite-friends {
     height: 100%;
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 5%;
     text-align: center;
 }
 
@@ -20,8 +20,10 @@
 .red {
     border: 5px solid red;
 }
-/* p{
-    color: dodgerblue;
-    font-size: 32px;
-    text-align: center;
-} */
+
+@media only screen and (max-width: 600px) {
+.invite-friends {
+    margin-top: 15%;
+}
+
+}

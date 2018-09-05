@@ -35,8 +35,7 @@ class Planner extends Component {
     }
 
     async checkUserTrips() {
-        const resp = await axios.post('api/checkUserLoggedIn.php');
-        this.props.get_user_details(resp.data.data[0].ID);
+        this.props.get_user_details();
 
     }
 
@@ -68,8 +67,10 @@ class Planner extends Component {
     }
 
     render() {
+        const buttonStyle = {
+            width: '90%'
+        }
         const user_concert = this.props.user_concert;
-        console.log(user_concert);
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);
@@ -99,7 +100,7 @@ class Planner extends Component {
                     <div className="concert-overview">
                         <div>
                             <h2>Please create a concert</h2>
-                            <Link to="/search-concerts"><div className="btn pink-btn">Search Concerts</div></Link>
+                            <Link to="/search-concerts"><div style={buttonStyle} className="btn pink-btn">Search Concerts</div></Link>
                         </div>
                     </div>
                 </div>
@@ -149,7 +150,6 @@ class Planner extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('user concert: ', state.user.details);
     return {
         user_concert: state.user.details,
         users_attending: state.user.going

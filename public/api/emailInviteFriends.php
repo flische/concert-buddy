@@ -1,10 +1,12 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
+$host = $_SERVER['HTTP_HOST'];
+print($host);
 $_POST = json_decode(file_get_contents('php://input'), true);
 $emails = $_POST['emails'];
-$trip_id = $_POST['trip'];
-
+$trip_id = $_SESSION['tripData'][0]['trip_id'];
+print($trip_id);
 require_once('email_config.php');
 require_once('mysqlconnect.php');
 require '../../PHPMailer/src/PHPMailer.php';
@@ -12,8 +14,8 @@ require '../../PHPMailer/src/SMTP.php';
 require '../../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 $name = "Howard";
-$query = "www.concertbuddy.app/invited?=";
-$trip_id = 30;
+$query = "/invited?=";
+
 
 function token() {
  $output = '';
@@ -65,7 +67,7 @@ $mail->Subject = 'You have been invited to Concert Buddy!';
 
 $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
 <header style='color:white;background-color: #2A363B; height: 100px; text-align: center;'>
-    <img src='images/logo.png' style='height: 75px; margin-left: 10px; margin-top: 10px; float: left;'>
+    <img src='https://lh3.googleusercontent.com/NtTu-MTmFnFEBn9SKaXqZgvz2V4l1JIs4fVT3lKQFJLQYVO3rppKLvqJvXNpebua4uB9utnqbBkiEFciz4tMG6Gqr7al89wmGqgYPAefKOkrEaRQ3JLfCPYgoIt3FqbwJDLwN7ptWg=w2400' style='height: 75px; margin-left: 10px; margin-top: 10px; float: left;'>
     <h2 style='color: #FF847C; display: inline-block; padding-top: 15px;'>CONCERT
         BUDDY</h2>
 </header>
@@ -74,7 +76,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
     <p>You have been invited by your friend, [USER NAME] to go to [CONCERT INFO]. Click the link below to accept or
         decline the invitation.</p>
     <div style='text-align: center;'>
-        <a href=\"".$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
+        <a href=\"".$host.$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
     </div>
     <p>Enjoy the concert!</p>
     <p>-Your friends at Concert Buddy</p>
@@ -82,14 +84,13 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
 </body>";
 
 
-$mail->AltBody = "Hello 
+$mail->AltBody = "Hello npm 
 You have been invited to $name's trip. This will hold all the information in the trip below. 
-Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$query.$token; 
+Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$host.$query.$token; 
 
 if(!$mail->send()) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
-    // print(json_encode($token));
 } else {
     echo 'Message has been sent';
 }

@@ -10,7 +10,7 @@
     color: #2A363B;
     width: 80%;
     margin-bottom: 2%;
-    /* min-height: 20vh; */
+    min-height: 20vh;
 }
 .attendees {
     display: flex;

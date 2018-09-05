@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { get_user_concert_details } from '../../actions';
 import { Link } from 'react-router-dom';
 import RespItem from '../resp-item';
-import respData from './dummy-responsibilities';
+import './responsibility-board.css';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import DeleteModal from '../responsibility-board/delete-modal';
 
 class Responsibilities extends Component {
     constructor(props) {
@@ -13,12 +13,23 @@ class Responsibilities extends Component {
 
         this.state = {
             open: false,
-            responsibilities: []
-
+            responsibilities: [],
+            show: false,
         };
 
         this.toggle = this.toggle.bind(this);
         this.itemCompleted = this.itemCompleted.bind(this);
+    }
+
+    showModal = () => {
+        this.setState({
+            show: true
+        })
+    }
+    hideModal = () => {
+        this.setState({
+            show: false
+        })
     }
 
     componentDidMount() {
@@ -26,15 +37,11 @@ class Responsibilities extends Component {
     }
 
     async checkResponsibilities() {
-        //make call to database to retrieve array of resp objects
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id
         }
-
         const params = formatPostData(dataToSend);
-
         const resp = await axios.post('api/get_responsibilities.php', params);
-        console.log('resp on resp-board: ', resp);
 
         this.setState({
             responsibilities: resp.data.data
@@ -55,8 +62,37 @@ class Responsibilities extends Component {
 
     }
 
+    deleteItem = async (id) => {
+        const dataToSend = {
+            trip_id: this.props.user_concert.trip_id,
+            id: id
+        }
+        console.log('Delete Item Called:', dataToSend);
+        const params = formatPostData(dataToSend);
+        const resp = await axios.post('api/delete_responsibilities.php', params);
+
+        this.checkResponsibilities();
+    }
+
     render() {
         const resp = this.state.responsibilities
+
+
+        if (!resp) {
+            return (
+                <div>
+                    <div className="title">RESPONSIBILITIES</div>
+                    <div className="no-resp-main">
+                        <div className="no-resp">
+                            No Responsibilities</div></div>
+                    <div className="buttons">
+                        <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
+                        <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
+                    </div>
+                </div>
+            );
+        }
+
         const respItem = resp.map((item) => {
 
             return <RespItem
@@ -64,11 +100,15 @@ class Responsibilities extends Component {
                 id={item.ID}
                 title={item.title}
                 details={item.details}
-                person={item.name}
+                name={item.name}
                 completed={item.completed}
                 toggle={this.toggle}
                 itemCompleted={this.itemCompleted}
                 open={this.state.open}
+                deleteItem={this.deleteItem}
+                showModal={this.showModal}
+                chkResp={this.checkResponsibilities}
+
 
             />
         });
@@ -82,6 +122,9 @@ class Responsibilities extends Component {
                     <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
                     <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                 </div>
+                {/* <DeleteModal show={this.state.show} handleClose={this.hideModal} deleteItem={this.deleteItem} tripid={this.props.user_concert.trip_id} props={this.props} >
+                    <p>Are you sure you want to delete this responsibility?</p>
+                </DeleteModal> */}
             </div>
 
         );
@@ -89,10 +132,9 @@ class Responsibilities extends Component {
 }
 
 function mapStateToProps(state) {
-
     return {
         user_concert: state.user.details
     }
 }
 
-export default connect(mapStateToProps, { get_user_concert_details })(Responsibilities);
+export default connect(mapStateToProps)(Responsibilities);
