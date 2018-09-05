@@ -1,8 +1,24 @@
 import React, {Component} from 'react';
 import './acceptance-page.css'
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import { parseParameters } from '../../helpers';
 
 class AcceptancePage extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            trip: []
+        }
+
+    }
+    componentDidMount(){
+        this.getConcertDetails(parseParameters())    
+    }
+    async getConcertDetails(object){
+        const tripDetails = await axios.post('api/invited.php', object);
+        console.log(tripDetails);
+    }
     render(){
         return (
             <div className="container">
