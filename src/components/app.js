@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { Switch } from 'react-router-dom'
 import Header from './header/';
@@ -19,9 +19,10 @@ import redirect from '../hoc/redirect';
 import EditResponsibility from '../components/edit-responsibility';
 
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+
         this.state = {
             isHome: false
         }
