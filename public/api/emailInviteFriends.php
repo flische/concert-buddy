@@ -1,10 +1,12 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
+$host = $_SERVER['HTTP_HOST'];
+print($host);
 $_POST = json_decode(file_get_contents('php://input'), true);
 $emails = $_POST['emails'];
-$trip_id = $_POST['trip'];
-
+$trip_id = $_SESSION['tripData'][0]['trip_id'];
+print($trip_id);
 require_once('email_config.php');
 require_once('mysqlconnect.php');
 require '../../PHPMailer/src/PHPMailer.php';
@@ -12,8 +14,8 @@ require '../../PHPMailer/src/SMTP.php';
 require '../../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 $name = "Howard";
-$query = "localhost:3000/invited?=";
-$trip_id = 30;
+$query = "/invited?=";
+
 
 function token() {
  $output = '';
@@ -74,7 +76,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
     <p>You have been invited by your friend, [USER NAME] to go to [CONCERT INFO]. Click the link below to accept or
         decline the invitation.</p>
     <div style='text-align: center;'>
-        <a href=\"".$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
+        <a href=\"".$host.$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
     </div>
     <p>Enjoy the concert!</p>
     <p>-Your friends at Concert Buddy</p>
@@ -84,12 +86,11 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
 
 $mail->AltBody = "Hello npm 
 You have been invited to $name's trip. This will hold all the information in the trip below. 
-Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$query.$token; 
+Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$host.$query.$token; 
 
 if(!$mail->send()) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
-    // print(json_encode($token));
 } else {
     echo 'Message has been sent';
 }

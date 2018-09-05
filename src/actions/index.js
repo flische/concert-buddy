@@ -17,12 +17,12 @@ export function get_concert_details(object) {
 }
 
 
-export async function get_user_details(userID) {
-    const dataToSend = {
-        userID: userID,
-    }
-    const params = formatPostData(dataToSend)
-    const userTrips  =  await axios.post('api/checkUserTrips.php', params);
+export async function get_user_details() {
+    // const dataToSend = {
+    //     userID: userID,
+    // }
+    // const params = formatPostData(dataToSend)
+    const userTrips  =  await axios.post('api/checkUserTrips.php');
     const id = userTrips.data.data[0].trip_id;
     var dataToSend2 = {
         tripID: id,
@@ -47,7 +47,6 @@ export async function send_email_invites (emails){
         trip: 1,
     }
     const params = JSON.stringify(dataToSend)
-    // const params = formatPostData(dataToSend);
     console.log(params);
     const response = await axios.post('api/emailInviteFriends.php', params);
     return {
@@ -57,7 +56,6 @@ export async function send_email_invites (emails){
 }
 
 export async function create_trip(trip){
-    // const response = await axios.post('api/createTrip.php', trip);
     return {
         type: types.CREATE_TRIP,
         payload: response

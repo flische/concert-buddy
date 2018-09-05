@@ -55,7 +55,6 @@ class InviteFriends extends Component {
 
             }
         }
-        console.log("after for loop array", array);
         this.props.send_email_invites(array);
     }
     render(){
