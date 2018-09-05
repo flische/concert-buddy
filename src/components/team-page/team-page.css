@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.eachPerson{
+    height: 25%;
+    border-bottom: 5px solid white;
+}

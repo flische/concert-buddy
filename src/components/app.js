@@ -17,6 +17,7 @@ import AddResponsibility from '../components/add-responsibility';
 import auth from '../hoc/auth';
 import redirect from '../hoc/redirect';
 import EditResponsibility from '../components/edit-responsibility';
+import TeamPage from '../components/team-page';
 
 
 class App extends Component {

@@ -8,6 +8,7 @@ import rootReducer from './reducers/index';
 import reduxPromise from 'redux-promise';
 import think from './middleware/think';
 import types from './actions/types';
+import TeamPage from './components/team-page';
 
 const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));
 
@@ -18,7 +19,7 @@ const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise))
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <App />
+            <TeamPage />
         </Router>
     </Provider>,
     document.getElementById('root')
