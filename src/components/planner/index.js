@@ -67,6 +67,7 @@ class Planner extends Component {
     }
 
     render() {
+        console.log(this.props.user_concert);
         const buttonStyle = {
             width: '90%'
         }

@@ -58,7 +58,7 @@ class App extends React.Component {
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
                     <Route path='/invite' component={InviteFriends} />
-                    <Route path='/sign-in' component={redirect(SignIn, '/planner')} />
+                    <Route path='/sign-in' component={redirect(SignIn, '/')} />
                     <Route path='/sign-up' component={redirect(SignUp, '/sign-in')} />
                     <Route path='/planner' component={auth(Planner)} />
                     <Route path='/new-trip-1' component={NewTrip1} />
