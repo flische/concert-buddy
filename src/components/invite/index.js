@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './invite.css';
 import { reduxForm, Field, FieldArray } from 'redux-form';
-import Input from './input';
+import InviteInput from './invite_input';
 import {connect} from 'react-redux';
 import {send_email_invites} from '../../actions'
 import Modal from '../confirmation-modal';
@@ -26,7 +26,7 @@ class InviteFriends extends Component {
         const emails = fields.map((name, index) => {
             if(index < 6){
             return(
-                <Field key ={name} name={name} component={Input} />
+                <Field key ={name} name={name} component={InviteInput} />
             )
         } else {
             return;
@@ -55,7 +55,6 @@ class InviteFriends extends Component {
 
             }
         }
-        console.log("after for loop array", array);
         this.props.send_email_invites(array);
     }
     render(){

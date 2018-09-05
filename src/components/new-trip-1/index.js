@@ -54,9 +54,10 @@ class NewTrip1 extends Component {
             image: concertData.images[0].url,
         }
 
-
+        console.log(concertData);
         const params = formatPostData(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
+        console.log(concert);
         const concertID = concert.data.ID;
 
         const dataToSend2 = {

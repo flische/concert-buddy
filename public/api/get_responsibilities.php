@@ -17,7 +17,8 @@ $result = mysqli_query($conn, $query);
 if ($result) {
     $output['success'] = true;
     while($row = mysqli_fetch_assoc($result)){
-        $output['data'][] = $row;
+        $row['completed'] = (bool)$row['completed'];
+         $output['data'][] = $row;
     }
 }
 else {

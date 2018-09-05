@@ -1,8 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
+
 // $token  = $_POST['token'];
 $token  = "Gx1DjXxDTWZ0enhtlDVQ3YFl9XrbvXdPiqmIQts0ytn96Gob9wFVrmLURR"; 
+
 
 require_once('mysqlconnect.php');
 $output = [

@@ -5,19 +5,17 @@ import './responsibility-board.css';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import DeleteModal from '../responsibility-board/delete-modal';
+import Loader from '../loader';
 
 class Responsibilities extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            open: false,
-            responsibilities: [],
-            show: false,
+            responsibilities: null,
+            show: false
         };
 
-        this.toggle = this.toggle.bind(this);
         this.itemCompleted = this.itemCompleted.bind(this);
     }
 
@@ -48,36 +46,40 @@ class Responsibilities extends Component {
         })
 
     }
-
-    toggle() {
-        this.setState({
-            open: !this.state.open
-        });
-    }
-
-    itemCompleted() {
-        this.setState({
-            completed: !this.state.completed
-        });
-
-    }
-
     deleteItem = async (id) => {
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id,
             id: id
+
         }
-        console.log('Delete Item Called:', dataToSend);
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/delete_responsibilities.php', params);
 
         this.checkResponsibilities();
     }
 
+    itemCompleted = async (id, completed) => {
+        const dataToSend = {
+            // trip_id: this.props.user_concert.trip_id,
+            ID: id,
+            completed: completed
+        }
+
+        const params = formatPostData(dataToSend);
+        const resp = await axios.post('api/toggle_responsibilities.php', params);
+        console.log('toggle response: ', resp);
+
+        this.checkResponsibilities();
+    }
+
     render() {
+        if (this.state.responsibilities === null) {
+            return (
+                <Loader />
+            )
+        }
+
         const resp = this.state.responsibilities
-
-
         if (!resp) {
             return (
                 <div>
@@ -104,7 +106,6 @@ class Responsibilities extends Component {
                 completed={item.completed}
                 toggle={this.toggle}
                 itemCompleted={this.itemCompleted}
-                open={this.state.open}
                 deleteItem={this.deleteItem}
                 showModal={this.showModal}
                 chkResp={this.checkResponsibilities}
@@ -122,9 +123,6 @@ class Responsibilities extends Component {
                     <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
                     <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                 </div>
-                {/* <DeleteModal show={this.state.show} handleClose={this.hideModal} deleteItem={this.deleteItem} tripid={this.props.user_concert.trip_id} props={this.props} >
-                    <p>Are you sure you want to delete this responsibility?</p>
-                </DeleteModal> */}
             </div>
 
         );

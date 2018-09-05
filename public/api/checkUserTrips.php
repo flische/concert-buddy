@@ -21,6 +21,7 @@ if ($result) {
        $output['success'] = true;
        $row  = mysqli_fetch_assoc($result);
        $output['data'][] = $row;
+       $_SESSION['tripData'] = $output['data'];
 }
 else {
     $error = mysqli_error($conn);

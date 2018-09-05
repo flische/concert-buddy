@@ -24,7 +24,7 @@ if (mysqli_errno($conn)){
 } else if (mysqli_affected_rows($conn)) {
     $output['success'] = true;
     $output['affected_rows'] = mysqli_affected_rows($conn);
-    print("successfuly added files
+    print("successfully added files
     ");
 }
 else {
