@@ -5,7 +5,7 @@ import './responsibility-board.css';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import DeleteModal from '../responsibility-board/delete-modal';
+import Loader from '../loader';
 
 class Responsibilities extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class Responsibilities extends Component {
 
         this.state = {
             open: false,
-            responsibilities: [],
+            responsibilities: null,
             show: false,
         };
 
@@ -75,6 +75,11 @@ class Responsibilities extends Component {
     }
 
     render() {
+        if (this.state.responsibilities === null) {
+            return (
+                <Loader />
+            )
+        }
         const resp = this.state.responsibilities
 
 

@@ -16,7 +16,6 @@ import Responsibilities from '../components/responsibility-board';
 import AddResponsibility from '../components/add-responsibility';
 import EditResponsibility from '../components/edit-responsibility';
 
-
 class App extends React.Component {
     constructor(props) {
         super(props)

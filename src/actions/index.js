@@ -1,6 +1,6 @@
 import types from './types';
 import axios from 'axios';
-import {formatPostData} from '../helpers'
+import { formatPostData } from '../helpers'
 
 
 export function get_concert_details(object) {
@@ -9,7 +9,7 @@ export function get_concert_details(object) {
         URL = URL + '&id=' + object.id;
     }
     const resp = axios.get(URL);
-    
+
     return {
         type: types.GET_CONCERT_DETAILS,
         payload: resp
@@ -22,13 +22,14 @@ export async function get_user_details() {
     //     userID: userID,
     // }
     // const params = formatPostData(dataToSend)
-    const userTrips  =  await axios.post('api/checkUserTrips.php');
+    const userTrips = await axios.post('api/checkUserTrips.php');
+    console.log('get_user_details actions/index.js: ', userTrips);
     const id = userTrips.data.data[0].trip_id;
     var dataToSend2 = {
         tripID: id,
     }
     const params2 = formatPostData(dataToSend2);
-    const going =  await axios.post('api/checkWhosGoing.php', params2)
+    const going = await axios.post('api/checkWhosGoing.php', params2)
     const whosgoing = going.data.data;
     const payload = {
         userTrips: userTrips,
@@ -41,7 +42,7 @@ export async function get_user_details() {
 
 }
 
-export async function send_email_invites (emails){
+export async function send_email_invites(emails) {
     const dataToSend = {
         emails: emails,
         trip: 1,
@@ -55,14 +56,14 @@ export async function send_email_invites (emails){
     }
 }
 
-export async function create_trip(trip){
+export async function create_trip(trip) {
     return {
         type: types.CREATE_TRIP,
         payload: response
     };
 }
 
-export async function delete_responsibility(id){
+export async function delete_responsibility(id) {
 
     return {
         type: types.DELETE_RESPONSIBILITY,

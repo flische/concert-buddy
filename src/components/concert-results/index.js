@@ -3,6 +3,7 @@ import './concert-results.css'
 import ConcertItem from '../concert-item';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Loader from '../loader';
 
 
 class ConcertResults extends Component {
@@ -17,7 +18,7 @@ class ConcertResults extends Component {
 
     componentDidMount() {
         this.callTicketMaster(this.parseParameters());
-       
+
     }
 
     parseParameters() {
@@ -26,7 +27,7 @@ class ConcertResults extends Component {
         var pair = null;
         //get the query string, omitting the "?"
         var sPageURL = window.location.search.substring(1),
-        
+
             //use the ampersand as a separator
             qArr = sPageURL.split('&'); console.log(sPageURL)
         //each element in qArr is not a key/val pair
@@ -45,7 +46,7 @@ class ConcertResults extends Component {
         return queryObject;
     }
 
-   async callTicketMaster(object) {
+    async callTicketMaster(object) {
 
         let URL = 'https://app.ticketmaster.com/discovery/v2/events.jsonp?countryCode=US&apikey=86PZJxmHAum8VeEH8EJBOCjucnSAVyGR';
 
@@ -68,25 +69,21 @@ class ConcertResults extends Component {
         }
 
         const resp = await axios.get(URL);
-            this.setState({
-                url: URL,
-                concerts: resp.data._embedded.events
-            });
+        this.setState({
+            url: URL,
+            concerts: resp.data._embedded.events
+        });
     }
 
     render() {
-        // console.log(this.state.concerts)
-        // if(!this.state.concerts){
-        //     return (
-        //         <div>Loading</div>
-        //     )
-        // }
-        // debugger;
-        const concert = this.state.concerts.map((item, index) => {
 
-            // console.log('Embedded Venues:', item._embedded.venues[0]);
-          
-            
+        if (!this.state.concerts) {
+            return (
+                <Loader />
+            )
+        }
+
+        const concert = this.state.concerts.map((item, index) => {
             return <ConcertItem
                 key={index}
                 id={item.id}
