@@ -21,7 +21,7 @@ const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise))
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <AcceptancePage />
+            <App />
         </Router>
     </Provider>,
     document.getElementById('root')
