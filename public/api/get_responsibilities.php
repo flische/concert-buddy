@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
-$tripID  = $_POST["trip_id"];
+$tripID  = 1;//$_POST["trip_id"];
 $output = [
     'success'=> false,
 ];
@@ -17,6 +17,7 @@ $result = mysqli_query($conn, $query);
 if ($result) {
     $output['success'] = true;
     while($row = mysqli_fetch_assoc($result)){
+       $row['completed'] = (bool) $row['completed'];
         $output['data'][] = $row;
     }
 }
