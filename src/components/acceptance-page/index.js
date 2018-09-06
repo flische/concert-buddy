@@ -77,7 +77,7 @@ class AcceptancePage extends Component{
                     </div>
                 </div>
                 <div className="buttonArea">
-                    <Link to ="/login"><div className="btn white-btn">ACCEPT</div></Link>
+                    <Link to ="/sign-in"><div className="btn white-btn">ACCEPT</div></Link>
                     <div className="btn pink-btn">DECLINE</div>
                 </div>
             </div>
