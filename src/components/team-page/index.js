@@ -20,9 +20,9 @@ const members = [
     },
     {
         name: 'Howard Kim',
-        role: 'Team Lead',
+        role: "Chris Brown's #1 fan",
         imgUrl: howardPic,
-        favoriteArtist: 'Eminem',
+        favoriteArtist: 'Chris Brown',
         linkedin: 'https://www.linkedin.com/in/howardkim820/',
         github: 'https://www.github.com/howardskim'
     },
@@ -36,7 +36,7 @@ const members = [
     },
     {
         name: 'Federico Lische',
-        role: 'Lead Intern',
+        role: 'React-Redux Master',
         imgUrl: fed,
         favoriteArtist: 'Pink Floyd',
         linkedin: 'https://www.linkedin.com/in/flische/',
