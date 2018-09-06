@@ -58,6 +58,9 @@ class Nav extends Component {
                         <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
                     </li>
                     <li>
+                        <NavLink onClick={this.handleClick.bind(this)} to="/team" className="navlink">MEET THE TEAM</NavLink>
+                    </li>
+                    <li>
                         <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/" className="navlink">SIGN OUT</NavLink>
                     </li>
                 </Fragment>
