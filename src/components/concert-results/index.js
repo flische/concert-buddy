@@ -10,7 +10,7 @@ class ConcertResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            concerts: [],
+            concerts: null,
             url: ''
         }
 
@@ -78,6 +78,21 @@ class ConcertResults extends Component {
     render() {
 
         if (!this.state.concerts) {
+            return (
+                <div className="results">
+                    <div className="title">CONCERT RESULTS</div>
+                    <div className="no-concerts">
+                        No concerts found. Try widening your search criteria.
+                        <Link to="/search-concerts">
+                            <div className="btn pink-btn">BACK TO SEARCH</div>
+                        </Link>
+                    </div>
+                </div>
+
+            )
+        }
+
+        if (!this.state.concerts === null) {
             return (
                 <Loader />
             )

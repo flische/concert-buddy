@@ -21,6 +21,12 @@
     width: 80%;
 }
 
+.no-concerts {
+    font-size: 30px;
+    margin-top: 50px;
+    text-align: center;
+}
+
 @media only screen and (min-width: 601px) {
     .concert-result-container {
         display: inline-block;
