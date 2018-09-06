@@ -17,6 +17,7 @@ import AddResponsibility from '../components/add-responsibility';
 import auth from '../hoc/auth';
 import redirect from '../hoc/redirect';
 import EditResponsibility from '../components/edit-responsibility';
+import TeamPage from '../components/team-page';
 import AcceptancePage from '../components/acceptance-page';
 import AboutPage from '../components/about';
 
@@ -68,6 +69,7 @@ class App extends React.Component {
                     <Route path='/responsibilities' component={auth(Responsibilities)} />
                     <Route path='/add-responsibility' component={auth(AddResponsibility)} />
                     <Route path='/edit-responsibility' component={EditResponsibility} />
+                    <Route path='/team' component={TeamPage} />
                     <Route path='/acceptance-page' component = {AcceptancePage} />
                     <Route path='/about-page' component = {AboutPage} />
                     <Route component={redirect(NotFound, '/')} />
