@@ -19,7 +19,6 @@ import redirect from '../hoc/redirect';
 import EditResponsibility from '../components/edit-responsibility';
 import TeamPage from '../components/team-page';
 
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -67,6 +66,7 @@ class App extends Component {
                     <Route path='/responsibilities' component={auth(Responsibilities)} />
                     <Route path='/add-responsibility' component={auth(AddResponsibility)} />
                     <Route path='/edit-responsibility' component={EditResponsibility} />
+                    <Route path='/team' component={TeamPage} />
                     <Route component={redirect(NotFound, '/')} />
 
                 </Switch>

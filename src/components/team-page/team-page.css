@@ -1,9 +1,70 @@
-.container{
+.team-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    width: 100%;
 }
-.eachPerson{
+
+.eachPerson {
     height: 25%;
-    border-bottom: 5px solid white;
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: solid 5px white;
+}
+
+.eachPerson:nth-child(even) {
+    flex-flow: row-reverse nowrap;
+}
+
+.eachPerson .profile img {
+    border: 1px solid white;
+    width: 50%;
+    border-radius: 50%;
+}
+
+.eachPerson .profile,
+.eachPerson .details {
+    width: 50%;
+}
+
+.eachPerson .profile {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.eachPerson .profile p {
+    margin: 0;
+}
+
+.eachPerson .details {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.eachPerson .details p {
+    margin: 0;
+}
+
+.eachPerson .details .links {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2em;
+}
+
+.eachPerson .details p:nth-child(1) {
+    font-weight: lighter;
+    margin-bottom: .5em;
+}
+
+.eachPerson .details p:nth-child(2) {
+    font-size: 1.2em;
+}
+
+.eachPerson .details .links img {
+    width: 30px;
 }
