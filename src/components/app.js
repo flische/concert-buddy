@@ -68,7 +68,7 @@ class App extends React.Component {
                     <Route path='/responsibilities' component={auth(Responsibilities)} />
                     <Route path='/add-responsibility' component={auth(AddResponsibility)} />
                     <Route path='/edit-responsibility' component={EditResponsibility} />
-                    <Route path='/acceptance-page:token' component = {AcceptancePage} />
+                    <Route path='/acceptance-page' component = {AcceptancePage} />
                     <Route path='/about-page' component = {AboutPage} />
                     <Route component={redirect(NotFound, '/')} />
 
