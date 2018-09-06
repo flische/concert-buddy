@@ -12,7 +12,7 @@ import fed from '../../images/federico_pic.jpeg';
 const members = [
     {
         name: 'Rebecca Martin',
-        role: 'Lead Frontend',
+        role: 'Lead Everything',
         imgUrl: rebecca,
         favoriteArtist: 'Taylor Swift',
         linkedin: 'https://www.linkedin.com/in/rebecca-martin-63a19256/',
@@ -20,9 +20,9 @@ const members = [
     },
     {
         name: 'Howard Kim',
-        role: 'Team Lead',
+        role: 'Team Lead (but not really)',
         imgUrl: howardPic,
-        favoriteArtist: 'Eminem',
+        favoriteArtist: 'Kid Rock',
         linkedin: 'https://www.linkedin.com/in/howardkim820/',
         github: 'https://www.github.com/howardskim'
     },
@@ -36,9 +36,9 @@ const members = [
     },
     {
         name: 'Federico Lische',
-        role: '???',
+        role: 'React-Redux Master',
         imgUrl: fed,
-        favoriteArtist: 'Britney Spears',
+        favoriteArtist: 'Pink Floyd',
         linkedin: 'https://www.linkedin.com/in/flische/',
         github: 'https://www.github.com/flische'
     }
