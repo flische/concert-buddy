@@ -21,8 +21,11 @@ class AcceptancePage extends Component{
     componentDidMount(){
         let pageURL = window.location.search.substring(1);
         console.log(pageURL);
+        let token = this.getToken(pageURL);
+        localStorage.setItem('token', token);
         var test = this.getConcertDetails(this.getToken(pageURL));
-        console.log('test', test)
+        console.log('test', test);
+
     }
     async getConcertDetails(object){
         let params = formatPostData(object);

@@ -23,11 +23,11 @@ export default () => {
     const images = imageArray.map((item, index)=>{
         if(index === (imageArray.length-1)){
             return (
-                <img style={reduxStyle} src={item}/>
+                <img key={item} style={reduxStyle} src={item}/>
             )
         } else {
             return (
-                <img style={iconStyle} src={item} />
+                <img key={item} style={iconStyle} src={item} />
             )
         }
 
