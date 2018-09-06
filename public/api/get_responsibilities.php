@@ -10,7 +10,7 @@ $output = [
     'success'=>false,
 ];
 $query = "SELECT * FROM `responsib`
- WHERE  `trip_id` = '$tripID' ORDER BY `ID` DESC, `completed` ASC";
+ WHERE  `trip_id` = '$tripID' ORDER BY `completed` ASC, `ID` DESC";
 
 $result = mysqli_query($conn, $query);
 
