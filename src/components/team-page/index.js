@@ -20,9 +20,9 @@ const members = [
     },
     {
         name: 'Howard Kim',
-        role: "Chris Brown's #1 fan",
+        role: "Team Lead",
         imgUrl: howardPic,
-        favoriteArtist: 'Chris Brown',
+        favoriteArtist: 'Tien Shinhan',
         linkedin: 'https://www.linkedin.com/in/howardkim820/',
         github: 'https://www.github.com/howardskim'
     },
@@ -36,7 +36,7 @@ const members = [
     },
     {
         name: 'Federico Lische',
-        role: 'React-Redux Master',
+        role: 'Lead MeisterTasker',
         imgUrl: fed,
         favoriteArtist: 'Pink Floyd',
         linkedin: 'https://www.linkedin.com/in/flische/',
@@ -46,28 +46,31 @@ const members = [
 
 export default () => {
     return (
-        <div className="team-container">
-            {members.map(item => {
-                const{ name, role, imgUrl, favoriteArtist, linkedin, github } = item;
-                return (
-                    <div className="eachPerson" key={name}>
-                        <div className="profile">
-                            <p>{name}</p>
-                            <img src={imgUrl} alt="photo" />
-                            <p>{role}</p>
-                        </div>
-                        <div className="details">
-                            <p>favorite artist:</p>
-                            <p>{favoriteArtist}</p>
-                            <div className="links">
-                                <a href={linkedin} target="_blank"><img src={linkedInIcon} alt="linkedIn" /></a>
-                                <a href={github} target="_blank"><img src={githubIcon} alt="linkedIn" /></a>
+        <div>
+            <h3 className="title">MEET THE TEAM</h3>
+
+            <div className="team-container">
+                {members.map(item => {
+                    const{ name, role, imgUrl, favoriteArtist, linkedin, github } = item;
+                    return (
+                        <div className="eachPerson" key={name}>
+                            <div className="profile">
+                                <p>{name}</p>
+                                <img src={imgUrl} alt="photo" />
+                                <p>{role}</p>
+                            </div>
+                            <div className="details">
+                                <p>favorite artist:</p>
+                                <p>{favoriteArtist}</p>
+                                <div className="links">
+                                    <a href={linkedin} target="_blank"><img src={linkedInIcon} alt="linkedIn" /></a>
+                                    <a href={github} target="_blank"><img src={githubIcon} alt="linkedIn" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
-            })}
-
+                    )
+                })}
+            </div>
         </div>
     )
 }
