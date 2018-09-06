@@ -29,40 +29,51 @@ class AcceptancePage extends Component{
     }
     async getConcertDetails(object){
         let params = formatPostData(object);
-        const tripDetails = await axios.post('api/invited.php', params);
+        const {data : tripDetails} = await axios.post('api/invited.php', params);
+
         console.log(tripDetails);
         this.setState({
             trip: tripDetails
         })
     }
     render(){
+      
         console.log(this.state.trip);
+        const {data} = this.state.trip;
+        if(!data){
+            return (
+                <h3>Loading...</h3>
+            )
+        }
+        const {trip_name, artist, date, img, venue, address, time} = data[0];
         return (
-            <div className="container">
+            <div className="acceptanceContainer">
                  <div className="detailsHeader title">
-                    YOUR INVITED TRIP DETAILS: 
+                    YOU HAVE BEEN INVITED TO THE TRIP: {trip_name} 
                     <div className="imageContainer">
-                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/09/eminem-kamikaze-review1.jpg?crop=900:600&width=440" alt="eminem"/>
+                        <img src={img} />
                     </div>
                 </div>
-                <div className="concert-overview">
+                <div className="concert-overview-acceptance">
                     <div>
-                        <h2>Concert: </h2>
+                        <h2>ARTIST: <span>{artist}</span></h2>
                     </div>
                     <div>
-                        <h2>Date: </h2>
+                        <h2>DATE: <span>{date}</span> </h2>
                     </div>
                     <div>
-                        <h2>Location: </h2>
+                        <h2>VENUE: <span>{venue}</span> </h2>
                     </div>
                 </div>
                 <div className="title">WHO'S GOING?</div>
-                <div className="attendees">
+                <div className="attendees-acceptance">
                     <div className="leftSide">
-                        Tien
+                        <h2>Tien</h2>
+                        <h2>Jhon</h2>
                     </div>
                     <div className="rightSide">
-                        Rebecca
+                        <h2>Rebecca</h2>
+                        <h2>David</h2>
                     </div>
                 </div>
                 <div className="buttonArea">

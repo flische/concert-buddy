@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
 /* @media only screen and(max-width: 600px){
     .imageContainer > img {
@@ -10,29 +11,49 @@ img{
 .detailsHeader, .imageContainer, .buttonArea{
     text-align: center;
 }
-.container{
+
+.detailsHeader{
+    font-family: Fjalla One;
+}
+
+.acceptanceContainer {
     padding-top: 25%;
 }
-.concert-overview,
+.concert-overview-acceptance,
 .attendees {
     margin: 0 auto;
     padding: 1%;
     background-color: white;
     color: #2A363B;
-    width: 80%;
+    /* width: 80%; */
     margin-bottom: 2%;
-    min-height: 19vh;
+    min-height: 17vh;
 }
 
-.attendees {
+.concert-overview-acceptance h2{
+    font-size: 1.2em;
+}
+
+.concert-overview-acceptance h2 span {
+    font-size: 1em;
+    color: purple;
+    font-weight: lighter;
+}
+
+.attendees-acceptance {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 14vh;
+    background-color: white;
 }
-
+.attendees-acceptance > div {
+    font-family: Fjalla One;
+}
 .leftSide,
 .rightSide {
     text-align: center;
+    color: purple;
 }
 
 .attendees>div>span {

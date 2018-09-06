@@ -71,7 +71,6 @@ class App extends React.Component {
                     <Route path='/acceptance-page' component = {AcceptancePage} />
                     <Route path='/about-page' component = {AboutPage} />
                     <Route component={redirect(NotFound, '/')} />
-
                 </Switch>
             </div>
         );
