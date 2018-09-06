@@ -40,14 +40,22 @@ class Nav extends Component {
             return (
                 <Fragment>
                     <li>
+                        <NavLink onClick={this.handleClick.bind(this)} exact to='/' className='navlink'>HOME</NavLink>
+                    </li>
+                    <li>
                         <NavLink onClick={this.handleClick.bind(this)} to="/planner" className="navlink">PLANNER HOMEPAGE</NavLink>
                     </li>
-
                     <li>
                         <NavLink onClick={this.handleClick.bind(this)} to="/invite" className="navlink">INVITE FRIENDS</NavLink>
                     </li>
                     <li>
                         <NavLink onClick={this.handleClick.bind(this)} to="/responsibilities" className="navlink">RESPONSIBILITIES</NavLink>
+                    </li>
+                    <li>
+                        <NavLink onClick={this.handleClick.bind(this)} to="/search-concerts" className="navlink">SEARCH CONCERTS</NavLink>
+                    </li>
+                    <li>
+                        <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
                     </li>
                     <li>
                         <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/" className="navlink">SIGN OUT</NavLink>
@@ -59,6 +67,15 @@ class Nav extends Component {
                 <Fragment>
                     <li>
                         <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/sign-in" className="navlink">SIGN IN</NavLink>
+                    </li>
+                    <li>
+                        <NavLink onClick={this.handleClick.bind(this)} exact to='/' className='navlink'>HOME</NavLink>
+                    </li>
+                    <li>
+                        <NavLink onClick={this.handleClick.bind(this)} to="/search-concerts" className="navlink">SEARCH CONCERTS</NavLink>
+                    </li>
+                    <li>
+                        <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
                     </li>
                     <li>
                         <NavLink onClick={this.handleClick.bind(this)} className="navlink" to="/sign-up">SIGN UP</NavLink>
@@ -77,39 +94,7 @@ class Nav extends Component {
                     <span></span>
                     <span></span>
                     <ul id="menu">
-
-
-                        <li>
-                            <NavLink onClick={this.handleClick.bind(this)} exact to='/' className='navlink'>HOME</NavLink>
-                        </li>
-                        <li>
-                            <NavLink onClick={this.handleClick.bind(this)} exact to='/login' className='navlink'>LOGIN</NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink onClick={this.handleClick.bind(this)} to="/search-concerts" className="navlink">SEARCH CONCERTS</NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink onClick={this.handleClick.bind(this)} to="/planner" className="navlink">PLANNER HOMEPAGE</NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink onClick={this.handleClick.bind(this)} to="/invite" className="navlink">INVITE FRIENDS</NavLink>
-                        </li>
-                        <li>
-                            <NavLink onClick={this.handleClick.bind(this)} to="/responsibilities" className="navlink">RESPONSIBILITIES</NavLink>
-                        </li>
-                        <li>
-                            <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
-                        </li>
-
-                        <li><NavLink onClick={this.handleClick.bind(this)} exact to='/' className='navlink'>HOME</NavLink></li>
-
-                        <li><NavLink onClick={this.handleClick.bind(this)} to="/search-concerts" className="navlink">SEARCH CONCERTS</NavLink></li>
-
                         {this.renderLinks()}
-
                     </ul>
                 </div>
             </nav>

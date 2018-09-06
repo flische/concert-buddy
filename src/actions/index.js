@@ -16,8 +16,6 @@ export function get_concert_details(object) {
     }
 }
 
-
-
 export async function get_user_details() {
     // const dataToSend = {
     //     userID: userID,
@@ -134,7 +132,7 @@ export const signUp = credentials => async dispatch => {
     }   
 }
 
-export const signOut = () => {
-    
-    return { type: types.SIGN_OUT }
+export async function signOut(){
+    await axios.post('api/logout.php');
+    return { type: types.SIGN_OUT };
 };
