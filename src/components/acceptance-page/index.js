@@ -21,7 +21,8 @@ class AcceptancePage extends Component{
     componentDidMount(){
         let pageURL = window.location.search.substring(1);
         console.log(pageURL);
-        let token = this.getToken(pageURL);
+        let tokenObj = this.getToken(pageURL);
+        var token = tokenObj["token"]
         localStorage.setItem('token', token);
         var test = this.getConcertDetails(this.getToken(pageURL));
         console.log('test', test);

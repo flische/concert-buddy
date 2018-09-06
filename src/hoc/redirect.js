@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export default (WrappedComponent, to = '/') => {
+export default (WrappedComponent, to='/') => {
     class Redirect extends Component {
 
         componentDidMount(){
