@@ -18,8 +18,11 @@ import auth from '../hoc/auth';
 import redirect from '../hoc/redirect';
 import EditResponsibility from '../components/edit-responsibility';
 import TeamPage from '../components/team-page';
+import AcceptancePage from '../components/acceptance-page';
+import AboutPage from '../components/about';
 
-class App extends Component {
+
+class App extends React.Component {
     constructor(props) {
         super(props);
 
@@ -59,7 +62,7 @@ class App extends Component {
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
                     <Route path='/invite' component={InviteFriends} />
-                    <Route path='/sign-in' component={redirect(SignIn, '/')} />
+                    <Route path='/sign-in' component={redirect(SignIn,(window.localStorage.getItem("token")) ? '/acceptedPage' + window.localStorage : '/planner')} />
                     <Route path='/sign-up' component={redirect(SignUp, '/sign-in')} />
                     <Route path='/planner' component={auth(Planner)} />
                     <Route path='/new-trip-1' component={NewTrip1} />
@@ -67,8 +70,9 @@ class App extends Component {
                     <Route path='/add-responsibility' component={auth(AddResponsibility)} />
                     <Route path='/edit-responsibility' component={EditResponsibility} />
                     <Route path='/team' component={TeamPage} />
+                    <Route path='/acceptance-page' component = {AcceptancePage} />
+                    <Route path='/about-page' component = {AboutPage} />
                     <Route component={redirect(NotFound, '/')} />
-
                 </Switch>
             </div>
         );

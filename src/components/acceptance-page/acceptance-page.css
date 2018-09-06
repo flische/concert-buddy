@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+/* @media only screen and(max-width: 600px){
+    .imageContainer > img {
+        width: 275px;
+    }
+} */
+img{
+    width: 275px;
+}
+.detailsHeader, .imageContainer, .buttonArea{
+    text-align: center;
+}
+
+.detailsHeader{
+    font-family: Fjalla One;
+}
+
+.acceptanceContainer {
+    padding-top: 25%;
+}
+.concert-overview-acceptance,
+.attendees {
+    margin: 0 auto;
+    padding: 1%;
+    background-color: white;
+    color: #2A363B;
+    /* width: 80%; */
+    margin-bottom: 2%;
+    min-height: 17vh;
+}
+
+.concert-overview-acceptance h2{
+    font-size: 1.2em;
+}
+
+.concert-overview-acceptance h2 span {
+    font-size: 1em;
+    color: purple;
+    font-weight: lighter;
+}
+
+.attendees-acceptance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 14vh;
+    background-color: white;
+}
+.attendees-acceptance > div {
+    font-family: Fjalla One;
+}
+.leftSide,
+.rightSide {
+    text-align: center;
+    color: purple;
+}
+
+.attendees>div>span {
+    margin: 5%;
+}
+
+.leftSide {
+    margin-right: 3em;
+}
+
+.concert-overview>p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.concert-overview div {
+    text-align: center;
+}
+
+@media only screen and (min-width: 601px) {
+
+    .concert-overview,
+    .attendees {
+        padding: 1%;
+        width: 45%;
+        margin-bottom: 2%;
+        min-height: 10vh;
+    }
+}
+
+.leftSide,
+.rightSide {
+    width: 25%;
+}
