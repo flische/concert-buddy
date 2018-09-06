@@ -20,6 +20,16 @@ export default () => {
         width: '26%',
         height: '26%'
     }
+    const h2FontSize = {
+        fontSize: '2em',
+        textAlign: 'center',
+        fontFamily: 'Fjalla One',
+    }
+    const pTagFontSize = {
+        fontSize: '1.3em',
+        fontFamily: 'Fjalla One',
+        textAlign: 'center'
+    }
     const images = imageArray.map((item, index)=>{
         if(index === (imageArray.length-1)){
             return (
@@ -39,14 +49,14 @@ export default () => {
     }
     return (
         <div className="container">
-        <h2>ABOUT CONCERT BUDDY</h2>
+        <h2 style={h2FontSize}>ABOUT CONCERT BUDDY</h2>
             <div className="imageContainer">
                 <img style={imageStyle} src={image} />
             </div>
             <div className="description">
-                <p>Concert Buddy was designed with one purpose in mind - to streamline the process of planning trips with friends through accountability and transparency.</p>
+                <p style={pTagFontSize}>Concert Buddy was designed with one purpose in mind - to streamline the process of planning trips with friends through accountability and transparency.</p>
             </div>
-            <h2>TECHNOLOGIES USED</h2>
+            <h2 style={h2FontSize}>TECHNOLOGIES USED</h2>
             <div className="techSection">
                 {images}
             </div>
