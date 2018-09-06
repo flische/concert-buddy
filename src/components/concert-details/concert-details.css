@@ -43,8 +43,8 @@
 
 @media only screen and (max-width: 600px) {
     .concert-details-main {
-        text-align: left;
-        margin-left: 30px;
+        /* text-align: left; */
+        /* margin-left: 30px; */
     }
     .concert-details-a>p,
     .concert-details-b>p,

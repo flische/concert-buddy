@@ -30,7 +30,7 @@ const ConcertItem = (props) => {
                     </p>
                     <p>
                         <b>Location: </b>
-                        <span>{props.city} , {props.state}</span>
+                        <span>{props.city}, {props.state}</span>
                     </p>
                 </div>
             </div>

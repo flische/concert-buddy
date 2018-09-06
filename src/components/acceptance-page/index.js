@@ -37,9 +37,26 @@ class AcceptancePage extends Component{
         })
     }
     render(){
-      
+        const imageStyle = {
+            border: '3px solid powderblue',
+            borderRadius: '5%'
+        }
         console.log(this.state.trip);
-        const {data} = this.state.trip;
+        const {data, whosGoing} = this.state.trip;
+        console.log('whos going ', whosGoing);
+
+        let evenArray = [];
+        let oddArray = [];
+        
+        if(whosGoing){
+            for (let i = 0; i < whosGoing.length; i++) {
+                if (i % 2 === 0) {
+                    evenArray.push(<h2 key={whosGoing[i]}>{whosGoing[i]}</h2>)
+                } else {
+                    oddArray.push(<h2 key={whosGoing[i]}>{whosGoing[i]}</h2>)
+                }
+            }
+        }
         if(!data){
             return (
                 <h3>Loading...</h3>
@@ -49,9 +66,10 @@ class AcceptancePage extends Component{
         return (
             <div className="acceptanceContainer">
                  <div className="detailsHeader title">
-                    YOU HAVE BEEN INVITED TO THE TRIP: {trip_name} 
+                    YOU HAVE BEEN INVITED TO: {trip_name} 
                     <div className="imageContainer">
-                        <img src={img} />
+                        <br />
+                        <img style={imageStyle} src={img} />
                     </div>
                 </div>
                 <div className="concert-overview-acceptance">
@@ -68,12 +86,10 @@ class AcceptancePage extends Component{
                 <div className="title">WHO'S GOING?</div>
                 <div className="attendees-acceptance">
                     <div className="leftSide">
-                        <h2>Tien</h2>
-                        <h2>Jhon</h2>
+                        {evenArray}
                     </div>
                     <div className="rightSide">
-                        <h2>Rebecca</h2>
-                        <h2>David</h2>
+                        {oddArray}
                     </div>
                 </div>
                 <div className="buttonArea">

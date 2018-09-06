@@ -32,12 +32,16 @@ img{
 
 .concert-overview-acceptance h2{
     font-size: 1.2em;
+    text-align: center;
+    font-family: Fjalla One;
 }
 
 .concert-overview-acceptance h2 span {
     font-size: 1em;
-    color: purple;
+    color: crimson;
     font-weight: lighter;
+    font-family: Fjalla One;
+
 }
 
 .attendees-acceptance {
@@ -46,6 +50,9 @@ img{
     align-items: center;
     min-height: 14vh;
     background-color: white;
+    width: 80%;
+    margin: 0 auto;
+
 }
 .attendees-acceptance > div {
     font-family: Fjalla One;
@@ -53,7 +60,7 @@ img{
 .leftSide,
 .rightSide {
     text-align: center;
-    color: purple;
+    color: #2A363B;
 }
 
 .attendees>div>span {

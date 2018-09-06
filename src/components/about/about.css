@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
-h2, p{
+/* h2, p{
     font-family: 'Fjalla One';
     text-align: center
 }
@@ -10,7 +10,7 @@ h2{
 
 p{
     font-size: 1.3rem;
-}
+} */
 .techSection{
     background-color: ghostwhite;
     display: flex;
