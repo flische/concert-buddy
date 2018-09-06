@@ -24,12 +24,33 @@ if ($result) {
        $output['success'] = true;
        $row  = mysqli_fetch_assoc($result);
        $output['data'][] = $row;
+     
 }
 else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error! + $error";
 }
-print($row); 
+
+$trip_id = $output['data'][0]['trip_id'];
+$tripquery = "SELECT `user`.`name` 
+FROM `user_trip_overview` as `usertrip`
+JOIN `trips` 
+ON `usertrip`.`trip_id` = `trips`.`ID`
+JOIN `user`
+ON `usertrip`.`user_id` = `user`.`ID` WHERE  `trip_id` = '$trip_id'";
+
+$tripresult = mysqli_query($conn, $tripquery);
+
+if ($tripresult) {
+    while($row = mysqli_fetch_assoc($tripresult)) {
+       $output['success'] = true;
+       $output['whosGoing'][] = $row['name'];
+    }
+}
+else {
+    $error = mysqli_error($conn);
+    $output['error'][] = "Database Error! + $error";
+}
 
  $output = json_encode($output);
  print($output)
