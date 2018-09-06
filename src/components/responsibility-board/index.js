@@ -86,7 +86,7 @@ class Responsibilities extends Component {
                     <div className="title">RESPONSIBILITIES</div>
                     <div className="no-resp-main">
                         <div className="no-resp">
-                            No Responsibilities</div></div>
+                            Your group does not currently have any responsibilities listed.</div></div>
                     <div className="buttons">
                         <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
                         <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
