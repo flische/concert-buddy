@@ -48,7 +48,6 @@ export async function get_user_details() {
 export async function send_email_invites(emails) {
     const dataToSend = {
         emails: emails,
-        trip: 1,
     }
     const params = JSON.stringify(dataToSend)
     console.log(params);
