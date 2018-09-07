@@ -33,6 +33,9 @@ class Responsibilities extends Component {
     componentDidMount() {
         this.checkResponsibilities();
     }
+    componentDidUpdate() {
+        this.checkResponsibilities();
+    }
 
     async checkResponsibilities() {
         const dataToSend = {
