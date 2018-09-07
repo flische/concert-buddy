@@ -42,6 +42,7 @@ class NewTrip1 extends Component {
         return queryObject;    }
 
     async createTrip(event) {
+        window.localStorage.clear();
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,

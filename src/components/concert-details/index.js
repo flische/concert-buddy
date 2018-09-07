@@ -12,6 +12,7 @@ class ConcertDetails extends Component {
     parseParameters() {
         var queryObject = {};
         var pair = null;
+        localStorage.setItem('url', window.location.search.substring());
         var sPageURL = window.location.search.substring(1),
             qArr = sPageURL.split('&');
 

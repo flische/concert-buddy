@@ -61,8 +61,8 @@ class App extends React.Component {
                     <Route path='/search-concerts' component={SearchConcerts} />
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
-                    <Route path='/invite' component={auth(InviteFriends)} />
-                     <Route path='/sign-in' component= {window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) : redirect(SignIn, '/planner')} />
+                    <Route path='/invite' component={InviteFriends} />
+                    <Route path='/sign-in' component= {window.localStorage ? (window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) :  redirect(SignIn, "/concert-details" + window.localStorage.getItem("url"))): redirect(SignIn, '/planner')} />
                     <Route path='/sign-up' component={redirect(SignUp, '/sign-in')} />
                     <Route path='/planner' component={auth(Planner)} />
                     <Route path='/new-trip-1' component={NewTrip1} />
@@ -77,6 +77,7 @@ class App extends React.Component {
             </div>
         );
     }
+    //working ternary {window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) : redirect(SignIn, '/planner')} />
 }
 const appWithRouter = withRouter(App)
 export default appWithRouter;
