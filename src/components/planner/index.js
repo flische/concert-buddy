@@ -4,23 +4,24 @@ import { get_user_details } from '../../actions';
 import './planner.css';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Loader from '../loader';
 
 class Planner extends Component {
 
     constructor(props) {
-
         super(props);
-
-        this.state = {
-            redirect: false,
-        }
     }
+    
     componentDidMount() {
         this.checkLoginStatus();
         this.checkUserTrips();
     }
+
+    componenetDidUpdate() {
+        this.checkUserTrips();
+    }
+
 
     async checkLoginStatus(initialCheck = false) {
         const resp = await axios.post('api/checkUserLoggedIn.php');
@@ -58,13 +59,15 @@ class Planner extends Component {
         timeValue += (hours >= 12) ? " P.M." : " A.M.";
         return timeValue;
     }
-    renderRedirect() {
-        if (this.state.redirect) {
-            return <Redirect to='/sign-in' />
-        }
-    }
+
 
     render() {
+        if (this.props.user_concert === undefined) {
+            return (
+                <Loader />
+            )
+        }
+
         console.log(this.props.user_concert);
         const buttonStyle = {
             width: '90%'
@@ -92,7 +95,6 @@ class Planner extends Component {
 
             return (
                 <div className="title">
-                    {this.renderRedirect()}
                     <h1> No Current Trips</h1>
                     <div className="concert-overview">
                         <div>
@@ -104,7 +106,7 @@ class Planner extends Component {
             )
         }
 
-        if (this.props.user_concert === null) {
+        if (this.props.user_concert === undefined) {
             return (
                 <Loader />
             )
@@ -112,7 +114,6 @@ class Planner extends Component {
 
         return (
             <div className="bottom-content">
-                {this.renderRedirect()}
                 <div className="title">
                     <h1> {user_concert.trip_name}</h1>
                 </div>
