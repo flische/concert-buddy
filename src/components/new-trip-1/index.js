@@ -51,7 +51,7 @@ class NewTrip1 extends Component {
             address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + ' ' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
             latitude : concertData._embedded.venues[0].location.latitude,
             longitude : concertData._embedded.venues[0].location.longitude,
-            image: concertData.images[0].url,
+            image: concertData.images[3].url,
         }
 
         console.log(concertData);
