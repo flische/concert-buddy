@@ -2,8 +2,8 @@
 header("Access-Control-Allow-Origin: *");
 session_start();
 
-// $token  = $_POST['token'];
-$token  = "Gx1DjXxDTWZ0enhtlDVQ3YFl9XrbvXdPiqmIQts0ytn96Gob9wFVrmLURR"; 
+$token  = $_POST['token'];
+// $token  = "Gx1DjXxDTWZ0enhtlDVQ3YFl9XrbvXdPiqmIQts0ytn96Gob9wFVrmLURR"; 
 
 
 require_once('mysqlconnect.php');
@@ -17,7 +17,7 @@ JOIN `trips`
 ON `triptokens`.`trip_id` = `trips`.`ID`
 JOIN `concerts`
 ON `trips`.`concert_id` = `concerts`.`ID` WHERE  `tokens` = '$token'";
-
+// print_r($query);
 $result = mysqli_query($conn, $query);
 
 if ($result) {
