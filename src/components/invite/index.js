@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {send_email_invites} from '../../actions'
 import Modal from '../confirmation-modal';
 
+
 class InviteFriends extends Component {
     
     state = {
@@ -58,7 +59,7 @@ class InviteFriends extends Component {
         this.props.send_email_invites(array);
     }
     render(){
-
+        console.log("user concert", this.props.user_concert.trip_name)
         const{handleSubmit, reset} = this.props;
         const pStyle = {
             color: 'dodgerblue',
@@ -105,5 +106,11 @@ InviteFriends = reduxForm({
     }
 
 })(InviteFriends);
-export default connect(null, {send_email_invites})(InviteFriends)
+
+function mapStateToProps(state) {
+    return {
+        user_concert: state.user.details,
+    }
+}
+export default connect(mapStateToProps, {send_email_invites})(InviteFriends)
 
