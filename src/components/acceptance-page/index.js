@@ -3,6 +3,7 @@ import './acceptance-page.css'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
+import { connect } from 'react-redux'
 
 class AcceptancePage extends Component{
     constructor(props){
@@ -12,10 +13,23 @@ class AcceptancePage extends Component{
         }
 
     }
+   async acceptTrip() {
+       if (this.props.auth) {
+            let pageURL = window.location.search.substring(1);
+        let tokenObj = this.getToken(pageURL);
+        const token = tokenObj["token"];
+        const tokenData = {
+            token: token,
+                          }
+      const params = formatPostData(tokenData)
+      await axios.post('api/accept_invite.php', params);
+      window.localStorage.clear();
+                        }
+            }
     getToken(string){
         var obj = {};
         var array = string.split('=');
-        obj['token'] = array[1].slice(1);
+        obj['token'] = array[1].slice(0);
         return obj;
     }
     componentDidMount(){
@@ -94,7 +108,8 @@ class AcceptancePage extends Component{
                     </div>
                 </div>
                 <div className="buttonArea">
-                    <Link to ="/sign-in"><div className="btn white-btn">ACCEPT</div></Link>
+                    <Link to={this.props.userAuth ? "/sign-in" : "/planner"} onClick={this.acceptTrip.bind(this)}> <div className="btn white-btn">ACCEPT</div></Link>
+                    
                     <div className="btn pink-btn">DECLINE</div>
                 </div>
             </div>
@@ -102,5 +117,10 @@ class AcceptancePage extends Component{
     }
 }
 
+function  mapStateToProps(state){
+    return {
+        auth: state.userAuth.auth
+    }
+}
 
-export default AcceptancePage;
+export default connect(mapStateToProps)(AcceptancePage);
