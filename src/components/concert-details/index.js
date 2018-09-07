@@ -55,6 +55,7 @@ class ConcertDetails extends Component {
 
 
     render(){ 
+        console.log('THIS.PROPSSSSSSSSSSSSSSSSSSSS', this.props);
 
 
         const concert = this.props.concert;
@@ -72,7 +73,7 @@ class ConcertDetails extends Component {
                 <div className="title">
                     CONCERT DETAILS
                     </div>
-                <img src={concert._embedded.attractions[0].images[1].url} />
+                <img src={concert._embedded.attractions[0].images[3].url} />
 
 
                 <div className="concert-details-main ">
