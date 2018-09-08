@@ -28,7 +28,7 @@ class AddResponsibility extends Component {
 
 
 
-    handleFormSubmit(event) {
+    async handleFormSubmit(event) {
         event.preventDefault();
         // make call to database to add item to responsibilities table
 
@@ -41,7 +41,7 @@ class AddResponsibility extends Component {
         }
 
         const params = formatPostData(dataToSend);
-        const resp = axios.post('api/add_responsibilities.php', params);
+        const resp = await axios.post('api/add_responsibilities.php', params);
         const newState = {
             form: {
                 title: '',

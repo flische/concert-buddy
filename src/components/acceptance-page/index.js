@@ -48,7 +48,7 @@ class AcceptancePage extends Component{
 
         console.log(tripDetails);
         this.setState({
-            trip: tripDetails
+            trip: tripDetails   
         })
     }
     render(){

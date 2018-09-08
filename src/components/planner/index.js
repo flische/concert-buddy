@@ -18,9 +18,9 @@ class Planner extends Component {
         this.checkUserTrips();
     }
 
-    componenetDidUpdate() {
-        this.checkUserTrips();
-    }
+    // componentDidUpdate() {
+    //     this.checkUserTrips();
+    // }
 
 
     async checkLoginStatus(initialCheck = false) {
