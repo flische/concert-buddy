@@ -30,7 +30,7 @@ class RespItem extends Component {
     }
 
     render() {
-        console.log('props in resp item: ', this.props)
+        // console.log('props in resp item: ', this.props)
 
         return (
             <div className={"responsibilities" + (this.props.completed ? ' completed' : '')}>
