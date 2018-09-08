@@ -75,7 +75,6 @@ export async function delete_responsibility(id){
 export const signIn = credentials => async dispatch => {
     
     try {
-        console.log("here");
         const { email, password } = credentials;
 
         const dataToSend = {
