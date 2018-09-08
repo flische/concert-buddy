@@ -14,6 +14,7 @@ class Planner extends Component {
     }
     
     componentDidMount() {
+        debugger;
         this.checkLoginStatus();
         this.checkUserTrips();
     }
