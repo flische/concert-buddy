@@ -7,7 +7,13 @@ const DEFAULT_STATE = {
 export default function (state = DEFAULT_STATE, action) {
     switch (action.type) {
         case types.GET_USER_DETAILS:
-            console.log(action.payload);
+            if (!action.payload) {
+                return {
+                    ...state,
+                    details: {data: null}
+                    
+                }
+            }
             const tripObject = action.payload.userTrips.data.data[0];
             const whosgoing = action.payload.whosgoing;
 
