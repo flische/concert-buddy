@@ -2,7 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 session_start();
 require('mysqlconnect.php');
-print_r($_POST);
 $userID = $_SESSION['user_data'][0]['ID'];
 $token = $_POST['token'];
 $tripID = null;
@@ -26,9 +25,7 @@ if ($result2) {
     if (mysqli_affected_rows($conn) > 0) {
         $output['success'] = true; 
         // $newID = mysqli_insert_id($conn);
-        print("dat's the id" . $conn->insert_id);
-        var_dump($conn);
-        print_r($output);
+        print(json_encode($output));
         // echo "successful added $userID and $tripID and $newID"; 
         
     }

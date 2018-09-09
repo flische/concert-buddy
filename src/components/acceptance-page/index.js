@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux'
+import Loader from '../loader'
 
 class AcceptancePage extends Component{
     constructor(props){
@@ -14,6 +15,7 @@ class AcceptancePage extends Component{
 
     }
    async acceptTrip() {
+       console.log("in accept trip")
        if (this.props.auth) {
             let pageURL = window.location.search.substring(1);
         let tokenObj = this.getToken(pageURL);
@@ -22,9 +24,16 @@ class AcceptancePage extends Component{
             token: token,
                           }
       const params = formatPostData(tokenData)
-      await axios.post('api/accept_invite.php', params);
+      const accept  =  await axios.post('api/accept_invite.php', params);
+      console.log(accept);
+     if (accept.data.success) { 
       window.localStorage.clear();
+      this.props.history.push("/planner");
+    }
                         }
+    else {
+        this.props.history.push("/sign-in")
+    }
             }
     getToken(string){
         var obj = {};
@@ -74,7 +83,7 @@ class AcceptancePage extends Component{
         }
         if(!data){
             return (
-                <h3>Loading...</h3>
+                <Loader/>   
             )
         }
         const {trip_name, artist, date, img, venue, address, time} = data[0];
@@ -108,7 +117,7 @@ class AcceptancePage extends Component{
                     </div>
                 </div>
                 <div className="buttonArea">
-                    <Link to={this.props.userAuth ? "/sign-in" : "/planner"} onClick={this.acceptTrip.bind(this)}> <div className="btn white-btn">ACCEPT</div></Link>
+                     <div className="btn white-btn" onClick={this.acceptTrip.bind(this)}>ACCEPT</div>
                     
                     <div className="btn pink-btn">DECLINE</div>
                 </div>
