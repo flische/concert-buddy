@@ -18,18 +18,12 @@ class Planner extends Component {
         this.checkUserTrips();
     }
 
-    // componentDidUpdate() {
-    //     this.checkUserTrips();
-    // }
-
-
     async checkLoginStatus(initialCheck = false) {
         const resp = await axios.post('api/checkUserLoggedIn.php');
 
         if (resp.data.error) {
 
             this.setState({ redirect: true });
-
         }
     }
 
@@ -65,7 +59,7 @@ class Planner extends Component {
         if (this.props.user_concert === undefined) {
             return (
                 <Loader />
-            )
+            );
         }
 
         console.log(this.props.user_concert);
@@ -77,7 +71,7 @@ class Planner extends Component {
 
         let eventTime = this.convertTime(user_concert.time);
         if (arrayOfPeopleGoing) {
-
+            
             var evenArray = [];
             var oddArray = [];
             for (let i = 0; i < arrayOfPeopleGoing.length; i++) {

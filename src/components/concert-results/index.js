@@ -13,7 +13,6 @@ class ConcertResults extends Component {
             concerts: null,
             url: ''
         }
-
     }
 
     componentDidMount() {
@@ -68,14 +67,27 @@ class ConcertResults extends Component {
             URL = URL + '&endDateTime=' + object.end_date + 'T23:59:00Z';
         }
 
-        const resp = await axios.get(URL);
+        const { data } = await axios.get(URL);
+        console.log('Server Resp:', data);
+        let concerts = 0;
+        if(data._embedded){
+            concerts = data._embedded.events
+        }
+
         this.setState({
             url: URL,
-            concerts: resp.data._embedded.events
+            concerts
         });
     }
 
     render() {
+        console.log('State:', this.state);
+
+        if (this.state.concerts === null) {
+            return (
+                <Loader />
+            );
+        }
 
         if (!this.state.concerts) {
             return (
@@ -88,14 +100,7 @@ class ConcertResults extends Component {
                         </Link>
                     </div>
                 </div>
-
-            )
-        }
-
-        if (!this.state.concerts === null) {
-            return (
-                <Loader />
-            )
+            );
         }
 
         const concert = this.state.concerts.map((item, index) => {
@@ -109,9 +114,8 @@ class ConcertResults extends Component {
                 state={item._embedded.venues[0].state.stateCode}
                 queryString={this.props.history.location.search}
             />
-
-
         });
+
         return (
             <div className="results">
                 <div className="title">CONCERT RESULTS</div>
@@ -120,14 +124,10 @@ class ConcertResults extends Component {
                         <p>UP</p>
                     </div></a>
                 {concert}
-
                 <div className="buttons">
                     <Link to='/search-concerts'><div className="btn pink-btn">BACK TO SEARCH</div></Link>
                 </div>
             </div>
-
-
-
         );
     }
 }
