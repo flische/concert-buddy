@@ -63,15 +63,14 @@ class Planner extends Component {
 
 
     render() {
+        const concertImage = this.props.user_concert.img;
+        console.log(concertImage);
         const user_concert = this.props.user_concert;
-        // console.log(user_concert);
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
             return (
                 <Loader />
             )
         }
-
-        // console.log(this.props.user_concert);
         const buttonStyle = {
             width: '90%'
         }
@@ -119,15 +118,18 @@ class Planner extends Component {
                 <div className="title">
                     <h1> {user_concert.trip_name}</h1>
                 </div>
+                <div className="imageArea">
+                    <img src={concertImage} />
+                </div>
                 <div className="concert-overview">
                     <div>
-                        <h2>Concert: {user_concert.artist}</h2>
+                        <h3>Event: <b>{user_concert.artist}</b></h3>
                     </div>
                     <div>
-                        <h2>Date: {user_concert.date} @ {eventTime}</h2>
+                        <h3>Date: <b>{user_concert.date} @ {eventTime}</b></h3>
                     </div>
                     <div>
-                        <h2>Location: {user_concert.address + ''}</h2>
+                        <h3>Location: <b>{user_concert.address + ''}</b></h3>
                     </div>
                 </div>
                 <div className="title">WHO'S GOING?</div>
