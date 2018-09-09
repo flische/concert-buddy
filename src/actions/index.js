@@ -135,5 +135,6 @@ export const signUp = credentials => async dispatch => {
 
 export async function signOut(){
     await axios.post('api/logout.php');
+    localStorage.clear();
     return { type: types.SIGN_OUT };
 };
