@@ -63,7 +63,7 @@ class AcceptancePage extends Component{
     render(){
         const imageStyle = {
             border: '3px solid powderblue',
-            borderRadius: '5%'
+            borderRadius: '5%',
         }
         console.log(this.state.trip);
         const {data, whosGoing} = this.state.trip;
@@ -90,7 +90,7 @@ class AcceptancePage extends Component{
         return (
             <div className="acceptanceContainer">
                  <div className="detailsHeader title">
-                    YOU HAVE BEEN INVITED TO: {trip_name} 
+                    YOU HAVE BEEN INVITED TO: <br /> {trip_name} 
                     <div className="imageContainer">
                         <br />
                         <img style={imageStyle} src={img} />
@@ -98,13 +98,13 @@ class AcceptancePage extends Component{
                 </div>
                 <div className="concert-overview-acceptance">
                     <div>
-                        <h2>ARTIST: <span>{artist}</span></h2>
+                        <h2>EVENT: <b><span>{artist}</span></b></h2>
                     </div>
                     <div>
-                        <h2>DATE: <span>{date}</span> </h2>
+                        <h2>DATE: <b><span>{date}</span></b> </h2>
                     </div>
                     <div>
-                        <h2>VENUE: <span>{venue}</span> </h2>
+                        <h2>VENUE: <b><span>{venue}</span></b></h2>
                     </div>
                 </div>
                 <div className="title">WHO'S GOING?</div>
