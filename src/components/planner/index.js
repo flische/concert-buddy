@@ -14,7 +14,7 @@ class Planner extends Component {
     }
     
     componentDidMount() {
-        debugger;
+        // debugger;
         this.checkLoginStatus();
         this.checkUserTrips();
     }
@@ -78,7 +78,6 @@ class Planner extends Component {
 
         let eventTime = this.convertTime(user_concert.time);
         if (arrayOfPeopleGoing) {
-
             var evenArray = [];
             var oddArray = [];
             for (let i = 0; i < arrayOfPeopleGoing.length; i++) {
