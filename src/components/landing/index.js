@@ -12,7 +12,7 @@ class Landing extends Component {
         const { auth } = this.props;
 
         if(auth){
-            console.log(auth);
+            // console.log(auth);
             return (
                 <Fragment>
                     <div className="buttons">

@@ -70,7 +70,7 @@ class Responsibilities extends Component {
 
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/toggle_responsibilities.php', params);
-        console.log('toggle response: ', resp);
+        // console.log('toggle response: ', resp);
 
         this.checkResponsibilities();
     }

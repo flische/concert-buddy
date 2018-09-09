@@ -14,7 +14,7 @@ const appReducer = combineReducers(
 );
 
 const rootReducer = (state, action) => {
-    console.log('action type: ', action.type);
+    // console.log('action type: ', action.type);
     if (action.type === 'sign_out') {
         state = undefined;
     }
