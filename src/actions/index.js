@@ -22,7 +22,7 @@ export async function get_user_details() {
     // }
     // const params = formatPostData(dataToSend)
     const userTrips = await axios.post('api/checkUserTrips.php');
-    console.log('get_user_details actions/index.js: ', userTrips);
+    // console.log('get_user_details actions/index.js: ', userTrips);
   if(!userTrips.data.data[0]) {
       return{
             type: types.GET_USER_DETAILS,
@@ -53,7 +53,7 @@ export async function send_email_invites(emails) {
         emails: emails,
     }
     const params = JSON.stringify(dataToSend)
-    console.log(params);
+    // console.log(params);
     const response = await axios.post('api/emailInviteFriends.php', params);
     return {
         type: types.SEND_INVITES,
@@ -114,7 +114,7 @@ export const signUp = credentials => async dispatch => {
             };
         const credentials = formatPostData(dataToSend);
         const resp = await axios.post('api/addUser.php', credentials);
-        console.log('Sign Up response: ', response);
+        // console.log('Sign Up response: ', response);
         if (resp.data.success) {
 
             dispatch({ type: types.SIGN_UP} );

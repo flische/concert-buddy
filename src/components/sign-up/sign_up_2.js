@@ -7,7 +7,7 @@ import Input from './input';
 class SignUp extends Component {
     
     register = (values) =>{
-        console.log('Register Values:', values);
+        // console.log('Register Values:', values);
 
         this.props.signUp(values); //<-- making a real call to the server and making a real acct for you!
     }

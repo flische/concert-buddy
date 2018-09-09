@@ -64,14 +64,14 @@ class Planner extends Component {
 
     render() {
         const user_concert = this.props.user_concert;
-        console.log(user_concert);
+        // console.log(user_concert);
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
             return (
                 <Loader />
             )
         }
 
-        console.log(this.props.user_concert);
+        // console.log(this.props.user_concert);
         const buttonStyle = {
             width: '90%'
         }
