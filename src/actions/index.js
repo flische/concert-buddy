@@ -23,11 +23,14 @@ export async function get_user_details() {
     // const params = formatPostData(dataToSend)
     const userTrips = await axios.post('api/checkUserTrips.php');
     console.log('get_user_details actions/index.js: ', userTrips);
-    const id = userTrips.data.data[0].trip_id;
+  if(!userTrips.data.data[0]) {
+      return{
+            type: types.GET_USER_DETAILS,
+            payload: payload
+      }
+  }
 
-    if(id === null || id === undefined){
-        return
-    }
+    const id = userTrips.data.data[0].trip_id;
     
     var dataToSend2 = {
         tripID: id,

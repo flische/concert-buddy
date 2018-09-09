@@ -63,7 +63,9 @@ class Planner extends Component {
 
 
     render() {
-        if (this.props.user_concert === undefined) {
+        const user_concert = this.props.user_concert;
+        console.log(user_concert);
+        if (Object.getOwnPropertyNames(user_concert).length === 0) {
             return (
                 <Loader />
             )
@@ -73,7 +75,7 @@ class Planner extends Component {
         const buttonStyle = {
             width: '90%'
         }
-        const user_concert = this.props.user_concert;
+        
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);
@@ -91,7 +93,7 @@ class Planner extends Component {
         }
 
 
-        if (Object.getOwnPropertyNames(user_concert).length === 0) {
+        if (user_concert.data ===  null) {
 
             return (
                 <div className="title">
