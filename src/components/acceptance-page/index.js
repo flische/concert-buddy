@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux'
+import Loader from '../loader'
 
 class AcceptancePage extends Component{
     constructor(props){
@@ -82,7 +83,7 @@ class AcceptancePage extends Component{
         }
         if(!data){
             return (
-                <h3>Loading...</h3>
+                <Loader/>   
             )
         }
         const {trip_name, artist, date, img, venue, address, time} = data[0];
