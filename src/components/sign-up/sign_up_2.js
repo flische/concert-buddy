@@ -3,6 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { signUp } from '../../actions';
 import Input from '../input';
+import './sign-up.css';
 
 class SignUp extends Component {
     
@@ -15,15 +16,15 @@ class SignUp extends Component {
         const { handleSubmit } = this.props;
 
         return (
-            <div>
+            <div className="div-container">
                 <div className="title">SIGN UP FOR <br/>CONCERT BUDDY</div>
                 <div className="signup">
                     <form onSubmit={handleSubmit(this.register)}> 
                         <div className="signup-inputs center">
                             <Field className="standard-input" name="email" component={Input} label="Email"/>
                             <Field className="standard-input" name="name" component={Input} label="Name"/>
-                            <Field type="password" className="standard-input" name="password" component={Input} label="Password"/>
-                            <Field type="password" className="standard-input" name="confirmPassword" component={Input} label="Confirm Password"/>
+                            <Field type="password" className="standard-input signup" name="password" component={Input} label="Password"/>
+                            <Field type="password" className="standard-input signup" name="confirmPassword" component={Input} label="Confirm Password"/>
                         </div>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                      </form>

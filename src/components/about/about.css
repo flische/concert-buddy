@@ -19,7 +19,26 @@ p{
     width: 90%;
     margin: 0 auto;
     border: 5px solid lightblue;
+    
 }
 .container{
     padding-top: 8%;
+}
+
+.imageContainer > img {
+    width: 90%;
+    border: 5px solid white;
+}
+
+@media only screen and (min-width: 600px){
+    .container {
+        padding: 0;
+    }
+    .imageContainer > img, .techSection{
+        width: 20%;
+    }
+    .description{
+        width: 45%;
+        margin: 0 auto;
+    }
 }
