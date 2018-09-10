@@ -41,6 +41,10 @@ class AcceptancePage extends Component{
         obj['token'] = array[1].slice(0);
         return obj;
     }
+    declineTrip(){
+        this.props.history.push('/');
+    }
+
     componentDidMount(){
         let pageURL = window.location.search.substring(1);
         console.log(pageURL);
@@ -119,7 +123,7 @@ class AcceptancePage extends Component{
                 <div className="buttonArea">
                      <div className="btn white-btn" onClick={this.acceptTrip.bind(this)}>ACCEPT</div>
                     
-                    <div className="btn pink-btn">DECLINE</div>
+                    <div className="btn pink-btn" onClick={this.declineTrip.bind(this)}>DECLINE</div>
                 </div>
             </div>
         )
