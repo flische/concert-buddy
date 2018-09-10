@@ -13,7 +13,6 @@ class ConcertResults extends Component {
             concerts: null,
             url: ''
         }
-
     }
 
     componentDidMount() {
@@ -70,7 +69,9 @@ class ConcertResults extends Component {
         }
 
         const { data } = await axios.get(URL);
-        // console.log('Server Resp:', data);
+
+        console.log('Server Resp:', data);
+
         let concerts = 0;
         if(data._embedded){
             concerts = data._embedded.events
@@ -83,12 +84,12 @@ class ConcertResults extends Component {
     }
 
     render() {
-        // console.log('State:', this.state);
+        console.log('State:', this.state);
 
         if (this.state.concerts === null) {
             return (
                 <Loader />
-            )
+            );
         }
 
         if (!this.state.concerts) {
@@ -102,11 +103,8 @@ class ConcertResults extends Component {
                         </Link>
                     </div>
                 </div>
-
-            )
+            );
         }
-
-        
 
         const concert = this.state.concerts.map((item, index) => {
             return <ConcertItem
@@ -119,9 +117,8 @@ class ConcertResults extends Component {
                 state={item._embedded.venues[0].state.stateCode}
                 queryString={this.props.history.location.search}
             />
-
-
         });
+
         return (
             <div className="results">
                 <div className="title">CONCERT RESULTS</div>
@@ -130,14 +127,10 @@ class ConcertResults extends Component {
                         <p>UP</p>
                     </div></a>
                 {concert}
-
                 <div className="buttons">
                     <Link to='/search-concerts'><div className="btn pink-btn">BACK TO SEARCH</div></Link>
                 </div>
             </div>
-
-
-
         );
     }
 }

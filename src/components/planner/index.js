@@ -14,15 +14,9 @@ class Planner extends Component {
     }
     
     componentDidMount() {
-        // debugger;
         this.checkLoginStatus();
         this.checkUserTrips();
     }
-
-    // componentDidUpdate() {
-    //     this.checkUserTrips();
-    // }
-
 
     async checkLoginStatus(initialCheck = false) {
         const resp = await axios.post('api/checkUserLoggedIn.php');
@@ -30,7 +24,6 @@ class Planner extends Component {
         if (resp.data.error) {
 
             this.setState({ redirect: true });
-
         }
     }
 
@@ -61,15 +54,17 @@ class Planner extends Component {
         return timeValue;
     }
 
-
     render() {
+        if (this.props.user_concert === null) {
+
         const concertImage = this.props.user_concert.img;
         console.log(concertImage);
         const user_concert = this.props.user_concert;
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
+          
             return (
                 <Loader />
-            )
+            );
         }
         const buttonStyle = {
             width: '90%'
@@ -79,6 +74,7 @@ class Planner extends Component {
 
         let eventTime = this.convertTime(user_concert.time);
         if (arrayOfPeopleGoing) {
+
             var evenArray = [];
             var oddArray = [];
             for (let i = 0; i < arrayOfPeopleGoing.length; i++) {
@@ -88,9 +84,7 @@ class Planner extends Component {
                     oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 }
             }
-
         }
-
 
         if (user_concert.data ===  null) {
 
@@ -107,11 +101,11 @@ class Planner extends Component {
             )
         }
 
-        if (this.props.user_concert === undefined) {
-            return (
-                <Loader />
-            )
-        }
+        // if (this.props.user_concert === undefined) {
+        //     return (
+        //         <Loader />
+        //     )
+        // }
 
         return (
             <div className="bottom-content">
@@ -144,9 +138,7 @@ class Planner extends Component {
                 <div className="buttons">
                     <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
                     <Link to="/invite"><div className="btn white-btn">INVITE FRIENDS</div></Link>
-
                 </div>
-
             </div>
         );
     }

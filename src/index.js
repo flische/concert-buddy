@@ -14,6 +14,7 @@ import App from './components/app';
 
 const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));
 
+// Persistent login 
 
 ReactDOM.render(
     <Provider store={store}>
