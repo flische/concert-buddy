@@ -33,7 +33,7 @@
     border-radius: 5px;
     padding-top: 7px;
     margin: 5px;
-    font-family: 'Roboto', sans-serif;
+    font-family: Quicksand, sans-serif;
     letter-spacing: 1px;
     font-weight: 700;
     font-size: 20px;
@@ -44,6 +44,12 @@
     text-transform: none;
     text-indent: 0px;
     display: inline-block;
+}
+
+.toggle-btn {
+    background-color: rgb(223, 219, 219);
+    box-shadow: 0 3px #979696;
+    color: #2A363B;
 }
 
 .collapse {
