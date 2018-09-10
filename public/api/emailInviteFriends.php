@@ -87,7 +87,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
 </body>";
 
 
-$mail->AltBody = "Hello npm 
+$mail->AltBody = "Hello,
 You have been invited to $name's trip. This will hold all the information in the trip below. 
 Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$host.$query.$token; 
 
