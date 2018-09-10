@@ -4,12 +4,11 @@ import { Link } from 'react-router-dom';
 
 const DefaultModal = ({ handleClose, show, children }) => {
     const showHideClassName = show ? 'modal display-block' : 'modal display-none';
-
+    console.log('children in modal:', children);
     return (
         <div className={showHideClassName}>
             <section className="modal-main">
                 {children}
-                <Link to="/planner"><div className="btn button-color">GO HOME</div></Link>
                 <button className="pink-btn" onClick={handleClose}>CLOSE</button>
             </section>
         </div>

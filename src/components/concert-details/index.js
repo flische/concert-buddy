@@ -3,8 +3,23 @@ import './concert-details.css'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { get_concert_details } from '../../actions';
+import Loader from '../loader';
+import DefaultModal from '../modal';
 
 class ConcertDetails extends Component {
+    state = {
+        show: false
+    }
+    showModal = () => {
+        this.setState({
+            show: true
+        })
+    }
+    hideModal = () => {
+        this.setState({
+            show: false
+        })
+    }
     componentDidMount() {
         this.parseParameters();
     }
@@ -55,14 +70,15 @@ class ConcertDetails extends Component {
 
 
 
-    render(){ 
-        console.log('THIS.PROPSSSSSSSSSSSSSSSSSSSS', this.props);
-
+    render() {
+        console.log('props in details', this.props);
 
         const concert = this.props.concert;
 
         if (concert._embedded === undefined) {
-            return <h1>Loading...</h1>;
+            return (
+                <Loader />
+            );
         }
         const cityState = concert._embedded.venues[0].city.name + ', ' + concert._embedded.venues[0].state.stateCode;
         let eventTime = this.convertTime(concert.dates.start.localTime);
@@ -114,11 +130,20 @@ class ConcertDetails extends Component {
                 <div className="buttons">
 
                     <a href={concert.url} target='_blank'><div className=" btn white-btn">BUY TICKETS</div></a>
-                    <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link>
+
+
+                    {this.props.auth ? <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link> : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>}
+
+
+
                     <Link to={`/concert-results/${this.props.location.search}`}><div className=" btn white-btn">BACK TO RESULTS</div></Link>
 
                 </div>
+                <DefaultModal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p">Please log in or sign up to create a trip</p>
+                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
 
+                </DefaultModal>
 
             </div>
 
@@ -128,7 +153,8 @@ class ConcertDetails extends Component {
 
 function mapStateToProps(state) {
     return {
-        concert: state.concertDetails.concert
+        concert: state.concertDetails.concert,
+        auth: state.userAuth.auth
     }
 }
 
