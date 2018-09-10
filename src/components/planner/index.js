@@ -56,7 +56,7 @@ class Planner extends Component {
 
 
     render() {
-        if (this.props.user_concert === undefined) {
+        if (this.props.user_concert === null) {
             return (
                 <Loader />
             );
@@ -100,11 +100,11 @@ class Planner extends Component {
             )
         }
 
-        if (this.props.user_concert === undefined) {
-            return (
-                <Loader />
-            )
-        }
+        // if (this.props.user_concert === undefined) {
+        //     return (
+        //         <Loader />
+        //     )
+        // }
 
         return (
             <div className="bottom-content">
