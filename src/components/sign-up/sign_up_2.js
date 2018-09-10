@@ -35,7 +35,7 @@ class SignUp extends Component {
 
 function validate(values){
     const { email, name, password, confirmPassword } = values;
-    console.log(email);
+
     const errors = {};
     if(!email){
         errors.email = 'Please enter your email';

@@ -77,7 +77,6 @@ class App extends React.Component {
             </div>
         );
     }
-    //working ternary {window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) : redirect(SignIn, '/planner')} />
 }
 const appWithRouter = withRouter(App)
 export default appWithRouter;
