@@ -12,3 +12,11 @@
 .show {
     text-align: center;
 }
+.div-container{
+    height: 96vh;
+}
+@media only screen and (min-width: 600px) {
+    .div-container{
+        height: 100vh;
+    }
+}

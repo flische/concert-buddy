@@ -21,14 +21,16 @@ export default () => {
         height: '26%'
     }
     const h2FontSize = {
-        fontSize: '2em',
         textAlign: 'center',
-        fontFamily: 'Fjalla One',
+        fontFamily: 'Quicksand',
     }
     const pTagFontSize = {
         fontSize: '1.3em',
-        fontFamily: 'Fjalla One',
+        fontFamily: 'Quicksand',
         textAlign: 'center'
+    }
+    const viewHeight = {
+        height: '96vh'
     }
     const images = imageArray.map((item, index)=>{
         if(index === (imageArray.length-1)){
@@ -43,15 +45,11 @@ export default () => {
 
     })
 
-    const imageStyle = {
-        width: '90%',
-        border: '5px solid white'
-    }
     return (
-        <div className="container">
+        <div style={viewHeight} className="container">
         <h2 style={h2FontSize}>ABOUT CONCERT BUDDY</h2>
             <div className="imageContainer">
-                <img style={imageStyle} src={image} />
+                <img src={image} />
             </div>
             <div className="description">
                 <p style={pTagFontSize}>Concert Buddy was designed with one purpose in mind - to streamline the process of planning trips with friends through accountability and transparency.</p>
