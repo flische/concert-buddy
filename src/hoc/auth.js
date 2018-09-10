@@ -5,6 +5,7 @@ export default function (WrappedComponent, path ='/'){
     class Auth extends Component {
         componentDidMount(){
             this.checkAuth();
+            console.log("here");
         }
         componentDidUpdate(){
             this.checkAuth();

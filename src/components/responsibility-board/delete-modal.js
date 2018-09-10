@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './delete-modal.css';
 
 
 const DeleteModal = (props) => {
-    const{handleClose, show, deleteItem, id} = props;
+    const { handleClose, show, deleteItem, id } = props;
     const showHideClassName = show ? 'delete-modal display-block' : 'delete-modal display-none';
     const buttonStyle = {
         color: 'white',
         backgroundColor: 'red',
-        width: '85%'
+        width: '300px'
     }
 
     return (

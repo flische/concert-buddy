@@ -10,7 +10,6 @@ import Input from '../input';
 class SignIn extends Component {
     
     login = (values) =>{
-        console.log("login page here");
         this.props.signIn(values); 
     }
 

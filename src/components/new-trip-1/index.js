@@ -55,10 +55,10 @@ class NewTrip1 extends Component {
             image: concertData.images[3].url,
         }
 
-        console.log(concertData);
+        // console.log(concertData);
         const params = formatPostData(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
-        console.log(concert);
+        // console.log(concert);
         const concertID = concert.data.ID;
 
         const dataToSend2 = {
@@ -99,7 +99,7 @@ class NewTrip1 extends Component {
         const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
         const time = this.convertTime(this.props.concert.dates.start.localTime);
         const date = this.convertDateFormat(this.props.concert.dates.start.localDate);
-        console.log(date);
+        // console.log(date);
 
         const { handleSubmit } = this.props;
 
@@ -157,7 +157,7 @@ function validate(values){
     const { trip_name } = values;
 
     const errors = {};
-    console.log(trip_name);
+    // console.log(trip_name);
     if(trip_name){
         if(trip_name.length < 3){
             errors.trip_name = 'Please enter a trip name of 3 or more characters in length!'

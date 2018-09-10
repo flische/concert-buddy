@@ -28,7 +28,8 @@ class ConcertResults extends Component {
         var sPageURL = window.location.search.substring(1),
 
             //use the ampersand as a separator
-            qArr = sPageURL.split('&'); console.log(sPageURL)
+            qArr = sPageURL.split('&'); 
+            // console.log(sPageURL)
         //each element in qArr is not a key/val pair
         //so we need to turn each one of these pairs
         //into a two-element array
@@ -68,7 +69,9 @@ class ConcertResults extends Component {
         }
 
         const { data } = await axios.get(URL);
+
         console.log('Server Resp:', data);
+
         let concerts = 0;
         if(data._embedded){
             concerts = data._embedded.events

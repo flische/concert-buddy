@@ -20,7 +20,7 @@ class Nav extends Component {
     }
     handleRenderLinkClicks(){
         const {auth, signIn, signOut} = this.props;
-        console.log('signIn', signIn);
+        // console.log('signIn', signIn);
        
         this.setState({
             isOpen: !this.state.isOpen

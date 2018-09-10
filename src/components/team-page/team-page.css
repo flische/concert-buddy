@@ -69,3 +69,17 @@
 .eachPerson .details .links img {
     width: 30px;
 }
+
+@media only screen and (min-width: 600px){
+    .eachPerson .profile img {
+        border: 3px solid white;
+        border-radius: 50%;
+        width: 20%;
+    }
+    .team-container{
+        width: 60%;
+        margin: 0 auto;
+        background: linear-gradient(to bottom, #2A363B, #100206);
+        background-repeat: no-repeat;
+    }
+}

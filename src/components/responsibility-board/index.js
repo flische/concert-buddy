@@ -33,9 +33,6 @@ class Responsibilities extends Component {
     componentDidMount() {
         this.checkResponsibilities();
     }
-    componentDidUpdate() {
-        this.checkResponsibilities();
-    }
 
     async checkResponsibilities() {
         const dataToSend = {
@@ -63,14 +60,12 @@ class Responsibilities extends Component {
 
     itemCompleted = async (id, completed) => {
         const dataToSend = {
-            // trip_id: this.props.user_concert.trip_id,
             ID: id,
             completed: completed
         }
 
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/toggle_responsibilities.php', params);
-        console.log('toggle response: ', resp);
 
         this.checkResponsibilities();
     }
@@ -119,7 +114,7 @@ class Responsibilities extends Component {
         return (
             <div>
                 <div className="title">RESPONSIBILITIES</div>
-                <div className="bottom-content">
+                <div className="resp-content">
                     {respItem}
                 </div>
                 <div className="buttons">

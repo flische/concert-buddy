@@ -54,24 +54,27 @@ class Planner extends Component {
         return timeValue;
     }
 
-
     render() {
         if (this.props.user_concert === null) {
+
+        const concertImage = this.props.user_concert.img;
+        console.log(concertImage);
+        const user_concert = this.props.user_concert;
+        if (Object.getOwnPropertyNames(user_concert).length === 0) {
+          
             return (
                 <Loader />
             );
         }
-
-        console.log(this.props.user_concert);
         const buttonStyle = {
             width: '90%'
         }
-        const user_concert = this.props.user_concert;
+        
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);
         if (arrayOfPeopleGoing) {
-            
+
             var evenArray = [];
             var oddArray = [];
             for (let i = 0; i < arrayOfPeopleGoing.length; i++) {
@@ -81,11 +84,9 @@ class Planner extends Component {
                     oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
                 }
             }
-
         }
 
-
-        if (Object.getOwnPropertyNames(user_concert).length === 0) {
+        if (user_concert.data ===  null) {
 
             return (
                 <div className="title">
@@ -111,15 +112,18 @@ class Planner extends Component {
                 <div className="title">
                     <h1> {user_concert.trip_name}</h1>
                 </div>
+                <div className="imageArea">
+                    <img src={concertImage} />
+                </div>
                 <div className="concert-overview">
                     <div>
-                        <h2>Concert: {user_concert.artist}</h2>
+                        <h3>Event: <b>{user_concert.artist}</b></h3>
                     </div>
                     <div>
-                        <h2>Date: {user_concert.date} @ {eventTime}</h2>
+                        <h3>Date: <b>{user_concert.date} @ {eventTime}</b></h3>
                     </div>
                     <div>
-                        <h2>Location: {user_concert.address + ''}</h2>
+                        <h3>Location: <b>{user_concert.address + ''}</b></h3>
                     </div>
                 </div>
                 <div className="title">WHO'S GOING?</div>
@@ -134,9 +138,7 @@ class Planner extends Component {
                 <div className="buttons">
                     <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
                     <Link to="/invite"><div className="btn white-btn">INVITE FRIENDS</div></Link>
-
                 </div>
-
             </div>
         );
     }

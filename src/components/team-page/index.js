@@ -1,9 +1,7 @@
 import React from 'react';
 import './team-page.css';
-
 import githubIcon from '../../images/github.svg';
 import linkedInIcon from '../../images/linkedin.svg';
-
 import howardPic from '../../images/howard_pic.png';
 import rebecca from '../../images/rebecca_pic.jpeg';
 import tien from '../../images/tien_pic.jpeg';

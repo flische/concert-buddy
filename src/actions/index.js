@@ -22,12 +22,15 @@ export async function get_user_details() {
     // }
     // const params = formatPostData(dataToSend)
     const userTrips = await axios.post('api/checkUserTrips.php');
-    console.log('get_user_details actions/index.js: ', userTrips);
-    const id = userTrips.data.data[0].trip_id;
+    // console.log('get_user_details actions/index.js: ', userTrips);
+  if(!userTrips.data.data[0]) {
+      return{
+            type: types.GET_USER_DETAILS,
+            payload: payload
+      }
+  }
 
-    if(id === null || id === undefined){
-        return
-    }
+    const id = userTrips.data.data[0].trip_id;
     
     var dataToSend2 = {
         tripID: id,
@@ -50,7 +53,7 @@ export async function send_email_invites(emails) {
         emails: emails,
     }
     const params = JSON.stringify(dataToSend)
-    console.log(params);
+    // console.log(params);
     const response = await axios.post('api/emailInviteFriends.php', params);
     return {
         type: types.SEND_INVITES,
@@ -75,7 +78,6 @@ export async function delete_responsibility(id){
 export const signIn = credentials => async dispatch => {
     
     try {
-        console.log("here");
         const { email, password } = credentials;
 
         const dataToSend = {
@@ -105,14 +107,16 @@ export const signIn = credentials => async dispatch => {
 
 export const signUp = credentials => async dispatch => {
     try {
+        const { email, name,  password} = credentials;
         const dataToSend = {
             email: email,
             name: name,
             password: password  
             };
-        const credentials = formatPostData(dataToSend);
-        const resp = await axios.post('api/addUser.php', credentials);
-        console.log('Sign Up response: ', response);
+        
+        const params = formatPostData(dataToSend);
+        const resp = await axios.post('api/addUser.php', params );
+        // console.log('Sign Up response: ', response);
         if (resp.data.success) {
 
             dispatch({ type: types.SIGN_UP} );
@@ -133,5 +137,6 @@ export const signUp = credentials => async dispatch => {
 
 export async function signOut(){
     await axios.post('api/logout.php');
+    localStorage.clear();
     return { type: types.SIGN_OUT };
 };
