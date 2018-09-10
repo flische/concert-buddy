@@ -5,17 +5,28 @@ import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux'
 import Loader from '../loader'
+import Modal from '../modal'
 
 class AcceptancePage extends Component{
     constructor(props){
         super(props);
         this.state = {
-            trip: []
+            trip: [],
+            show: false,
         }
 
     }
+    showModal = () => {
+        this.setState({
+            show: true,
+        })
+    }
+    hideModal = () => {
+        this.setState({
+            show: false,
+        })
+    }
    async acceptTrip() {
-       console.log("in accept trip")
        if (this.props.auth) {
             let pageURL = window.location.search.substring(1);
         let tokenObj = this.getToken(pageURL);
@@ -25,14 +36,13 @@ class AcceptancePage extends Component{
                           }
       const params = formatPostData(tokenData)
       const accept  =  await axios.post('api/accept_invite.php', params);
-      console.log(accept);
      if (accept.data.success) { 
       window.localStorage.clear();
       this.props.history.push("/planner");
     }
                         }
     else {
-        this.props.history.push("/sign-in")
+        this.showModal();
     }
             }
     getToken(string){
@@ -125,6 +135,10 @@ class AcceptancePage extends Component{
                     
                     <div className="btn pink-btn" onClick={this.declineTrip.bind(this)}>DECLINE</div>
                 </div>
+                <Modal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p center">Please Login or Sign Up before accepting this trip!</p>
+                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
+                    </Modal>
             </div>
         )
     }
