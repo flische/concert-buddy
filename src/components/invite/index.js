@@ -68,7 +68,7 @@ class InviteFriends extends Component {
         }
 
         return (
-            <div>
+            <div className="div-container">
                 <form onSubmit={handleSubmit(this.inviteFriends.bind(this))}>
                     <h2 className="invite-friends">INVITE FRIENDS</h2>
                     <FieldArray name="emails" component = {this.renderEmails} />

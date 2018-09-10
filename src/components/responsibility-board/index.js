@@ -80,7 +80,7 @@ class Responsibilities extends Component {
         const resp = this.state.responsibilities
         if (!resp) {
             return (
-                <div>
+                <div className="div-container">
                     <div className="title">RESPONSIBILITIES</div>
                     <div className="no-resp-main">
                         <div className="no-resp">

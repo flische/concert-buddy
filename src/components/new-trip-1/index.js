@@ -105,7 +105,7 @@ class NewTrip1 extends Component {
 
 
         return (
-            <div className="newtrip">
+            <div className="newtrip div-container">
                 <div className="title">
                     CREATE A NEW TRIP
                     </div>
