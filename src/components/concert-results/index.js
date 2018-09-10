@@ -94,7 +94,7 @@ class ConcertResults extends Component {
 
         if (!this.state.concerts) {
             return (
-                <div className="results">
+                <div className="results div-container">
                     <div className="title">CONCERT RESULTS</div>
                     <div className="no-concerts">
                         No concerts found. Try widening your search criteria.

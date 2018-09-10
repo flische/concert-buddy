@@ -64,10 +64,7 @@ class Planner extends Component {
                 <Loader />
             );
         }
-        const buttonStyle = {
-            width: '90%'
-        }
-        
+
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);
@@ -77,9 +74,9 @@ class Planner extends Component {
             var oddArray = [];
             for (let i = 0; i < arrayOfPeopleGoing.length; i++) {
                 if (i % 2 === 0) {
-                    evenArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
+                    evenArray.push(<div key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</div>)
                 } else {
-                    oddArray.push(<h2 key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</h2>)
+                    oddArray.push(<div key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</div>)
                 }
             }
         }
@@ -87,12 +84,12 @@ class Planner extends Component {
         if (user_concert.data ===  null) {
 
             return (
-                <div className="title">
-                    <h1> No Current Trips</h1>
-                    <div className="concert-overview">
+                <div className="div-container">
+                    <div className="title">PLANNED TRIP</div>
+                    <div className="no-resp-main">
                         <div>
-                            <h2>Please create a concert</h2>
-                            <Link to="/search-concerts"><div style={buttonStyle} className="btn pink-btn">Search Concerts</div></Link>
+                            <div className="no-resp">You do not have any trips planned. Please create an event.</div>
+                            <Link to="/search-concerts"><div className="btn pink-btn">SEARCH CONCERTS</div></Link>
                         </div>
                     </div>
                 </div>
