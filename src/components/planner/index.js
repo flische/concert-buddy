@@ -55,8 +55,6 @@ class Planner extends Component {
     }
 
     render() {
-        if (this.props.user_concert === null) {
-
         const concertImage = this.props.user_concert.img;
         console.log(concertImage);
         const user_concert = this.props.user_concert;
@@ -101,11 +99,11 @@ class Planner extends Component {
             )
         }
 
-        // if (this.props.user_concert === undefined) {
-        //     return (
-        //         <Loader />
-        //     )
-        // }
+        if (this.props.user_concert === undefined) {
+            return (
+                <Loader />
+            )
+        }
 
         return (
             <div className="bottom-content">
@@ -141,9 +139,9 @@ class Planner extends Component {
                 </div>
             </div>
         );
-    }
-}
-
+    
+        }
+ }
 
 function mapStateToProps(state) {
     return {
