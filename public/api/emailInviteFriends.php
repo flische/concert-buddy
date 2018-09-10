@@ -78,7 +78,8 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
     <p>You have been invited by your friend, <b>".$name."</b> to go to <em>".$trip_name.".</em> Click the link below to accept or
         decline the invitation.</p>
     <div style='text-align: center;'>
-        <a href=\"http://".$host.$query.$token."\" style='color:#FF847C;'>Invitation Link</a>
+   <p style='color:#FF847C'>Invitation Link:</p> 
+   <a href=\"http://".$host.$query.$token."\" style='color:blue;'> http://".$host.$query.$token."</a>
     </div>
     <p>Enjoy the concert!</p>
     <p>-Your friends at Concert Buddy</p>
@@ -86,7 +87,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
 </body>";
 
 
-$mail->AltBody = "Hello npm 
+$mail->AltBody = "Hello,
 You have been invited to $name's trip. This will hold all the information in the trip below. 
 Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$host.$query.$token; 
 

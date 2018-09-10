@@ -7,7 +7,9 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { connect } from 'react-redux';
 
 class Landing extends Component {
-
+    componentDidMount() {
+        localStorage.clear();   
+    }
     renderLinks(){
         const { auth } = this.props;
 
