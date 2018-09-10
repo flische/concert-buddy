@@ -1,4 +1,9 @@
 
+.resp-content {
+    margin: 0 auto;
+    text-align: center;
+    
+}
 .no-resp-main {
    text-align: center; 
     
@@ -8,4 +13,10 @@
     font-size: 30px;
     margin-top: 50px;
     
+}
+
+@media only screen and (min-width: 601px) {
+    .resp-content {
+        width: 70%;
+           }
 }

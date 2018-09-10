@@ -46,7 +46,7 @@ class RespItem extends Component {
 
                 </div>
                 {!this.props.completed ? <div className="mark-complete-btn pink-btn" onClick={() => { this.props.itemCompleted(this.props.id, this.props.completed) }}>MARK COMPLETE</div> : <div className="mark-complete-btn btn-grey" onClick={() => { this.props.itemCompleted(this.props.id, this.props.completed) }}>COMPLETED</div>}
-                <Link to={`/edit-responsibility?edit_id=${this.props.id}`}><div className="edit">EDIT</div></Link>
+                {!this.props.completed ? <Link className="edit" to={`/edit-responsibility?edit_id=${this.props.id}`}><div className="edit">EDIT</div></Link> : ''}
                 <DeleteModal show={this.state.show} handleClose={this.hideModal} deleteItem={this.props.deleteItem} id={this.props.id}>
                     <p>Are you sure you want to delete this responsibility?</p>
                 </DeleteModal>

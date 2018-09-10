@@ -4,6 +4,7 @@ import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import Loader from '../loader';
+import { Link } from 'react-router-dom';
 
 class EditResponsibility extends Component {
     constructor(props) {
@@ -120,6 +121,8 @@ class EditResponsibility extends Component {
                         <div className="buttons"><button className="pink-btn">SUBMIT CHANGES</button></div>
 
                     </form>
+                    <div className="buttons"><Link to='/responsibilities'><div className=" btn white-btn">BACK</div></Link></div>
+
                 </div>
             </div>
         );

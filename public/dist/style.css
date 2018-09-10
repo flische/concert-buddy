@@ -28,6 +28,11 @@ body {
     margin-bottom: 2%;
 }
 
+.bottom-content {
+    margin: 0 auto;
+    text-align: center;
+}
+
 button {
     overflow: hidden;
     width: 300px;

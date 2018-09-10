@@ -3,6 +3,7 @@ import './add-responsibility.css';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class AddResponsibility extends Component {
     constructor(props) {
@@ -73,8 +74,10 @@ class AddResponsibility extends Component {
                         <div className="buttons"><button className="pink-btn">ADD</button></div>
 
                     </form>
+                    <div className="buttons"><Link to='/responsibilities'><div className=" btn white-btn">BACK</div></Link></div>
+
                 </div>
-            </div>
+            </div >
         );
     }
 }
