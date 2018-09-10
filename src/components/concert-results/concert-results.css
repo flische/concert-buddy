@@ -72,4 +72,7 @@
     .up {
         color: white;
     }
+    .results{
+        background: linear-gradient(to bottom, #2A363B, #100206)
+    }
 }
