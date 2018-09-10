@@ -6,13 +6,19 @@
 .attendees {
     margin: 0 auto;
     padding: 1%;
-    background-color: white;
-    color: #2A363B;
+    
+    
     width: 80%;
     margin-bottom: 2%;
     min-height: 15vh;
     border-radius: 2%;
 }
+
+.attendees {
+    color: #2A363B;
+    background-color: white;
+}
+
 .attendees {
     display: flex;
     justify-content: center;
@@ -32,6 +38,7 @@
 .concert-overview>p {
     margin: 0;
     font-size: 18px;
+    color: white;
 }
 .concert-overview div{
     text-align: center;
@@ -43,9 +50,9 @@
 }
 
 .bottom-content > .imageArea > img{
-    border: 1px solid crimson;
+    border: 1px solid #FF847C;
     border-radius: 7%;
-    width: 35%;
+    width: 40%;
 }
 
 @media only screen and (min-width: 601px) {
@@ -63,9 +70,9 @@
         margin-top: 8%;
     }
     .bottom-content>.imageArea>img {
-        border: 1px solid crimson;
+        border: 1px solid #FF847C;
         border-radius: 7%;
-        width: 70%;
+        width: 85%;
     }
 
 }
