@@ -52,7 +52,7 @@
 .bottom-content > .imageArea > img{
     border: 1px solid #FF847C;
     border-radius: 7%;
-    width: 40%;
+    width: 20%;
 }
 
 @media only screen and (min-width: 601px) {
