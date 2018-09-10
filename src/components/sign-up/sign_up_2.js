@@ -4,12 +4,26 @@ import { connect } from 'react-redux';
 import { signUp } from '../../actions';
 import Input from '../input';
 import './sign-up.css';
+import DefaultModal from '../modal'
+import {Link} from 'react-router-dom'
 
 class SignUp extends Component {
-    
-    register = (values) =>{
-        this.props.signUp(values);
-        this.props.history.push("/sign-in") //<-- making a real call to the server and making a real acct for you!
+    state = {
+        show: false,
+    }
+    register = (values) => {
+        this.props.signUp(values); //<-- making a real call to the server and making a real acct for you!
+        this.showModal();
+    }
+    showModal = () => {
+        this.setState({
+            show: true,
+        })
+    }
+    hideModal = () => {
+        this.setState({
+            show: false,
+        })
     }
 
     render(){
@@ -28,6 +42,10 @@ class SignUp extends Component {
                         </div>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                      </form>
+                     <DefaultModal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p center">You have successfully signed up! Please log in with your new account</p>
+                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
+                    </DefaultModal>
                 </div>
             </div>
         );

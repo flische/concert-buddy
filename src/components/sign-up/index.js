@@ -3,6 +3,7 @@ import './sign-up.css';
 import { formatPostData } from '../../helpers';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import Modal from '../modal';
 
 class SignUp extends Component {
     constructor(props) {
@@ -18,8 +19,18 @@ class SignUp extends Component {
                 matching: 'null',
 
             },
-            redirect: false,
+            show: false,
         }
+    }
+    showModal = () => {
+        this.setState({
+            show: true
+        })
+    }
+    hideModal = () => {
+        this.setState({
+            show: false
+        })
     }
     componentDidUpdate() {
        
@@ -31,16 +42,10 @@ class SignUp extends Component {
         const { password, passwordCheck } = this.state.form; 
         this.setState({
             form: {...form, [name]: value}
-       
-            
         });
     }
   
-    renderRedirect() {
-        if (this.state.redirect) {
-        return <Redirect to='/sign-in' />
-    }
-}
+  
     async handleFormSubmit(event) {
         event.preventDefault();
           const {email, name, password, passwordCheck} = this.state.form;
@@ -49,7 +54,6 @@ class SignUp extends Component {
                 form: {
                     matching: false,
                 },
-                redirect: false
             });
         }
         else {
@@ -59,15 +63,15 @@ class SignUp extends Component {
               password: password 
             };
             const params = formatPostData(dataToSend);
-            const resp = await axios.post('api/addUser.php', params);
-
+            await axios.post('api/addUser.php', params).then((resp) => {
+                console.log(resp);
             if (resp.data.success) {
-                this.setState({
-                    redirect: true,
-                });
+                this.showModal();
+                };
+             });
             }
+        
         }
-    }
     render() {
         const {email, name, password, passwordCheck, matching} = this.state.form;
         const correctStyle = {
@@ -78,7 +82,6 @@ class SignUp extends Component {
         }
         return (
             <div>
-                {this.renderRedirect()}
                 <div className="title">SIGN UP FOR <br />CONCERT BUDDY</div>
 
                 <div className="signup">
@@ -95,6 +98,11 @@ class SignUp extends Component {
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                     </form>
                 </div>
+                <Modal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p">You've successfully signed up. Please Log in with your new account</p>
+                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
+
+                </Modal>
             </div>
            
         );
