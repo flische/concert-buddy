@@ -55,7 +55,6 @@ class Planner extends Component {
     }
 
     render() {
-        if (this.props.user_concert === null) {
 
         const concertImage = this.props.user_concert.img;
         console.log(concertImage);
