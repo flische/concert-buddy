@@ -107,13 +107,15 @@ export const signIn = credentials => async dispatch => {
 
 export const signUp = credentials => async dispatch => {
     try {
+        const { email, name,  password} = credentials;
         const dataToSend = {
             email: email,
             name: name,
             password: password  
             };
-        const credentials = formatPostData(dataToSend);
-        const resp = await axios.post('api/addUser.php', credentials);
+        
+        const params = formatPostData(dataToSend);
+        const resp = await axios.post('api/addUser.php', params );
         // console.log('Sign Up response: ', response);
         if (resp.data.success) {
 

@@ -6,7 +6,7 @@ import SearchConcerts from './search-concerts/';
 import InviteFriends from './invite/';
 import SignIn from './login/sign_in';
 import Landing from './landing/';
-import SignUp from './sign-up/';
+import SignUp from './sign-up/sign_up_2';
 import Planner from './planner/';
 import ConcertResults from './concert-results/';
 import ConcertDetails from './concert-details/';
