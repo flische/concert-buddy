@@ -1,6 +1,5 @@
 import React from 'react';
 import './modal.css'
-import { Link } from 'react-router-dom';
 
 const Modal = ({ handleClose, show, children }) => {
     const showHideClassName = show ? 'modal display-block' : 'modal display-none';

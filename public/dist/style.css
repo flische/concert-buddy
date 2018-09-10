@@ -3,10 +3,9 @@
 body {
     background: linear-gradient(to bottom, #2A363B, #100206);
     background-repeat: no-repeat;
-    font-family: Quicksand;
+    font-family: Quicksand, sans-serif;
     color: white;
     width: 100vw;
-    /* height: 100vh; */
     margin: 0 auto;
 }
 
@@ -38,7 +37,7 @@ button {
     height: 45px;
     border-radius: 5px;
     margin: 5px;
-    font-family: 'Roboto', sans-serif;
+    font-family: Quicksand, sans-serif;
     letter-spacing: 2px;
     font-weight: 700;
     font-size: 24px;
@@ -54,7 +53,7 @@ button {
     border-radius: 5px;
     padding-top: 7px;
     margin: 5px;
-    font-family: 'Roboto', sans-serif;
+    font-family: Quicksand, sans-serif;
     letter-spacing: 2px;
     font-weight: 700;
     font-size: 24px;
@@ -112,8 +111,6 @@ button {
 
 h1 {
     color: #FF847C;
-    text-shadow: #FFFFFF 1px 1px 3px;
-    -webkit-font-smoothing: antialiased;
     margin: 0;
     text-align: center;
 }
