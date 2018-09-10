@@ -22,8 +22,8 @@ class SignUp extends Component {
                         <div className="signup-inputs center">
                             <Field className="standard-input" name="email" component={Input} label="Email"/>
                             <Field className="standard-input" name="name" component={Input} label="Name"/>
-                            <Field type="password" className="standard-input" name="password" component={Input} label="Password"/>
-                            <Field type="password" className="standard-input" name="confirmPassword" component={Input} label="Confirm Password"/>
+                            <Field type="password" className="standard-input signup" name="password" component={Input} label="Password"/>
+                            <Field type="password" className="standard-input signup" name="confirmPassword" component={Input} label="Confirm Password"/>
                         </div>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                      </form>
