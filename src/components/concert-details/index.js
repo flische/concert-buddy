@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { get_concert_details } from '../../actions';
 import Loader from '../loader';
-import DefaultModal from '../modal';
+import Modal from '../modal';
 
 class ConcertDetails extends Component {
     state = {
@@ -139,12 +139,10 @@ class ConcertDetails extends Component {
                     <Link to={`/concert-results/${this.props.location.search}`}><div className=" btn white-btn">BACK TO RESULTS</div></Link>
 
                 </div>
-                <DefaultModal show={this.state.show} handleClose={this.hideModal} >
+                <Modal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p">Please log in or sign up to create a trip</p>
                     <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
-
-                </DefaultModal>
-
+                </Modal>
             </div>
 
         );

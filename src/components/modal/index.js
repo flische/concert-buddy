@@ -2,7 +2,7 @@ import React from 'react';
 import './modal.css'
 import { Link } from 'react-router-dom';
 
-const DefaultModal = ({ handleClose, show, children }) => {
+const Modal = ({ handleClose, show, children }) => {
     const showHideClassName = show ? 'modal display-block' : 'modal display-none';
     console.log('children in modal:', children);
     return (
@@ -15,4 +15,4 @@ const DefaultModal = ({ handleClose, show, children }) => {
     )
 }
 
-export default DefaultModal;
+export default Modal;
