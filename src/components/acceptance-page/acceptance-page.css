@@ -1,13 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
-
-
 
 .detailsHeader, .imageContainer, .buttonArea{
     text-align: center;
 }
 
 .detailsHeader{
-    font-family: Fjalla One;
+    font-family: Quicksand;
 }
 
 .acceptanceContainer {
@@ -27,14 +24,14 @@
 .concert-overview-acceptance h2{
     font-size: 1.2em;
     text-align: center;
-    font-family: Fjalla One;
+    font-family: Quicksand;
 }
 
 .concert-overview-acceptance h2 span {
     font-size: 1em;
     color: #2A363B;
     font-weight: lighter;
-    font-family: Fjalla One;
+    font-family: Quicksand;
 
 }
 
@@ -50,7 +47,7 @@
 
 }
 .attendees-acceptance > div {
-    font-family: Fjalla One;
+    font-family: Quicksand;
 }
 .leftSide,
 .rightSide {
@@ -75,6 +72,17 @@
     text-align: center;
 }
 
+.imageContainer>img {
+    width: 60%;
+}
+
+@media only screen and (max-width: 601px){
+    .attendees-acceptance div {
+        font-size: 1.2em;
+        margin: auto;
+    }
+}
+
 @media only screen and (min-width: 601px) {
 
     .concert-overview,
@@ -93,18 +101,34 @@
         padding: 1%;
         background-color: white;
         color: #2A363B;
-        width: 50%;
-        margin-bottom: 2%;
+        width: 30%;
         min-height: 17vh;
     }
     .attendees-acceptance{
-        width: 50%;
+        width: 30%;
     }
 }
 
-@media only screen and (max-width: 601px) {
+@media only screen and (min-width: 601px) {
     .imageContainer > img {
-        width: 60%;
+        width: 20%;
+    }
+    .buttonArea{
+        display: flex;
+        flex-direction: column;
+        /* align-content: center; */
+        align-items: center;
+    }
+    .top-content{
+        width: 51%;
+        margin: 0 auto;
+    }
+    .acceptanceContainer{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .leftSide > div, .rightSide > div {
+        font-size: 1.5em;
     }
 }
 

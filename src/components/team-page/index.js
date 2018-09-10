@@ -44,7 +44,7 @@ const members = [
 
 export default () => {
     return (
-        <div>
+        <div className="div-container">
             <h3 className="title">MEET THE TEAM</h3>
 
             <div className="team-container">

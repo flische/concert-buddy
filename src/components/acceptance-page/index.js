@@ -75,9 +75,9 @@ class AcceptancePage extends Component{
         if(whosGoing){
             for (let i = 0; i < whosGoing.length; i++) {
                 if (i % 2 === 0) {
-                    evenArray.push(<h2 key={whosGoing[i]}>{whosGoing[i]}</h2>)
+                    evenArray.push(<div key={whosGoing[i]}>{whosGoing[i]}</div>)
                 } else {
-                    oddArray.push(<h2 key={whosGoing[i]}>{whosGoing[i]}</h2>)
+                    oddArray.push(<div key={whosGoing[i]}>{whosGoing[i]}</div>)
                 }
             }
         }
