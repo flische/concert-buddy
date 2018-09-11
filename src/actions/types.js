@@ -6,6 +6,7 @@ export default {
     DELETE_RESPONSIBILITY: 'delete_responsibility',
     GET_CONCERT_DETAILS: 'get_concert_details',
     GET_USER_DETAILS: 'get_user_details',
+    RESET_ERROR: 'reset_error',
     SEND_INVITES: 'send_invites',
     SIGN_IN: 'sign_in',
     SIGN_OUT: 'sign_out',

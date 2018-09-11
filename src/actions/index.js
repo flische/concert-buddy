@@ -140,3 +140,7 @@ export async function signOut(){
     localStorage.clear();
     return { type: types.SIGN_OUT };
 };
+
+export function resetError() {
+    return {type: types.RESET_ERROR};
+}
