@@ -8,9 +8,6 @@ import rootReducer from './reducers/index';
 import reduxPromise from 'redux-promise';
 import think from './middleware/think';
 import types from './actions/types';
-import TeamPage from './components/team-page';
-import AcceptancePage from './components/acceptance-page'
-import AboutPage from './components/about';
 import App from './components/app';
 
 const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));

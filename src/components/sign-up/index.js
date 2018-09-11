@@ -63,9 +63,11 @@ class SignUp extends Component {
               password: password 
             };
             const params = formatPostData(dataToSend);
+            console.log(this.props)
             await axios.post('api/addUser.php', params).then((resp) => {
                 console.log(resp);
             if (resp.data.success) {
+            
                 this.showModal();
                 };
              });

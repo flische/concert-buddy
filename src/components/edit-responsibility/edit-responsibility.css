@@ -16,6 +16,8 @@
  display: block;
 }
 
+
 .standard-textarea::placeholder{
     text-indent: 5px;
+
 }

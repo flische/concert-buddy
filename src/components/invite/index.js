@@ -13,6 +13,7 @@ class InviteFriends extends Component {
         show: false
     }
     showModal = () => {
+        this.props.reset();
         this.setState({
             show: true
         })
