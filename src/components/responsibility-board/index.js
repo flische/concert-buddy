@@ -112,7 +112,7 @@ class Responsibilities extends Component {
             />
         });
         return (
-            <div>
+            <div className="div-container">
                 <div className="title">RESPONSIBILITIES</div>
                 <div className="resp-content">
                     {respItem}

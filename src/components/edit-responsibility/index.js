@@ -105,7 +105,7 @@ class EditResponsibility extends Component {
 
         const { title, details, name, } = this.state.form;
         return (
-            <div>
+            <div className="div-container">
                 <div className="title">EDIT RESPONSIBILITY</div>
                 <div className="add-resp-form">
                     <form onSubmit={(event) => { this.handleFormSubmit(event) }}>

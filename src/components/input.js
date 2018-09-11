@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default ( {input, label, type, meta: { touched, error }} ) => (
+export default ( {input, label, type, placeholder, meta: { touched, error }} ) => (
         <div>
             <div><label>{label}:</label></div>
-            <input {...input} className="standard-input" autoComplete="off" type={ type || 'text' } placeholder={`Please enter ${label} here`}/>
+            <input {...input} className="standard-input" autoComplete="off" type={ type || 'text' } placeholder={ placeholder ||`Please enter ${label} `}/>
             <p>{ touched && error }</p>
         </div>
 );

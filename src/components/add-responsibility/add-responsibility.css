@@ -13,6 +13,10 @@
     border-radius: 5px;
     text-align: left;
     font-size: 20px;
-    font-family: 'Roboto', sans-serif;
     display: block;
+    font-family: Quicksand;
+
+}
+.inputs > .standard-textarea{
+      font-family: Quicksand;
 }

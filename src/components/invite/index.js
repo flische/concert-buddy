@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 
 
 class InviteFriends extends Component {
-
     state = {
         show: false
     }
@@ -35,6 +34,7 @@ class InviteFriends extends Component {
                 return;
             }
         })
+        console.log('emailsssssssssssssssss', emails);
         return (
             <div className="invite-emails">
                 {emails}
@@ -46,7 +46,7 @@ class InviteFriends extends Component {
     }
     inviteFriends(values) {
         const array = values.emails;
-        // console.log("initial array", array);
+        console.log("initial array", array);
         for (let i = 0; i < array.length; i++) {
             if (array[i] !== undefined && array[i] !== "") {
                 this.showModal();
@@ -61,6 +61,7 @@ class InviteFriends extends Component {
         this.props.send_email_invites(array);
     }
     render() {
+        console.log('this.propsssssssssssssssss', this.props)
         // console.log("user concert", this.props.user_concert.trip_name)
         const { handleSubmit, reset } = this.props;
         const pStyle = {
@@ -68,7 +69,6 @@ class InviteFriends extends Component {
             fontSize: '32px',
             textAlign: 'center'
         }
-
         return (
             <div className="div-container">
                 <form onSubmit={handleSubmit(this.inviteFriends.bind(this))}>
