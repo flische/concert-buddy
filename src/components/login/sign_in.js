@@ -54,7 +54,7 @@ class SignIn extends Component {
                 </div>
             </form>
             <div className="buttons">
-                <div> <Link to="/sign-up"><button className="button black-btn"> SIGN UP!</button></Link></div>
+                <div> <Link to="/sign-up"><button className="button white-btn"> SIGN UP!</button></Link></div>
             </div>
         </div>    
         );
