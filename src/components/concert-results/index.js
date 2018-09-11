@@ -29,7 +29,6 @@ class ConcertResults extends Component {
 
             //use the ampersand as a separator
             qArr = sPageURL.split('&'); 
-            // console.log(sPageURL)
         //each element in qArr is not a key/val pair
         //so we need to turn each one of these pairs
         //into a two-element array
@@ -41,8 +40,7 @@ class ConcertResults extends Component {
             //and the "val" is the second element
             //so now we just add this "pair" to our return object
             queryObject[pair[0]] = pair[1];
-        };
-        //return the new object
+        }
         return queryObject;
     }
 
@@ -70,8 +68,6 @@ class ConcertResults extends Component {
 
         const { data } = await axios.get(URL);
 
-        console.log('Server Resp:', data);
-
         let concerts = 0;
         if(data._embedded){
             concerts = data._embedded.events
@@ -84,7 +80,6 @@ class ConcertResults extends Component {
     }
 
     render() {
-        console.log('State:', this.state);
 
         if (this.state.concerts === null) {
             return (
@@ -123,9 +118,8 @@ class ConcertResults extends Component {
             <div className="results">
                 <div className="title">CONCERT RESULTS</div>
                 <a href="#top" className="up">
-                    <div className="test">
-                        <p>UP</p>
-                    </div></a>
+                    <div className="test"><p>UP</p></div>
+                </a>
                 {concert}
                 <div className="buttons">
                     <Link to='/search-concerts'><div className="btn pink-btn">BACK TO SEARCH</div></Link>

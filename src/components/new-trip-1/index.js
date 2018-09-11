@@ -10,9 +10,7 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 class NewTrip1 extends Component {
 
     handleAddItem = async (values) => {
-
         await this.createTrip(values);
-
     }
 
     renderInput( props ){
@@ -24,9 +22,8 @@ class NewTrip1 extends Component {
                            <p>{props.meta.touched && props.meta.error}</p>
                        </div>
                    </div>
-               )
+               );
            }
-
 
     parseParameters() {
         var queryObject = {};
@@ -39,7 +36,8 @@ class NewTrip1 extends Component {
             pair = qArr[i].split('=');
             queryObject[pair[0]] = pair[1];
         }
-        return queryObject;    }
+        return queryObject;    
+    }
 
     async createTrip(event) {
         window.localStorage.clear();
@@ -52,23 +50,22 @@ class NewTrip1 extends Component {
             address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + ' ' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
             latitude : concertData._embedded.venues[0].location.latitude,
             longitude : concertData._embedded.venues[0].location.longitude,
-            image: concertData.images[3].url,
-        }
-
-        // console.log(concertData);
+            image: concertData.images[3].url
+        };
         const params = formatPostData(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
-        // console.log(concert);
+
         const concertID = concert.data.ID;
 
         const dataToSend2 = {
             trip_name: this.props.tripNameValue,
-            ID: concertID,
-        }
+            ID: concertID
+        };
         const params2 = formatPostData(dataToSend2);
         const newTrip = await axios.post('api/createTrip.php', params2);
         this.props.history.push('/planner');
     }
+
     convertTime = (militaryTime) => {
         if (!militaryTime) {
             return;
@@ -90,19 +87,19 @@ class NewTrip1 extends Component {
         timeValue += (hours >= 12) ? " P.M." : " A.M.";
         return timeValue;
     }
+
     convertDateFormat = (yyddmm) => {
         var newDate = yyddmm.split('-');
         var returnDate = (newDate[1]) + '-' + newDate[2] + '-' + newDate[0];
         return returnDate;
     }
+
     render() {
         const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
         const time = this.convertTime(this.props.concert.dates.start.localTime);
         const date = this.convertDateFormat(this.props.concert.dates.start.localDate);
-        // console.log(date);
 
         const { handleSubmit } = this.props;
-
 
         return (
             <div className="newtrip div-container">
@@ -145,7 +142,7 @@ class NewTrip1 extends Component {
                     </form>
                 </div>
             </div>
-        );ß
+        );
     }
 }
 
@@ -153,27 +150,25 @@ function validate(values){
     // Redux Form will look at the properties below and see if they match any of the Field name (inputs) //
     // you can do any kind of check in here that you want! to validate input //
     // for example, RegEx for validating proper email or password! //
-
     const { trip_name } = values;
 
     const errors = {};
-    // console.log(trip_name);
+
     if(trip_name){
         if(trip_name.length < 3){
-            errors.trip_name = 'Please enter a trip name of 3 or more characters in length!'
+            errors.trip_name = 'Please enter a trip name of 3 or more characters in length!';
         }
     }
     // if(!trip_name){
     //     errors.trip_name = 'Please name your trip!'
     // }
-   
     return errors;
 }
 
 function mapStateToProps(state) {
     return {
         concert: state.concertDetails.concert
-    }
+    };
 }
 
 NewTrip1 = reduxForm({
@@ -183,7 +178,7 @@ NewTrip1 = reduxForm({
 
 const selector = formValueSelector('create_trip');
 
-NewTrip1 = connect(state => {
+NewTrip1 = connect( state => {
     const tripNameValue = selector(state, 'trip_name');
 
     return {
@@ -191,4 +186,4 @@ NewTrip1 = connect(state => {
     };
 })(NewTrip1);
 
-export default connect(mapStateToProps, { get_concert_details: get_concert_details, create_trip: create_trip })(NewTrip1);
+export default connect( mapStateToProps, { get_concert_details: get_concert_details, create_trip: create_trip } )(NewTrip1);

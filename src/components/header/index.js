@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     const pageURL = window.location.pathname;
+
     return (
         <div className="top-content" id="top">
             <div className="top-link">
@@ -16,7 +17,6 @@ const Header = () => {
             </div>
             <Nav />
         </div>
-
     );
 }
 

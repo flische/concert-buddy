@@ -26,25 +26,22 @@ class AcceptancePage extends Component{
             show: false,
         })
     }
-   async acceptTrip() {
-       if (this.props.auth) {
+    async acceptTrip() {
+        if (this.props.auth) {
             let pageURL = window.location.search.substring(1);
-        let tokenObj = this.getToken(pageURL);
-        const token = tokenObj["token"];
-        const tokenData = {
-            token: token,
-                          }
-      const params = formatPostData(tokenData)
-      const accept  =  await axios.post('api/accept_invite.php', params);
-     if (accept.data.success) { 
-      window.localStorage.clear();
-      this.props.history.push("/planner");
-    }
-                        }
-    else {
-        this.showModal();
-    }
+            let tokenObj = this.getToken(pageURL);
+            const token = tokenObj["token"];
+            const tokenData = { token: token }
+            const params = formatPostData(tokenData)
+            const accept  =  await axios.post('api/accept_invite.php', params);
+            if (accept.data.success) { 
+            window.localStorage.clear();
+            this.props.history.push("/planner");
             }
+        } else {
+            this.showModal();
+        }
+    }
     getToken(string){
         var obj = {};
         var array = string.split('=');
@@ -54,22 +51,17 @@ class AcceptancePage extends Component{
     declineTrip(){
         this.props.history.push('/');
     }
-
     componentDidMount(){
         let pageURL = window.location.search.substring(1);
-        console.log(pageURL);
         let tokenObj = this.getToken(pageURL);
         var token = tokenObj["token"]
         localStorage.setItem('token', token);
         var test = this.getConcertDetails(this.getToken(pageURL));
-        console.log('test', test);
-
     }
     async getConcertDetails(object){
         let params = formatPostData(object);
         const {data : tripDetails} = await axios.post('api/invited.php', params);
 
-        console.log(tripDetails);
         this.setState({
             trip: tripDetails   
         })
@@ -79,9 +71,7 @@ class AcceptancePage extends Component{
             border: '3px solid powderblue',
             borderRadius: '5%',
         }
-        console.log(this.state.trip);
         const {data, whosGoing} = this.state.trip;
-        console.log('whos going ', whosGoing);
 
         let evenArray = [];
         let oddArray = [];
@@ -98,9 +88,10 @@ class AcceptancePage extends Component{
         if(!data){
             return (
                 <Loader/>   
-            )
+            );
         }
         const {trip_name, artist, date, img, venue, address, time} = data[0];
+        
         return (
             <div className="acceptanceContainer">
                  <div className="detailsHeader title">

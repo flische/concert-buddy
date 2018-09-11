@@ -9,24 +9,26 @@ import {Link} from 'react-router-dom'
 
 class SignUp extends Component {
     state = {
-        show: false,
+        show: false
     }
+
     register =  async (values) => {
       
         await this.props.signUp(values); 
         this.props.reset();
-        console.log(this.props);
         this.showModal();
     }
+
     showModal = () => {
         this.setState({
             show: true,
-        })
+        });
     }
+
     hideModal = () => {
         this.setState({
             show: false,
-        })
+        });
     }
 
     render(){
@@ -61,19 +63,18 @@ function validate(values){
     const { email, name, password, confirmPassword } = values;
 
     const errors = {};
+
     if(!email){
         errors.email = 'Please enter your email';
     }
     if (!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) {
         errors.email = 'Invalid Email Address';
     }
-
     if(!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
 
     if(password !== confirmPassword){
         errors.confirmPassword = 'Passwords do not match';
     }
-
     return errors;
 }
 
