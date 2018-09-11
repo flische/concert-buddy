@@ -64,7 +64,7 @@ class App extends Component{
                     <Route path='/search-concerts' component={SearchConcerts} />
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
-                    <Route path='/invite' component={auth(InviteFriends)} />
+                    <Route path='/invite' component={InviteFriends} />
                     <Route path='/sign-in' component= {window.localStorage.length > 0 ? (window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) :  redirect(SignIn, "/concert-details" + window.localStorage.getItem("url"))): redirect(SignIn, '/planner')} />
                     <Route path='/sign-up' component={redirect(SignUp, '/sign-in')} />
                     <Route path='/planner' component={auth(Planner)} />

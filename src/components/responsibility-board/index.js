@@ -114,9 +114,9 @@ class Responsibilities extends Component {
         });
 
         return (
-            <div className="div-container">
+            <div>
                 <div className="title">RESPONSIBILITIES</div>
-                <div className="resp-content">
+                <div className="resp-content" style={{height: '100%'}}>
                     {respItem}
                 </div>
                 <div className="buttons">

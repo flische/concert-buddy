@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { send_email_invites } from '../../actions'
 import Modal from '../modal';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 
 class InviteFriends extends Component {
@@ -26,9 +27,18 @@ class InviteFriends extends Component {
         })
     }
 
+   async componentDidMount() {
+       const resp = await axios.post('api/checkUserLoggedIn.php');
+       if (!resp.data.success) {
+           this.props.history.push('/');
+       }
+    }
+
     renderEmails(props) {
         const { fields } = props;
         const emails = fields.map((name, index) => {
+            console.log('Index:', index);
+            console.log('IS < 6', index < 6);
             if (index < 6) {
                 return (
                     <Field key={name} name={name} component={InviteInput} />
@@ -88,9 +98,7 @@ class InviteFriends extends Component {
     }
 }
 
-// if (!(/^@+$/.test(emails))) {
-//     emailErrors.push('Please enter a valid email address')
-// }
+
 // if (emailErrors.length) {
 //     errors.emails = emailErrors
 // }
@@ -99,21 +107,26 @@ class InviteFriends extends Component {
 //     const {emails} = values; console.log(emails);
 //     const errors = {};
 //     const emailErrors = [];
+// if (!(/^@+$/.test(emails))) {
+//     emailErrors.push('Please enter a valid email address')
+// }
 
 // }
 
 InviteFriends = reduxForm({
     form: 'invite-friends',
     // validate,
-    initialValues: {
-        emails: ['']
-    }
+    enableReinitialize: true
 })(InviteFriends);
 
 function mapStateToProps(state) {
     return {
         user_concert: state.user.details,
-    };
+
+        initialValues: {
+            emails: [''],
+        },
+    }
 }
 
 export default connect( mapStateToProps, { send_email_invites } )(InviteFriends)
