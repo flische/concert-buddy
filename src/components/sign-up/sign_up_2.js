@@ -12,7 +12,10 @@ class SignUp extends Component {
         show: false,
     }
     register = (values) => {
+      
         this.props.signUp(values); //<-- making a real call to the server and making a real acct for you!
+        this.props.reset();
+        console.log(this.props);
         this.showModal();
     }
     showModal = () => {
@@ -38,7 +41,7 @@ class SignUp extends Component {
                             <Field className="standard-input" name="email" component={Input} label="Email"/>
                             <Field className="standard-input" name="name" component={Input} label="Name"/>
                             <Field type="password" className="standard-input signup" name="password" component={Input} label="Password"/>
-                            <Field type="password" className="standard-input signup" name="confirmPassword" component={Input} label="Confirm Password"/>
+                            <Field type="password" className="standard-input signup" name="confirmPassword" component={Input} placeholder="Confirm Password" label="Confirm Password"/>
                         </div>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                      </form>

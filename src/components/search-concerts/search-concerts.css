@@ -5,12 +5,13 @@
     border-radius: 5px;
     font-size: 20px;
     color: #2A363B;
+    font-family: Quicksand;
 }
 
 .date {
     font-size: 20px;
     color: #2A363B;
-    font-family: 'Roboto', sans-serif;
+    font-family: Quicksand;
     text-align: center;
 }
 
