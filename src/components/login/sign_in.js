@@ -6,20 +6,21 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
 import Input from '../input';
+import {resetError} from '../../actions';
 
 class SignIn extends Component {
     
     login = (values) =>{
         this.props.signIn(values); 
+        
     }
 
     componentDidMount() {
-        this.props.authError;
-
+        this.props.resetError();
     }
 
     render(){
-        const { handleSubmit, authError, reset } = this.props;
+        const { handleSubmit, authError} = this.props;
 
         return (
             
@@ -71,4 +72,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect( mapStateToProps, { signIn } )(SignIn);
+export default connect( mapStateToProps, { signIn, resetError } )(SignIn);
