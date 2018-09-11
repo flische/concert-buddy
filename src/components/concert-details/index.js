@@ -144,7 +144,7 @@ class ConcertDetails extends Component {
                 </Modal>  : 
                 <Modal show={this.state.show} handleClose={this.hideModal} >
                 <p className="modal-p">Please log in or sign up to create a trip</p>
-                <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
+                <Link to="/sign-in"><div className="btn black-btn">SIGN IN / SIGN UP</div></Link>
                 </Modal>  }
             </div>
 
