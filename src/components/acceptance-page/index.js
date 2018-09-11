@@ -33,9 +33,10 @@ class AcceptancePage extends Component{
         const token = tokenObj["token"];
         const tokenData = {
             token: token,
+            action: 'accept_invite'
                           }
       const params = formatPostData(tokenData)
-      const accept  =  await axios.post('api/accept_invite.php', params);
+      const accept  =  await axios.post('api/handle_email', params);
      if (accept.data.success) { 
       window.localStorage.clear();
       this.props.history.push("/planner");
@@ -66,8 +67,10 @@ class AcceptancePage extends Component{
 
     }
     async getConcertDetails(object){
+        object.action = 'invited';
+        console.log(object.action);
         let params = formatPostData(object);
-        const {data : tripDetails} = await axios.post('api/invited.php', params);
+        const {data : tripDetails} = await axios.post('api/handle_email.php', params);
 
         console.log(tripDetails);
         this.setState({
@@ -79,9 +82,9 @@ class AcceptancePage extends Component{
             border: '3px solid powderblue',
             borderRadius: '5%',
         }
-        console.log(this.state.trip);
+      
         const {data, whosGoing} = this.state.trip;
-        console.log('whos going ', whosGoing);
+        
 
         let evenArray = [];
         let oddArray = [];

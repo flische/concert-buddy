@@ -25,7 +25,6 @@ if ($result2) {
     if (mysqli_affected_rows($conn) > 0) {
         $output['success'] = true; 
         // $newID = mysqli_insert_id($conn);
-        print(json_encode($output));
         // echo "successful added $userID and $tripID and $newID"; 
         
     }

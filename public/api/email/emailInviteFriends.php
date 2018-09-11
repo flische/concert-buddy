@@ -1,15 +1,15 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
-require_once('email_config.php');
-require_once('mysqlconnect.php');
+require_once('../email_config.php');
+require_once('../mysqlconnect.php');
 require '../../PHPMailer/src/PHPMailer.php';
 require '../../PHPMailer/src/SMTP.php';
 require '../../PHPMailer/src/Exception.php';
 $host = $_SERVER['HTTP_HOST'];
 $data= $_SESSION['tripData'][0];
 $_POST = json_decode(file_get_contents('php://input'), true);
-$emails = $_POST['emails'];
+$emails = htmlentitities($_POST['emails']);
 $trip_id = $data['trip_id'];
 $trip_name = $data['trip_name'];
 $name = $_SESSION['user_data'][0]['Name'];
@@ -117,5 +117,4 @@ print(json_encode($token));
     else {
         echo ("database error! ");
     }
-    print(json_encode($output));
 ?>

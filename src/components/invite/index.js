@@ -61,8 +61,6 @@ class InviteFriends extends Component {
         this.props.send_email_invites(array);
     }
     render() {
-        console.log('this.propsssssssssssssssss', this.props)
-        // console.log("user concert", this.props.user_concert.trip_name)
         const { handleSubmit, reset } = this.props;
         const pStyle = {
             color: 'dodgerblue',

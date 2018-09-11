@@ -15,7 +15,6 @@ class SignUp extends Component {
       
         this.props.signUp(values); //<-- making a real call to the server and making a real acct for you!
         this.props.reset();
-        console.log(this.props);
         this.showModal();
     }
     showModal = () => {

@@ -8,15 +8,17 @@ foreach ($_POST as $key => $value)  {
 }
 
 switch ($action)
-{   case 'send_email':
-        include('email/emailInviteFriends.php');
+{   case 'existing_login':
+        include('userlogin/checkUserLoggedIn.php');
         break;
-    case 'invited':
-        include('email/invited.php');
+    case 'user_login':
+        include('userlogin/loginCheck.php');
         break;
-    case 'accept_invite':
-        include('email/accept_invite.php');
+    case 'user_logout':
+        include('userlogin/logout.php');
         break;
+
+
 }
 $output = json_encode($output);
  print($output);
