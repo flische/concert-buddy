@@ -1,13 +1,11 @@
 <?php 
 header('Access-Control-Allow-Origin:*');
-print_r($_POST); 
-$action = $_POST['config'];
+$action = $_POST['action'];
 $sanitizedPost = [];
 foreach ($_POST as $key => $value)  {
    $output[$key] = stripslashes(htmlentities($value));
 }
-print_r($output);
-print($_POST['email']) ;
+
 
 switch ($_POST["action"])
 {
@@ -32,5 +30,6 @@ switch ($_POST["action"])
     default: 
         return;
 }
-
+$output = json_encode($output);
+ print($output);
 ?> 

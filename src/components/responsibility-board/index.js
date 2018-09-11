@@ -39,10 +39,11 @@ class Responsibilities extends Component {
 
     async checkResponsibilities() {
         const dataToSend = {
-            trip_id: this.props.user_concert.trip_id
+            trip_id: this.props.user_concert.trip_id,
+            action: 'get_responsibilities',
         }
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/get_responsibilities.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
 
         this.setState({
             responsibilities: resp.data.data
@@ -52,11 +53,12 @@ class Responsibilities extends Component {
     deleteItem = async (id) => {
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id,
-            id: id
+            id: id,
+            action: 'delete_responsibilities',
 
         }
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/delete_responsibilities.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
 
         this.checkResponsibilities();
     }
@@ -64,11 +66,12 @@ class Responsibilities extends Component {
     itemCompleted = async (id, completed) => {
         const dataToSend = {
             ID: id,
-            completed: completed
+            completed: completed,
+            action: 'toggle_responsibilities'
         }
 
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/toggle_responsibilities.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
 
         this.checkResponsibilities();
     }

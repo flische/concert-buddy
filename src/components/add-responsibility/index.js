@@ -38,11 +38,12 @@ class AddResponsibility extends Component {
             details: this.state.form.details,
             name: this.state.form.name,
             completed: false,
-            trip_id: this.props.trip_info.trip_id
+            trip_id: this.props.trip_info.trip_id,
+            action: 'add_responsibilities'
         }
 
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/add_responsibilities.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
         const newState = {
             form: {
                 title: '',

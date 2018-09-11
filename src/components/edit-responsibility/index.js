@@ -49,10 +49,12 @@ class EditResponsibility extends Component {
     async getEditFields(object) {
         const dataToSend = {
             edit_id: object.edit_id,
-            trip_id: this.props.trip_info.trip_id
+            trip_id: this.props.trip_info.trip_id,
+            action: 'get_edit_fields'
+            
         }
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/get_edit_fields.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
 
         this.setState({
             form: {
@@ -77,12 +79,13 @@ class EditResponsibility extends Component {
             title: this.state.form.title,
             details: this.state.form.details,
             name: this.state.form.name,
-            trip_id: this.props.trip_info.trip_id
+            trip_id: this.props.trip_info.trip_id,
+            action: 'edit_responsibilities'
 
         }
 
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/edit_responsibilities.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
         const newState = {
             form: {
                 title: '',
