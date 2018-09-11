@@ -12,6 +12,10 @@
  border-radius: 5px;
  text-align: left;
  font-size: 20px;
- font-family: 'Roboto', sans-serif;
+ font-family: Quicksand;
  display: block;
+}
+
+.standard-textarea::placeholder{
+    text-indent: 5px;
 }
