@@ -50,6 +50,7 @@ export default () => {
             <div className="team-container">
                 {members.map(item => {
                     const{ name, role, imgUrl, favoriteArtist, linkedin, github } = item;
+
                     return (
                         <div className="eachPerson" key={name}>
                             <div className="profile">
@@ -66,9 +67,9 @@ export default () => {
                                 </div>
                             </div>
                         </div>
-                    )
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 }

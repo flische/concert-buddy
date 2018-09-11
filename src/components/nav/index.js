@@ -6,18 +6,17 @@ import { signIn, signOut } from '../../actions';
 
 
 class Nav extends Component {
-
-    constructor(props) {
-        super(props)
-    }
+    
     state = {
         isOpen: false
     }
+
     handleClick() {
         this.setState({
             isOpen: !this.state.isOpen
         });
     }
+
     handleRenderLinkClicks(){
         const {auth, signIn, signOut} = this.props;
        
@@ -91,7 +90,6 @@ class Nav extends Component {
 
     render() {
         return (
-
             <nav role="navigation">
                 <div id="menuToggle">
                     <input onClick={this.handleClick.bind(this)} className="opacity" type="checkbox" checked={this.state.isOpen} />
@@ -103,17 +101,14 @@ class Nav extends Component {
                     </ul>
                 </div>
             </nav>
-
-
         );
     }
-
 }
 
 function mapStateToProps(state) {
     return {
         auth: state.userAuth.auth
-    }
+    };
 }
 
 export default connect(mapStateToProps,{

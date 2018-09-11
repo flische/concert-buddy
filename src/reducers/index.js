@@ -5,7 +5,7 @@ import userDetailsReducer from './get_user_details_reducer';
 import user_auth_reducer from './user_auth_reducer';
 
 const appReducer = combineReducers(
-    {
+    {   
         concertDetails: concertDetailsReducer,
         user: userDetailsReducer,
         userAuth: user_auth_reducer,
@@ -18,7 +18,6 @@ const rootReducer = (state, action) => {
     if (action.type === 'sign_out') {
         state = undefined;
     }
-
     return appReducer(state, action);
 }
 

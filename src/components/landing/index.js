@@ -14,7 +14,6 @@ class Landing extends Component {
         const { auth } = this.props;
 
         if(auth){
-            // console.log(auth);
             return (
                 <Fragment>
                     <div className="buttons">
@@ -50,13 +49,12 @@ class Landing extends Component {
             </div>
         );
     }
-    
 }
 
 function mapStateToProps(state) {
     return {
         auth: state.userAuth.auth
-    }
+    };
 }
 
 export default connect(mapStateToProps)(Landing);

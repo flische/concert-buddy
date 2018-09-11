@@ -22,36 +22,39 @@ import AcceptancePage from '../components/acceptance-page';
 import AboutPage from '../components/about';
 
 
-class App extends React.Component {
+class App extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
             isHome: false
-        }
+        };
     }
+
     componentDidMount() {
         if (this.props.location.pathname === '/') {
             this.setState({
                 isHome: true
-            })
+            });
+
         } else {
             this.setState({
                 isHome: false
-            })
+            });
         }
         this.props.history.listen((location) => {
             if (location.pathname === '/') {
                 this.setState({
                     isHome: true
-                })
+                });
             } else {
                 this.setState({
                     isHome: false
-                })
+                });
             }
-        })
+        });
     }
+
     render() {
         return (
             <div className='main'>
@@ -78,5 +81,6 @@ class App extends React.Component {
         );
     }
 }
+
 const appWithRouter = withRouter(App)
 export default appWithRouter;

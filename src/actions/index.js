@@ -17,18 +17,15 @@ export function get_concert_details(object) {
 }
 
 export async function get_user_details() {
-    // const dataToSend = {
-    //     userID: userID,
-    // }
-    // const params = formatPostData(dataToSend)
+  
     const userTrips = await axios.post('api/checkUserTrips.php');
-    // console.log('get_user_details actions/index.js: ', userTrips);
-  if(!userTrips.data.data[0]) {
-      return{
+ 
+    if(!userTrips.data.data[0]) {
+        return{
             type: types.GET_USER_DETAILS,
             payload: payload
-      }
-  }
+        }
+    }
 
     const id = userTrips.data.data[0].trip_id;
     
@@ -53,7 +50,7 @@ export async function send_email_invites(emails) {
         emails: emails,
     }
     const params = JSON.stringify(dataToSend)
-    // console.log(params);
+
     const response = await axios.post('api/emailInviteFriends.php', params);
     return {
         type: types.SEND_INVITES,
@@ -116,7 +113,7 @@ export const signUp = credentials => async dispatch => {
         
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/addUser.php', params );
-        // console.log('Sign Up response: ', response);
+
         if (resp.data.success) {
 
             dispatch({ type: types.SIGN_UP} );
@@ -128,7 +125,7 @@ export const signUp = credentials => async dispatch => {
         }
 
     } catch(error){
-        dispatch( {
+        dispatch({
             type: types.AUTH_ERROR,
             error: 'Error creating account'
         });

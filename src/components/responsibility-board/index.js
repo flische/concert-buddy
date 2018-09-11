@@ -49,12 +49,12 @@ class Responsibilities extends Component {
         })
 
     }
+
     deleteItem = async (id) => {
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id,
             id: id
-
-        }
+        };
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/delete_responsibilities.php', params);
 
@@ -65,7 +65,7 @@ class Responsibilities extends Component {
         const dataToSend = {
             ID: id,
             completed: completed
-        }
+        };
 
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/toggle_responsibilities.php', params);
@@ -74,13 +74,14 @@ class Responsibilities extends Component {
     }
 
     render() {
+
         if (this.state.responsibilities === null) {
             return (
                 <Loader />
-            )
+            );
         }
+        const resp = this.state.responsibilities;
 
-        const resp = this.state.responsibilities
         if (!resp) {
             return (
                 <div className="div-container">
@@ -97,7 +98,6 @@ class Responsibilities extends Component {
         }
 
         const respItem = resp.map((item) => {
-
             return <RespItem
                 key={item.ID}
                 id={item.ID}
@@ -110,10 +110,9 @@ class Responsibilities extends Component {
                 deleteItem={this.deleteItem}
                 showModal={this.showModal}
                 chkResp={this.checkResponsibilities}
-
-
             />
         });
+
         return (
             <div>
                 <div className="title">RESPONSIBILITIES</div>
@@ -125,15 +124,14 @@ class Responsibilities extends Component {
                     <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                 </div>
             </div>
-
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        user_concert: state.user.details,
-    }
+        user_concert: state.user.details
+    };
 }
 
-export default connect(mapStateToProps, { get_user_details: get_user_details })(Responsibilities);
+export default connect( mapStateToProps, { get_user_details: get_user_details } )(Responsibilities);
