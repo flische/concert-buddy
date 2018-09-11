@@ -50,7 +50,7 @@
 }
 
 .bottom-content > .imageArea > img{
-    border: 1px solid #FF847C;
+    border: 1px solid grey;
     border-radius: 7%;
     width: 20%;
 }
@@ -70,9 +70,9 @@
         margin-top: 8%;
     }
     .bottom-content>.imageArea>img {
-        border: 1px solid #FF847C;
+        border: 1px solid lightgrey;
         border-radius: 7%;
-        width: 85%;
+        width: 75%;
     }
 
 }

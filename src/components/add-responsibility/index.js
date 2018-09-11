@@ -57,6 +57,9 @@ class AddResponsibility extends Component {
     }
     render() {
         const { title, details, name, } = this.state.form;
+        const font = {
+            fontFamily: 'Quicksand'
+        }
         return (
             <div className="div-container">
                 <div className="title">RESPONSIBILITIES</div>
