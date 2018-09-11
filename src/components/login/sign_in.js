@@ -6,6 +6,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
 import Input from '../input';
+import {formatPostData} from '../../helpers'; 
+import axios from 'axios';
 
 class SignIn extends Component {
     

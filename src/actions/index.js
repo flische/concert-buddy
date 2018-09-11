@@ -17,11 +17,11 @@ export function get_concert_details(object) {
 }
 
 export async function get_user_details() {
-    // const dataToSend = {
-    //     userID: userID,
-    // }
-    // const params = formatPostData(dataToSend)
-    const userTrips = await axios.post('api/checkUserTrips.php');
+    const dataToSend = {
+        action: 'check_trips',
+    }
+    const params = formatPostData(dataToSend)
+    const userTrips = await axios.post('api/access_users.php', params);
     // console.log('get_user_details actions/index.js: ', userTrips);
   if(!userTrips.data.data[0]) {
       return{
@@ -34,9 +34,10 @@ export async function get_user_details() {
     
     var dataToSend2 = {
         tripID: id,
+        action: 'check_going'
     }
     const params2 = formatPostData(dataToSend2);
-    const going = await axios.post('api/checkWhosGoing.php', params2)
+    const going = await axios.post('api/access_users.php', params2)
     const whosgoing = going.data.data;
     const payload = {
         userTrips: userTrips,
