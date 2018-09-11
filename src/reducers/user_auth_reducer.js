@@ -10,7 +10,7 @@ export default (state = DEFAULT_STATE, action) => {
         case types.AUTH_ERROR:
             return { auth: false, error: action.error };
         case types.SIGN_IN:   
-        return { auth: true, error: '' };
+            return { auth: true, error: '' };
         case types.SIGN_UP:
             return { auth: false, error: '' };
         case types.SIGN_OUT:

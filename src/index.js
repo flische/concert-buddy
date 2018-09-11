@@ -11,21 +11,25 @@ import types from './actions/types';
 import TeamPage from './components/team-page';
 import AcceptancePage from './components/acceptance-page'
 import AboutPage from './components/about';
+import auth from './hoc/auth';
 import App from './components/app';
+
 
 const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));
 
 // ***Persistent login*** // 
 //wraps the entire application as soon as store is created the first time (right above) and checks if user is logged in
-const response =  axios.post('api/checkUserLoggedIn.php').then((response) => { // checks if user is logged in..then...
-    console.log('response', response);
-
-    if (response.data.success) {  // <--- .then( is used to check if user is in fact logged in...
+if(document.cookie){ // if a cookie exists in the session storage...
+    console.log('cookie', document.cookie);
     // In order to log in, we need to send an action to the reducer! What’s the method that sends actions out? dispatch() !
-        store.dispatch({ type: types.SIGN_IN} );  // if user IS logged in, store.dispatch() -> the SIGN_IN action! 
-    } 
-});
-
+    store.dispatch({ type: types.SIGN_IN} ); // change auth to true for the moment ...then...
+    const response =  axios.post('api/checkUserLoggedIn.php').then((response) => { // check if user is actually logged in..then...
+        console.log('response', response);
+        if (!response.data.success) {  // if user is NOT logged in...
+            store.dispatch({ type: types.SIGN_OUT }); // sign out user!
+        }
+    });
+}
 
 ReactDOM.render(
     <Provider store={store}>

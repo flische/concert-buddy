@@ -7,18 +7,18 @@ import mysql from '../../images/mysql.png';
 import php from '../../images/php.png';
 import react from '../../images/react.png';
 import redux2 from '../../images/redux2.png';
-import js from '../../images/javascript.png';
+import js from '../../images/javascript-logo.png';
 
 export default () => {
     const imageArray = [html, js, css, react, php, mysql, redux2];
     const iconStyle = {
-        width: '24%',
-        height: '24%',
+        width: '25%',
+        height: '25%',
         marginTop: '3%'
     }
     const reduxStyle = {
-        width: '24%',
-        height: '24%'
+        width: '28%',
+        height: '28%'
     }
     const h2FontSize = {
         textAlign: 'center',

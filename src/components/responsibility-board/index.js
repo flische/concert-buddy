@@ -6,6 +6,7 @@ import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Loader from '../loader';
+import { get_user_details } from '../../actions'
 
 class Responsibilities extends Component {
     constructor(props) {
@@ -31,7 +32,9 @@ class Responsibilities extends Component {
     }
 
     componentDidMount() {
-        this.checkResponsibilities();
+        const user  = this.props.get_user_details().then( (user) => { // calls get user details on componentDidMount THEN...
+            this.checkResponsibilities(); // calls check responsibilities!
+        });
     }
 
     async checkResponsibilities() {
@@ -129,8 +132,8 @@ class Responsibilities extends Component {
 
 function mapStateToProps(state) {
     return {
-        user_concert: state.user.details
+        user_concert: state.user.details,
     }
 }
 
-export default connect(mapStateToProps)(Responsibilities);
+export default connect(mapStateToProps, { get_user_details: get_user_details })(Responsibilities);
