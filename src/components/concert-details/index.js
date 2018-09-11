@@ -70,11 +70,7 @@ class ConcertDetails extends Component {
         return returnDate;
     }
 
-
-
-
     render() {
-        console.log('props in details', this.props);
 
         const concert = this.props.concert;
      
@@ -86,7 +82,7 @@ class ConcertDetails extends Component {
         const cityState = concert._embedded.venues[0].city.name + ', ' + concert._embedded.venues[0].state.stateCode;
         let eventTime = this.convertTime(concert.dates.start.localTime);
         let convertedDate = this.convertDateFormat(concert.dates.start.localDate);
-        console.log(this.props.user_concert);
+        
         return (
             <div className="details div-container">
 
