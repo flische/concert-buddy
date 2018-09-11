@@ -123,7 +123,7 @@ export const signUp = credentials => async dispatch => {
         } else {
             dispatch({
                 type: types.AUTH_ERROR,
-                error: 'Error creating account'
+                error: resp.data.error
             });
         }
 

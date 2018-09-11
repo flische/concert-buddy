@@ -11,9 +11,9 @@ class SignUp extends Component {
     state = {
         show: false,
     }
-    register = (values) => {
+    register =  async (values) => {
       
-        this.props.signUp(values); //<-- making a real call to the server and making a real acct for you!
+        await this.props.signUp(values); 
         this.props.reset();
         console.log(this.props);
         this.showModal();
@@ -45,10 +45,12 @@ class SignUp extends Component {
                         </div>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                      </form>
-                     <DefaultModal show={this.state.show} handleClose={this.hideModal} >
+                     { this.props.authError ?  <DefaultModal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p center">Email already exists</p>
+                    </DefaultModal> : <DefaultModal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p center">You have successfully signed up! Please log in with your new account</p>
                     <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
-                    </DefaultModal>
+                    </DefaultModal>}
                 </div>
             </div>
         );
@@ -75,9 +77,15 @@ function validate(values){
     return errors;
 }
 
+function mapStateToProps(state){
+    return {
+        authError: state.userAuth.error
+    }
+}
+
 SignUp = reduxForm({
     form: 'sign-up',
     validate: validate
 })(SignUp);
 
-export default connect( null, { signUp } )(SignUp);
+export default connect( mapStateToProps, { signUp } )(SignUp);
