@@ -3,9 +3,10 @@ import './concert-details.css'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { get_concert_details } from '../../actions';
-import { get_user_details} from '../../actions';
+import { get_user_details } from '../../actions';
 import Loader from '../loader';
 import Modal from '../modal';
+import concertimage from '../../assets/images/generic_concert.PNG';
 
 
 class ConcertDetails extends Component {
@@ -76,7 +77,8 @@ class ConcertDetails extends Component {
     render() {
 
         const concert = this.props.concert;
-     
+        console.log('concert details', concert);
+
         if (concert._embedded === undefined) {
             return (
                 <Loader />
@@ -85,13 +87,16 @@ class ConcertDetails extends Component {
         const cityState = concert._embedded.venues[0].city.name + ', ' + concert._embedded.venues[0].state.stateCode;
         let eventTime = this.convertTime(concert.dates.start.localTime);
         let convertedDate = this.convertDateFormat(concert.dates.start.localDate);
-        
+
         return (
             <div className="details div-container">
                 <div className="title">
                     CONCERT DETAILS
                     </div>
-                <img src={concert._embedded.attractions[0].images[3].url} />
+
+                {concert._embedded.attractions ? <img src={concert._embedded.attractions[0].images[3].url} /> :
+                    <img src={concertimage} />}
+
                 <div className="concert-details-main ">
                     <div className="concert-details-a ">
                         <p>
@@ -127,24 +132,24 @@ class ConcertDetails extends Component {
                 <div className="buttons">
                     <a href={concert.url} target='_blank'><div className=" btn white-btn">BUY TICKETS</div></a>
 
-                { this.props.auth ? (this.props.user_concert.data === null ? <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link> : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>) : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>}
+                    {this.props.auth ? (this.props.user_concert.data === null ? <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link> : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>) : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>}
 
                     <Link to={`/concert-results/${this.props.location.search}`}><div className=" btn white-btn">BACK TO RESULTS</div></Link>
 
                 </div>
 
-                { this.props.auth ? 
+                {this.props.auth ?
 
-                <Modal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p">You already have a current trip! Check it out in the planner!</p>
-                    <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
-                </Modal>  
-                : 
-                <Modal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p">Please log in or sign up to create a trip</p>
-                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN / SIGN UP</div></Link>
-                </Modal>  
-                
+                    <Modal show={this.state.show} handleClose={this.hideModal} >
+                        <p className="modal-p">You already have a current trip! Check it out in the planner!</p>
+                        <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
+                    </Modal>
+                    :
+                    <Modal show={this.state.show} handleClose={this.hideModal} >
+                        <p className="modal-p">Please log in or sign up to create a trip</p>
+                        <Link to="/sign-in"><div className="btn black-btn">SIGN IN / SIGN UP</div></Link>
+                    </Modal>
+
                 }
             </div>
         );
@@ -159,4 +164,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect( mapStateToProps, { get_concert_details, get_user_details } )(ConcertDetails);
+export default connect(mapStateToProps, { get_concert_details, get_user_details })(ConcertDetails);
