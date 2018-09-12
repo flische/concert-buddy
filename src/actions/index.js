@@ -22,7 +22,6 @@ export async function get_user_details() {
     }
     const params = formatPostData(dataToSend)
     const userTrips = await axios.post('api/access_users.php', params);
-    // console.log('get_user_details actions/index.js: ', userTrips);
   if(!userTrips.data.data[0]) {
       return{
             type: types.GET_USER_DETAILS,
@@ -118,7 +117,6 @@ export const signUp = credentials => async dispatch => {
         
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/handle_login.php', params );
-        // console.log('Sign Up response: ', response);
         if (resp.data.success) {
 
             dispatch({ type: types.SIGN_UP} );

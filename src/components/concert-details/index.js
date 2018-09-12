@@ -75,10 +75,7 @@ class ConcertDetails extends Component {
     }
 
     render() {
-
         const concert = this.props.concert;
-        console.log('concert details', concert);
-
         if (concert._embedded === undefined) {
             return (
                 <Loader />

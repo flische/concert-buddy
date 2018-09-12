@@ -29,7 +29,6 @@ class AcceptancePage extends Component {
     }
     async acceptTrip() {
         if (this.props.auth) {
-            console.log("here");
             if (this.props.user_details.trip_id) {
                 this.showModal();
             }
@@ -76,7 +75,6 @@ class AcceptancePage extends Component {
     }
     async getConcertDetails(object) {
         object.action = 'invited';
-        console.log(object.action);
         let params = formatPostData(object);
         const response = await axios.post('api/handle_email.php', params);
         const { data: tripDetails } = response;
@@ -86,10 +84,8 @@ class AcceptancePage extends Component {
         this.setState({
             trip: tripDetails
         })
-    }
-    render() {
-        console.log("accept props", this.props)
 
+    render() {
         const { data, whosGoing } = this.state.trip;
         let evenArray = [];
         let oddArray = [];
