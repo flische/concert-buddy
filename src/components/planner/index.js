@@ -11,14 +11,22 @@ class Planner extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            concerts: null,
+        }
     }
+    
     
     componentDidMount() {
         this.checkUserTrips();
     }
 
     async checkUserTrips() {
-        this.props.get_user_details();
+        await this.props.get_user_details();
+        this.setState({
+            concerts: this.props.user_concert,
+        })
 
     }
 
@@ -55,7 +63,11 @@ class Planner extends Component {
                 <Loader />
             );
         }
-
+        if (this.state.concerts === null) {
+            return (
+                <Loader />
+            );
+        }
         const arrayOfPeopleGoing = this.props.users_attending;
 
         let eventTime = this.convertTime(user_concert.time);
@@ -88,7 +100,7 @@ class Planner extends Component {
             );
         }
 
-        if (this.props.user_concert === undefined) {
+        if (this.state.user_concert === null) {
             return (
                 <Loader />
             );
