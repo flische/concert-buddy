@@ -1,10 +1,20 @@
 
-.detailsHeader, .imageContainer, .buttonArea{
+.detailsHeader, .image-container{
     text-align: center;
 }
 
+.image-container {
+    margin: 10px;
+}
+
+.image-container>img {
+
+    border-radius: 5px;
+    border: solid 1px #FF847C;
+}
+
 .detailsHeader{
-    font-family: Quicksand;
+    font-family: Quicksand, sans-serif;
 }
 
 .acceptanceContainer {
@@ -16,7 +26,6 @@
     padding: 1%;
     background-color: white;
     color: #2A363B;
-    /* width: 80%; */
     margin-bottom: 2%;
     min-height: 17vh;
 }
@@ -24,14 +33,14 @@
 .concert-overview-acceptance h2{
     font-size: 1.2em;
     text-align: center;
-    font-family: Quicksand;
+    font-family: Quicksand, sans-serif;
 }
 
 .concert-overview-acceptance h2 span {
     font-size: 1em;
     color: #2A363B;
     font-weight: lighter;
-    font-family: Quicksand;
+    font-family: Quicksand, sans-serif;
 
 }
 
@@ -43,11 +52,11 @@
     background-color: white;
     width: 80%;
     margin: 0 auto;
-    border-radius: 4%;
-
+    margin-bottom: 20px;
+    
 }
 .attendees-acceptance > div {
-    font-family: Quicksand;
+    font-family: Quicksand, sans-serif;
 }
 .leftSide,
 .rightSide {
@@ -72,14 +81,14 @@
     text-align: center;
 }
 
-.imageContainer>img {
-    width: 60%;
-}
-
 @media only screen and (max-width: 601px){
     .attendees-acceptance div {
         font-size: 1.2em;
         margin: auto;
+    }
+
+    .image-container>img {
+        max-width: 350px;
     }
 }
 
@@ -103,27 +112,10 @@
         color: #2A363B;
         width: 30%;
         min-height: 17vh;
+        width: 600px;
     }
     .attendees-acceptance{
-        width: 30%;
-    }
-}
-
-@media only screen and (min-width: 601px) {
-    .imageContainer > img {
-        width: 40%;
-    }
-  
-
-    .buttonArea{
-        display: flex;
-        flex-direction: column;
-        /* align-content: center; */
-        align-items: center;
-    }
-    .top-content{
-        /* width: 51%; */
-        margin: 0 auto;
+        width: 600px;
     }
     .acceptanceContainer{
         width: 100%;
@@ -132,9 +124,8 @@
     .leftSide > div, .rightSide > div {
         font-size: 1.5em;
     }
-}
 
-.leftSide,
-.rightSide {
-    width: 25%;
+    .image-container>img {
+        max-width: 600px;
+    }
 }

@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './acceptance-page.css'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux'
 import Loader from '../loader'
 import Modal from '../modal'
-import {get_user_details} from '../../actions'
+import { get_user_details } from '../../actions'
 
-class AcceptancePage extends Component{
-    constructor(props){
+class AcceptancePage extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             trip: [],
@@ -34,38 +34,38 @@ class AcceptancePage extends Component{
                 this.showModal();
             }
             else {
-            let pageURL = window.location.search.substring(1);
+                let pageURL = window.location.search.substring(1);
 
-        let tokenObj = this.getToken(pageURL);
-        const token = tokenObj["token"];
-        const tokenData = {
-            token: token,
-            action: 'accept_invite'
-                          }
-      const params = formatPostData(tokenData)
-      const accept  =  await axios.post('api/handle_email.php', params);
- 
-            if (accept.data.success) { 
-            window.localStorage.clear();
-            this.props.history.push("/planner");
+                let tokenObj = this.getToken(pageURL);
+                const token = tokenObj["token"];
+                const tokenData = {
+                    token: token,
+                    action: 'accept_invite'
+                }
+                const params = formatPostData(tokenData)
+                const accept = await axios.post('api/handle_email.php', params);
+
+                if (accept.data.success) {
+                    window.localStorage.clear();
+                    this.props.history.push("/planner");
+                }
             }
-        }
         } else {
             this.showModal();
         }
     }
 
-    getToken(string){
+    getToken(string) {
         var obj = {};
         var array = string.split('=');
         obj['token'] = array[1].slice(0);
         return obj;
     }
-    declineTrip(){
+    declineTrip() {
         this.props.history.push('/');
     }
- async componentDidMount(){
-        if(this.props.auth) {
+    async componentDidMount() {
+        if (this.props.auth) {
             this.props.get_user_details();
         }
         let pageURL = window.location.search.substring(1);
@@ -74,32 +74,27 @@ class AcceptancePage extends Component{
         localStorage.setItem('token', token);
         const test = this.getConcertDetails(this.getToken(pageURL));
     }
-    async getConcertDetails(object){
+    async getConcertDetails(object) {
         object.action = 'invited';
         console.log(object.action);
         let params = formatPostData(object);
-    const  response = await axios.post('api/handle_email.php', params);
-    const {data : tripDetails} = response;
+        const response = await axios.post('api/handle_email.php', params);
+        const { data: tripDetails } = response;
         if (response.data.data[0] === null) {
             this.props.history.push('/404')
         }
         this.setState({
-            trip: tripDetails   
+            trip: tripDetails
         })
     }
-    render(){
+    render() {
         console.log("accept props", this.props)
-        const imageStyle = {
-            border: '3px solid powderblue',
-            borderRadius: '5%',
-        }
 
-      
-        const {data, whosGoing} = this.state.trip;
+        const { data, whosGoing } = this.state.trip;
         let evenArray = [];
         let oddArray = [];
-        
-        if(whosGoing){
+
+        if (whosGoing) {
             for (let i = 0; i < whosGoing.length; i++) {
                 if (i % 2 === 0) {
                     evenArray.push(<div key={whosGoing[i]}>{whosGoing[i]}</div>)
@@ -108,20 +103,19 @@ class AcceptancePage extends Component{
                 }
             }
         }
-        if(!data){
+        if (!data) {
             return (
-                <Loader/>   
+                <Loader />
             );
         }
-        const {trip_name, artist, date, img, venue, address, time} = data[0];
-        
+        const { trip_name, artist, date, img, venue, address, time } = data[0];
+
         return (
             <div className="acceptanceContainer">
-                 <div className="detailsHeader title">
-                    YOU HAVE BEEN INVITED TO: <br /> {trip_name} 
-                    <div className="imageContainer">
-                        <br />
-                        <img style={imageStyle} src={img} />
+                <div className="detailsHeader title">
+                    YOU HAVE BEEN INVITED TO: <br /> {trip_name}
+                    <div className="image-container">
+                        <img src={img} />
                     </div>
                 </div>
                 <div className="concert-overview-acceptance">
@@ -144,28 +138,28 @@ class AcceptancePage extends Component{
                         {oddArray}
                     </div>
                 </div>
-                <div className="buttonArea">
-                     <div className="btn white-btn" onClick={this.acceptTrip.bind(this)}>ACCEPT</div>
-                    
+                <div className="buttons">
+                    <div className="btn white-btn" onClick={this.acceptTrip.bind(this)}>ACCEPT</div>
+
                     <div className="btn pink-btn" onClick={this.declineTrip.bind(this)}>DECLINE</div>
                 </div>
                 {this.props.auth ? <Modal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p center">You already have an exisiting trip! Please go to your current trip</p>
                     <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
-                    </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p center">Please Login or Sign Up before accepting this trip!</p>
-                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
-        </Modal> }
+                </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
+                        <p className="modal-p center">Please Login or Sign Up before accepting this trip!</p>
+                        <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
+                    </Modal>}
             </div>
         )
     }
 }
 
-function  mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         auth: state.userAuth.auth,
         user_details: state.user.details
     }
 }
 
-export default connect(mapStateToProps, {get_user_details})(AcceptancePage);
+export default connect(mapStateToProps, { get_user_details })(AcceptancePage);

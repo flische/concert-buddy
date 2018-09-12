@@ -6,7 +6,7 @@ import { get_concert_details } from '../../actions';
 import { get_user_details } from '../../actions';
 import Loader from '../loader';
 import Modal from '../modal';
-import concertimage from '../../assets/images/generic_concert.PNG';
+import concertimage from '../../assets/images/generic_concert.png';
 
 
 class ConcertDetails extends Component {
@@ -142,7 +142,7 @@ class ConcertDetails extends Component {
 
                     <Modal show={this.state.show} handleClose={this.hideModal} >
                         <p className="modal-p">You already have a current trip! Check it out in the planner!</p>
-                        <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
+                        <Link to="/planner"><div className="btn black-btn">PLANNER</div></Link>
                     </Modal>
                     :
                     <Modal show={this.state.show} handleClose={this.hideModal} >
