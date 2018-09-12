@@ -28,11 +28,12 @@ class AcceptancePage extends Component{
         })
     }
     async acceptTrip() {
-        if (this.props.user_details.trip_id !== null) {
-            this.showModal();
-        }
-        else {
         if (this.props.auth) {
+            console.log("here");
+            if (this.props.user_details.trip_id) {
+                this.showModal();
+            }
+            else {
             let pageURL = window.location.search.substring(1);
             let tokenObj = this.getToken(pageURL);
             const token = tokenObj["token"];
@@ -44,11 +45,12 @@ class AcceptancePage extends Component{
             window.localStorage.clear();
             this.props.history.push("/planner");
             }
+        }
         } else {
             this.showModal();
         }
     }
-}
+
     getToken(string){
         var obj = {};
         var array = string.split('=');
@@ -140,7 +142,7 @@ class AcceptancePage extends Component{
                     
                     <div className="btn pink-btn" onClick={this.declineTrip.bind(this)}>DECLINE</div>
                 </div>
-                {this.props.user_details.trip_id !== null ? <Modal show={this.state.show} handleClose={this.hideModal} >
+                {this.props.auth ? <Modal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p center">You already have an exisiting trip! Please go to your current trip</p>
                     <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
                     </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
