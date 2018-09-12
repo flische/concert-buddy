@@ -30,7 +30,6 @@ else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error! + $error";
 }
-
 $trip_id = $output['data'][0]['trip_id'];
 $tripquery = "SELECT `user`.`name` 
 FROM `user_trip_overview` as `usertrip`
@@ -51,8 +50,4 @@ else {
     $error = mysqli_error($conn);
     $output['error'][] = "Database Error! + $error";
 }
-
- $output = json_encode($output);
- print($output)
-
 ?> 

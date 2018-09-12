@@ -52,11 +52,9 @@ export async function get_user_details() {
 export async function send_email_invites(emails) {
     const dataToSend = {
         emails: emails,
-        action: 'send_email'
     }
     const params = JSON.stringify(dataToSend)
-    // console.log(params);
-    const response = await axios.post('api/handle_email', params);
+    const response = await axios.post('api/emailInviteFriends.php', params);
     return {
         type: types.SEND_INVITES,
         payload: response
@@ -119,7 +117,7 @@ export const signUp = credentials => async dispatch => {
             };
         
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/users/access_users.php', params );
+        const resp = await axios.post('api/handle_login.php', params );
         // console.log('Sign Up response: ', response);
         if (resp.data.success) {
 
@@ -140,8 +138,8 @@ export const signUp = credentials => async dispatch => {
 }
 
 export async function signOut(){
-const dataToSend ={
-    action: "user_logout"
+const dataToSend = {
+    action: 'user_logout'
 };
 const params = formatPostData(dataToSend);
     await axios.post('api/handle_login.php', params);

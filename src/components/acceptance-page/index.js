@@ -43,7 +43,7 @@ class AcceptancePage extends Component{
             action: 'accept_invite'
                           }
       const params = formatPostData(tokenData)
-      const accept  =  await axios.post('api/handle_email', params);
+      const accept  =  await axios.post('api/handle_email.php', params);
  
             if (accept.data.success) { 
             window.localStorage.clear();
@@ -78,7 +78,8 @@ class AcceptancePage extends Component{
         object.action = 'invited';
         console.log(object.action);
         let params = formatPostData(object);
-        const {data : tripDetails} = await axios.post('api/handle_email.php', params);
+    const  response = await axios.post('api/handle_email.php', params);
+    const {data : tripDetails} = response;
         if (response.data.data[0] === null) {
             this.props.history.push('/404')
         }

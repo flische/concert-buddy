@@ -3,9 +3,9 @@ header('Access-Control-Allow-Origin:*');
 $action = $_POST['action'];
 $sanitizedPost = [];
 foreach ($_POST as $key => $value)  {
-   $output[$key] = stripslashes(htmlentities($value));
+   $sanitizedPost[$key] = stripslashes(htmlentities($value));
 }
-
+$_POST = $sanitizedPost;
 
 switch ($_POST["action"])
 {

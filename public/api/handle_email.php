@@ -4,13 +4,11 @@ $action = $_POST['action'];
 $sanitizedPost = [];
 require_once("mysqlconnect.php");
 foreach ($_POST as $key => $value)  {
-   $output[$key] = stripslashes(htmlentities($value));
-}
-
+    $sanitizedPost[$key] = stripslashes(htmlentities($value));
+ }
+ $_POST = $sanitizedPost;
 switch ($action)
-{   case 'send_email':
-        include('email/emailInviteFriends.php');
-        break;
+{ 
     case 'invited':
         include('email/invited.php');
         break;

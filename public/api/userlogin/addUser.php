@@ -35,8 +35,5 @@ $result = mysqli_query($conn, $query);
     }
 else {
     $output['error'][] = "New User Was not Added";
-}
-$output = json_encode($output);
-print($output);
-    
+}   
  ?>

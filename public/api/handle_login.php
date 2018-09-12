@@ -4,9 +4,12 @@ $action = $_POST['action'];
 $sanitizedPost = [];
 require_once("mysqlconnect.php");
 foreach ($_POST as $key => $value)  {
-   $output[$key] = stripslashes(htmlentities($value));
+   $sanitizedPost[$key] = stripslashes(htmlentities($value));
 }
+$output;
 
+$_POST = $sanitizedPost;
+print_r($_POST);
 switch ($action)
 {   case 'existing_login':
         include('userlogin/checkUserLoggedIn.php');
@@ -17,8 +20,9 @@ switch ($action)
     case 'user_logout':
         include('userlogin/logout.php');
         break;
-
-
+    case 'add_user':
+        include('userlogin/addUser.php');
+        break;
 }
 $output = json_encode($output);
  print($output);

@@ -25,7 +25,7 @@ $result2 = mysqli_query($conn, $query2);
 if ($result2) {
 if (mysqli_affected_rows($conn)) {
     $output['success'] = true;
-    print("successfuly added both");
+;
 
 }
 else {
@@ -34,7 +34,6 @@ else {
 }
 }
 else {
-    print("query error");
     $error = mysqli_error();
     $output['error'] = $error;
 

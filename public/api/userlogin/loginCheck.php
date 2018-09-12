@@ -26,6 +26,4 @@ else {
    print(mysqli_error($conn));
 }
 
-$output = json_encode($output);
-print($output);
 ?>

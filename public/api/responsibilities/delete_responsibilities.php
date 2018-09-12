@@ -17,7 +17,6 @@ $result = mysqli_query($conn, $query);
 
 if (mysqli_affected_rows($conn)>0) {
     $output['success'] = true;
-    print("successfuly deleted files");
     
 }
 else {

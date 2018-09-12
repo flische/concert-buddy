@@ -55,10 +55,6 @@ class NewTrip1 extends Component {
         }
         const params = formatPostData(dataToSend);
         const concert = await axios.post('api/access_users.php', params);
-            image: concertData.images[3].url
-        };
-        const params = formatPostData(dataToSend);
-        const concert = await axios.post('api/createConcerts.php', params);
         const concertID = concert.data.ID;
         const dataToSend2 = {
             trip_name: this.props.tripNameValue,

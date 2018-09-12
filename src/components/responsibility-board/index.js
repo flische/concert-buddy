@@ -37,10 +37,6 @@ class Responsibilities extends Component {
         const user  = this.props.get_user_details().then( (user) => { // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
         });
-        if (this.props.user_concert.data == null){
-            console.log('inside component did mount')
-            this.showModal();
-        }
 
     }
 
@@ -55,6 +51,9 @@ class Responsibilities extends Component {
         this.setState({
             responsibilities: resp.data.data
         });
+        if (this.props.user_concert.data === null){
+            this.showModal();
+        }
 
     }
 

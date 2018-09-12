@@ -1,15 +1,18 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
-require_once('../email_config.php');
-require_once('../mysqlconnect.php');
+require_once('email_config.php');
+require_once('mysqlconnect.php');
 require '../../PHPMailer/src/PHPMailer.php';
 require '../../PHPMailer/src/SMTP.php';
 require '../../PHPMailer/src/Exception.php';
 $host = $_SERVER['HTTP_HOST'];
 $data= $_SESSION['tripData'][0];
 $_POST = json_decode(file_get_contents('php://input'), true);
-$emails = htmlentitities($_POST['emails']);
+foreach($_POST['emails'] as $values) {
+$values = stripslashes(htmlentities($values));
+}
+$emails = $_POST['emails'];
 $trip_id = $data['trip_id'];
 $trip_name = $data['trip_name'];
 $name = $_SESSION['user_data'][0]['Name'];
@@ -17,6 +20,7 @@ $name = $_SESSION['user_data'][0]['Name'];
 
 use PHPMailer\PHPMailer\PHPMailer;
 $query = "/acceptance-page?token=";
+
 
 
 function token() {
@@ -32,6 +36,7 @@ $output .= $alphanum["$randomNum"];
 
 }
 
+foreach ($emails as $value) {
 $token = token();
 
 $mail = new PHPMailer;          
@@ -53,9 +58,7 @@ $options = array(
 $mail->smtpConnect($options);
 $mail->From = 'concertbuddy.mailserver@gmail.com';     // sender's email address (shows in "From" field)
 $mail->FromName = "Concert Buddy";         // sender's name (shows in "From" field)
-foreach ($emails as $value) {
  $mail->addAddress("$value");
-} 
 // $mail->addAddress("tmpham1@uci.edu","Tien");
 $mail->addReplyTo('example@gmail.com');    // Add a reply-to address
                                           // Add attachments
@@ -99,8 +102,6 @@ if(!$mail->send()) {
 }
 
 print(json_encode($token));
-
-
     $output = [
         'success'=> false,
     ];
@@ -117,4 +118,5 @@ print(json_encode($token));
     else {
         echo ("database error! ");
     }
+}
 ?>
