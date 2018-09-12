@@ -53,7 +53,10 @@ class InviteFriends extends Component {
             <div className="invite-emails">
                 {emails}
                 <div className="invite-emails" title="Add Recipient" onClick={() => { fields.push() }}>
-                    <button type="button" className="pink-btn">ADD MORE</button>
+                    <button type="button" className="white-btn">ADD MORE</button>
+                </div>
+                <div className="invite-emails" title="Add Recipient" onClick={() => { if (fields.length > 1){fields.pop()} }}>
+                    <button type="button" className="pink-btn">DELETE</button>
                 </div>
             </div>
         );
