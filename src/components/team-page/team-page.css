@@ -79,7 +79,7 @@
     .team-container{
         width: 60%;
         margin: 0 auto;
-        background: linear-gradient(to bottom, #2A363B, #100206);
+        /* background: linear-gradient(to bottom, #2A363B, #100206); */
         background-repeat: no-repeat;
     }
 }
