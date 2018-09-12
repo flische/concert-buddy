@@ -69,7 +69,7 @@ class AcceptancePage extends Component {
         }
         let pageURL = window.location.search.substring(1);
         let tokenObj = this.getToken(pageURL);
-        const token = tokenObj["token"]
+        const token = tokenObj["token"];
         localStorage.setItem('token', token);
         const test = this.getConcertDetails(this.getToken(pageURL));
     }
@@ -79,11 +79,12 @@ class AcceptancePage extends Component {
         const response = await axios.post('api/handle_email.php', params);
         const { data: tripDetails } = response;
         if (response.data.data[0] === null) {
-            this.props.history.push('/404')
+            this.props.history.push('/404');
         }
         this.setState({
             trip: tripDetails
-        })
+        });
+    }
 
     render() {
         const { data, whosGoing } = this.state.trip;
@@ -93,9 +94,9 @@ class AcceptancePage extends Component {
         if (whosGoing) {
             for (let i = 0; i < whosGoing.length; i++) {
                 if (i % 2 === 0) {
-                    evenArray.push(<div key={whosGoing[i]}>{whosGoing[i]}</div>)
+                    evenArray.push(<div key={whosGoing[i]}>{whosGoing[i]}</div>);
                 } else {
-                    oddArray.push(<div key={whosGoing[i]}>{whosGoing[i]}</div>)
+                    oddArray.push(<div key={whosGoing[i]}>{whosGoing[i]}</div>);
                 }
             }
         }
@@ -140,7 +141,7 @@ class AcceptancePage extends Component {
                     <div className="btn pink-btn" onClick={this.declineTrip.bind(this)}>DECLINE</div>
                 </div>
                 {this.props.auth ? <Modal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p center">You already have an exisiting trip! Please go to your current trip</p>
+                    <p className="modal-p center">You already have an existing trip! Please go to your current trip</p>
                     <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
                 </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
                         <p className="modal-p center">Please Login or Sign Up before accepting this trip!</p>
