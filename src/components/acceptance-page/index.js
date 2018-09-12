@@ -30,7 +30,6 @@ class AcceptancePage extends Component{
     async acceptTrip() {
         if (this.props.auth) {
             if (this.props.user_details.trip_id) {
-                console.log('here')
                 this.showModal();
             }
             else {
@@ -76,7 +75,6 @@ class AcceptancePage extends Component{
     }
     async getConcertDetails(object){
         object.action = 'invited';
-        console.log(object.action);
         let params = formatPostData(object);
     const  response = await axios.post('api/handle_email.php', params);
     const {data : tripDetails} = response;
@@ -88,8 +86,6 @@ class AcceptancePage extends Component{
         })
     }
     render(){
-        console.log('User Details:', this.props.user_details);
-        console.log("accept props", this.props)
         const imageStyle = {
             border: '3px solid powderblue',
             borderRadius: '5%',

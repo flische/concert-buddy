@@ -101,23 +101,34 @@ class InviteFriends extends Component {
 }
 
 
-// if (emailErrors.length) {
-//     errors.emails = emailErrors
-// }
 
-// function validate(values){
-//     const {emails} = values; console.log(emails);
-//     const errors = {};
-//     const emailErrors = [];
-// if (!(/^@+$/.test(emails))) {
-//     emailErrors.push('Please enter a valid email address')
-// }
 
-// }
+function validate(values){
+    const {emails} = values; console.log(emails);
+    const errors = {};
+    const emailErrors = [];
+
+if (!emails[0]) {
+    console.log("here")
+    emailErrors.push('Please enter at least one email.')
+}
+for (var index = 0; index < emails.length; index++) {
+ if (!emails[index]) {
+    emailErrors[index] = 'Please enter a email.';
+}
+if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test((emails[index]))) {
+    emailErrors[index] = 'Please enter a valid email address';
+        }
+if (emailErrors.length) {
+    errors.emails = emailErrors
+        }
+    }
+    return errors;
+}
 
 InviteFriends = reduxForm({
     form: 'invite-friends',
-    // validate,
+    validate,
     enableReinitialize: true
 })(InviteFriends);
 

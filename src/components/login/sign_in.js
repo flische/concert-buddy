@@ -1,5 +1,5 @@
 import './login.css';
-import logo from '../../images/logo.png';
+import logo from '../../assets/about_team_images//logo.png';
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link, Redirect } from 'react-router-dom';

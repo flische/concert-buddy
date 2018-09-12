@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './landing.css'
-import logo from '../../images/logo.png';
+import logo from '../../assets/about_team_images//logo.png';
 import { Link } from 'react-router-dom';
 import Carousel from './carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';

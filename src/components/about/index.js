@@ -1,13 +1,13 @@
 import React from 'react';
-import image from '../../images/concert.jpeg'
+import image from '../../assets/about_team_images/concert.jpeg'
 import './about.css';
-import html from '../../images/html5.png';
-import css from '../../images/css3.png';
-import mysql from '../../images/mysql.png';
-import php from '../../images/php.png';
-import react from '../../images/react.png';
-import redux2 from '../../images/redux2.png';
-import js from '../../images/javascript-logo.png';
+import html from '../../assets/about_team_images/html5.png';
+import css from '../../assets/about_team_images/css3.png';
+import mysql from '../../assets/about_team_images/mysql.png';
+import php from '../../assets/about_team_images/php.png';
+import react from '../../assets/about_team_images/react.png';
+import redux2 from '../../assets/about_team_images/redux2.png';
+import js from '../../assets/about_team_images/javascript-logo.png';
 
 export default () => {
     const imageArray = [html, js, css, react, php, mysql, redux2];
