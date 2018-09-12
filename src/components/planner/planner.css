@@ -51,8 +51,7 @@
 .bottom-content > .imageArea > img{
     border: 1px solid grey;
     border-radius: 7%;
-    width: 20%;
-}
+    }
 
 @media only screen and (min-width: 601px) {
     .concert-overview,
@@ -61,6 +60,10 @@
         width: 45%;
         margin-bottom: 2%;
         min-height: 10vh;
+    }
+
+    .imageArea>img {
+        max-width: 600px;
     }
 }
 
@@ -71,7 +74,7 @@
     .bottom-content>.imageArea>img {
         border: 1px solid lightgrey;
         border-radius: 7%;
-        width: 75%;
+        max-width: 350px;
     }
 
 }
