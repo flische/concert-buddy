@@ -24,14 +24,11 @@ if (mysqli_errno($conn)){
 } else if (mysqli_affected_rows($conn)) {
     $output['success'] = true;
     $output['affected_rows'] = mysqli_affected_rows($conn);
-    print("successfully added files
-    ");
 }
 else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error! + $error";
 }
- $output = json_encode($output);
- print($output);
+
 
 ?> 

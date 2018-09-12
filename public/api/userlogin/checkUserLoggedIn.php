@@ -13,6 +13,6 @@ if (empty($_SESSION['user_data'])) {
 else { 
     $output['success'] = true;
     $output['data'] = $_SESSION['user_data'];
-    print(json_encode($output));
+    
 }
 ?>

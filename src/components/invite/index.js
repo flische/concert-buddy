@@ -7,7 +7,7 @@ import { send_email_invites } from '../../actions'
 import Modal from '../modal';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-
+import {formatPostData} from '../../helpers';
 
 class InviteFriends extends Component {
     state = {
@@ -28,7 +28,11 @@ class InviteFriends extends Component {
     }
 
    async componentDidMount() {
-       const resp = await axios.post('api/checkUserLoggedIn.php');
+      const config = {
+            action: 'existing_login',
+       }
+       const params = formatPostData(config);
+       const resp = await axios.post('api/handle_login.php', params);
        if (!resp.data.success) {
            this.props.history.push('/');
        }
@@ -37,8 +41,6 @@ class InviteFriends extends Component {
     renderEmails(props) {
         const { fields } = props;
         const emails = fields.map((name, index) => {
-            console.log('Index:', index);
-            console.log('IS < 6', index < 6);
             if (index < 6) {
                 return (
                     <Field key={name} name={name} component={InviteInput} />
@@ -73,7 +75,7 @@ class InviteFriends extends Component {
     }
 
     render() {
-        const { handleSubmit, reset } = this.props;
+        const { handleSubmit} = this.props;
         const pStyle = {
             color: 'dodgerblue',
             fontSize: '32px',

@@ -1,7 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 session_start();
-$tripID  = $_POST["trip_id"];
+$tripID  = $_POST['trip_id']; //put trip ID youd like to check here , will make dynamic later 
+$editID = $_POST['edit_id'];
 $output = [
     'success'=> false,
 ];
@@ -10,22 +11,19 @@ $output = [
     'success'=>false,
 ];
 $query = "SELECT * FROM `responsib`
- WHERE  `trip_id` = '$tripID' ORDER BY `completed` ASC, `ID` DESC";
+ WHERE  `trip_id` = '$tripID' AND `ID` = '$editID'";
 
 $result = mysqli_query($conn, $query);
 
 if ($result) {
-    $output['success'] = true;
-    while($row = mysqli_fetch_assoc($result)){
-        $row['completed'] = (bool)$row['completed'];
-         $output['data'][] = $row;
-    }
+       $output['success'] = true;
+       $row  = mysqli_fetch_assoc($result);
+       $output['data'][] = $row;
 }
 else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error! + $error";
 }
- $output = json_encode($output);
- print($output);
+
 
 ?> 

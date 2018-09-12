@@ -1,9 +1,7 @@
 <?php
-session_start();
 header("Access-Control-Allow-Origin: *");
+session_start();
 $userID  = $_SESSION['user_data'][0]['ID'];
-
-require_once('mysqlconnect.php');
 $output = [
     'success'=>false,
 ];
@@ -27,6 +25,5 @@ else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error! + $error";
 }
- $output = json_encode($output);
- print($output);
+ 
 ?>

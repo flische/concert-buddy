@@ -5,8 +5,6 @@ $concertID = $_POST['ID'];
 $tripName = $_POST['trip_name'];
 $userID = $_SESSION['user_data'][0]['ID'];
 
-
-require_once("mysqlconnect.php");
 $output = [
  'success' => false,
 ];
@@ -27,7 +25,7 @@ $result2 = mysqli_query($conn, $query2);
 if ($result2) {
 if (mysqli_affected_rows($conn)) {
     $output['success'] = true;
-    print("successfuly added both");
+;
 
 }
 else {
@@ -36,11 +34,9 @@ else {
 }
 }
 else {
-    print("query error");
     $error = mysqli_error();
     $output['error'] = $error;
 
 }
 
-print(json_encode($output));
 ?>

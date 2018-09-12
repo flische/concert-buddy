@@ -37,33 +37,34 @@ class Responsibilities extends Component {
         const user  = this.props.get_user_details().then( (user) => { // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
         });
-        if (this.props.user_concert.data == null){
-            console.log('inside component did mount')
-            this.showModal();
-        }
 
     }
 
     async checkResponsibilities() {
         const dataToSend = {
-            trip_id: this.props.user_concert.trip_id
+            trip_id: this.props.user_concert.trip_id,
+            action: 'get_responsibilities',
         }
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/get_responsibilities.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
 
         this.setState({
             responsibilities: resp.data.data
         });
+        if (this.props.user_concert.data === null){
+            this.showModal();
+        }
 
     }
 
     deleteItem = async (id) => {
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id,
-            id: id
-        };
+            id: id,
+            action: 'delete_responsibilities',
+        }
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/delete_responsibilities.php', params);
+        const resp = await axios.post('api/access_responsibilities.php', params);
 
         this.checkResponsibilities();
     }
@@ -71,12 +72,11 @@ class Responsibilities extends Component {
     itemCompleted = async (id, completed) => {
         const dataToSend = {
             ID: id,
-            completed: completed
+            completed: completed,
+            action: 'toggle_responsibilities'
         };
-
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/toggle_responsibilities.php', params);
-
+        const resp = await axios.post('api/access_responsibilities.php', params);
         this.checkResponsibilities();
     }
 

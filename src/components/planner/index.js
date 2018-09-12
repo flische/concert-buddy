@@ -14,17 +14,7 @@ class Planner extends Component {
     }
     
     componentDidMount() {
-        this.checkLoginStatus();
         this.checkUserTrips();
-    }
-
-    async checkLoginStatus(initialCheck = false) {
-        const resp = await axios.post('api/checkUserLoggedIn.php');
-
-        if (resp.data.error) {
-
-            this.setState({ redirect: true });
-        }
     }
 
     async checkUserTrips() {
