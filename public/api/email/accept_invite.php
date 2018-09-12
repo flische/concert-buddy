@@ -27,13 +27,14 @@ if ($result2) {
         // $newID = mysqli_insert_id($conn);
         // echo "successful added $userID and $tripID and $newID"; 
          $deleteQuery = "DELETE FROM `triptokens` WHERE `tokens` = '$token'";
-$deleteResult = mysqli_query($conn, $deleteQuery);
- if ($deleteResult) {
+        $deleteResult = mysqli_query($conn, $deleteQuery);
+    if     ($deleteResult) {
     if (mysqli_affected_rows($conn) > 0) {
         $output['success'] = true; 
         // $newID = mysqli_insert_id($conn);
- }
     }
+    }
+}
     else {
     $error = mysqli_error($conn);
     print(json_encode($error));
