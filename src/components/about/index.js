@@ -32,10 +32,10 @@ export default () => {
     const viewHeight = {
         height: '96vh'
     }
-    const images = imageArray.map((item, index)=>{
-        if(index === (imageArray.length-1)){
+    const images = imageArray.map((item, index) => {
+        if (index === (imageArray.length - 1)) {
             return (
-                <img key={item} style={reduxStyle} src={item}/>
+                <img key={item} style={reduxStyle} src={item} />
             )
         } else {
             return (
@@ -47,8 +47,8 @@ export default () => {
 
     return (
         <div style={viewHeight} className="container">
-        <h2 style={h2FontSize}>ABOUT CONCERT BUDDY</h2>
-            <div className="imageContainer">
+            <h2 style={h2FontSize}>ABOUT CONCERT BUDDY</h2>
+            <div className="concert-image-container">
                 <img src={image} />
             </div>
             <div className="description">
