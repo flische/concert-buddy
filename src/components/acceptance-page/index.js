@@ -29,8 +29,8 @@ class AcceptancePage extends Component{
     }
     async acceptTrip() {
         if (this.props.auth) {
-            console.log("here");
             if (this.props.user_details.trip_id) {
+                console.log('here')
                 this.showModal();
             }
             else {
@@ -88,6 +88,7 @@ class AcceptancePage extends Component{
         })
     }
     render(){
+        console.log('User Details:', this.props.user_details);
         console.log("accept props", this.props)
         const imageStyle = {
             border: '3px solid powderblue',
