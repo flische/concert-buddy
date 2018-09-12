@@ -9,7 +9,6 @@ foreach ($_POST as $key => $value)  {
 $output;
 
 $_POST = $sanitizedPost;
-print_r($_POST);
 switch ($action)
 {   case 'existing_login':
         include('userlogin/checkUserLoggedIn.php');

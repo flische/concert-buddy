@@ -5,20 +5,10 @@ $name = $_POST['name'];
 $output = [
     'success' => false,
 ];
-if (empty($email)) {
-    $output['error'][] = "Missing Email";
-    $output = json_encode($output);
-    print($output);
-    die();
-}
-if (empty($password)) {
-    $output['error'][] = "Missing or Invalid Password";
-    $output = json_encode($output);
-    print($output);
-    die();
-}
-if (empty($name)) {
-    $output['error'][] = "Missing or Invalid Email";
+$emailQuery = "SELECT * FROM `user` WHERE `email` = '$email'";
+$result = mysqli_query($conn, $emailQuery);
+ if(mysqli_num_rows($result)) {
+    $output['error'] = "Email already exists";
     $output = json_encode($output);
     print($output);
     die();
