@@ -17,11 +17,14 @@ export function get_concert_details(object) {
 }
 
 export async function get_user_details() {
-  
-    const userTrips = await axios.post('api/checkUserTrips.php');
- 
-    if(!userTrips.data.data[0]) {
-        return{
+    const dataToSend = {
+        action: 'check_trips',
+    }
+    const params = formatPostData(dataToSend)
+    const userTrips = await axios.post('api/access_users.php', params);
+    // console.log('get_user_details actions/index.js: ', userTrips);
+  if(!userTrips.data.data[0]) {
+      return{
             type: types.GET_USER_DETAILS,
             payload: payload
         }
@@ -31,9 +34,10 @@ export async function get_user_details() {
     
     var dataToSend2 = {
         tripID: id,
+        action: 'check_going'
     }
     const params2 = formatPostData(dataToSend2);
-    const going = await axios.post('api/checkWhosGoing.php', params2)
+    const going = await axios.post('api/access_users.php', params2)
     const whosgoing = going.data.data;
     const payload = {
         userTrips: userTrips,
@@ -50,7 +54,6 @@ export async function send_email_invites(emails) {
         emails: emails,
     }
     const params = JSON.stringify(dataToSend)
-
     const response = await axios.post('api/emailInviteFriends.php', params);
     return {
         type: types.SEND_INVITES,
@@ -79,11 +82,12 @@ export const signIn = credentials => async dispatch => {
 
         const dataToSend = {
             email: email,
-            password: password
+            password: password,
+            action: "user_login"
         };
         const params = formatPostData(dataToSend);
        
-        const response = await axios.post('api/loginCheck.php', params);
+        const response = await axios.post('api/handle_login.php', params);
 
         if (response.data.success) {
             dispatch({ type: types.SIGN_IN} );
@@ -108,12 +112,13 @@ export const signUp = credentials => async dispatch => {
         const dataToSend = {
             email: email,
             name: name,
-            password: password  
+            password: password, 
+            action: 'add_user'
             };
         
         const params = formatPostData(dataToSend);
-        const resp = await axios.post('api/addUser.php', params );
-
+        const resp = await axios.post('api/handle_login.php', params );
+        // console.log('Sign Up response: ', response);
         if (resp.data.success) {
 
             dispatch({ type: types.SIGN_UP} );
@@ -133,7 +138,11 @@ export const signUp = credentials => async dispatch => {
 }
 
 export async function signOut(){
-    await axios.post('api/logout.php');
+const dataToSend = {
+    action: 'user_logout'
+};
+const params = formatPostData(dataToSend);
+    await axios.post('api/handle_login.php', params);
     localStorage.clear();
     return { type: types.SIGN_OUT };
 };

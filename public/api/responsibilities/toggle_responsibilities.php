@@ -23,13 +23,11 @@ $result = mysqli_query($conn, $query);
 if($result) {
 if (mysqli_affected_rows($conn) > 0) {
     $output['success'] = true;
-    print("True or False Toggled");
   }
 else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error!".$error;
   }
 }
- $output = json_encode($output);
- print($output);
+ 
 ?> 
