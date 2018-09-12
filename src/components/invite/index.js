@@ -8,6 +8,7 @@ import Modal from '../modal';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import {formatPostData} from '../../helpers';
+import RespModal from '../modal/modal';
 
 class InviteFriends extends Component {
     state = {
@@ -75,6 +76,7 @@ class InviteFriends extends Component {
     }
 
     render() {
+        console.log('invite props:',this.props);
         const { handleSubmit} = this.props;
         const pStyle = {
             color: 'dodgerblue',
@@ -95,6 +97,11 @@ class InviteFriends extends Component {
                     <p className="modal-p">Invitations Sent!</p>
                     <Link to="/planner"><div className="btn black-btn">GO TO PLANNER</div></Link>
                 </Modal>
+                { this.props.user_concert.trip_id ? " " :
+                <RespModal show={true}>
+                    <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div> 
+                </RespModal> 
+                }
             </div>
         );
     }
