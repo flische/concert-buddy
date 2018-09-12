@@ -19,7 +19,7 @@ $name = $_SESSION['user_data'][0]['Name'];
 
 
 use PHPMailer\PHPMailer\PHPMailer;
-$query = "/acceptance-page?token=";
+$url = "/acceptance-page?token=";
 
 
 
@@ -82,7 +82,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
         decline the invitation.</p>
     <div style='text-align: center;'>
    <p style='color:#FF847C'>Invitation Link:</p> 
-   <a href=\"http://".$host.$query.$token."\" style='color:blue;'> http://".$host.$query.$token."</a>
+   <a href=\"http://".$host.$url.$token."\" style='color:blue;'> http://".$host.$url.$token."</a>
     </div>
     <p>Enjoy the concert!</p>
     <p>-Your friends at Concert Buddy</p>
@@ -92,7 +92,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
 
 $mail->AltBody = "Hello,
 You have been invited to $name's trip. This will hold all the information in the trip below. 
-Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$host.$query.$token; 
+Click the link provided below to sign up and join the trip. Welcome to concert buddy!".$host.$url.$token; 
 
 if(!$mail->send()) {
     echo 'Message could not be sent.';
