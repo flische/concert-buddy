@@ -18,15 +18,6 @@ class Planner extends Component {
         this.checkUserTrips();
     }
 
-    async checkLoginStatus(initialCheck = false) {
-        const resp = await axios.post('api/checkUserLoggedIn.php');
-
-        if (resp.data.error) {
-
-            this.setState({ redirect: true });
-        }
-    }
-
     async checkUserTrips() {
         this.props.get_user_details();
 

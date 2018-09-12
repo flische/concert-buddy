@@ -50,19 +50,24 @@ class NewTrip1 extends Component {
             address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + ' ' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
             latitude : concertData._embedded.venues[0].location.latitude,
             longitude : concertData._embedded.venues[0].location.longitude,
+            image: concertData.images[3].url,
+            action: 'create_concerts',
+        }
+        const params = formatPostData(dataToSend);
+        const concert = await axios.post('api/access_users.php', params);
             image: concertData.images[3].url
         };
         const params = formatPostData(dataToSend);
         const concert = await axios.post('api/createConcerts.php', params);
-
         const concertID = concert.data.ID;
-
         const dataToSend2 = {
             trip_name: this.props.tripNameValue,
-            ID: concertID
-        };
+
+            ID: concertID,
+            action: 'create_trip'
+        }
         const params2 = formatPostData(dataToSend2);
-        const newTrip = await axios.post('api/createTrip.php', params2);
+        const newTrip = await axios.post('api/access_users.php', params2);
         this.props.history.push('/planner');
     }
 

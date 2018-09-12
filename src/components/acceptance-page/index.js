@@ -35,12 +35,16 @@ class AcceptancePage extends Component{
             }
             else {
             let pageURL = window.location.search.substring(1);
-            let tokenObj = this.getToken(pageURL);
-            const token = tokenObj["token"];
-            const tokenData = { token: token }
-            const params = formatPostData(tokenData)
-            const accept  =  await axios.post('api/accept_invite.php', params);
-            console.log(accept);
+
+        let tokenObj = this.getToken(pageURL);
+        const token = tokenObj["token"];
+        const tokenData = {
+            token: token,
+            action: 'accept_invite'
+                          }
+      const params = formatPostData(tokenData)
+      const accept  =  await axios.post('api/handle_email', params);
+ 
             if (accept.data.success) { 
             window.localStorage.clear();
             this.props.history.push("/planner");
@@ -71,12 +75,13 @@ class AcceptancePage extends Component{
         const test = this.getConcertDetails(this.getToken(pageURL));
     }
     async getConcertDetails(object){
+        object.action = 'invited';
+        console.log(object.action);
         let params = formatPostData(object);
-        const response = await axios.post('api/invited.php', params);
+        const {data : tripDetails} = await axios.post('api/handle_email.php', params);
         if (response.data.data[0] === null) {
             this.props.history.push('/404')
         }
-        const {data : tripDetails} = response;
         this.setState({
             trip: tripDetails   
         })
@@ -87,8 +92,9 @@ class AcceptancePage extends Component{
             border: '3px solid powderblue',
             borderRadius: '5%',
         }
-        const {data, whosGoing} = this.state.trip;
 
+      
+        const {data, whosGoing} = this.state.trip;
         let evenArray = [];
         let oddArray = [];
         
