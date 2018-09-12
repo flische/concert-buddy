@@ -21,13 +21,13 @@ class SignUp extends Component {
 
     showModal = () => {
         this.setState({
-            show: true,
+            show: true
         });
     }
 
     hideModal = () => {
         this.setState({
-            show: false,
+            show: false
         });
     }
 

@@ -65,8 +65,8 @@ class App extends Component{
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
                     <Route path='/invite' component={InviteFriends} />
-                    <Route path='/sign-in' component= {window.localStorage.length > 0 ? (window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) :  redirect(SignIn, "/concert-details" + window.localStorage.getItem("url"))): redirect(SignIn, '/planner')} />
-                    <Route path='/sign-up' component={redirect(SignUp, '/sign-in')} />
+                    <Route path='/sign-in' component={SignIn} /> 
+                    <Route path='/sign-up' component={SignUp} />
                     <Route path='/planner' component={auth(Planner)} />
                     <Route path='/new-trip-1' component={NewTrip1} />
                     <Route path='/responsibilities' component={auth(Responsibilities)} />
@@ -75,12 +75,12 @@ class App extends Component{
                     <Route path='/team' component={TeamPage} />
                     <Route path='/acceptance-page' component = {AcceptancePage} />
                     <Route path='/about-page' component = {AboutPage} />
-                    <Route component={redirect(NotFound, '/')} />
+                    <Route path='/404' component={NotFound} />
                 </Switch>
             </div>
         );
     }
 }
-
+// {window.localStorage.length > 0 ? (window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) :  redirect(SignIn, "/concert-details" + window.localStorage.getItem("url"))): redirect(SignIn, '/planner')}
 const appWithRouter = withRouter(App)
 export default appWithRouter;

@@ -9,6 +9,7 @@ import Loader from '../loader';
 import { get_user_details } from '../../actions'
 import RespModal from '../modal/modal';;
 
+
 class Responsibilities extends Component {
     constructor(props) {
         super(props);
@@ -24,12 +25,12 @@ class Responsibilities extends Component {
     showModal = () => {
         this.setState({
             show: true
-        })
+        });
     }
     hideModal = () => {
         this.setState({
             show: false
-        })
+        });
     }
 
     componentDidMount() {
@@ -52,7 +53,7 @@ class Responsibilities extends Component {
 
         this.setState({
             responsibilities: resp.data.data
-        })
+        });
 
     }
 
@@ -81,9 +82,6 @@ class Responsibilities extends Component {
 
     render() {
         const concertData = this.props.user_concert.data;
-
-
-
 
         if (this.state.responsibilities === null) {
             return (
@@ -141,6 +139,7 @@ class Responsibilities extends Component {
                 </div>
                 <div className="buttons">
                     <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
+
                     <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                 </div>
             </div>
