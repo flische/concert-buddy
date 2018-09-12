@@ -15,8 +15,35 @@
     
 }
 
+.modalFont{
+    font-size: 1.5em;
+    color: black;
+    text-align: center;
+    margin-top: 20%;
+}
+
 @media only screen and (min-width: 601px) {
     .resp-content {
         width: 70%;
-           }
+    }
+    .modalFont{
+        font-size: 2em;
+        color: black;
+        text-align: center;
+
+    }
+    .modal-main{
+        width: 30%;
+        height: 50%;
+    }
+    .buttonArea{
+        display: flex;
+    }
+    .buttonArea .pink-btn{
+        width: 100%;
+        font-size: 1em;
+    }
+    .buttonArea .pink-btn:hover{
+        cursor: pointer;
+    }
 }

@@ -75,6 +75,10 @@ button {
     -webkit-font-smoothing: antialiased;
 }
 
+.pink-btn:hover{
+    cursor: pointer;
+}
+
 .pink-btn>a {
     text-decoration: none;
     color: white;
@@ -86,6 +90,10 @@ button {
     color: #2A363B;
     text-shadow: #2A363B 0px 0px 2px;
     -webkit-font-smoothing: antialiased;
+}
+
+.pink-btn:hover{
+    cursor: pointer;
 }
 
 .white-btn>a {

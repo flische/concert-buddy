@@ -37,11 +37,6 @@ class Responsibilities extends Component {
         const user  = this.props.get_user_details().then( (user) => { // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
         });
-        if (this.props.user_concert.data == null){
-            console.log('inside component did mount')
-            this.showModal();
-        }
-
     }
 
     async checkResponsibilities() {
@@ -54,7 +49,9 @@ class Responsibilities extends Component {
         this.setState({
             responsibilities: resp.data.data
         });
-
+        if (!this.props.user_concert.trip_id) {
+            this.showModal();
+        }
     }
 
     deleteItem = async (id) => {
@@ -81,7 +78,8 @@ class Responsibilities extends Component {
     }
 
     render() {
-        const concertData = this.props.user_concert.data;
+        
+        const tripID = this.props.user_concert.trip_id
 
         if (this.state.responsibilities === null) {
             return (
@@ -89,12 +87,7 @@ class Responsibilities extends Component {
             );
         }
         const resp = this.state.responsibilities;
-        const divStyle = {
-            fontSize: '1.5em',
-            color: 'black',
-            textAlign: 'center',
-            marginTop: '20%'
-        }
+
 
         if (!resp) {
             return (
@@ -108,7 +101,7 @@ class Responsibilities extends Component {
                         <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                     </div>
                     <RespModal show={this.state.show} handleClose={this.hideModal}>
-                        <div style={divStyle}>You currently do not have any trips planned. Please create a trip first!</div>
+                        <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div>
                         
                     </RespModal> 
                 </div>

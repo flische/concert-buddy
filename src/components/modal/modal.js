@@ -9,7 +9,9 @@ const RespModal = ({ handleClose, show, children }) => {
         <div className={showHideClassName}>
             <section className="modal-main">
                 {children}
-                <Link to="/search-concerts"><button className="pink-btn">SEARCH CONCERTS</button></Link>
+                <div className="buttonArea">
+                    <Link to="/search-concerts"><button className="pink-btn">SEARCH CONCERTS</button></Link>                
+                </div>
             </section>
         </div>
     )
