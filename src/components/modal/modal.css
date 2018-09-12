@@ -46,7 +46,7 @@
    .modal-main {
        top: 40%;
        height: 40%
-      
+          
    }
 }
 
@@ -54,15 +54,5 @@
     .modal-main {
         height: 50%;
     }
-    button {
-        overflow: hidden;
-        height: 45px;
-        border-radius: 5px;
-        margin: 5px;
-        font-family: 'Roboto',
-        sans-serif;
-        letter-spacing: 2px;
-        font-weight: 700;
-        font-size: 24px;
-    }
+    
 }

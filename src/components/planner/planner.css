@@ -5,9 +5,7 @@
 .concert-overview,
 .attendees {
     margin: 0 auto;
-    padding: 1%;
-    
-    
+    padding: 1%;  
     width: 80%;
     margin-bottom: 2%;
     min-height: 15vh;
@@ -17,6 +15,7 @@
 .attendees {
     color: #2A363B;
     background-color: white;
+    font-size: 22px;
 }
 
 .attendees {
