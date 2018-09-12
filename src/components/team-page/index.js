@@ -10,7 +10,7 @@ import fed from '../../assets/about_team_images/federico_pic.jpeg';
 const members = [
     {
         name: 'Rebecca Martin',
-        role: 'Lead Frontend',
+        role: 'Frontend',
         imgUrl: rebecca,
         favoriteArtist: 'Taylor Swift',
         linkedin: 'https://www.linkedin.com/in/rebecca-martin-63a19256/',
@@ -18,7 +18,7 @@ const members = [
     },
     {
         name: 'Howard Kim',
-        role: "Lead Tien",
+        role: "Team Lead",
         imgUrl: howardPic,
         favoriteArtist: 'Tien',
         linkedin: 'https://www.linkedin.com/in/howardkim820/',
@@ -26,7 +26,7 @@ const members = [
     },
     {
         name: 'Tien Pham',
-        role: 'Lead Backend',
+        role: 'Backend',
         imgUrl: tien,
         favoriteArtist: 'Naruto',
         linkedin: 'https://www.linkedin.com/in/tien-m-pham/',
@@ -34,7 +34,7 @@ const members = [
     },
     {
         name: 'Federico Lische',
-        role: 'Lead MeisterTaska',
+        role: 'Frontend',
         imgUrl: fed,
         favoriteArtist: 'Pink Floyd',
         linkedin: 'https://www.linkedin.com/in/flische/',

@@ -44,15 +44,11 @@
     .control-dots {
         display: none;
     }
+
     ul.slider.animated {
+        background-color: transparent;
         overflow: visible;
     }
-}
+   
 
-@media only screen and (max-width: 600px) {
-    .carousel {
-        /* height: 125px; */
-        /* width: 85%;
-        border-radius: 2%; */
-    }
 }

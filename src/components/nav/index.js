@@ -6,7 +6,7 @@ import { signIn, signOut } from '../../actions';
 
 
 class Nav extends Component {
-    
+
     state = {
         isOpen: false
     }
@@ -17,31 +17,28 @@ class Nav extends Component {
         });
     }
 
-    handleRenderLinkClicks(){
-        const {auth, signIn, signOut} = this.props;
-       
+    handleRenderLinkClicks() {
+        const { auth, signIn, signOut } = this.props;
+
         this.setState({
             isOpen: !this.state.isOpen
         });
 
-        if(auth){
+        if (auth) {
             signOut();
         } else {
             signIn();
-        }     
+        }
     }
 
-    renderLinks(){
-        const { auth, signIn, signOut} = this.props;
+    renderLinks() {
+        const { auth, signIn, signOut } = this.props;
 
-        if(auth){
+        if (auth) {
             return (
                 <Fragment>
                     <li>
-                        <NavLink onClick={this.handleClick.bind(this)} exact to='/' className='navlink'>HOME</NavLink>
-                    </li>
-                    <li>
-                        <NavLink onClick={this.handleClick.bind(this)} to="/planner" className="navlink">PLANNER HOMEPAGE</NavLink>
+                        <NavLink onClick={this.handleClick.bind(this)} to="/planner" className="navlink">PLANNER</NavLink>
                     </li>
                     <li>
                         <NavLink onClick={this.handleClick.bind(this)} to="/invite" className="navlink">INVITE FRIENDS</NavLink>
@@ -56,37 +53,37 @@ class Nav extends Component {
                         <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
                     </li>
                     <li>
-                        <NavLink onClick={this.handleClick.bind(this)} to="/team" className="navlink">MEET THE TEAM</NavLink> 
+                        <NavLink onClick={this.handleClick.bind(this)} to="/team" className="navlink">MEET THE TEAM</NavLink>
                     </li>
                     <li>
                         <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/" className="navlink">SIGN OUT</NavLink>
                     </li>
                 </Fragment>
-           );
-        }
-            return (
-                <Fragment>
-                    <li>
-                        <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/sign-in" className="navlink">SIGN IN</NavLink>
-                    </li>
-                    <li>
-                        <NavLink onClick={this.handleClick.bind(this)} exact to='/' className='navlink'>HOME</NavLink>
-                    </li>
-                    <li>
-                        <NavLink onClick={this.handleClick.bind(this)} to="/search-concerts" className="navlink">SEARCH CONCERTS</NavLink>
-                    </li>
-                    <li>
-                        <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
-                    </li>
-                    <li>
-                        <NavLink onClick={this.handleClick.bind(this)} to="/team" className="navlink">MEET THE TEAM</NavLink>
-                    </li>
-                    <li>
-                        <NavLink onClick={this.handleClick.bind(this)} className="navlink" to="/sign-up">SIGN UP</NavLink>
-                    </li>
-                </Fragment>
             );
         }
+        return (
+            <Fragment>
+                <li>
+                    <NavLink onClick={this.handleRenderLinkClicks.bind(this)} to="/sign-in" className="navlink">SIGN IN</NavLink>
+                </li>
+                <li>
+                    <NavLink onClick={this.handleClick.bind(this)} exact to='/' className='navlink'>HOME</NavLink>
+                </li>
+                <li>
+                    <NavLink onClick={this.handleClick.bind(this)} to="/search-concerts" className="navlink">SEARCH CONCERTS</NavLink>
+                </li>
+                <li>
+                    <NavLink onClick={this.handleClick.bind(this)} to="/about-page" className="navlink">ABOUT</NavLink>
+                </li>
+                <li>
+                    <NavLink onClick={this.handleClick.bind(this)} to="/team" className="navlink">MEET THE TEAM</NavLink>
+                </li>
+                <li>
+                    <NavLink onClick={this.handleClick.bind(this)} className="navlink" to="/sign-up">SIGN UP</NavLink>
+                </li>
+            </Fragment>
+        );
+    }
 
     render() {
         return (
@@ -111,7 +108,7 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps,{
+export default connect(mapStateToProps, {
     signIn: signIn,
     signOut: signOut
 })(Nav);

@@ -26,6 +26,10 @@
     .resp-content {
         width: 70%;
     }
+
+    .no-resp {
+        margin-bottom: 20px;
+    }
     .modalFont{
         font-size: 2em;
         color: black;
