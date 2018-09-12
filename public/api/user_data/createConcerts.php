@@ -10,7 +10,6 @@ $lat = $_POST["latitude"];
 $long = $_POST["longitude"];
 $img = $_POST["image"];
 
-require_once("mysqlconnect.php");
 $output = [
     'success' => false,
 ];
@@ -25,5 +24,4 @@ $result = mysqli_query($conn, $query);
      $output['error'] = "Unable to add Concert";
  }
 
- print(json_encode($output));
 ?>

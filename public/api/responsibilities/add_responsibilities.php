@@ -31,7 +31,6 @@ else {
     $error = mysqli_error($conn);
     $output['error'] = "Database Error! + $error";
 }
- $output = json_encode($output);
- print($output);
+
 
 ?> 

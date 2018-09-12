@@ -5,8 +5,6 @@ $concertID = $_POST['ID'];
 $tripName = $_POST['trip_name'];
 $userID = $_SESSION['user_data'][0]['ID'];
 
-
-require_once("mysqlconnect.php");
 $output = [
  'success' => false,
 ];
@@ -42,5 +40,4 @@ else {
 
 }
 
-print(json_encode($output));
 ?>
