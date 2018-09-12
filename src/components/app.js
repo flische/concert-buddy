@@ -75,7 +75,7 @@ class App extends Component{
                     <Route path='/team' component={TeamPage} />
                     <Route path='/acceptance-page' component = {AcceptancePage} />
                     <Route path='/about-page' component = {AboutPage} />
-                    <Route component={redirect(NotFound, '/')} />
+                    <Route path='/404' component={NotFound} />
                 </Switch>
             </div>
         );

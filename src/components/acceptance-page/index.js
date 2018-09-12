@@ -6,6 +6,7 @@ import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux'
 import Loader from '../loader'
 import Modal from '../modal'
+import {get_user_details} from '../../actions'
 
 class AcceptancePage extends Component{
     constructor(props){
@@ -27,6 +28,10 @@ class AcceptancePage extends Component{
         })
     }
     async acceptTrip() {
+        if (this.props.user_details.trip_id !== null) {
+            this.showModal();
+        }
+        else {
         if (this.props.auth) {
             let pageURL = window.location.search.substring(1);
             let tokenObj = this.getToken(pageURL);
@@ -34,6 +39,7 @@ class AcceptancePage extends Component{
             const tokenData = { token: token }
             const params = formatPostData(tokenData)
             const accept  =  await axios.post('api/accept_invite.php', params);
+            console.log(accept);
             if (accept.data.success) { 
             window.localStorage.clear();
             this.props.history.push("/planner");
@@ -42,6 +48,7 @@ class AcceptancePage extends Component{
             this.showModal();
         }
     }
+}
     getToken(string){
         var obj = {};
         var array = string.split('=');
@@ -51,22 +58,29 @@ class AcceptancePage extends Component{
     declineTrip(){
         this.props.history.push('/');
     }
-    componentDidMount(){
+ async componentDidMount(){
+        if(this.props.auth) {
+            this.props.get_user_details();
+        }
         let pageURL = window.location.search.substring(1);
         let tokenObj = this.getToken(pageURL);
-        var token = tokenObj["token"]
+        const token = tokenObj["token"]
         localStorage.setItem('token', token);
-        var test = this.getConcertDetails(this.getToken(pageURL));
+        const test = this.getConcertDetails(this.getToken(pageURL));
     }
     async getConcertDetails(object){
         let params = formatPostData(object);
-        const {data : tripDetails} = await axios.post('api/invited.php', params);
-
+        const response = await axios.post('api/invited.php', params);
+        if (response.data.data[0] === null) {
+            this.props.history.push('/404')
+        }
+        const {data : tripDetails} = response;
         this.setState({
             trip: tripDetails   
         })
     }
     render(){
+        console.log("accept props", this.props)
         const imageStyle = {
             border: '3px solid powderblue',
             borderRadius: '5%',
@@ -126,10 +140,13 @@ class AcceptancePage extends Component{
                     
                     <div className="btn pink-btn" onClick={this.declineTrip.bind(this)}>DECLINE</div>
                 </div>
-                <Modal show={this.state.show} handleClose={this.hideModal} >
+                {this.props.user_details.trip_id !== null ? <Modal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p center">You already have an exisiting trip! Please go to your current trip</p>
+                    <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
+                    </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p center">Please Login or Sign Up before accepting this trip!</p>
                     <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
-                    </Modal>
+        </Modal> }
             </div>
         )
     }
@@ -137,8 +154,9 @@ class AcceptancePage extends Component{
 
 function  mapStateToProps(state){
     return {
-        auth: state.userAuth.auth
+        auth: state.userAuth.auth,
+        user_details: state.user.details
     }
 }
 
-export default connect(mapStateToProps)(AcceptancePage);
+export default connect(mapStateToProps, {get_user_details})(AcceptancePage);
