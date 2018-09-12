@@ -22,36 +22,39 @@ import AcceptancePage from '../components/acceptance-page';
 import AboutPage from '../components/about';
 
 
-class App extends React.Component {
+class App extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
             isHome: false
-        }
+        };
     }
+
     componentDidMount() {
         if (this.props.location.pathname === '/') {
             this.setState({
                 isHome: true
-            })
+            });
+
         } else {
             this.setState({
                 isHome: false
-            })
+            });
         }
         this.props.history.listen((location) => {
             if (location.pathname === '/') {
                 this.setState({
                     isHome: true
-                })
+                });
             } else {
                 this.setState({
                     isHome: false
-                })
+                });
             }
-        })
+        });
     }
+
     render() {
         return (
             <div className='main'>
@@ -61,9 +64,9 @@ class App extends React.Component {
                     <Route path='/search-concerts' component={SearchConcerts} />
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
-                    <Route path='/invite' component={auth(InviteFriends)} />
-                    <Route path='/sign-in' component= {window.localStorage.length > 0 ? (window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) :  redirect(SignIn, "/concert-details" + window.localStorage.getItem("url"))): redirect(SignIn, '/planner')} />
-                    <Route path='/sign-up' component={redirect(SignUp, '/sign-in')} />
+                    <Route path='/invite' component={InviteFriends} />
+                    <Route path='/sign-in' component={SignIn} /> 
+                    <Route path='/sign-up' component={SignUp} />
                     <Route path='/planner' component={auth(Planner)} />
                     <Route path='/new-trip-1' component={NewTrip1} />
                     <Route path='/responsibilities' component={auth(Responsibilities)} />
@@ -72,11 +75,12 @@ class App extends React.Component {
                     <Route path='/team' component={TeamPage} />
                     <Route path='/acceptance-page' component = {AcceptancePage} />
                     <Route path='/about-page' component = {AboutPage} />
-                    <Route component={redirect(NotFound, '/')} />
+                    <Route path='/404' component={NotFound} />
                 </Switch>
             </div>
         );
     }
 }
+// {window.localStorage.length > 0 ? (window.localStorage.getItem("token") ? redirect(SignIn, "/acceptance-page?token=" + window.localStorage.getItem("token")) :  redirect(SignIn, "/concert-details" + window.localStorage.getItem("url"))): redirect(SignIn, '/planner')}
 const appWithRouter = withRouter(App)
 export default appWithRouter;

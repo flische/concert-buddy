@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Loader from '../loader';
 import { get_user_details } from '../../actions'
+import RespModal from '../modal/modal';;
+
 
 class Responsibilities extends Component {
     constructor(props) {
@@ -23,18 +25,23 @@ class Responsibilities extends Component {
     showModal = () => {
         this.setState({
             show: true
-        })
+        });
     }
     hideModal = () => {
         this.setState({
             show: false
-        })
+        });
     }
 
     componentDidMount() {
         const user  = this.props.get_user_details().then( (user) => { // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
         });
+        if (this.props.user_concert.data == null){
+            console.log('inside component did mount')
+            this.showModal();
+        }
+
     }
 
     async checkResponsibilities() {
@@ -47,15 +54,15 @@ class Responsibilities extends Component {
 
         this.setState({
             responsibilities: resp.data.data
-        })
+        });
 
     }
+
     deleteItem = async (id) => {
         const dataToSend = {
             trip_id: this.props.user_concert.trip_id,
             id: id,
             action: 'delete_responsibilities',
-
         }
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/access_responsibilities.php', params);
@@ -68,22 +75,28 @@ class Responsibilities extends Component {
             ID: id,
             completed: completed,
             action: 'toggle_responsibilities'
-        }
-
+        };
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/access_responsibilities.php', params);
-
         this.checkResponsibilities();
     }
 
     render() {
+        const concertData = this.props.user_concert.data;
+
         if (this.state.responsibilities === null) {
             return (
                 <Loader />
-            )
+            );
+        }
+        const resp = this.state.responsibilities;
+        const divStyle = {
+            fontSize: '1.5em',
+            color: 'black',
+            textAlign: 'center',
+            marginTop: '20%'
         }
 
-        const resp = this.state.responsibilities
         if (!resp) {
             return (
                 <div className="div-container">
@@ -95,12 +108,15 @@ class Responsibilities extends Component {
                         <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
                         <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                     </div>
+                    <RespModal show={this.state.show} handleClose={this.hideModal}>
+                        <div style={divStyle}>You currently do not have any trips planned. Please create a trip first!</div>
+                        
+                    </RespModal> 
                 </div>
             );
         }
 
         const respItem = resp.map((item) => {
-
             return <RespItem
                 key={item.ID}
                 id={item.ID}
@@ -113,30 +129,29 @@ class Responsibilities extends Component {
                 deleteItem={this.deleteItem}
                 showModal={this.showModal}
                 chkResp={this.checkResponsibilities}
-
-
             />
         });
+
         return (
-            <div className="div-container">
+            <div>
                 <div className="title">RESPONSIBILITIES</div>
-                <div className="resp-content">
+                <div className="resp-content" style={{height: '100%'}}>
                     {respItem}
                 </div>
                 <div className="buttons">
                     <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
+
                     <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                 </div>
             </div>
-
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        user_concert: state.user.details,
-    }
+        user_concert: state.user.details
+    };
 }
 
-export default connect(mapStateToProps, { get_user_details: get_user_details })(Responsibilities);
+export default connect( mapStateToProps, { get_user_details: get_user_details } )(Responsibilities);

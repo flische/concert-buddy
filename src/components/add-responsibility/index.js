@@ -27,11 +27,8 @@ class AddResponsibility extends Component {
         this.setState({ form: { ...form, [name]: value } });
     }
 
-
-
     async handleFormSubmit(event) {
         event.preventDefault();
-        // make call to database to add item to responsibilities table
 
         const dataToSend = {
             title: this.state.form.title,
@@ -56,6 +53,7 @@ class AddResponsibility extends Component {
         this.setState(newState);
         this.props.history.push('/responsibilities');
     }
+
     render() {
         const { title, details, name, } = this.state.form;
         const font = {
@@ -81,7 +79,7 @@ class AddResponsibility extends Component {
                     <div className="buttons"><Link to='/responsibilities'><div className=" btn white-btn">BACK</div></Link></div>
 
                 </div>
-            </div >
+            </div>
         );
     }
 }

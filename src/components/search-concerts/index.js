@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './search-concerts.css'
+import './search-concerts.css';
 
 class SearchConcerts extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             form: {
                 city_zip: '',
@@ -30,7 +31,7 @@ class SearchConcerts extends Component {
                 end_date: ''
 
             }
-        }
+        };
         this.setState(newState);
         this.props.history.push(`/concert-results?artist=${artist}&genre=${genre}&city_zip=${city_zip}&begin_date=${begin_date}&end_date=${end_date}`);
     }
@@ -74,9 +75,9 @@ class SearchConcerts extends Component {
                         </div>
                     </form>
                 </div>
-
             </div>
         );
     }
 }
+
 export default SearchConcerts;

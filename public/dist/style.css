@@ -93,6 +93,14 @@ button {
     color: #2A363B;
 }
 
+.black-btn {
+    background-color: black;
+    box-shadow: 0 5px #97969610;
+    color: whitesmoke;
+    text-shadow: rgba(245, 245, 245, 0.276) 0px 0px 2px;
+    -webkit-font-smoothing: antialiased;
+}
+
 .inputs {
     margin: 0 auto;
     text-align: center;

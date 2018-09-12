@@ -18,9 +18,9 @@ const members = [
     },
     {
         name: 'Howard Kim',
-        role: "Chris Brown's #1 fan",
+        role: "Lead Tien",
         imgUrl: howardPic,
-        favoriteArtist: 'Chris Brown',
+        favoriteArtist: 'Tien',
         linkedin: 'https://www.linkedin.com/in/howardkim820/',
         github: 'https://www.github.com/howardskim'
     },
@@ -34,7 +34,7 @@ const members = [
     },
     {
         name: 'Federico Lische',
-        role: 'Lead Lead',
+        role: 'Lead MeisterTaska',
         imgUrl: fed,
         favoriteArtist: 'Pink Floyd',
         linkedin: 'https://www.linkedin.com/in/flische/',
@@ -50,6 +50,7 @@ export default () => {
             <div className="team-container">
                 {members.map(item => {
                     const{ name, role, imgUrl, favoriteArtist, linkedin, github } = item;
+
                     return (
                         <div className="eachPerson" key={name}>
                             <div className="profile">
@@ -66,9 +67,9 @@ export default () => {
                                 </div>
                             </div>
                         </div>
-                    )
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 }

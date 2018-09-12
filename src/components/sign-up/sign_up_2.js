@@ -9,23 +9,26 @@ import {Link} from 'react-router-dom'
 
 class SignUp extends Component {
     state = {
-        show: false,
+        show: false
     }
-    register = (values) => {
+
+    register =  async (values) => {
       
-        this.props.signUp(values); //<-- making a real call to the server and making a real acct for you!
+        await this.props.signUp(values); 
         this.props.reset();
         this.showModal();
     }
+
     showModal = () => {
         this.setState({
-            show: true,
-        })
+            show: true
+        });
     }
+
     hideModal = () => {
         this.setState({
-            show: false,
-        })
+            show: false
+        });
     }
 
     render(){
@@ -44,10 +47,12 @@ class SignUp extends Component {
                         </div>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
                      </form>
-                     <DefaultModal show={this.state.show} handleClose={this.hideModal} >
+                     { this.props.authError ?  <DefaultModal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p center">Email already exists</p>
+                    </DefaultModal> : <DefaultModal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p center">You have successfully signed up! Please log in with your new account</p>
                     <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
-                    </DefaultModal>
+                    </DefaultModal>}
                 </div>
             </div>
         );
@@ -58,20 +63,25 @@ function validate(values){
     const { email, name, password, confirmPassword } = values;
 
     const errors = {};
+
     if(!email){
         errors.email = 'Please enter your email';
     }
     if (!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) {
         errors.email = 'Invalid Email Address';
     }
-
     if(!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
 
     if(password !== confirmPassword){
         errors.confirmPassword = 'Passwords do not match';
     }
-
     return errors;
+}
+
+function mapStateToProps(state){
+    return {
+        authError: state.userAuth.error
+    }
 }
 
 SignUp = reduxForm({
@@ -79,4 +89,4 @@ SignUp = reduxForm({
     validate: validate
 })(SignUp);
 
-export default connect( null, { signUp } )(SignUp);
+export default connect( mapStateToProps, { signUp } )(SignUp);

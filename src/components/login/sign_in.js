@@ -8,20 +8,33 @@ import { signIn } from '../../actions';
 import Input from '../input';
 import {formatPostData} from '../../helpers'; 
 import axios from 'axios';
+import {resetError} from '../../actions';
+
 
 class SignIn extends Component {
     
-    login = (values) =>{
-        this.props.signIn(values); 
+    login = async (values) => {
+       await this.props.signIn(values); 
+
+        if(this.props.userAuth){
+            if(window.localStorage.length > 0 ){
+                if(window.localStorage.getItem("token")){
+                    this.props.history.push("/acceptance-page?token=" + window.localStorage.getItem("token"));
+                } else {
+                    this.props.history.push("/concert-details" + window.localStorage.getItem("url"));
+                }
+            } else {
+                this.props.history.push('/planner');
+            }       
+        }
     }
 
     componentDidMount() {
-        this.props.authError;
-
+        this.props.resetError();
     }
 
     render(){
-        const { handleSubmit, authError, reset } = this.props;
+        const { handleSubmit, authError} = this.props;
 
         return (
             
@@ -44,10 +57,10 @@ class SignIn extends Component {
                 </div>
             </form>
             <div className="buttons">
-                <div className="a-tag"> <Link to="/sign-up">SIGN UP!</Link></div>
+                <div> <Link to="/sign-up"><button className="button white-btn"> SIGN UP!</button></Link></div>
             </div>
         </div>    
-        )
+        );
     }
 }
 
@@ -69,8 +82,9 @@ SignIn = reduxForm({
 
 function mapStateToProps(state){
     return {
-        authError: state.userAuth.error
+        authError: state.userAuth.error,
+        userAuth: state.userAuth.auth
     }
 }
 
-export default connect( mapStateToProps, { signIn } )(SignIn);
+export default connect( mapStateToProps, { signIn, resetError } )(SignIn);

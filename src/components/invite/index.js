@@ -6,26 +6,39 @@ import { connect } from 'react-redux';
 import { send_email_invites } from '../../actions'
 import Modal from '../modal';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 
 class InviteFriends extends Component {
     state = {
         show: false
     }
+
     showModal = () => {
         this.props.reset();
         this.setState({
             show: true
         })
     }
+
     hideModal = () => {
         this.setState({
             show: false
         })
     }
+
+   async componentDidMount() {
+       const resp = await axios.post('api/checkUserLoggedIn.php');
+       if (!resp.data.success) {
+           this.props.history.push('/');
+       }
+    }
+
     renderEmails(props) {
         const { fields } = props;
         const emails = fields.map((name, index) => {
+            console.log('Index:', index);
+            console.log('IS < 6', index < 6);
             if (index < 6) {
                 return (
                     <Field key={name} name={name} component={InviteInput} />
@@ -33,8 +46,7 @@ class InviteFriends extends Component {
             } else {
                 return;
             }
-        })
-        console.log('emailsssssssssssssssss', emails);
+        });
         return (
             <div className="invite-emails">
                 {emails}
@@ -42,31 +54,32 @@ class InviteFriends extends Component {
                     <button type="button" className="pink-btn">ADD MORE</button>
                 </div>
             </div>
-        )
+        );
     }
+
     inviteFriends(values) {
         const array = values.emails;
-        console.log("initial array", array);
+
         for (let i = 0; i < array.length; i++) {
+
             if (array[i] !== undefined && array[i] !== "") {
                 this.showModal();
-                // console.log("first if loop", array)
             } else if (array.length > 1 && array[i] === undefined) {
                 array.splice(i, 1);
                 array[i] = "";
-                // console.log("2nd if undefined", array)
-
             }
         }
         this.props.send_email_invites(array);
     }
+
     render() {
         const { handleSubmit, reset } = this.props;
         const pStyle = {
             color: 'dodgerblue',
             fontSize: '32px',
             textAlign: 'center'
-        }
+        };
+
         return (
             <div className="div-container">
                 <form onSubmit={handleSubmit(this.inviteFriends.bind(this))}>
@@ -81,13 +94,11 @@ class InviteFriends extends Component {
                     <Link to="/planner"><div className="btn black-btn">GO TO PLANNER</div></Link>
                 </Modal>
             </div>
-        )
+        );
     }
 }
 
-// if (!(/^@+$/.test(emails))) {
-//     emailErrors.push('Please enter a valid email address')
-// }
+
 // if (emailErrors.length) {
 //     errors.emails = emailErrors
 // }
@@ -96,22 +107,27 @@ class InviteFriends extends Component {
 //     const {emails} = values; console.log(emails);
 //     const errors = {};
 //     const emailErrors = [];
+// if (!(/^@+$/.test(emails))) {
+//     emailErrors.push('Please enter a valid email address')
+// }
 
 // }
 
 InviteFriends = reduxForm({
     form: 'invite-friends',
     // validate,
-    initialValues: {
-        emails: [''],
-    }
-
+    enableReinitialize: true
 })(InviteFriends);
 
 function mapStateToProps(state) {
     return {
         user_concert: state.user.details,
+
+        initialValues: {
+            emails: [''],
+        },
     }
 }
-export default connect(mapStateToProps, { send_email_invites })(InviteFriends)
+
+export default connect( mapStateToProps, { send_email_invites } )(InviteFriends)
 

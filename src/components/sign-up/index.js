@@ -16,26 +16,24 @@ class SignUp extends Component {
                 name: '',
                 password: '',
                 passwordCheck: '',
-                matching: 'null',
-
+                matching: 'null'
             },
-            show: false,
+            show: false
         }
     }
+
     showModal = () => {
         this.setState({
             show: true
         })
     }
+
     hideModal = () => {
         this.setState({
             show: false
         })
     }
-    componentDidUpdate() {
-       
-
-    }
+    
     handleChange(event) {
         const { name, value } = event.target;
         const { form } = this.state;
@@ -45,47 +43,43 @@ class SignUp extends Component {
         });
     }
   
-  
     async handleFormSubmit(event) {
         event.preventDefault();
-          const {email, name, password, passwordCheck} = this.state.form;
-          if (password !== passwordCheck) {
+        const {email, name, password, passwordCheck} = this.state.form;
+        if (password !== passwordCheck) {
             this.setState({
                 form: {
-                    matching: false,
-                },
+                    matching: false
+                }
             });
-        }
-        else {
+        } else {
             const dataToSend = {
-              email: email,
-              name: name,
-              password: password 
+                email: email,
+                name: name,
+                password: password 
             };
             const params = formatPostData(dataToSend);
-            console.log(this.props)
+
             await axios.post('api/addUser.php', params).then((resp) => {
-                console.log(resp);
-            if (resp.data.success) {
-            
-                this.showModal();
+                if (resp.data.success) {
+                    this.showModal();
                 };
              });
-            }
-        
         }
+    }
+
     render() {
         const {email, name, password, passwordCheck, matching} = this.state.form;
         const correctStyle = {
             "border" : "2px green solid"
-        }
+        };
         const incorrectStyle = {
             "border" : "2px red solid"
-        }
+        };
+
         return (
             <div>
                 <div className="title">SIGN UP FOR <br />CONCERT BUDDY</div>
-
                 <div className="signup">
                     <form id="signupForm" onSubmit={(event) => { this.handleFormSubmit(event) } }>
                         <div className="signup-inputs">
@@ -103,10 +97,8 @@ class SignUp extends Component {
                 <Modal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p">You've successfully signed up. Please Log in with your new account</p>
                     <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
-
                 </Modal>
             </div>
-           
         );
     }
 }

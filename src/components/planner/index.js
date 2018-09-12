@@ -42,12 +42,13 @@ class Planner extends Component {
         }
         timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
         timeValue += (hours >= 12) ? " P.M." : " A.M.";
+
         return timeValue;
     }
 
     render() {
         const concertImage = this.props.user_concert.img;
-        console.log(concertImage);
+
         const user_concert = this.props.user_concert;
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
           
@@ -64,6 +65,7 @@ class Planner extends Component {
             var evenArray = [];
             var oddArray = [];
             for (let i = 0; i < arrayOfPeopleGoing.length; i++) {
+
                 if (i % 2 === 0) {
                     evenArray.push(<div key={arrayOfPeopleGoing[i]}>{arrayOfPeopleGoing[i]}</div>)
                 } else {
@@ -84,13 +86,13 @@ class Planner extends Component {
                         </div>
                     </div>
                 </div>
-            )
+            );
         }
 
         if (this.props.user_concert === undefined) {
             return (
                 <Loader />
-            )
+            );
         }
 
         return (
@@ -127,15 +129,14 @@ class Planner extends Component {
                 </div>
             </div>
         );
-    
-        }
+    }
  }
 
 function mapStateToProps(state) {
     return {
         user_concert: state.user.details,
         users_attending: state.user.going
-    }
+    };
 }
 
 export default connect(mapStateToProps, { get_user_details: get_user_details })(Planner);

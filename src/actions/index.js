@@ -27,8 +27,8 @@ export async function get_user_details() {
       return{
             type: types.GET_USER_DETAILS,
             payload: payload
-      }
-  }
+        }
+    }
 
     const id = userTrips.data.data[0].trip_id;
     
@@ -127,12 +127,12 @@ export const signUp = credentials => async dispatch => {
         } else {
             dispatch({
                 type: types.AUTH_ERROR,
-                error: 'Error creating account'
+                error: resp.data.error
             });
         }
 
     } catch(error){
-        dispatch( {
+        dispatch({
             type: types.AUTH_ERROR,
             error: 'Error creating account'
         });
@@ -148,3 +148,7 @@ const params = formatPostData(dataToSend);
     localStorage.clear();
     return { type: types.SIGN_OUT };
 };
+
+export function resetError() {
+    return {type: types.RESET_ERROR};
+}
