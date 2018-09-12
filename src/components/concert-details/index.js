@@ -12,16 +12,19 @@ class ConcertDetails extends Component {
     state = {
         show: false
     }
+
     showModal = () => {
         this.setState({
             show: true
         })
     }
+
     hideModal = () => {
         this.setState({
             show: false
         })
     }
+
     componentDidMount() {
         this.props.get_user_details();
         this.parseParameters();
@@ -85,13 +88,10 @@ class ConcertDetails extends Component {
         
         return (
             <div className="details div-container">
-
                 <div className="title">
                     CONCERT DETAILS
                     </div>
                 <img src={concert._embedded.attractions[0].images[3].url} />
-
-
                 <div className="concert-details-main ">
                     <div className="concert-details-a ">
                         <p>
@@ -111,11 +111,9 @@ class ConcertDetails extends Component {
                         <p>
                             <b>City, State: </b>
                             <span>{cityState}</span>
-
                         </p>
                     </div>
                     <div className="concert-details-c ">
-
                         <p>
                             <b>Date: </b>
                             <span>{convertedDate}</span>
@@ -127,27 +125,28 @@ class ConcertDetails extends Component {
                     </div>
                 </div>
                 <div className="buttons">
-
                     <a href={concert.url} target='_blank'><div className=" btn white-btn">BUY TICKETS</div></a>
 
-
-        {this.props.auth ? (this.props.user_concert.data === null ? <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link> : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>) : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>}
-
-
+                { this.props.auth ? (this.props.user_concert.data === null ? <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link> : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>) : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>}
 
                     <Link to={`/concert-results/${this.props.location.search}`}><div className=" btn white-btn">BACK TO RESULTS</div></Link>
 
                 </div>
-                { this.props.auth ? <Modal show={this.state.show} handleClose={this.hideModal} >
-                <p className="modal-p">You already have a current trip! Check it out in the planner!</p>
-                <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
-                </Modal>  : 
-                <Modal show={this.state.show} handleClose={this.hideModal} >
-                <p className="modal-p">Please log in or sign up to create a trip</p>
-                <Link to="/sign-in"><div className="btn black-btn">SIGN IN / SIGN UP</div></Link>
-                </Modal>  }
-            </div>
 
+                { this.props.auth ? 
+
+                <Modal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p">You already have a current trip! Check it out in the planner!</p>
+                    <Link to="/planner"><div className="btn black-btn">Planner</div></Link>
+                </Modal>  
+                : 
+                <Modal show={this.state.show} handleClose={this.hideModal} >
+                    <p className="modal-p">Please log in or sign up to create a trip</p>
+                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN / SIGN UP</div></Link>
+                </Modal>  
+                
+                }
+            </div>
         );
     }
 }
@@ -157,7 +156,7 @@ function mapStateToProps(state) {
         concert: state.concertDetails.concert,
         user_concert: state.user.details,
         auth: state.userAuth.auth
-    }
+    };
 }
 
-export default connect(mapStateToProps, { get_concert_details, get_user_details})(ConcertDetails);
+export default connect( mapStateToProps, { get_concert_details, get_user_details } )(ConcertDetails);
