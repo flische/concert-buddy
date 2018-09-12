@@ -3,7 +3,8 @@ header("Access-Control-Allow-Origin: *");
 session_start();
 require('mysqlconnect.php');
 $userID = $_SESSION['user_data'][0]['ID'];
-$token = $_POST['token'];
+$token = stripslashes(htmlentities($_POST['token']));
+ 
 $tripID = null;
 $output = [
     'success'=> false,
@@ -32,7 +33,20 @@ if ($result2) {
         // echo "successful added $userID and $tripID and $newID";   
     }
 } else {
-    $error = mysqli($conn);
+    $error = mysqli_error($conn);
+    print(json_encode($error));
+}
+
+$deleteQuery = "DELETE FROM `triptokens` WHERE `tokens` = '$token'";
+$deleteResult = mysqli_query($conn, $deleteQuery);
+ if ($deleteResult) {
+    if (mysqli_affected_rows($conn) > 0) {
+        $output['success'] = true; 
+        // $newID = mysqli_insert_id($conn);
+ }
+}
+else {
+    $error = mysqli_error($conn);
     print(json_encode($error));
 }
 ?> 
