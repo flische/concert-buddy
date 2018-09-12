@@ -42,7 +42,7 @@ $deleteResult = mysqli_query($conn, $deleteQuery);
 
 }
 else {
-    $error = mysqli($conn);
+    $error = mysqli_error($conn);
     print(json_encode($error));
 }
 ?> 
