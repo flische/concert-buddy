@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
-    background: linear-gradient(to bottom, #2A363B, #100206);
+    /* background: linear-gradient(to bottom, #2A363B, #100206); */
+    background-color: #FF847C;
     background-repeat: no-repeat;
     font-family: Quicksand, sans-serif;
     color: white;
@@ -13,6 +14,13 @@ body {
     height: 100%;
     width: 100%;
     margin: 0 auto;
+    background: linear-gradient(to bottom, #2A363B, #100206);
+}
+
+@media only screen and (min-width: 600px){
+    .main{
+        width: 80%;
+    }
 }
 
 .title {
@@ -165,3 +173,9 @@ h3 {
     }
 }
 
+@media only screen and (min-width: 600px) {
+    .div-container {
+        height: 100vh;
+        /* background: linear-gradient(to bottom, #2A363B, #100206); */
+    }
+}
