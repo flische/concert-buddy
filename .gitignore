@@ -3,4 +3,4 @@
 node_modules
 /public/api/mysqlconnect.php
 /public/api/email_config.php
-../PHPMailer
+/public/api/PHPmailer
