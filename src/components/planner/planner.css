@@ -1,3 +1,8 @@
+.planner-div {
+    height: 100%;
+}
+
+
 *{
     box-sizing: border-box
 }
@@ -82,3 +87,4 @@
 .leftSide, .rightSide{
     width: 25%;
 }
+

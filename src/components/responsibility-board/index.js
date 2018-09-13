@@ -92,7 +92,7 @@ class Responsibilities extends Component {
 
         if (!resp) {
             return (
-                <div className="div-container">
+                <div className="no-resp-container">
                     <div className="title">RESPONSIBILITIES</div>
                     <div className="no-resp-main">
                         <div className="no-resp">
