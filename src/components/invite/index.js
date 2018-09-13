@@ -23,7 +23,7 @@ class InviteFriends extends Component {
             show: true
         });
     }
-
+        
     hideModal = () => {
         this.setState({
             show: false
