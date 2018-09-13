@@ -20,6 +20,10 @@ switch ($action)
         break;
     case 'create_trip':
         include('user_data/createTrip.php');
+        break;
+    case 'delete_concert':
+        include('user_data/deleteConcert.php');
+        break;
 }
 $output = json_encode($output);
  print($output);
