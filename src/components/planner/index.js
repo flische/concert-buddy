@@ -107,7 +107,7 @@ class Planner extends Component {
         }
 
         return (
-            <div className="bottom-content">
+            <div className="planner-div bottom-content">
                 <div className="title">
                     <h1> {user_concert.trip_name}</h1>
                 </div>
