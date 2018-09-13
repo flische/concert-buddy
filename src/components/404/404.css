@@ -6,7 +6,12 @@
     /* -webkit-font-smoothing: antialiased;
     margin-top: 20%;
 } */
-
+.center{
+    height: 100vh;
+}
+.hideNav{
+    display: none;
+}
 @media only screen and (max-width: 600px) {
     .center {
         text-align: center;
@@ -30,7 +35,7 @@
         margin-top: 2%;
     }
     .img404{
-        height: 300px;
-        width: 300px;
+           height: 80%;
+           width: 100%;
     }
 }
