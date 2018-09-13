@@ -1,4 +1,9 @@
 
+.add-resp-container {
+      height: 100%;
+}
+
+
 .add-resp-form {
        margin: 0 auto;
       }
@@ -20,3 +25,12 @@
 .inputs > .standard-textarea{
       font-family: Quicksand;
 }
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .add-resp-container {
+            height: 100vh;
+        }
+     }

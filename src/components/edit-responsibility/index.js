@@ -51,7 +51,7 @@ class EditResponsibility extends Component {
             edit_id: object.edit_id,
             trip_id: this.props.trip_info.trip_id,
             action: 'get_edit_fields'
-            
+
         }
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/access_responsibilities.php', params);
@@ -108,7 +108,7 @@ class EditResponsibility extends Component {
 
         const { title, details, name, } = this.state.form;
         return (
-            <div className="div-container">
+            <div className="edit-resp-container">
                 <div className="title">EDIT RESPONSIBILITY</div>
                 <div className="add-resp-form">
                     <form onSubmit={(event) => { this.handleFormSubmit(event) }}>

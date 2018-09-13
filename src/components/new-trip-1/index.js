@@ -13,17 +13,17 @@ class NewTrip1 extends Component {
         await this.createTrip(values);
     }
 
-    renderInput( props ){
-               return (
-                   <div>
-                       <div>
-                           <label>{props.label}</label>
-                           <input className="standard-input" {...props.input} type="text"/>
-                           <p>{props.meta.touched && props.meta.error}</p>
-                       </div>
-                   </div>
-               );
-           }
+    renderInput(props) {
+        return (
+            <div>
+                <div>
+                    <label>{props.label}</label>
+                    <input className="standard-input" {...props.input} type="text" />
+                    <p>{props.meta.touched && props.meta.error}</p>
+                </div>
+            </div>
+        );
+    }
 
     parseParameters() {
         var queryObject = {};
@@ -36,7 +36,7 @@ class NewTrip1 extends Component {
             pair = qArr[i].split('=');
             queryObject[pair[0]] = pair[1];
         }
-        return queryObject;    
+        return queryObject;
     }
 
     async createTrip(event) {
@@ -44,12 +44,12 @@ class NewTrip1 extends Component {
         const concertData = this.props.concert;
         const dataToSend = {
             artist: concertData.name,
-            date : concertData.dates.start.localDate,
-            time : concertData.dates.start.localTime,
-            venue : concertData._embedded.venues[0].name,
+            date: concertData.dates.start.localDate,
+            time: concertData.dates.start.localTime,
+            venue: concertData._embedded.venues[0].name,
             address: concertData._embedded.venues[0].address.line1 + ' ' + concertData._embedded.venues[0].city.name + ' ' + concertData._embedded.venues[0].state.stateCode + ', ' + concertData._embedded.venues[0].postalCode,
-            latitude : concertData._embedded.venues[0].location.latitude,
-            longitude : concertData._embedded.venues[0].location.longitude,
+            latitude: concertData._embedded.venues[0].location.latitude,
+            longitude: concertData._embedded.venues[0].location.longitude,
             image: concertData.images[3].url,
             action: 'create_concerts',
         }
@@ -136,7 +136,8 @@ class NewTrip1 extends Component {
                 </div>
                 <div className="tripname">
                     <form onSubmit={handleSubmit(this.handleAddItem)}>
-                        <Field name="trip_name" id="trip_name" label="Name Your Trip" component={this.renderInput} />
+                        <div>Name Your Trip</div>
+                        <Field name="trip_name" id="trip_name" component={this.renderInput} />
                         <div className="buttons">
                             <button className="btn pink-btn">CREATE YOUR TRIP! </button>
                         </div>
@@ -147,7 +148,7 @@ class NewTrip1 extends Component {
     }
 }
 
-function validate(values){
+function validate(values) {
     // Redux Form will look at the properties below and see if they match any of the Field name (inputs) //
     // you can do any kind of check in here that you want! to validate input //
     // for example, RegEx for validating proper email or password! //
@@ -155,8 +156,8 @@ function validate(values){
 
     const errors = {};
 
-    if(trip_name){
-        if(trip_name.length < 3){
+    if (trip_name) {
+        if (trip_name.length < 3) {
             errors.trip_name = 'Please enter a trip name of 3 or more characters in length!';
         }
     }
@@ -179,7 +180,7 @@ NewTrip1 = reduxForm({
 
 const selector = formValueSelector('create_trip');
 
-NewTrip1 = connect( state => {
+NewTrip1 = connect(state => {
     const tripNameValue = selector(state, 'trip_name');
 
     return {
@@ -187,4 +188,4 @@ NewTrip1 = connect( state => {
     };
 })(NewTrip1);
 
-export default connect( mapStateToProps, { get_concert_details: get_concert_details, create_trip: create_trip } )(NewTrip1);
+export default connect(mapStateToProps, { get_concert_details: get_concert_details, create_trip: create_trip })(NewTrip1);

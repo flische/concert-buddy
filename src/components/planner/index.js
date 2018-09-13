@@ -18,7 +18,6 @@ class Planner extends Component {
             show: false
         }
     }
-    
     componentDidMount() {
         this.checkUserTrips();
     }
@@ -78,7 +77,7 @@ class Planner extends Component {
 
         const user_concert = this.props.user_concert;
         if (Object.getOwnPropertyNames(user_concert).length === 0) {
-          
+
             return (
                 <Loader />
             );
@@ -105,7 +104,7 @@ class Planner extends Component {
             }
         }
 
-        if (user_concert.data ===  null) {
+        if (user_concert.data === null) {
 
             return (
                 <div className="div-container">
@@ -127,7 +126,7 @@ class Planner extends Component {
         }
 
         return (
-            <div className="bottom-content div-container">
+            <div className="planner-div bottom-content">
                 <div className="title">
                     <h1> {user_concert.trip_name}</h1>
                 </div>
@@ -166,7 +165,7 @@ class Planner extends Component {
             </div>
         );
     }
- }
+}
 
 function mapStateToProps(state) {
     return {

@@ -1,4 +1,6 @@
-
+.no-resp-container {
+    height: 100vh;
+}
 .resp-content {
     margin: 0 auto;
     text-align: center;
@@ -40,14 +42,11 @@
         width: 30%;
         height: 50%;
     }
-    .buttonArea{
-        display: flex;
-    }
-    .buttonArea .pink-btn{
-        width: 100%;
-        font-size: 1em;
-    }
-    .buttonArea .pink-btn:hover{
-        cursor: pointer;
-    }
+
+}
+
+@media only screen and (max-width: 600px) {
+.resp-buttons {
+    height: 40vh;
+}
 }

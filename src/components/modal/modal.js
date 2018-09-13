@@ -1,6 +1,6 @@
 import React from 'react';
 import './modal.css'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const RespModal = ({ handleClose, show, children }) => {
@@ -9,8 +9,8 @@ const RespModal = ({ handleClose, show, children }) => {
         <div className={showHideClassName}>
             <section className="modal-main">
                 {children}
-                <div className="buttonArea">
-                    <Link to="/search-concerts"><button className="pink-btn">SEARCH CONCERTS</button></Link>                
+                <div className="buttons">
+                    <Link to="/search-concerts"><button className="pink-btn">SEARCH CONCERTS</button></Link>
                 </div>
             </section>
         </div>
