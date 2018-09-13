@@ -24,7 +24,7 @@ class InviteFriends extends Component {
             show: true
         });
     }
-        
+
     hideModal = () => {
         this.setState({
             show: false
@@ -35,19 +35,19 @@ class InviteFriends extends Component {
         const config = {
             action: 'existing_login',
         }
-       const params = formatPostData(config);
-       const resp = await axios.post('api/handle_login.php', params);
-       if (!resp.data.success) {
-           this.props.history.push('/');
-       } else {
-           await this.props.get_user_details();
-           if(!this.props.user_concert.trip_id){
-            this.setState({
-                noTrip: true
-               });
-           }
-           
-       }
+        const params = formatPostData(config);
+        const resp = await axios.post('api/handle_login.php', params);
+        if (!resp.data.success) {
+            this.props.history.push('/');
+        } else {
+            await this.props.get_user_details();
+            if (!this.props.user_concert.trip_id) {
+                this.setState({
+                    noTrip: true
+                });
+            }
+
+        }
     }
 
     renderEmails(props) {
@@ -67,7 +67,7 @@ class InviteFriends extends Component {
                 <div className="invite-emails" title="Add Recipient" onClick={() => { fields.push() }}>
                     <button type="button" className="white-btn">ADD MORE</button>
                 </div>
-                <div className="invite-emails" title="Add Recipient" onClick={() => { if (fields.length > 1){fields.pop()} }}>
+                <div className="invite-emails" title="Add Recipient" onClick={() => { if (fields.length > 1) { fields.pop() } }}>
                     <button type="button" className="pink-btn">DELETE</button>
                 </div>
             </div>
@@ -90,8 +90,8 @@ class InviteFriends extends Component {
     }
 
     render() {
-        const { handleSubmit} = this.props;
-      
+        const { handleSubmit } = this.props;
+
         const pStyle = {
             color: 'dodgerblue',
             fontSize: '32px',
@@ -114,8 +114,8 @@ class InviteFriends extends Component {
                     </div>
                 </Modal>
                 <RespModal show={this.state.noTrip}>
-                    <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div> 
-                </RespModal> 
+                    <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div>
+                </RespModal>
             </div>
         );
     }
@@ -160,6 +160,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect( mapStateToProps, { send_email_invites, get_user_details } )(InviteFriends)
+export default connect(mapStateToProps, { send_email_invites, get_user_details })(InviteFriends)
 
 

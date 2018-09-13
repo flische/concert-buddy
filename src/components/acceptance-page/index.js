@@ -142,10 +142,12 @@ class AcceptancePage extends Component {
                 </div>
                 {this.props.auth ? <Modal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p center">You already have an existing trip! Please go to your current trip</p>
-                    <Link to="/planner"><div className="btn black-btn">PLANNER</div></Link>
+
+                    <Link to="/planner"><div className="buttons"><div className="btn black-btn">PLANNER</div></div></Link>
+
                 </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
                         <p className="modal-p center">Please Login or Sign Up before accepting this trip!</p>
-                        <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
+                        <Link to="/sign-in"><div className="buttons"><div className="btn black-btn">SIGN IN</div></div></Link>
                     </Modal>}
             </div>
         )
