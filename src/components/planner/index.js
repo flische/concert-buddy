@@ -24,7 +24,7 @@ class Planner extends Component {
 
     showModal = () => {
         this.setState({
-            show:true
+            show: true
         });
     }
 
@@ -45,7 +45,7 @@ class Planner extends Component {
         const id = this.props.user_concert.trip_id;
 
         await this.props.delete_trip(id);
-        
+
         await this.props.get_user_details();
     }
 
@@ -107,7 +107,7 @@ class Planner extends Component {
         if (user_concert.data === null) {
 
             return (
-                <div className="div-container">
+                <div className="planner-div-a">
                     <div className="title">PLANNED TRIP</div>
                     <div className="no-resp-main">
                         <div>
@@ -159,8 +159,8 @@ class Planner extends Component {
                     <button onClick={this.showModal} className="btn pink-btn">LEAVE THE TRIP</button>
                 </div>
                 <Modal show={this.state.show} handleClose={this.hideModal} >
-                        <p className="modal-p">Are you sure you want to leave this trip?</p>
-                        <button onClick={this.handleDelete} className="btn pink-btn">LEAVE THE TRIP</button>
+                    <p className="modal-p">Are you sure you want to leave this trip?</p>
+                    <button onClick={this.handleDelete} className="btn pink-btn">LEAVE THE TRIP</button>
                 </Modal>
             </div>
         );
