@@ -3,9 +3,9 @@ header("Access-Control-Allow-Origin: *");
 session_start();
 require_once('email_config.php');
 require_once('mysqlconnect.php');
-require '../../PHPMailer/src/PHPMailer.php';
-require '../../PHPMailer/src/SMTP.php';
-require '../../PHPMailer/src/Exception.php';
+require './PHPMailer/src/PHPMailer.php';
+require './PHPMailer/src/SMTP.php';
+require './PHPMailer/src/Exception.php';
 $host = $_SERVER['HTTP_HOST'];
 $data= $_SESSION['tripData'][0];
 $_POST = json_decode(file_get_contents('php://input'), true);
@@ -83,6 +83,7 @@ $mail->Body    = "<body style='font-family: Arial, Helvetica, sans-serif;'>
     <div style='text-align: center;'>
    <p style='color:#FF847C'>Invitation Link:</p> 
    <a href=\"http://".$host.$url.$token."\" style='color:blue;'> http://".$host.$url.$token."</a>
+    <p style='text-align: center'> Your invite will be deleted after you accept! </p>
     </div>
     <p>Enjoy the concert!</p>
     <p>-Your friends at Concert Buddy</p>

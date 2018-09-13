@@ -79,7 +79,7 @@ class AcceptancePage extends Component {
         const response = await axios.post('api/handle_email.php', params);
         const { data: tripDetails } = response;
         if (response.data.data[0] === null) {
-            this.props.history.push('/404');
+            this.props.history.push('/no-token');
         }
         this.setState({
             trip: tripDetails

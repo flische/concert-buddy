@@ -9,7 +9,7 @@ $output = [
  'success' => false,
 ];
 
-$query = "INSERT INTO `trips`(`trip_name`,`concert_id`,`created_user_id`) VALUES ('$tripName', '$concertID', '$userID')" ;
+$query = "INSERT INTO `trips`(`trip_name`,`concert_id`,`created_user_id`) VALUES (\"$tripName\", \"$concertID\", \"$userID\")" ;
 
 $result = mysqli_query($conn, $query);
 if (mysqli_affected_rows($conn)) {
