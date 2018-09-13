@@ -52,7 +52,7 @@ class App extends Component{
                     isHome: false
                 });
             }
-        });
+        });           
     }
 
     render() {

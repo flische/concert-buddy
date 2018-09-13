@@ -87,5 +87,10 @@
     .tagline {
         font-size: 20px;
     }
+
+    .control-dots {
+        padding-top: 10px;
+        margin-top: 10px;
+    }
    
   }
