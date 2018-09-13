@@ -5,7 +5,7 @@ import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux'
 import Loader from '../loader'
-import Modal from '../modal'
+import Modal from '../modal/index'
 import { get_user_details } from '../../actions'
 
 class AcceptancePage extends Component {
@@ -141,12 +141,12 @@ class AcceptancePage extends Component {
                     <div className="btn pink-btn" onClick={this.declineTrip.bind(this)}>DECLINE</div>
                 </div>
                 {this.props.auth ? <Modal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p center">You already have an existing trip! Please go to your current trip</p>
+                    <p className="modal-p">You already have an existing trip! Please go to your current trip</p>
 
                     <Link to="/planner"><div className="buttons"><div className="btn black-btn">PLANNER</div></div></Link>
 
                 </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
-                        <p className="modal-p center">Please Login or Sign Up before accepting this trip!</p>
+                        <p className="modal-p">Please Login or Sign Up before accepting this trip!</p>
                         <Link to="/sign-in"><div className="buttons"><div className="btn black-btn">SIGN IN</div></div></Link>
                     </Modal>}
             </div>
