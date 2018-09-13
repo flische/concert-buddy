@@ -5,7 +5,7 @@ import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux'
 import Loader from '../loader'
-import Modal from '../modal/index'
+import Modal from '../modal';
 import { get_user_details } from '../../actions'
 
 class AcceptancePage extends Component {

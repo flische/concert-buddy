@@ -35,11 +35,11 @@ class SignUp extends Component {
         const { handleSubmit } = this.props;
 
         return (
-            <div className="div-container">
+            <div className="signup-container">
                 <div className="title">SIGN UP FOR <br />CONCERT BUDDY</div>
                 <div className="signup">
                     <form onSubmit={handleSubmit(this.register)}>
-                        <div className="signup-inputs center">
+                        <div className="signup-inputs">
                             <Field className="standard-input" name="email" component={Input} label="Email" />
                             <Field className="standard-input" name="name" component={Input} label="Name" />
                             <Field type="password" className="standard-input signup" name="password" component={Input} label="Password" />

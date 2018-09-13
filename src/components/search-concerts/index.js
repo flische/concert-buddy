@@ -46,7 +46,7 @@ class SearchConcerts extends Component {
         const { city_zip, artist, genre, begin_date, end_date } = this.state.form;
 
         return (
-            <div className="div-container">
+            <div className="results-container">
                 <div className="title"> SEARCH CONCERT</div>
                 <div className="bottom-content">
                     <form onSubmit={(event) => { this.handleFormSubmit(event) }}>
