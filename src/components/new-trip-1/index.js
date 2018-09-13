@@ -58,7 +58,7 @@ class NewTrip1 extends Component {
         const concertID = concert.data.ID;
         const dataToSend2 = {
             trip_name: this.props.tripNameValue,
-
+            
             ID: concertID,
             action: 'create_trip'
         }

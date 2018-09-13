@@ -3,6 +3,7 @@
 export default {
     AUTH_ERROR: 'auth_error',
     CREATE_TRIP: 'create_trip',
+    DELETE_TRIP: 'delete_trip',
     DELETE_RESPONSIBILITY: 'delete_responsibility',
     GET_CONCERT_DETAILS: 'get_concert_details',
     GET_USER_DETAILS: 'get_user_details',
