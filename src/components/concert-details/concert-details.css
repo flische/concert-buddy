@@ -5,6 +5,7 @@
 .details {
     margin: 0 auto;
     text-align: center;
+    height: 100%;
 }
 
 .concert-details-a>p,
@@ -42,10 +43,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .concert-details-main {
-        /* text-align: left; */
-        /* margin-left: 30px; */
-    }
+ 
     .concert-details-a>p,
     .concert-details-b>p,
     .concert-details-c>p {
@@ -56,6 +54,10 @@
     .concert-details-b>p>span,
     .concert-details-c>p>span {
         color: white;
+    }
+
+    .details {
+        height: 100vh;
     }
     .details>img {
         max-width: 275px;

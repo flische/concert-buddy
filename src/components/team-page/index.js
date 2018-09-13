@@ -44,12 +44,12 @@ const members = [
 
 export default () => {
     return (
-        <div className="div-container">
+        <div className="team-div-container">
             <h3 className="title">MEET THE TEAM</h3>
 
             <div className="team-container">
                 {members.map(item => {
-                    const{ name, role, imgUrl, favoriteArtist, linkedin, github } = item;
+                    const { name, role, imgUrl, favoriteArtist, linkedin, github } = item;
 
                     return (
                         <div className="eachPerson" key={name}>

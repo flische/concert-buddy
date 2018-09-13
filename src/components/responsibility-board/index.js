@@ -34,7 +34,7 @@ class Responsibilities extends Component {
     }
 
     componentDidMount() {
-        const user  = this.props.get_user_details().then( (user) => { // calls get user details on componentDidMount THEN...
+        const user = this.props.get_user_details().then((user) => { // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
         });
     }
@@ -79,7 +79,7 @@ class Responsibilities extends Component {
     }
 
     render() {
-        
+
         const tripID = this.props.user_concert.trip_id
 
         if (this.state.responsibilities === null) {
@@ -102,8 +102,8 @@ class Responsibilities extends Component {
                         <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                     </div>
                     <RespModal show={this.state.show} handleClose={this.hideModal}>
-                        <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div> 
-                    </RespModal> 
+                        <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div>
+                    </RespModal>
                 </div>
             );
         }
@@ -127,10 +127,10 @@ class Responsibilities extends Component {
         return (
             <div>
                 <div className="title">RESPONSIBILITIES</div>
-                <div className="resp-content" style={{height: '100%'}}>
+                <div className="resp-content" style={{ height: '100%' }}>
                     {respItem}
                 </div>
-                <div className="buttons">
+                <div className="buttons resp-buttons">
                     <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
 
                     <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
@@ -146,4 +146,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect( mapStateToProps, { get_user_details: get_user_details } )(Responsibilities);
+export default connect(mapStateToProps, { get_user_details: get_user_details })(Responsibilities);

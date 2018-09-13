@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { signUp } from '../../actions';
 import Input from '../input';
 import './sign-up.css';
-import DefaultModal from '../modal'
-import {Link} from 'react-router-dom'
+import Modal from '../modal'
+import { Link } from 'react-router-dom'
 
 class SignUp extends Component {
     state = {
         show: false
     }
 
-    register =  async (values) => {
-      
-        await this.props.signUp(values); 
+    register = async (values) => {
+
+        await this.props.signUp(values);
         this.props.reset();
         this.showModal();
     }
@@ -31,54 +31,54 @@ class SignUp extends Component {
         });
     }
 
-    render(){
+    render() {
         const { handleSubmit } = this.props;
 
         return (
             <div className="div-container">
-                <div className="title">SIGN UP FOR <br/>CONCERT BUDDY</div>
+                <div className="title">SIGN UP FOR <br />CONCERT BUDDY</div>
                 <div className="signup">
-                    <form onSubmit={handleSubmit(this.register)}> 
+                    <form onSubmit={handleSubmit(this.register)}>
                         <div className="signup-inputs center">
-                            <Field className="standard-input" name="email" component={Input} label="Email"/>
-                            <Field className="standard-input" name="name" component={Input} label="Name"/>
-                            <Field type="password" className="standard-input signup" name="password" component={Input} label="Password"/>
-                            <Field type="password" className="standard-input signup" name="confirmPassword" component={Input} placeholder="Confirm Password" label="Confirm Password"/>
+                            <Field className="standard-input" name="email" component={Input} label="Email" />
+                            <Field className="standard-input" name="name" component={Input} label="Name" />
+                            <Field type="password" className="standard-input signup" name="password" component={Input} label="Password" />
+                            <Field type="password" className="standard-input signup" name="confirmPassword" component={Input} placeholder="Confirm Password" label="Confirm Password" />
                         </div>
                         <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
-                     </form>
-                     { this.props.authError ?  <DefaultModal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p center">Email already exists</p>
-                    </DefaultModal> : <DefaultModal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p center">You have successfully signed up! Please log in with your new account</p>
-                    <Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link>
-                    </DefaultModal>}
+                    </form>
+                    {this.props.authError ? <Modal show={this.state.show} handleClose={this.hideModal} >
+                        <p className="modal-p">Email already exists</p>
+                    </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
+                            <p className="modal-p">You have successfully signed up! Please log in with your new account</p>
+                            <div className="buttons"><Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link></div>
+                        </Modal>}
                 </div>
             </div>
         );
     }
 }
 
-function validate(values){
+function validate(values) {
     const { email, name, password, confirmPassword } = values;
 
     const errors = {};
 
-    if(!email){
+    if (!email) {
         errors.email = 'Please enter your email';
     }
     if (!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) {
         errors.email = 'Invalid Email Address';
     }
-    if(!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
+    if (!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
 
-    if(password !== confirmPassword){
+    if (password !== confirmPassword) {
         errors.confirmPassword = 'Passwords do not match';
     }
     return errors;
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         authError: state.userAuth.error
     }
@@ -89,4 +89,4 @@ SignUp = reduxForm({
     validate: validate
 })(SignUp);
 
-export default connect( mapStateToProps, { signUp } )(SignUp);
+export default connect(mapStateToProps, { signUp })(SignUp);
