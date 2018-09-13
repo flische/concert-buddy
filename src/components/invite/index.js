@@ -9,17 +9,19 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import {formatPostData} from '../../helpers';
 import RespModal from '../modal/modal';
+import { get_user_details } from '../../actions';
 
 class InviteFriends extends Component {
     state = {
-        show: false
+        show: false,
+        noTrip: false
     }
 
     showModal = () => {
         this.props.reset();
         this.setState({
             show: true
-        })
+        });
     }
 
     hideModal = () => {
@@ -36,6 +38,14 @@ class InviteFriends extends Component {
        const resp = await axios.post('api/handle_login.php', params);
        if (!resp.data.success) {
            this.props.history.push('/');
+       } else {
+           await this.props.get_user_details();
+           if(!this.props.user_concert.trip_id){
+            this.setState({
+                noTrip: true
+               });
+           }
+           
        }
     }
 
@@ -100,11 +110,9 @@ class InviteFriends extends Component {
                     <p className="modal-p">Invitations Sent!</p>
                     <Link to="/planner"><div className="btn black-btn">GO TO PLANNER</div></Link>
                 </Modal>
-                { this.props.user_concert.trip_id ? " " :
-                <RespModal show={true}>
+                <RespModal show={this.state.noTrip}>
                     <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div> 
                 </RespModal> 
-                }
             </div>
         );
     }
@@ -152,5 +160,5 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect( mapStateToProps, { send_email_invites } )(InviteFriends)
+export default connect( mapStateToProps, { send_email_invites, get_user_details } )(InviteFriends)
 
