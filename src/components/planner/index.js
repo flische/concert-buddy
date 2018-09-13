@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { get_user_details } from '../../actions';
+import { get_user_details, delete_trip } from '../../actions';
 import './planner.css';
 import axios from 'axios';
 import { formatPostData } from '../../helpers';
 import { Link } from 'react-router-dom';
 import Loader from '../loader';
+import Modal from '../modal';
 
 class Planner extends Component {
 
@@ -14,12 +15,24 @@ class Planner extends Component {
 
         this.state = {
             concerts: null,
+            show: false
         }
     }
     
-    
     componentDidMount() {
         this.checkUserTrips();
+    }
+
+    showModal = () => {
+        this.setState({
+            show:true
+        });
+    }
+
+    hideModal = () => {
+        this.setState({
+            show: false
+        });
     }
 
     async checkUserTrips() {
@@ -27,7 +40,14 @@ class Planner extends Component {
         this.setState({
             concerts: this.props.user_concert,
         })
+    }
 
+    handleDelete = async () => {
+        const id = this.props.user_concert.trip_id;
+
+        await this.props.delete_trip(id);
+        
+        await this.props.get_user_details();
     }
 
     convertTime = (militaryTime) => {
@@ -137,7 +157,12 @@ class Planner extends Component {
                 <div className="buttons">
                     <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
                     <Link to="/invite"><div className="btn white-btn">INVITE FRIENDS</div></Link>
+                    <button onClick={this.showModal} className="btn pink-btn">LEAVE THE TRIP</button>
                 </div>
+                <Modal show={this.state.show} handleClose={this.hideModal} >
+                        <p className="modal-p">Are you sure you want to leave this trip?</p>
+                        <button onClick={this.handleDelete} className="btn pink-btn">LEAVE THE TRIP</button>
+                </Modal>
             </div>
         );
     }
@@ -150,4 +175,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { get_user_details: get_user_details })(Planner);
+export default connect(mapStateToProps, { get_user_details: get_user_details, delete_trip: delete_trip })(Planner);

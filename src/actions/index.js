@@ -67,9 +67,28 @@ export async function create_trip(trip) {
     };
 }
 
+export async function delete_trip(id){
+    
+    var dataToSend = {
+        tripID: id,
+        action: 'delete_trip'
+    }
+
+    const params2 = formatPostData(dataToSend);
+    const response = await axios.post('api/access_users.php', params2)
+
+    return {
+        type: types.DELETE_TRIP,
+        payload: response
+    };
+   
+}
+
+
+
 export async function delete_responsibility(id){
       return {
-        type: types.DELETE_RESPONSIBILITY,
+        type: types.DELETE_RESPONSIBILITY
     }
 }
 
