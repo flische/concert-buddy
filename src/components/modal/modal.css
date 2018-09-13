@@ -54,8 +54,4 @@
     .modal-main {
         height: 50%;
     }
-    .buttonArea{
-        display: flex;
-        justify-content: center;
-    }
 }
