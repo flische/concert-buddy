@@ -1,3 +1,7 @@
+.results-container {
+    height: 100vh;
+}
+
 .dropdown {
     background-color: white;
     width: 300px;
