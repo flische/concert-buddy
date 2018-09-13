@@ -2,7 +2,7 @@ import React from 'react';
 import './team-page.css';
 import githubIcon from '../../assets/about_team_images/github.svg';
 import linkedInIcon from '../../assets/about_team_images/linkedin.svg';
-import howardPic from '../../assets/about_team_images/howard_pic.png';
+import howardPic from '../../images/linkedinpic2.jpeg';
 import rebecca from '../../assets/about_team_images/rebecca_pic.jpeg';
 import tien from '../../assets/about_team_images/tien_pic.jpeg';
 import fed from '../../assets/about_team_images/federico_pic.jpeg';
