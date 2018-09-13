@@ -156,11 +156,11 @@ class Planner extends Component {
                 <div className="buttons">
                     <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
                     <Link to="/invite"><div className="btn white-btn">INVITE FRIENDS</div></Link>
-                    <button onClick={this.showModal} className="btn pink-btn">LEAVE THE TRIP</button>
+                    <div onClick={this.showModal} className="btn pink-btn">LEAVE THE TRIP</div>
                 </div>
                 <Modal show={this.state.show} handleClose={this.hideModal} >
-                    <p className="modal-p">Are you sure you want to leave this trip?</p>
-                    <button onClick={this.handleDelete} className="btn pink-btn">LEAVE THE TRIP</button>
+                        <p className="modal-p">Are you sure you want to leave this trip?</p>
+                        <div onClick={this.handleDelete} className="btn black-btn">LEAVE THE TRIP</div>
                 </Modal>
             </div>
         );
