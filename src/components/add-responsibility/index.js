@@ -60,8 +60,8 @@ class AddResponsibility extends Component {
             fontFamily: 'Quicksand'
         }
         return (
-            <div className="div-container">
-                <div className="title">RESPONSIBILITIES</div>
+            <div className="add-resp-container">
+                <div className="title">ADD RESPONSIBILITY</div>
                 <div className="add-resp-form">
                     <form onSubmit={(event) => { this.handleFormSubmit(event) }}>
                         <div className="inputs">
