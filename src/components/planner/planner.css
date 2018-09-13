@@ -2,6 +2,11 @@
     height: 100%;
 }
 
+.planner-div-a {
+    height: 100vh;
+}
+
+
 
 *{
     box-sizing: border-box
