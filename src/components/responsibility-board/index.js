@@ -102,8 +102,7 @@ class Responsibilities extends Component {
                         <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                     </div>
                     <RespModal show={this.state.show} handleClose={this.hideModal}>
-                        <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div>
-                        
+                        <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div> 
                     </RespModal> 
                 </div>
             );
