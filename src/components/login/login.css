@@ -26,7 +26,7 @@
 
 @media only screen and (max-width: 600px) {
     .logo-holder {
-    margin-top: -20px;
+    /* margin-top: -20px; */
     }
     .logo-holder>img {
         max-width: 180px;
