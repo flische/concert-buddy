@@ -71,7 +71,7 @@ class SearchConcerts extends Component {
                             </div>
                         </div>
                         <div className="buttons">
-                            <button className="pink-btn">SEARCH CONCERTS</button>
+                            <button className="pink-btn">SEARCH</button>
                         </div>
                     </form>
                 </div>

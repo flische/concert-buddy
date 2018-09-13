@@ -19,23 +19,31 @@
 
 .login {
     text-align: center;
-    height: 90vh;
-}
+    height: 100vh;
+   }
+
+ 
 
 @media only screen and (max-width: 600px) {
+    .logo-holder {
+    margin-top: -20px;
+    }
     .logo-holder>img {
-        max-width: 200px;
+        max-width: 180px;
     }
     .login {
         margin: 55px 0 auto;
+    }
+
+    .sign-in {
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 }
 
 
 @media only screen and (min-width: 600px) {
-    .login{
-        height: 100vh;
-    }
+ 
     .logo-holder>img{
             height: 230px;
             width: 224px;

@@ -7,9 +7,10 @@ import { send_email_invites } from '../../actions'
 import Modal from '../modal';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import {formatPostData} from '../../helpers';
+import { formatPostData } from '../../helpers';
 import RespModal from '../modal/modal';
 import { get_user_details } from '../../actions';
+
 
 class InviteFriends extends Component {
     state = {
@@ -30,10 +31,10 @@ class InviteFriends extends Component {
         })
     }
 
-   async componentDidMount() {
-      const config = {
+    async componentDidMount() {
+        const config = {
             action: 'existing_login',
-       }
+        }
        const params = formatPostData(config);
        const resp = await axios.post('api/handle_login.php', params);
        if (!resp.data.success) {
@@ -89,8 +90,8 @@ class InviteFriends extends Component {
     }
 
     render() {
-        console.log('invite props:',this.props);
         const { handleSubmit} = this.props;
+      
         const pStyle = {
             color: 'dodgerblue',
             fontSize: '32px',
@@ -108,7 +109,9 @@ class InviteFriends extends Component {
                 </form>
                 <Modal show={this.state.show} handleClose={this.hideModal}>
                     <p className="modal-p">Invitations Sent!</p>
-                    <Link to="/planner"><div className="btn black-btn">GO TO PLANNER</div></Link>
+                    <div className="buttons">
+                        <Link to="/planner"><div className="btn black-btn">GO TO PLANNER</div></Link>
+                    </div>
                 </Modal>
                 <RespModal show={this.state.noTrip}>
                     <div className="modalFont">You currently do not have any trips planned. Please create a trip first!</div> 
@@ -118,27 +121,24 @@ class InviteFriends extends Component {
     }
 }
 
-
-
-
-function validate(values){
-    const {emails} = values; console.log(emails);
+function validate(values) {
+    const { emails } = values; console.log(emails);
     const errors = {};
     const emailErrors = [];
 
-if (!emails[0]) {
-    console.log("here")
-    emailErrors.push('Please enter at least one email.')
-}
-for (var index = 0; index < emails.length; index++) {
- if (!emails[index]) {
-    emailErrors[index] = 'Please enter a email.';
-}
-if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test((emails[index]))) {
-    emailErrors[index] = 'Please enter a valid email address';
+    if (!emails[0]) {
+        console.log("here")
+        emailErrors.push('Please enter at least one email.')
+    }
+    for (var index = 0; index < emails.length; index++) {
+        if (!emails[index]) {
+            emailErrors[index] = 'Please enter a email.';
         }
-if (emailErrors.length) {
-    errors.emails = emailErrors
+        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test((emails[index]))) {
+            emailErrors[index] = 'Please enter a valid email address';
+        }
+        if (emailErrors.length) {
+            errors.emails = emailErrors
         }
     }
     return errors;
@@ -155,10 +155,11 @@ function mapStateToProps(state) {
         user_concert: state.user.details,
 
         initialValues: {
-            emails: [''],
-        },
+            emails: ['']
+        }
     }
 }
 
 export default connect( mapStateToProps, { send_email_invites, get_user_details } )(InviteFriends)
+
 

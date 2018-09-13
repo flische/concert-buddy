@@ -8,39 +8,39 @@ import { connect } from 'react-redux';
 
 class Landing extends Component {
     componentDidMount() {
-        localStorage.clear();   
+        localStorage.clear();
     }
-    renderLinks(){
+    renderLinks() {
         const { auth } = this.props;
 
-        if(auth){
+        if (auth) {
             return (
                 <Fragment>
-                    <div className="buttons">
+                    <div className="buttons buttons-landing">
                         <Link to="/planner"><div className="btn pink-btn">PLANNER HOMEPAGE</div></Link>
                         <Link to="/search-concerts"><div className="btn white-btn">SEARCH CONCERTS</div></Link>
                     </div>
                 </Fragment>
-           );       
-        }
-            return (
-                <Fragment>
-                   <div className="buttons">
-                        <Link to='/sign-in'><div className="btn pink-btn">LOGIN</div></Link>
-                        <Link to="/search-concerts"><div className="btn white-btn">SEARCH CONCERTS</div></Link>
-                        <Link to='/sign-up'><div className="btn pink-btn">SIGN UP</div></Link>
-                    </div>
-                </Fragment>
             );
         }
+        return (
+            <Fragment>
+                <div className="buttons buttons-landing">
+                    <Link to='/sign-in'><div className="btn pink-btn">LOGIN</div></Link>
+                    <Link to="/search-concerts"><div className="btn white-btn">SEARCH CONCERTS</div></Link>
+                    <Link to='/sign-up'><div className="btn pink-btn">SIGN UP</div></Link>
+                </div>
+            </Fragment>
+        );
+    }
 
-    render(){
+    render() {
         return (
             <div className="landing">
                 <div className="logo-holder landing-logo">
                     <img src={logo} />
-                    <h1>CONCERT BUDDY</h1>
-                    <h3>Plan Your Concert Trip</h3>
+                    <h1 className="company-name">CONCERT BUDDY</h1>
+                    <h3 className="tagline">Plan Your Concert Trip</h3>
                 </div>
                 <div className="carousel-container">
                     <Carousel />
