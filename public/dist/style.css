@@ -7,19 +7,21 @@ body {
     font-family: Quicksand, sans-serif;
     color: white;
     width: 100vw;
+    height: 100vh;
     margin: 0 auto;
 }
 
 .main {
-    height: 100%;
-    width: 100%;
+    /* width: 100vh;
+    height: 100vw; */
     margin: 0 auto;
     background: linear-gradient(to bottom, #2A363B, #100206);
 }
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 601px){
     .main{
         width: 80%;
+        height: 100%;
     }
 }
 
@@ -172,10 +174,8 @@ h3 {
         display: inline-block;
     }
 }
-
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
     .div-container {
         height: 100vh;
-        /* background: linear-gradient(to bottom, #2A363B, #100206); */
     }
-}
+}  */

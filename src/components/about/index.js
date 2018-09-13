@@ -30,7 +30,7 @@ export default () => {
         textAlign: 'center'
     }
     const viewHeight = {
-        height: '96vh'
+        height: '35%'
     }
     const images = imageArray.map((item, index) => {
         if (index === (imageArray.length - 1)) {
