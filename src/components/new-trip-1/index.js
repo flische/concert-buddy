@@ -6,9 +6,9 @@ import { formatPostData } from '../../helpers';
 import { connect } from 'react-redux';
 import { get_concert_details, create_trip } from '../../actions';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
+import Loader from '../loader'
 
 class NewTrip1 extends Component {
-
     handleAddItem = async (values) => {
         await this.createTrip(values);
     }
@@ -96,13 +96,19 @@ class NewTrip1 extends Component {
     }
 
     render() {
+        if(!this.props.concert._embedded) {
+            this.props.history.push('/search-concerts');
+            return <Loader/>
+        }
+        else {
         const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
         const time = this.convertTime(this.props.concert.dates.start.localTime);
         const date = this.convertDateFormat(this.props.concert.dates.start.localDate);
-
+        
         const { handleSubmit } = this.props;
 
         return (
+            
             <div className="newtrip div-container">
                 <div className="title">
                     CREATE A NEW TRIP
@@ -145,9 +151,9 @@ class NewTrip1 extends Component {
                 </div>
             </div>
         );
+      }
     }
 }
-
 function validate(values) {
     // Redux Form will look at the properties below and see if they match any of the Field name (inputs) //
     // you can do any kind of check in here that you want! to validate input //

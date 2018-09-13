@@ -122,12 +122,11 @@ class InviteFriends extends Component {
 }
 
 function validate(values) {
-    const { emails } = values; console.log(emails);
+    const { emails } = values; 
     const errors = {};
     const emailErrors = [];
 
     if (!emails[0]) {
-        console.log("here")
         emailErrors.push('Please enter at least one email.')
     }
     for (var index = 0; index < emails.length; index++) {
