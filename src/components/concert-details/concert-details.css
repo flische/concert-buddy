@@ -40,6 +40,10 @@
     .c-details>img {
         max-width: 400px;
     }
+
+    .c-details {
+        height: 100vh;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -56,9 +60,6 @@
         color: white;
     }
 
-    .c-details {
-        height: 100%;
-    }
     .c-details>img {
         max-width: 275px;
     }
