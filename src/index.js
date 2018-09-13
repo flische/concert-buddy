@@ -13,7 +13,7 @@ import {formatPostData} from './helpers'
 
 
 const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));
-
+localStorage.clear();
 // ***Persistent login*** // 
 //wraps the entire application as soon as store is created the first time (right above) and checks if user is logged in
 if(document.cookie){ // if a cookie exists in the session storage...
