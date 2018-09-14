@@ -4,7 +4,7 @@ $action = $_POST['action'];
 $sanitizedPost = [];
 require_once("mysqlconnect.php");
 foreach ($_POST as $key => $value)  {
-   $sanitizedPost[$key] = stripslashes(htmlentities($value));
+   $sanitizedPost[$key] = mysqli_real_escape_string($conn, addslashes(htmlentities($value)));
 }
 $_POST = $sanitizedPost;
 
