@@ -161,8 +161,11 @@ function validate(values) {
     const { trip_name } = values;
 
     const errors = {};
-
-    if (trip_name) {
+    console.log(trip_name);
+    if (!trip_name){
+        errors.trip_name = 'Please enter a trip name'
+    }
+    if(trip_name) {
         if (trip_name.length < 3) {
             errors.trip_name = 'Please enter a trip name of 3 or more characters in length!';
         }
