@@ -58,7 +58,7 @@ class NewTrip1 extends Component {
         const concertID = concert.data.ID;
         const dataToSend2 = {
             trip_name: this.props.tripNameValue,
-            
+
             ID: concertID,
             action: 'create_trip'
         }
@@ -96,62 +96,62 @@ class NewTrip1 extends Component {
     }
 
     render() {
-        if(!this.props.concert._embedded) {
+        if (!this.props.concert._embedded) {
             this.props.history.push('/search-concerts');
-            return <Loader/>
+            return <Loader />
         }
         else {
-        const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
-        const time = this.convertTime(this.props.concert.dates.start.localTime);
-        const date = this.convertDateFormat(this.props.concert.dates.start.localDate);
-        
-        const { handleSubmit } = this.props;
+            const cityState = this.props.concert._embedded.venues[0].city.name + ', ' + this.props.concert._embedded.venues[0].state.stateCode + ' ' + this.props.concert._embedded.venues[0].postalCode;
+            const time = this.convertTime(this.props.concert.dates.start.localTime);
+            const date = this.convertDateFormat(this.props.concert.dates.start.localDate);
 
-        return (
-            
-            <div className="newtrip div-container">
-                <div className="title">
-                    CREATE A NEW TRIP
+            const { handleSubmit } = this.props;
+
+            return (
+
+                <div className="newtrip div-container">
+                    <div className="title">
+                        CREATE A NEW TRIP
                     </div>
-                <div className="concert-info">
-                    <p>
-                        <b>Concert: </b>
-                        <span>{this.props.concert.name}</span>
-                    </p>
-                    <p>
-                        <b>Venue: </b>
-                        <span>{this.props.concert._embedded.venues[0].name}</span>
-                    </p>
-                    <p>
-                        <b>Address: </b>
-                        <span>{this.props.concert._embedded.venues[0].address.line1}</span>
-                    </p>
-                    <p>
-                        <b>City, State: </b>
-                        <span>{cityState}</span>
-                    </p>
+                    <div className="concert-info">
+                        <p>
+                            <b>Concert: </b>
+                            <span>{this.props.concert.name}</span>
+                        </p>
+                        <p>
+                            <b>Venue: </b>
+                            <span>{this.props.concert._embedded.venues[0].name}</span>
+                        </p>
+                        <p>
+                            <b>Address: </b>
+                            <span>{this.props.concert._embedded.venues[0].address.line1}</span>
+                        </p>
+                        <p>
+                            <b>City, State: </b>
+                            <span>{cityState}</span>
+                        </p>
 
-                    <p>
-                        <b>Date: </b>
-                        <span>{date}</span>
-                    </p>
-                    <p>
-                        <b>Time: </b>
-                        <span>{time}</span>
-                    </p>
+                        <p>
+                            <b>Date: </b>
+                            <span>{date}</span>
+                        </p>
+                        <p>
+                            <b>Time: </b>
+                            <span>{time}</span>
+                        </p>
+                    </div>
+                    <div className="tripname">
+                        <form onSubmit={handleSubmit(this.handleAddItem)}>
+                            <div>Name Your Trip</div>
+                            <Field name="trip_name" id="trip_name" component={this.renderInput} />
+                            <div className="buttons">
+                                <button className="btn pink-btn">CREATE TRIP!</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div className="tripname">
-                    <form onSubmit={handleSubmit(this.handleAddItem)}>
-                        <div>Name Your Trip</div>
-                        <Field name="trip_name" id="trip_name" component={this.renderInput} />
-                        <div className="buttons">
-                            <button className="btn pink-btn">CREATE YOUR TRIP! </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        );
-      }
+            );
+        }
     }
 }
 function validate(values) {
