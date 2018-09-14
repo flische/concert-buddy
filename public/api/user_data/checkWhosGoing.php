@@ -19,6 +19,9 @@ $result = mysqli_query($conn, $query);
 if ($result) {
     while($row = mysqli_fetch_assoc($result)) {
        $output['success'] = true;
+       foreach ($row as $key => $value) {
+        $row[$key] = stripslashes(html_entity_decode($value));
+    }
        $output['data'][] = $row['name'];
     }
 }

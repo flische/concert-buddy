@@ -6,7 +6,6 @@ $deletedID = $_POST['id']; // this will pull id of the task to be deleted
 $output = [
     'success'=> false,
 ];
-require_once('mysqlconnect.php');
 $output = [
     'success'=>false,
 ];
