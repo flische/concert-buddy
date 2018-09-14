@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin:*');
 $action = $_POST['action'];
 $sanitizedPost = [];
-require_once('mysqlconnect.php')
+require_once('mysqlconnect.php');
 foreach ($_POST as $key => $value)  {
    $sanitizedPost[$key] = mysqli_real_escape_string($conn, addslashes(htmlentities($value)));
 }
