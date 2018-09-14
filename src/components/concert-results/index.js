@@ -28,7 +28,7 @@ class ConcertResults extends Component {
         var sPageURL = window.location.search.substring(1),
 
             //use the ampersand as a separator
-            qArr = sPageURL.split('&'); 
+            qArr = sPageURL.split('&');
         //each element in qArr is not a key/val pair
         //so we need to turn each one of these pairs
         //into a two-element array
@@ -69,7 +69,7 @@ class ConcertResults extends Component {
         const { data } = await axios.get(URL);
 
         let concerts = 0;
-        if(data._embedded){
+        if (data._embedded) {
             concerts = data._embedded.events
         }
 
@@ -89,13 +89,13 @@ class ConcertResults extends Component {
 
         if (!this.state.concerts) {
             return (
-                <div className="results div-container">
+                <div className="no-results">
                     <div className="title">CONCERT RESULTS</div>
                     <div className="no-concerts">
                         No concerts found. Try widening your search criteria.
-                        <Link to="/search-concerts">
+                       <div className="buttons"> <Link to="/search-concerts">
                             <div className="btn pink-btn">BACK TO SEARCH</div>
-                        </Link>
+                        </Link></div>
                     </div>
                 </div>
             );

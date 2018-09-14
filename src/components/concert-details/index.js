@@ -86,7 +86,7 @@ class ConcertDetails extends Component {
         let convertedDate = this.convertDateFormat(concert.dates.start.localDate);
 
         return (
-            <div className="c-details div-container">
+            <div className="c-details">
                 <div className="title">
                     CONCERT DETAILS
                     </div>

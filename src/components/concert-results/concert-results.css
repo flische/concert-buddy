@@ -1,3 +1,7 @@
+.no-results {
+    height: 100vh;
+}
+
 .concert-part-a>p,
 .concert-part-b>p {
     color: #FF847C;
