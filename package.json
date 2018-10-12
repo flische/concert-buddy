@@ -1,7 +1,7 @@
 {
-  "name": "php_react_starter",
+  "name": "concert_buddy",
   "version": "1.0.0",
-  "description": "Starting setup for ReactJS ReduxJS project with PHP server",
+  "description": "Concert Buddy was designed with one purpose in mind - to streamline the process of planning trips with friends through accountability and transparency. Technology used: HTML5, CSS3, JavaScript (ES6), ReactJS, Redux,PHP7, MySQL",
   "main": "index.js",
   "proxy": {
     "/api/*": {
@@ -13,11 +13,11 @@
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Scott Bowler",
+  "author": "Rebecca Martin, Federico Lische, Tien Pham, Howard Kim",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Learning-Fuze/react-with-server.git"
+    "url": "https://github.com/Learning-Fuze/c618_concert_buddy"
   },
   "dependencies": {
     "axios": "^0.18.0",
