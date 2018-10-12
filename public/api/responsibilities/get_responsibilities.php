@@ -5,7 +5,6 @@ $tripID  = $_POST["trip_id"];
 $output = [
     'success'=> false,
 ];
-require_once('mysqlconnect.php');
 $output = [
     'success'=>false,
 ];
@@ -18,6 +17,9 @@ if ($result) {
     $output['success'] = true;
     while($row = mysqli_fetch_assoc($result)){
         $row['completed'] = (bool)$row['completed'];
+        foreach ($row as $key => $value) {
+            $row[$key] = stripslashes(html_entity_decode($value));
+        }
          $output['data'][] = $row;
     }
 }

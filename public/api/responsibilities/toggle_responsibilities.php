@@ -4,7 +4,6 @@ session_start();
 
 $taskID  = $_POST['ID']; //required unique id of task to delete targeted task 
 $completed = (int) json_decode($_POST['completed']);
-print($completed);
 if ($completed === 0) {
   
     $completed = 1;
