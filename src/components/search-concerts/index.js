@@ -47,10 +47,10 @@ class SearchConcerts extends Component {
 
         return (
             <div className="results-container">
-                <div className="title"> SEARCH CONCERT</div>
+                <div className="title search-title"> SEARCH CONCERT</div>
                 <div className="bottom-content">
                     <form onSubmit={(event) => { this.handleFormSubmit(event) }}>
-                        <div className="inputs">
+                        <div className="search-inputs">
                             <input type="text" className="standard-input" placeholder="Enter City or Zip Code" name="city_zip" value={city_zip} onChange={this.handleChange} />
                             <input type="text" className="standard-input" placeholder="Search by Artist" name="artist" value={artist} onChange={this.handleChange} />
                             <div className="dropdown-center">
@@ -65,7 +65,7 @@ class SearchConcerts extends Component {
                         </div>
                         <div className="title">DATE RANGE</div>
                         <div className="date-holder">
-                            <div className='inputs'>
+                            <div className='search-inputs'>
                                 <input type="date" className="standard-input date" placeholder="Beginning Date" name="begin_date" value={begin_date} onChange={this.handleChange} />
                                 <input type="date" className="standard-input date" placeholder="End Date" name="end_date" value={end_date} onChange={this.handleChange} />
                             </div>
