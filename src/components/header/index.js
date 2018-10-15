@@ -11,7 +11,7 @@ const Header = () => {
         <div className="top-content" id="top">
             <div className="top-link">
                 <Link to='/planner'>
-                    <img src={pageURL === '/sign-in' ? '' : logo } />
+                    <img src={pageURL === '/sign-in' ? '' : logo} />
                 </Link>
                 <h1 className="app-name">CONCERT BUDDY</h1>
             </div>
