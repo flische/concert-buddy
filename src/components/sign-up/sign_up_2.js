@@ -36,7 +36,7 @@ class SignUp extends Component {
 
         return (
             <div className="signup-container">
-                <div className="title">SIGN UP FOR <br />CONCERT BUDDY</div>
+                <div className="title su-title">SIGN UP FOR CONCERT BUDDY</div>
                 <div className="signup">
                     <form onSubmit={handleSubmit(this.register)}>
                         <div className="signup-inputs">

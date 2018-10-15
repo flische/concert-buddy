@@ -17,6 +17,11 @@
     text-align: center;
 }
 
+
+.phone-sizing {
+    margin: 10px;
+}
+
 .signup-input {
     margin: 10px;
     width: 300px;
@@ -27,17 +32,36 @@
     font-family: Quicksand;
 }
 
+.input-label {
+    margin-bottom: 10px;
+    
+}
+
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 
 /* Portrait */
 @media only screen 
   and (min-device-width: 320px) 
+  and (max-device-width: 320px) 
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
 
     .signup-input {
         margin: 0px;
         
+    }
+
+    .su-title {
+        font-size: 20px;
+    }
+
+    .input-label {
+        margin: 0;
+        margin-bottom: -10px;
+    }
+
+    .phone-sizing {
+        margin-bottom: 0;
     }
 
 }
