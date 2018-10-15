@@ -1,5 +1,7 @@
 .carousel-container {
-    height: 40%;   
+    height: 400px;
+    margin-top: -25px;
+    margin-bottom: -35px;
 }
 
 .carousel-container>div,
@@ -7,7 +9,7 @@
 .carousel-container .slider-wrapper,
 .carousel-container .slider,
 .carousel-container .slider .slide {
-    height: 50%;
+    height: 100%;
 }
 
 .carousel-container .slider .slide {
@@ -28,8 +30,9 @@
    }
 
 .landing-logo>img {
-    margin-top: 20px;
-    width: 275px;
+    margin-top: 10px;
+    height: 125px;
+    width: 125px;
 }
 
 .carousel .control-dots {
@@ -41,12 +44,78 @@
 }
 
 .company-name {
-    font-size: 70px;
+    font-size: 40px;
 }
 
 .tagline {
-    font-size: 40px;
+    font-size: 25px;
 }
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .landing-logo>img {
+        margin-top: 50px;
+        height: 250px;
+        width: 250px;
+    } 
+
+    .company-name {
+        font-size: 70px;
+    }
+    
+    .tagline {
+        font-size: 50px;
+    }
+
+    .carousel-container .slider .slide>img {
+        height: 325px;
+    }
+    .carousel-container {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    
+
+}
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+    .landing-logo>img {
+        margin-top: 50px;
+        height: 200px;
+        width: 200px;
+    } 
+
+    .company-name {
+        font-size: 70px;
+    }
+    
+    .tagline {
+        font-size: 50px;
+    }
+
+    .carousel-container .slider .slide>img {
+        height: 325px;
+    }
+    .carousel-container {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+/* ************************************ */
 
 @media only screen and (min-width: 601px) {
     .control-dots {
@@ -59,22 +128,26 @@
     }
   
     .carousel-container .slider .slide>img {
-        height: 475px;
+        height: 325px;
     }
-
-    .buttons-landing {
-        height: 15vh;
-    }
-   
 
 }
 @media only screen and (max-width: 600px) {
+
+    .carousel-container {
+        height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     .carousel-container .slider .slide>img {
         height: 225px;
     }
 
     .landing-logo>img {
-        width: 150px;
+        width: 125px;
+        height: 125px;
+        margin-top: 20px;
     }
     .buttons-landing {
         margin-top: 2%;
@@ -95,3 +168,96 @@
     }
    
   }
+
+  /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+  /* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) { 
+    .carousel-container {
+        height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .carousel-container .slider .slide>img {
+        height: 225px;
+    }
+
+    .landing-logo>img {
+        width: 125px;
+        height: 125px;
+        margin-top: 20px;
+    }
+    .buttons-landing {
+        margin-top: 2%;
+        height: 45vh;
+    }
+
+    .company-name {
+        font-size: 35px;
+    }
+    
+    .tagline {
+        font-size: 20px;
+    }
+
+    .control-dots {
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+
+}
+
+ /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+  /* Portrait */
+  @media only screen 
+  and (max-device-width: 320px) 
+  
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  
+      .landing-logo>img {
+          width: 100px;
+          height: 100px;
+          margin-top: 10px;
+      }
+  
+      .carousel-container .slider .slide>img {
+          height: 175px;
+      }
+  }
+
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Portrait */
+@media only screen 
+  and (max-device-width: 320px) 
+
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    .landing-logo>img {
+        width: 75px;
+        height: 75px;
+        margin-top: 10px;
+    }
+
+    .company-name {
+        font-size: 30px;
+    }
+    
+    .tagline {
+        font-size: 15px;
+    }
+
+    .carousel-container .slider .slide>img {
+        height: 125px;
+    }
+}
+
+ 

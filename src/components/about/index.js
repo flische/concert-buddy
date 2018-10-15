@@ -25,7 +25,7 @@ export default () => {
         fontFamily: 'Quicksand',
     }
     const pTagFontSize = {
-        fontSize: '1.3em',
+        fontSize: '1.2em',
         fontFamily: 'Quicksand',
         textAlign: 'center'
     }
