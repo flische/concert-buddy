@@ -23,6 +23,30 @@
     margin: 0
 }
 
+.dropdown-center{
+    text-align-last: center;
+    text-align: center;
+    margin-top: 10px;
+ }
+
+ .search-inputs {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.search-title {
+    clear: both;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-shadow: #FFFFFF 0px 0px 2px;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 2%;
+}
+
 @media only screen and (min-width: 601px) {
     .dropdown {
         margin: 10px;
@@ -35,9 +59,19 @@
     }
 }
 
-.dropdown-center{
-    text-align-last: center;
-    text-align: center;
-    margin-top: 10px;
- }
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 320px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+   .search-title {
+       margin-bottom: -20px;
+   }
+    
+
+
+}
 
