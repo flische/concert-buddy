@@ -101,3 +101,22 @@
     }
 }
 
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 320px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    .eachPerson .details {
+    padding-top: 0;
+}
+
+.eachPerson {
+  height: 200px;
+  border-bottom: solid 2px white;
+}
+
+}
