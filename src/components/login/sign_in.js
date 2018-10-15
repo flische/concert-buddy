@@ -37,7 +37,7 @@ class SignIn extends Component {
         return (
 
             <div className="login">
-                <div className="logo-holder">
+                <div className="logo-holder landing-logo-holder">
                     <img src={logo} />
                     <h1 className="show login-header">CONCERT BUDDY</h1>
                     <h3 className="show login-tagline">Plan Your Concert Trip</h3>
