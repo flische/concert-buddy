@@ -105,6 +105,37 @@
 }
 }
 
+/*--------------------iPhone 4 -------*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 320px)
+  and (device-aspect-ratio: 2/3)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .landing-btn { 
+    font-size: 21px;
+    padding-top: 13px;
+    width: 260px;
+  }
+  .mark-complete-btn,
+.completed-btn,
+.toggle-btn { 
+    width: 200px;
+}
+}
+/*-------------------iPhone 5 -----*/
+@media only screen 
+and (max-device-width: 320px) 
+
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+    .mark-complete-btn,
+    .completed-btn,
+    .toggle-btn { 
+        width: 200px;
+    }
+    
+}
 /*------ iPad Pro -----*/
 
 @media only screen 
@@ -116,6 +147,9 @@
         display: flex;
         flex-wrap: wrap;
         width: 90% !important;
+    }
+    .responsibilities {
+        margin-bottom: 4%
     }
    
 }
