@@ -6,14 +6,16 @@
     height: 100vh;
 }
 
-
+.leaveDiv {
+    width: 100%;
+}
 
 *{
     box-sizing: border-box
 }
 
-.concert-overview,
-.attendees {
+.planner-concert-overview,
+.planner-attendees {
     margin: 0 auto;
     padding: 1%;  
     width: 80%;
@@ -22,13 +24,13 @@
     border-radius: 2%;
 }
 
-.attendees {
+.planner-attendees {
     color: #2A363B;
     background-color: white;
     font-size: 22px;
 }
 
-.attendees {
+.planner-attendees {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,19 +39,19 @@
     text-align: center;
     
 }
-.attendees>div>span {
+.planner-attendees>div>span {
     margin: 5%;
 }
 .leftSide{
     margin-right: 3em;
 }
 
-.concert-overview>p {
+.planner-concert-overview>p {
     margin: 0;
     font-size: 18px;
     color: white;
 }
-.concert-overview div{
+.planner-concert-overview div{
     text-align: center;
 }
 
@@ -64,8 +66,8 @@
     }
 
 @media only screen and (min-width: 601px) {
-    .concert-overview,
-    .attendees {
+    .planner-concert-overview,
+    .planner-attendees {
         padding: 1%;
         width: 45%;
         margin-bottom: 2%;
@@ -92,4 +94,87 @@
 .leftSide, .rightSide{
     width: 25%;
 }
+/*------- iPhone4 -----*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 320px)
+  and (device-aspect-ratio: 2/3)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .bottom-content>.imageArea>img {
+        max-width:300px;
+    }
 
+  }
+
+   /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+  /* Portrait */
+  @media only screen 
+  and (max-device-width: 320px) 
+  
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  
+    .bottom-content>.imageArea>img {
+        max-width:300px;
+    }
+    .planner-concert-overview, .planner-attendees { 
+        max-width: 260px;
+        margin: 0 auto;
+        padding: 1%;  
+        width: 80%;
+        margin-bottom: 2%;
+        min-height: 15vh;
+        border-radius: 2%;
+    }
+      
+  }
+/*--------------------iPad series ----*/
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .bottom-content>.imageArea> img{
+        max-width: 580px;
+      }
+      .planner-concert-overview, .planner-attendees { 
+          max-width: 500px;
+          margin: 0 auto;
+          padding: 1%;  
+          width: 80%;
+          margin-bottom: 2%;
+          min-height: 15vh;
+          border-radius: 2%;
+      }
+}
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+}
+
+/*--------------------iPad Pro ------*/
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+     .planner-div {
+        height: initial;
+     }
+     .buttons-planner {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .leave-btn {
+        text-align: center;
+    }
+
+      
+}

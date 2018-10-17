@@ -45,8 +45,18 @@
 
 }
 
-@media only screen and (max-width: 600px) {
-.resp-buttons {
-    height: 40vh;
+/*--------------------iPad Pro ------*/
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+     .no-resp-container {
+        height: initial;
+     }
+     .resp-content {
+         height: initial;
+     }
 }
-}
+

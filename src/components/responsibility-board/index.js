@@ -34,7 +34,8 @@ class Responsibilities extends Component {
     }
 
     componentDidMount() {
-        const user = this.props.get_user_details().then((user) => { // calls get user details on componentDidMount THEN...
+        const user = this.props.get_user_details().then((user) => {
+           // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
         });
     }
@@ -44,6 +45,7 @@ class Responsibilities extends Component {
             trip_id: this.props.user_concert.trip_id,
             action: 'get_responsibilities',
         }
+        
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/access_responsibilities.php', params);
 

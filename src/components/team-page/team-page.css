@@ -79,6 +79,7 @@
   and (-webkit-min-device-pixel-ratio: 2) {
 
     .team-container {
+        width:80% !important;
         height: 100%;
     }
  }
@@ -87,12 +88,16 @@
     .eachPerson .profile img {
         border: 3px solid white;
         border-radius: 50%;
-        width: 20%;
+        width: 30%;
     }
     .team-container{
-        width: 60%;
         margin: 0 auto;
+        padding-bottom: 16%;
+        
     }
+    .team-div-container {
+       padding-top: 15%;
+        }
 }
 
 @media only screen and (max-width: 600px){
@@ -108,10 +113,33 @@
   and (min-device-width: 320px) 
   and (max-device-width: 320px)
   and (-webkit-min-device-pixel-ratio: 2)
+  and (device-aspect-ratio: 40 / 71)
   and (orientation: portrait) {
 
     .eachPerson .details {
     padding-top: 0;
+}
+
+.eachPerson {
+  height: 200px;
+  border-bottom: solid 2px white;
+}
+
+}
+/*------- iPhone 4 ------*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 320px)
+  and (device-aspect-ratio: 2/3)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    .eachPerson .details {
+    padding-top: 0;
+}
+
+.eachPerson .profile {
+    padding: 7px;
 }
 
 .eachPerson {
