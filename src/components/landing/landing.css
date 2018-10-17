@@ -291,7 +291,7 @@ and (orientation: portrait) {
   and (orientation: portrait) 
   and (-webkit-min-device-pixel-ratio: 2) {
       .landing {
-          padding: 5px;
+          padding: 11%;
       }
       li {
           font-size: small;
@@ -317,8 +317,11 @@ and (orientation: portrait) {
           height: 50px;
       }
       .landing {
-          padding-top: 9%;
-          padding-bottom: 20%
+          padding-top: 18%;
+          padding-bottom: 24%
+      }
+      li {
+        font-size: larger;
       }
       
 }
