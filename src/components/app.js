@@ -31,29 +31,29 @@ class App extends Component{
         };
     }
 
-    componentDidMount() {
-        if (this.props.location.pathname === '/') {
-            this.setState({
-                isHome: true
-            });
+    // componentDidMount() {
+    //     if (this.props.location.pathname === '/') {
+    //         this.setState({
+    //             isHome: true
+    //         });
 
-        } else {
-            this.setState({
-                isHome: false
-            });
-        }
-        this.props.history.listen((location) => {
-            if (location.pathname === '/') {
-                this.setState({
-                    isHome: true
-                });
-            } else {
-                this.setState({
-                    isHome: false
-                });
-            }
-        });           
-    }
+    //     } else {
+    //         this.setState({
+    //             isHome: false
+    //         });
+    //     }
+    //     this.props.history.listen((location) => {
+    //         if (location.pathname === '/') {
+    //             this.setState({
+    //                 isHome: true
+    //             });
+    //         } else {
+    //             this.setState({
+    //                 isHome: false
+    //             });
+    //         }
+    //     });           
+    // }
 
     render() {
         return (
