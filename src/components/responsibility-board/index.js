@@ -48,7 +48,6 @@ class Responsibilities extends Component {
         
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/access_responsibilities.php', params);
-
         this.setState({
             responsibilities: resp.data.data
         });
@@ -95,11 +94,11 @@ class Responsibilities extends Component {
         if (!resp) {
             return (
                 <div className="no-resp-container">
-                    <div className="title">RESPONSIBILITIES</div>
+                    <div className="title resp-title">RESPONSIBILITIES</div>
                     <div className="no-resp-main">
                         <div className="no-resp">
                             Your group does not currently have any responsibilities listed.</div></div>
-                    <div className="buttons">
+                    <div className="buttons resp-buttons">
                         <Link to="/add-responsibility"><div className="btn pink-btn">ADD RESPONSIBILITY</div></Link>
                         <Link to="/planner"><div className="btn white-btn">GO TO PLANNER</div></Link>
                     </div>
@@ -128,7 +127,7 @@ class Responsibilities extends Component {
 
         return (
             <div>
-                <div className="title">RESPONSIBILITIES</div>
+                <div className="title resp-title">RESPONSIBILITIES</div>
                 <div className="resp-content" style={{ height: '100%' }}>
                     {respItem}
                 </div>
