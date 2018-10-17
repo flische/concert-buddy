@@ -2,6 +2,7 @@
     height: 400px;
     margin-top: -25px;
     margin-bottom: -35px;
+    z-index: 0;
 }
 
 .carousel-container>div,
@@ -129,6 +130,13 @@
   
     .carousel-container .slider .slide>img {
         height: 325px;
+    }
+    .carousel-container>div,
+    .carousel-container .carousel.carousel-slider,
+    .carousel-container .slider-wrapper,
+    .carousel-container .slider,
+    .carousel-container .slider .slide {
+        height: 95%;
     }
 
 }
