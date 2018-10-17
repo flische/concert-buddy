@@ -6,6 +6,7 @@ require_once("mysqlconnect.php");
 foreach ($_POST as $key => $value)  {
    $sanitizedPost[$key] = mysqli_real_escape_string($conn, addslashes(htmlentities($value)));
 }
+
 $_POST = $sanitizedPost;
 
 switch ($action)

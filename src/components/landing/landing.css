@@ -196,7 +196,9 @@ and (orientation: portrait) {
         margin-top: 2%;
         height: 45vh;
     }
-
+    .landing-btn {
+        width: 275px;
+    }
     .company-name {
         font-size: 35px;
     }
@@ -226,6 +228,9 @@ and (orientation: portrait) {
           height: 100px;
           margin-top: 10px;
       }
+      .landing-btn {
+        width: 265px;
+    }
   
       .carousel-container .slider .slide>img {
           height: 175px;
@@ -237,7 +242,6 @@ and (orientation: portrait) {
 /* Portrait */
 @media only screen 
   and (max-device-width: 320px) 
-
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
 
@@ -260,4 +264,45 @@ and (orientation: portrait) {
     }
 }
 
- 
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 320px)
+  and (device-aspect-ratio: 2/3)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .landing-btn { font-size: 21px;
+    padding-top: 13px;
+    width: 260px;
+  }
+}
+/*--------------------iPad series ----*/
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+      .landing {
+          padding: 5px;
+      }
+
+}
+
+
+/*--------------------iPad Pro ------*/
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+      .buttons-landing {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+      }
+      .landing-btn {
+          width: 350px;
+          height: 50px;
+      }
+      
+}

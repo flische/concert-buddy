@@ -26,9 +26,9 @@ class Landing extends Component {
         return (
             <Fragment>
                 <div className="buttons buttons-landing">
-                    <Link to='/sign-in'><div className="btn pink-btn">LOGIN</div></Link>
-                    <Link to="/search-concerts"><div className="btn white-btn">SEARCH CONCERTS</div></Link>
-                    <Link to='/sign-up'><div className="btn pink-btn">SIGN UP</div></Link>
+                    <Link to='/sign-in'><div className="btn landing-btn pink-btn">LOGIN</div></Link>
+                    <Link to="/search-concerts"><div className="btn landing-btn white-btn">SEARCH CONCERTS</div></Link>
+                    <Link to='/sign-up'><div className="btn landing-btn pink-btn">SIGN UP</div></Link>
                 </div>
             </Fragment>
         );

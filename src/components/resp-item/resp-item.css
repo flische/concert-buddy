@@ -85,3 +85,38 @@
 
 }
 
+/*-----------iPad -------------*/
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+      .resp-content {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90% !important;
+      }
+    
+
+.mark-complete-btn,
+.completed-btn,
+.toggle-btn { 
+    width: 200px;
+}
+}
+
+/*------ iPad Pro -----*/
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+    .resp-content {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90% !important;
+    }
+   
+}
+
