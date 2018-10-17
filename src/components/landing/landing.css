@@ -304,5 +304,9 @@ and (orientation: portrait) {
           width: 350px;
           height: 50px;
       }
+      .landing {
+          padding-top: 9%;
+          padding-bottom: 20%
+      }
       
 }
