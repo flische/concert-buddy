@@ -15,6 +15,7 @@
 
 .logo-holder {
     text-align: center;
+    padding-bottom: 2%;
 }
 
 .login {
@@ -72,8 +73,15 @@
          height: 250px;
          width: 250px;
      }    
- 
- 
+     .logo-holder{
+         margin-top: 2%;
+     }
+     .login {
+        height: initial;
+        margin-top: 13%;
+        padding-bottom: 38%;
+     }
+     
  }
 
  /* ----------- iPad 3, 4 and Pro 9.7" ----------- */
@@ -88,6 +96,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
         height: 250px;
         width: 250px;
     }    
+    .login {
+        text-align: center;
+        height: initial;
+        margin-top: 5%;
+        padding-bottom: 28%;
+    }
 
 }
 
