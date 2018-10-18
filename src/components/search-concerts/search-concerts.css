@@ -59,6 +59,48 @@
     }
 }
 
+/* ----------- iPad Pro 12.9" ----------- */
+
+@media only screen 
+and (min-device-width: 1024px) 
+and (max-device-width: 1024px) 
+and (orientation: portrait) 
+and (-webkit-min-device-pixel-ratio: 2) {
+    .logo-holder>img{
+        height: 250px;
+        width: 250px;
+    }    
+    .logo-holder{
+        margin-top: 2%;
+    }
+    .results-container {
+       height: initial;
+       margin-top: 15%;
+       padding-bottom: 62%;
+    }
+    
+}
+
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) 
+and (orientation: portrait) 
+and (-webkit-min-device-pixel-ratio: 2) {
+   .logo-holder>img{
+       height: 250px;
+       width: 250px;
+   }    
+   .results-container {
+    height: initial;
+    margin-top: 10%;
+    padding-bottom: 36%;
+  }
+
+}
+
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 /* Portrait */
 @media only screen 
