@@ -108,6 +108,26 @@
     }
 }
 
+
+  /* iPhone X LANDSCAPE MODE */
+  @media only screen 
+  and (min-device-width: 812px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+
+    .eachPerson .profile img {
+        border: 3px solid white;
+        border-radius: 50%;
+        width: 30%;
+    }
+    .team-container{
+        margin: 0 auto;   
+    }
+      
+    
+  }
+
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 
 /* Portrait */
