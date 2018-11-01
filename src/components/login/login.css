@@ -142,6 +142,23 @@ and (orientation: landscape) {
         display: none;
     }
 }
+
+/* iPhone 5 LANDSCAPE MODE */
+@media only screen 
+  and (min-device-width: 568px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .login-logo-holder {
+        display: none;
+    }
+
+    .login {
+        height: 100%;
+    }
+
+  }
+
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
 /* Portrait */

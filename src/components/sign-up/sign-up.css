@@ -74,7 +74,18 @@ and (orientation: landscape) {
     .signup-container {
         height: 100%;
     }
+}
 
+/* iPhone 5 LANDSCAPE MODE* */
+@media only screen 
+  and (min-device-width: 568px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+    .signup-container {
+        height: 100%;
+    }
 
 }
 
