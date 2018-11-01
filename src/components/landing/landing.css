@@ -246,6 +246,38 @@
 
 }
 
+/* iPhone 5 LANDSCAPE MODE* */
+@media only screen 
+  and (min-device-width: 568px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+     .carousel-container {
+        display: none;
+    }   
+
+    .landing-logo>img {
+        width: 75px;
+        height: 75px;
+        margin-top: 20px;
+    }
+
+    .company-name {
+        font-size: 24px;
+    }
+    
+    .tagline {
+        font-size: 16px;
+    }
+
+    .landing-btn {
+        width: 150px;
+        height: 30px;
+        font-size: 2vw;
+    }
+}
+
 
 
 

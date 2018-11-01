@@ -31,10 +31,16 @@
     text-align: center;
 }
 
+.concert-result-container {
+    display: flex;
+    align-items: flex-end;
+    display: inline-block;
+}
+
 @media only screen and (min-width: 601px) {
     .concert-result-container {
-        display: inline-block;
-        vertical-align: top;
+        /* display: inline-block;
+        vertical-align: top; */
         width: 40%;
     }
     .concert-part-a>p,
@@ -53,7 +59,8 @@
         text-align: center;
     }
     .test {
-        display: none
+        /* display: none; */
+        visibility: hidden;
     }
 }
 
@@ -80,4 +87,117 @@
     .results{
         background: linear-gradient(to bottom, #2A363B, #100206)
     }
+}
+
+/* iPhone X LANDSCAPE MODE */
+@media only screen 
+and (min-device-width: 812px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) { 
+
+    .concert-result-container {
+        width: 80%;
+    }
+
+    .test {
+        float: right;
+        margin-right: 20px;
+        background-color: #FF847C;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        font-weight: 700;
+        position: fixed;
+        right: 15px;
+        bottom: 25px;
+        text-align: center;
+        box-shadow: 0 3px #c1635d;
+        border-color: #c1635d;
+        text-shadow: #FFFFFF 0px 0px 2px;
+        visibility: visible;
+    }
+    .up {
+        color: white;
+    } 
+}
+
+/* iPhone 6+, 7+, 8+ LANDSCAPE MODE*/
+@media only screen 
+and (min-device-width: 736px) 
+and (max-device-width: 736px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) { 
+    .concert-result-container {
+        width: 80%;
+    }
+
+    .test {
+        float: right;
+        margin-right: 20px;
+        background-color: #FF847C;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        font-weight: 700;
+        position: fixed;
+        right: 15px;
+        bottom: 25px;
+        text-align: center;
+        box-shadow: 0 3px #c1635d;
+        border-color: #c1635d;
+        text-shadow: #FFFFFF 0px 0px 2px;
+        visibility: visible;
+    }
+    .up {
+        color: white;
+    }
+
+
+}
+
+/* iPhone 6, 7, 8 LANDSCAPE MODE*/
+@media only screen 
+  and (min-device-width: 667px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+    .concert-result-container {
+        width: 80%;
+    }
+
+    .test {
+        float: right;
+        margin-right: 20px;
+        background-color: #FF847C;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        font-weight: 700;
+        position: fixed;
+        right: 15px;
+        bottom: 25px;
+        text-align: center;
+        box-shadow: 0 3px #c1635d;
+        border-color: #c1635d;
+        text-shadow: #FFFFFF 0px 0px 2px;
+        visibility: visible;
+    }
+    .up {
+        color: white;
+    }
+  }
+
+  /* iPhone 5 LANDSCAPE MODE* */
+@media only screen 
+and (min-device-width: 568px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+    .concert-result-container {
+        width: 80%;
+        margin: 0 auto;
+        
+    }
+
 }
