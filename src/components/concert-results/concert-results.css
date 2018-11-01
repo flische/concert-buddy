@@ -191,6 +191,38 @@ and (orientation: landscape) {
 
 }
 
+/* Pixel 2 LANDSCAPE MODE */
+@media screen
+and (min-device-width: 731px) 
+and (max-device-width: 731px) 
+and (orientation: landscape) {
+    .concert-result-container {
+        width: 80%;
+    }
+
+    .test {
+        float: right;
+        margin-right: 20px;
+        background-color: #FF847C;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        font-weight: 700;
+        position: fixed;
+        right: 15px;
+        bottom: 25px;
+        text-align: center;
+        box-shadow: 0 3px #c1635d;
+        border-color: #c1635d;
+        text-shadow: #FFFFFF 0px 0px 2px;
+        visibility: visible;
+    }
+    .up {
+        color: white;
+    }
+
+}
+
 /* iPhone 6, 7, 8 LANDSCAPE MODE*/
 @media only screen 
   and (min-device-width: 667px) 
