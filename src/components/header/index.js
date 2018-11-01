@@ -8,13 +8,20 @@ const Header = () => {
     const pageURL = window.location.pathname;
 
     return (
+       
         <div className="top-content" id="top">
+         {pageURL === '/' ? '' : 
             <div className="top-link">
+            {pageURL === '/' ? '' 
+                : 
                 <Link to='/planner'>
-                    <img src={pageURL === '/sign-in' ? '' : logo } />
+                    <img src={pageURL === '/sign-in' ? '' : logo} />
                 </Link>
-                <h1 className="app-name">CONCERT BUDDY</h1>
+            }
+            <h1 className="app-name"> {pageURL === '/' ? '' : 'CONCERT BUDDY'}</h1>
+  
             </div>
+         }
             <Nav />
         </div>
     );

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
-    /* background: linear-gradient(to bottom, #2A363B, #100206); */
     background-color: #FF847C;
     background-repeat: no-repeat;
     font-family: Quicksand, sans-serif;
@@ -9,13 +8,14 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0 auto;
+    
 }
 
 .main {
-    /* width: 100vh;
-    height: 100vw; */
     margin: 0 auto;
+    padding-bottom: 5%;
     background: linear-gradient(to bottom, #2A363B, #100206);
+
 }
 
 @media only screen and (min-width: 601px){
@@ -28,8 +28,18 @@ body {
     body{
         background: linear-gradient(to bottom, #2A363B, #100206);
     }
+   
+}
+
+/* Landscape iPhone X*/
+@media only screen 
+  and (min-device-width: 812px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
     .main{
-        /* background: none; */
+        width: 100%;
+        height: 100%;
     }
 }
 .title {
@@ -157,6 +167,21 @@ h3 {
     text-align: center;
 }
 
+/* ----------- iPad Pro 12.9" ----------- */
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .main {
+        height: 100%;
+        padding-bottom: 10% !important;
+        padding-top: 3%
+    }
+}
+
+/* ************************************ */
 @media only screen and (min-width: 601px) {
     h3 {
         margin-bottom: 1%;
@@ -181,3 +206,4 @@ h3 {
         display: inline-block;
     }
 }
+

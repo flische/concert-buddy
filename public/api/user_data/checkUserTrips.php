@@ -18,6 +18,11 @@ $result = mysqli_query($conn, $query);
 if ($result) {
        $output['success'] = true;
        $row  = mysqli_fetch_assoc($result);
+       if ($row) {
+       foreach ($row as $key => $value) {
+        $row[$key] = stripslashes(html_entity_decode($value));
+    }
+}
        $output['data'][] = $row;
        $_SESSION['tripData'] = $output['data'];
 }

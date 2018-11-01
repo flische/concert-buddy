@@ -26,6 +26,7 @@
       font-family: Quicksand;
 }
 
+
 @media only screen 
     and (device-width : 375px) 
     and (device-height : 812px) 
@@ -34,3 +35,30 @@
             height: 100vh;
         }
      }
+
+     /*--------------------iPad series ----*/
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) 
+and (orientation: portrait) 
+and (-webkit-min-device-pixel-ratio: 2) {
+      .add-resp-container {
+            padding-top: 9%;
+            padding-bottom: 12%;
+            height: 100%;
+      }
+
+}
+/*--------------------iPad Pro ------*/
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+      .add-resp-container {
+            padding-top: 9%;
+            padding-bottom: 37%;
+            height: 100%;
+      }
+}

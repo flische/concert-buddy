@@ -38,15 +38,61 @@
         text-align: center;
 
     }
-    .modal-main{
+    .modal-main {
         width: 30%;
         height: 50%;
     }
 
 }
 
-@media only screen and (max-width: 600px) {
-.resp-buttons {
-    height: 40vh;
+
+/*--------------------iPad Pro ------*/
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+     .no-resp-container {
+        height: initial;
+        
+     }
+     .resp-title{
+         padding-top: 15%;
+         padding-bottom: 5%;
+     }
+  
+     .resp-content {
+         padding-bottom: 15%
+     }
+     .resp-buttons {
+         padding-bottom: 14%;
+     }
+}
+
+
+
+  /* iPhone X LANDSCAPE MODE */
+  @media only screen 
+  and (min-device-width: 812px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+    .responsibilities {
+        min-width: 275px;
+    }
+
+  }
+
+/* iPhone 6+, 7+, 8+ LANDSCAPE */
+@media only screen 
+and (min-device-width: 736px) 
+and (max-device-width: 736px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) { 
+
+.responsibilities {
+    min-width: 275px;
 }
 }
+

@@ -133,7 +133,7 @@ class Planner extends Component {
                 <div className="imageArea">
                     <img src={concertImage} />
                 </div>
-                <div className="concert-overview">
+                <div className="planner-concert-overview">
                     <div>
                         <h3>Event: <b>{user_concert.artist}</b></h3>
                     </div>
@@ -145,7 +145,7 @@ class Planner extends Component {
                     </div>
                 </div>
                 <div className="title">WHO'S GOING?</div>
-                <div className="attendees">
+                <div className="planner-attendees">
                     <div className="leftSide">
                         {evenArray}
                     </div>
@@ -153,10 +153,10 @@ class Planner extends Component {
                         {oddArray}
                     </div>
                 </div>
-                <div className="buttons">
+                <div className="buttons buttons-planner">
                     <Link to="/responsibilities"><div className="btn pink-btn">RESPONSIBILITIES</div></Link>
                     <Link to="/invite"><div className="btn white-btn">INVITE FRIENDS</div></Link>
-                    <div onClick={this.showModal} className="btn pink-btn">LEAVE THE TRIP</div>
+                    <div className="leaveDiv"><div onClick={this.showModal} className="btn leave-btn pink-btn">LEAVE THE TRIP</div></div>
                 </div>
                 <Modal show={this.state.show} handleClose={this.hideModal} >
                     <p className="modal-p">Are you sure you want to leave this trip?</p>

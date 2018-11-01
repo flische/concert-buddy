@@ -37,15 +37,15 @@ class SignIn extends Component {
         return (
 
             <div className="login">
-                <div className="logo-holder">
+                <div className="logo-holder login-logo-holder">
                     <img src={logo} />
-                    <h1>CONCERT BUDDY</h1>
-                    <h3>Plan Your Concert Trip</h3>
+                    <h1 className="show login-header">CONCERT BUDDY</h1>
+                    <h3 className="show login-tagline">Plan Your Concert Trip</h3>
                 </div>
                 <form onSubmit={handleSubmit(this.login)}>
                     <div className="inputs sign-in">
-                        <Field name="email" component={Input} className="standard-input" placeholder="Enter Your Email" label="Email" />
-                        <Field name="password" type="password" className="standard-input" placeholder="Enter Your Password" component={Input} label="Password" />
+                        <Field name="email" component={Input} className="login-input" placeholder="Enter Your Email" label="Email" />
+                        <Field name="password" type="password" className="login-input" placeholder="Enter Your Password" component={Input} label="Password" />
                         <div className="response">
                         </div>
                     </div>

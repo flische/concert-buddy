@@ -161,7 +161,6 @@ function validate(values) {
     const { trip_name } = values;
 
     const errors = {};
-    console.log(trip_name);
     if (!trip_name){
         errors.trip_name = 'Please enter a trip name'
     }
