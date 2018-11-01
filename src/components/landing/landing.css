@@ -239,6 +239,31 @@ and (orientation: landscape) {
     }
 }
 
+/* Pixel 2 LANDSCAPE MODE */
+@media screen
+and (min-device-width: 731px) 
+and (max-device-width: 731px) 
+and (orientation: landscape) {
+
+    .carousel-container {
+        display: none;
+    }      
+    .main {
+        width: 100%;
+    } 
+    
+    .landing-btn {
+        width: 200px;
+        height: 35px;
+        font-size: 2vw;
+    }
+
+    .landing {
+        height: 100vh;
+    }
+
+}
+
 /* iPhone 6, 7, 8 LANDSCAPE MODE*/
 @media only screen 
   and (min-device-width: 667px) 
@@ -267,6 +292,16 @@ and (orientation: landscape) {
         height: 35px;
         font-size: 2vw;
     }
+
+}
+
+/* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
+@media screen 
+  and (min-device-width: 640px) 
+  and (max-device-width: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: landscape) {
+      
 
 }
 
