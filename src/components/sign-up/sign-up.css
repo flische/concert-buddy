@@ -100,6 +100,18 @@ and (orientation: landscape) {
     }
 }
 
+/* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
+@media screen 
+  and (min-device-width: 640px) 
+  and (max-device-width: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: landscape) {
+    .signup-container {
+        height: 100%;
+    }
+
+  }
+
 /* iPhone 5 LANDSCAPE MODE* */
 @media only screen 
   and (min-device-width: 568px) 
