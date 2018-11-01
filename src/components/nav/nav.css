@@ -158,11 +158,17 @@
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) { 
     li .navlink {
-        display: block;
-        color: #2A363B;
-        text-align: center;
-        padding: 14px 10px;
-        text-decoration: none;
+       padding: 14px 10px;    
     }
 
+}
+
+@media screen 
+  and (min-device-width: 640px) 
+  and (max-device-width: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: landscape) {
+    li .navlink {
+        padding: 14px 10px;    
+     }
 }

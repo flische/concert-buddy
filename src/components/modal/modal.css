@@ -12,7 +12,7 @@
     position: fixed;
     background: white;
     opacity: 0.9;
-    height: 35%;
+    min-height: 35%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -53,5 +53,6 @@
 @media only screen and (min-width: 601px){
     .modal-main {
         min-width: 325px;
+        min-height: 350px;
     }
 }

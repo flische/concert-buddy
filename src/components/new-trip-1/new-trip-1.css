@@ -36,3 +36,17 @@
         width: 85%;
     }
 }
+
+
+ /* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
+ @media screen 
+ and (min-device-width: 640px) 
+ and (max-device-width: 640px) 
+ and (-webkit-device-pixel-ratio: 3) 
+ and (orientation: landscape) {
+
+    .newtrip {
+        height: 100%;
+    }
+
+ }
