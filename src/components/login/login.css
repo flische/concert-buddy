@@ -105,6 +105,19 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 
+ /* Pixel 2XL LANDSCAPE MODE */
+ @media screen
+ and (min-device-width: 823px) 
+ and (max-device-width: 823px) 
+ and (-webkit-device-pixel-ratio: 3.5) 
+ and (orientation: landscape) {
+
+    .login-logo-holder {
+        display: none;
+    }
+
+ }
+
 
   /* iPhone X LANDSCAPE MODE */
   @media only screen 
