@@ -25,4 +25,4 @@ switch ($action)
 }
 $output = json_encode($output);
  print($output);
-?> 
+?>  
