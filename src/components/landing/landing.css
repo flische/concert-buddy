@@ -178,6 +178,30 @@
    
   }
 
+  /* Pixel 2XL LANDSCAPE MODE */
+@media screen
+and (min-device-width: 823px) 
+and (max-device-width: 823px) 
+and (-webkit-device-pixel-ratio: 3.5) 
+and (orientation: landscape) {
+    .carousel-container {
+        display: none;
+    }      
+    .main {
+        width: 100%;
+    }
+
+    .landing-btn {
+        width: 200px;
+        height: 35px;
+        font-size: 2vw;
+    }
+
+    .landing {
+        height: 100vh;
+    }
+}
+
   /* iPhone X LANDSCAPE MODE */
   @media only screen 
   and (min-device-width: 812px) 
