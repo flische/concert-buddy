@@ -30,6 +30,7 @@ class EditResponsibility extends Component {
 
     componentDidMount() {
         this.parseParameters();
+        window.scrollTo(0, 0);
     }
 
     parseParameters() {

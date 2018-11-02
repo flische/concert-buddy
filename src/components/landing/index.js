@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 class Landing extends Component {
     componentDidMount() {
         localStorage.clear();
+        window.scrollTo(0, 0);
     }
     renderLinks() {
         const { auth } = this.props;

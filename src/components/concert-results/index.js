@@ -17,6 +17,7 @@ class ConcertResults extends Component {
 
     componentDidMount() {
         this.callTicketMaster(this.parseParameters());
+        window.scrollTo(0, 0);
 
     }
 

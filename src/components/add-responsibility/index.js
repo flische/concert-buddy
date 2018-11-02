@@ -53,6 +53,10 @@ class AddResponsibility extends Component {
         this.setState(newState);
         this.props.history.push('/responsibilities');
     }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
 
     render() {
         const { title, details, name, } = this.state.form;

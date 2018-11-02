@@ -1,3 +1,7 @@
+.resp-bottom-content {
+    height: 100%;
+}
+
 .no-resp-container {
     height: 100vh;
 }
@@ -9,6 +13,10 @@
 .no-resp-main {
    text-align: center; 
     
+}
+
+.responsibilities {
+    min-width: 300px;
 }
 
 .no-resp {
@@ -69,8 +77,6 @@
          padding-bottom: 14%;
      }
 }
-
-
 
   /* iPhone X LANDSCAPE MODE */
   @media only screen 

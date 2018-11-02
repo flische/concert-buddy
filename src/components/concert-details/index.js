@@ -29,6 +29,7 @@ class ConcertDetails extends Component {
     componentDidMount() {
         this.props.get_user_details();
         this.parseParameters();
+        window.scrollTo(0, 0);
     }
 
     parseParameters() {
