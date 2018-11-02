@@ -37,6 +37,29 @@
     }
 }
 
+ /* iPhone X LANDSCAPE MODE */
+ @media only screen 
+ and (min-device-width: 812px) 
+ and (max-device-width: 812px) 
+ and (-webkit-min-device-pixel-ratio: 3)
+ and (orientation: landscape) { 
+    .newtrip {
+        height: 100%;
+    }
+ }
+
+/* iPhone 6, 7, 8 LANDSCAPE MODE*/
+@media only screen 
+  and (min-device-width: 667px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+    .newtrip {
+        height: 100%;
+    }
+
+  }
+
 
  /* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
  @media screen 
@@ -50,6 +73,20 @@
     }
 
  }
+
+ /* iPhone 5 LANDSCAPE MODE* */
+@media only screen 
+and (min-device-width: 568px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+
+
+    .newtrip {
+        height: 100%;
+    }
+
+}
 
  /* iPhone 4 LANDSCAPE MODE  */
 @media only screen 
