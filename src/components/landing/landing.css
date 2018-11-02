@@ -179,6 +179,18 @@
    
   }
 
+  /* iPad mini PORTRAIT mode */
+  @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 768px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .main {
+        width: 100%;
+    }
+}
+
+
   /* Pixel 2XL LANDSCAPE MODE */
 @media screen
 and (min-device-width: 823px) 
