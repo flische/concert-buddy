@@ -364,6 +364,46 @@ and (orientation: landscape) {
         height: 30px;
         font-size: 2vw;
     }
+
+    .landing {
+        height: 125vh;
+    }
+}
+/* iPhone 4 LANDSCAPE MODE  */
+@media only screen 
+  and (min-device-width: 480px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+    .carousel-container {
+        display: none;
+    }   
+
+    .landing-logo>img {
+        width: 85px;
+        height: 85px;
+        margin-top: 20px;
+    }
+
+    .company-name {
+        font-size: 30px;
+    }
+    
+    .tagline {
+        font-size: 20px;
+    }
+
+    .landing-btn {
+        width: 150px;
+        height: 30px;
+        font-size: 2.5vw;
+    }
+
+    .landing {
+        height: 125vh;
+    }
+
 }
 
 
