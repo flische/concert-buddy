@@ -1,15 +1,10 @@
-# c618_concert_buddy
+# Concert Buddy
 
-friend finder for going to concerts together
+Concert Buddy is an application designed to plan trips centered around concerts. It was created with React.js, Redux, MySQL and PHP.
 
-https://docs.google.com/document/u/1/d/e/2PACX-1vQV3hU2WtbXdT88AsV3056LB17mxUGvfwFWDS2XadO2lyjBoXGOmNwc11_VDtXy-vhdxhuSpWH0Y212/pub
-
-## members
+## Contributors
 - Howard Kim
 - Federico Lische
 - Tien Pham
 - Rebecca Martin
 
-### mentors
-- Scott
-- Collette
