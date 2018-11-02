@@ -20,6 +20,7 @@ class Planner extends Component {
     }
     componentDidMount() {
         this.checkUserTrips();
+        window.scrollTo(0, 0);
     }
 
     showModal = () => {

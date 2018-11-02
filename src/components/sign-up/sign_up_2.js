@@ -31,6 +31,10 @@ class SignUp extends Component {
         });
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         const { handleSubmit } = this.props;
 

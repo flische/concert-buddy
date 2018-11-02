@@ -32,6 +32,8 @@ class InviteFriends extends Component {
     }
 
     async componentDidMount() {
+        window.scrollTo(0, 0);
+
         const config = {
             action: 'existing_login',
         }
@@ -122,7 +124,7 @@ class InviteFriends extends Component {
 }
 
 function validate(values) {
-    const { emails } = values; 
+    const { emails } = values;
     const errors = {};
     const emailErrors = [];
 

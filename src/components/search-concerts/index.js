@@ -42,6 +42,10 @@ class SearchConcerts extends Component {
         this.setState({ form: { ...form, [name]: value } });
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         const { city_zip, artist, genre, begin_date, end_date } = this.state.form;
 

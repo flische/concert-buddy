@@ -95,6 +95,10 @@ class NewTrip1 extends Component {
         return returnDate;
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         if (!this.props.concert._embedded) {
             this.props.history.push('/search-concerts');
@@ -161,10 +165,10 @@ function validate(values) {
     const { trip_name } = values;
 
     const errors = {};
-    if (!trip_name){
+    if (!trip_name) {
         errors.trip_name = 'Please enter a trip name'
     }
-    if(trip_name) {
+    if (trip_name) {
         if (trip_name.length < 3) {
             errors.trip_name = 'Please enter a trip name of 3 or more characters in length!';
         }
