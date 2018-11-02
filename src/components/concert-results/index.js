@@ -4,6 +4,7 @@ import ConcertItem from '../concert-item';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Loader from '../loader';
+import Up from '../up';
 
 
 class ConcertResults extends Component {
@@ -11,14 +12,28 @@ class ConcertResults extends Component {
         super(props);
         this.state = {
             concerts: null,
-            url: ''
+            url: '',
+            showButton: false
         }
     }
 
     componentDidMount() {
         this.callTicketMaster(this.parseParameters());
         window.scrollTo(0, 0);
+        window.addEventListener('scroll', this.handleScroll);
 
+    }
+
+    handleScroll = (e) => {
+        if (window.pageYOffset > 900) {
+            this.setState({
+                showButton: true,
+            });
+        } else {
+            this.setState({
+                showButton: false,
+            });
+        }
     }
 
     parseParameters() {
@@ -118,9 +133,7 @@ class ConcertResults extends Component {
         return (
             <div className="results">
                 <div className="title">CONCERT RESULTS</div>
-                <a href="#top" className="up">
-                    <div className="test"><p>UP</p></div>
-                </a>
+                {this.state.showButton && <Up /> || null}
                 {concert}
                 <div className="buttons">
                     <Link to='/search-concerts'><div className="btn pink-btn">BACK TO SEARCH</div></Link>
