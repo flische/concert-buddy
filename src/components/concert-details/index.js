@@ -29,7 +29,6 @@ class ConcertDetails extends Component {
     componentDidMount() {
         this.props.get_user_details();
         this.parseParameters();
-        window.scrollTo(0, 0);
     }
 
     parseParameters() {
@@ -145,7 +144,8 @@ class ConcertDetails extends Component {
                     :
                     <Modal show={this.state.show} handleClose={this.hideModal} >
                         <p className="modal-p">Please log in or sign up to create a trip</p>
-                        <Link to="/sign-in"><div className="btn black-btn">SIGN IN / SIGN UP</div></Link>
+                        <Link to="/sign-in"><div className="btn pink-btn">SIGN IN</div></Link>
+                        <Link to="/sign-up"><div className="btn black-btn">SIGN UP</div></Link>
                     </Modal>
 
                 }
