@@ -50,11 +50,7 @@
         margin: 0 auto;
         text-align: center;
     }
-    .test {
-        /* display: none; */
-        visibility: hidden;
-    }
-
+  
     .concert-result-container {
         display: flex;
         align-items: flex-end;
@@ -64,25 +60,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .test {
-        float: right;
-        margin-right: 20px;
-        background-color: #FF847C;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        position: fixed;
-        right: 15px;
-        bottom: 25px;
-        text-align: center;
-        box-shadow: 0 3px #c1635d;
-        border-color: #c1635d;
-        text-shadow: #FFFFFF 0px 0px 2px;
-    }
-    .up {
-        color: white;
-    }
+ 
     .results{
         background: linear-gradient(to bottom, #2A363B, #100206)
     }
@@ -102,8 +80,7 @@
     text-align: center;
 }
 
-
-  }
+}
 
 /* Pixel 2XL LANDSCAPE MODE */
 @media screen
@@ -115,28 +92,6 @@ and (orientation: landscape) {
     .concert-result-container {
         width: 80%;
     }
-
-    .test {
-        float: right;
-        margin-right: 20px;
-        background-color: #FF847C;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        position: fixed;
-        right: 15px;
-        bottom: 25px;
-        text-align: center;
-        box-shadow: 0 3px #c1635d;
-        border-color: #c1635d;
-        text-shadow: #FFFFFF 0px 0px 2px;
-        visibility: visible;
-    }
-    .up {
-        color: white;
-    } 
-
 
 }
 
@@ -151,26 +106,6 @@ and (orientation: landscape) {
         width: 80%;
     }
 
-    .test {
-        float: right;
-        margin-right: 20px;
-        background-color: #FF847C;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        position: fixed;
-        right: 15px;
-        bottom: 25px;
-        text-align: center;
-        box-shadow: 0 3px #c1635d;
-        border-color: #c1635d;
-        text-shadow: #FFFFFF 0px 0px 2px;
-        visibility: visible;
-    }
-    .up {
-        color: white;
-    } 
 }
 
 /* iPhone 6+, 7+, 8+ LANDSCAPE MODE*/
@@ -183,28 +118,6 @@ and (orientation: landscape) {
         width: 80%;
     }
 
-    .test {
-        float: right;
-        margin-right: 20px;
-        background-color: #FF847C;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        position: fixed;
-        right: 15px;
-        bottom: 25px;
-        text-align: center;
-        box-shadow: 0 3px #c1635d;
-        border-color: #c1635d;
-        text-shadow: #FFFFFF 0px 0px 2px;
-        visibility: visible;
-    }
-    .up {
-        color: white;
-    }
-
-
 }
 
 /* Pixel 2 LANDSCAPE MODE */
@@ -214,27 +127,6 @@ and (max-device-width: 731px)
 and (orientation: landscape) {
     .concert-result-container {
         width: 80%;
-    }
-
-    .test {
-        float: right;
-        margin-right: 20px;
-        background-color: #FF847C;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        position: fixed;
-        right: 15px;
-        bottom: 25px;
-        text-align: center;
-        box-shadow: 0 3px #c1635d;
-        border-color: #c1635d;
-        text-shadow: #FFFFFF 0px 0px 2px;
-        visibility: visible;
-    }
-    .up {
-        color: white;
     }
 
 }
@@ -249,26 +141,7 @@ and (orientation: landscape) {
         width: 80%;
     }
 
-    .test {
-        float: right;
-        margin-right: 20px;
-        background-color: #FF847C;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        position: fixed;
-        right: 15px;
-        bottom: 25px;
-        text-align: center;
-        box-shadow: 0 3px #c1635d;
-        border-color: #c1635d;
-        text-shadow: #FFFFFF 0px 0px 2px;
-        visibility: visible;
-    }
-    .up {
-        color: white;
-    }
+
   }
 
   /* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
@@ -279,27 +152,6 @@ and (-webkit-device-pixel-ratio: 3)
 and (orientation: landscape) {
     .concert-result-container {
         width: 80%;
-    }
-
-    .test {
-        float: right;
-        margin-right: 20px;
-        background-color: #FF847C;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        position: fixed;
-        right: 15px;
-        bottom: 25px;
-        text-align: center;
-        box-shadow: 0 3px #c1635d;
-        border-color: #c1635d;
-        text-shadow: #FFFFFF 0px 0px 2px;
-        visibility: visible;
-    }
-    .up {
-        color: white;
     }
 
 }
