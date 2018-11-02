@@ -1,3 +1,4 @@
+
 .no-results {
     height: 100vh;
 }
@@ -31,19 +32,10 @@
     text-align: center;
 }
 
-.concert-result-container {
-    display: flex;
-    align-items: flex-end;
-    display: inline-block;
-}
+
 
 @media only screen and (min-width: 601px) {
-    .concert-result-container {
-        /* display: inline-block;
-        vertical-align: top; */
-        width: 40%;
-    }
-    .concert-part-a>p,
+      .concert-part-a>p,
     .concert-part-b>p {
         display: block;
         text-align: center;
@@ -61,6 +53,13 @@
     .test {
         /* display: none; */
         visibility: hidden;
+    }
+
+    .concert-result-container {
+        display: flex;
+        align-items: flex-end;
+        display: inline-block;
+        width: 40%;
     }
 }
 
@@ -87,7 +86,24 @@
     .results{
         background: linear-gradient(to bottom, #2A363B, #100206)
     }
+
+    .concert-results {
+        text-align: center;
+    }
 }
+
+/* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
+@media screen 
+  and (min-device-width: 360px) 
+  and (max-device-width: 360px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: portrait) {
+.concert-result-container {
+    text-align: center;
+}
+
+
+  }
 
 /* Pixel 2XL LANDSCAPE MODE */
 @media screen

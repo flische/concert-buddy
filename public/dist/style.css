@@ -114,6 +114,7 @@ button {
 .white-btn {
     background-color: white;
     box-shadow: 0 5px #979696;
+    border: 0;
     color: #2A363B;
     text-shadow: #2A363B 0px 0px 2px;
     -webkit-font-smoothing: antialiased;
