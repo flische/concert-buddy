@@ -1,0 +1,21 @@
+.up-btn {
+    float: right;
+    margin-right: 20px;
+    background-color: #FF847C;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-weight: 700;
+    position: fixed;
+    right: 15px;
+    bottom: 25px;
+    text-align: center;
+    box-shadow: 0 3px #c1635d;
+    border-color: #c1635d;
+    text-shadow: #FFFFFF 0px 0px 2px;
+    color: white;
+}
+
+.up {
+    color: white; 
+}

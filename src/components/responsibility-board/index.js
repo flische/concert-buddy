@@ -35,8 +35,9 @@ class Responsibilities extends Component {
 
     componentDidMount() {
         const user = this.props.get_user_details().then((user) => {
-           // calls get user details on componentDidMount THEN...
+            // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
+            window.scrollTo(0, 0);
         });
     }
 
@@ -45,7 +46,7 @@ class Responsibilities extends Component {
             trip_id: this.props.user_concert.trip_id,
             action: 'get_responsibilities',
         }
-        
+
         const params = formatPostData(dataToSend);
         const resp = await axios.post('api/access_responsibilities.php', params);
         this.setState({
@@ -126,7 +127,7 @@ class Responsibilities extends Component {
         });
 
         return (
-            <div>
+            <div className="resp-bottom-content">
                 <div className="title resp-title">RESPONSIBILITIES</div>
                 <div className="resp-content" style={{ height: '100%' }}>
                     {respItem}

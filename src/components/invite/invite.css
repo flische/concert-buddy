@@ -25,13 +25,29 @@
 }
 
 }
-/*------iPad Pro ------*/
 
+/* iPhone 5 LANDSCAPE MODE* */
 @media only screen 
-  and (min-device-width: 1024px) 
-  and (max-device-width: 1366px) 
-  and (orientation: portrait) 
-  and (-webkit-min-device-pixel-ratio: 1.5) {
-     
+  and (min-device-width: 568px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+ 
+    .invite-container {
+        height: 125vh;
+    }
+    
+  }
+
+  /* iPhone 4 LANDSCAPE MODE  */
+@media only screen 
+and (min-device-width: 480px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+
+    .invite-container {
+        height: 125vh;
+    }
     
 }

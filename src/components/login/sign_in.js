@@ -29,6 +29,7 @@ class SignIn extends Component {
 
     componentDidMount() {
         this.props.resetError();
+        window.scrollTo(0, 0);
     }
 
     render() {

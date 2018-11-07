@@ -37,6 +37,19 @@
     
 }
 
+/* Pixel 2XL LANDSCAPE MODE */
+@media screen
+and (min-device-width: 823px) 
+and (max-device-width: 823px) 
+and (-webkit-device-pixel-ratio: 3.5) 
+and (orientation: landscape) {
+
+    .signup-container {
+        height: 100%;
+    }
+
+}
+
 
   /* iPhone X LANDSCAPE MODE */
   @media only screen 
@@ -64,6 +77,65 @@
 
 
   }
+/* Pixel 2 LANDSCAPE MODE */
+@media screen
+and (min-device-width: 731px) 
+and (max-device-width: 731px) 
+and (orientation: landscape) {
+
+    .signup-container {
+        height: 100%;
+    }
+
+}
+
+  /* iPhone 6, 7, 8 LANDSCAPE MODE*/
+@media only screen 
+and (min-device-width: 667px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) { 
+    .signup-container {
+        height: 100%;
+    }
+}
+
+/* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
+@media screen 
+  and (min-device-width: 640px) 
+  and (max-device-width: 640px) 
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: landscape) {
+    .signup-container {
+        height: 100%;
+    }
+
+  }
+
+/* iPhone 5 LANDSCAPE MODE* */
+@media only screen 
+  and (min-device-width: 568px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+    .signup-container {
+        height: 100%;
+    }
+
+}
+
+ /* iPhone 4 LANDSCAPE MODE  */
+ @media only screen 
+ and (min-device-width: 480px) 
+ and (max-device-width: 480px)
+ and (-webkit-min-device-pixel-ratio: 2)
+ and (orientation: landscape) {
+    .signup-container {
+        height: 100%;
+    }
+
+ }
 
 /* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
 

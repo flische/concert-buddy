@@ -129,7 +129,7 @@ class ConcertDetails extends Component {
                 <div className="buttons">
                     <a href={concert.url} target='_blank'><div className=" btn white-btn">BUY TICKETS</div></a>
 
-                    {this.props.auth ? (this.props.user_concert.data === null ? <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link> : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>) : <button className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</button>}
+                    {this.props.auth ? (this.props.user_concert.data === null ? <Link to='/new-trip-1'><div className="btn pink-btn">CREATE A TRIP</div></Link> : <div className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</div>) : <div className="btn pink-btn" onClick={this.showModal}>CREATE A TRIP</div>}
 
                     <Link to={`/concert-results/${this.props.location.search}`}><div className=" btn white-btn">BACK TO RESULTS</div></Link>
 
@@ -144,7 +144,8 @@ class ConcertDetails extends Component {
                     :
                     <Modal show={this.state.show} handleClose={this.hideModal} >
                         <p className="modal-p">Please log in or sign up to create a trip</p>
-                        <Link to="/sign-in"><div className="btn black-btn">SIGN IN / SIGN UP</div></Link>
+                        <Link to="/sign-in"><div className="btn pink-btn">SIGN IN</div></Link>
+                        <Link to="/sign-up"><div className="btn black-btn">SIGN UP</div></Link>
                     </Modal>
 
                 }

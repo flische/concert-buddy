@@ -74,9 +74,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         margin-top: 2%;
     }
     .results-container {
-       height: initial;
-       margin-top: 15%;
-       padding-bottom: 62%;
+        height: 100vh;;
     }
     
 }
@@ -86,7 +84,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 /* Portrait */
 @media only screen 
 and (min-device-width: 768px) 
-and (max-device-width: 1024px) 
+and (max-device-width: 768px) 
 and (orientation: portrait) 
 and (-webkit-min-device-pixel-ratio: 2) {
    .logo-holder>img{
@@ -98,6 +96,30 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-top: 10%;
     padding-bottom: 36%;
   }
+
+}
+
+/* iPhone 5 LANDSCAPE MODE */
+@media only screen 
+  and (min-device-width: 568px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+    .results-container {
+        height: 100%;
+    }
+  }
+
+/* iPhone 4 LANDSCAPE MODE  */
+@media only screen 
+and (min-device-width: 480px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+    .results-container {
+        height: 100%;
+    }
 
 }
 

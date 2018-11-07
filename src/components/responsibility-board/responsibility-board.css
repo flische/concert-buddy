@@ -1,3 +1,7 @@
+.resp-bottom-content {
+    height: 100%;
+}
+
 .no-resp-container {
     height: 100vh;
 }
@@ -9,6 +13,10 @@
 .no-resp-main {
    text-align: center; 
     
+}
+
+.responsibilities {
+    min-width: 300px;
 }
 
 .no-resp {
@@ -70,8 +78,6 @@
      }
 }
 
-
-
   /* iPhone X LANDSCAPE MODE */
   @media only screen 
   and (min-device-width: 812px) 
@@ -91,8 +97,41 @@ and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: landscape) { 
 
-.responsibilities {
-    min-width: 275px;
-}
+    .responsibilities {
+        min-width: 275px;
+    }
 }
 
+/* Pixel 2 LANDSCAPE MODE */
+@media screen
+and (min-device-width: 731px) 
+and (max-device-width: 731px) 
+and (orientation: landscape) {
+    .responsibilities {
+        min-width: 275px;
+    }
+
+}
+
+/* iPhone 6, 7, 8 LANDSCAPE MODE*/
+@media only screen 
+and (min-device-width: 667px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) { 
+    .responsibilities {
+        min-width: 275px;
+    }
+}
+
+ /* Galaxy S4, S5 and Note 3 LANDSCAPE MODE */
+ @media screen 
+ and (min-device-width: 640px) 
+ and (max-device-width: 640px) 
+ and (-webkit-device-pixel-ratio: 3) 
+ and (orientation: landscape) {
+
+    .responsibilities {
+        min-width: 275px;
+    }
+ }
