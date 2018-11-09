@@ -11,7 +11,6 @@ import types from './actions/types';
 import App from './components/app';
 import {formatPostData} from './helpers'
 
-
 const store = createStore(rootReducer, {}, applyMiddleware(think, reduxPromise));
 localStorage.clear();
 // ***Persistent login*** // 
