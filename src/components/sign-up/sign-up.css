@@ -66,7 +66,7 @@ and (orientation: landscape) {
 
   /* iPhone 6+, 7+, 8+ LANDSCAPE */
   @media only screen 
-  and (min-device-width: 736px) 
+  /* and (min-device-width: 736px)  */
   and (max-device-width: 736px) 
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) { 
@@ -91,7 +91,7 @@ and (orientation: landscape) {
 
   /* iPhone 6, 7, 8 LANDSCAPE MODE*/
 @media only screen 
-and (min-device-width: 667px) 
+/* and (min-device-width: 667px)  */
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: landscape) { 
