@@ -27,12 +27,18 @@ class Planner extends Component {
         this.setState({
             show: true
         });
+
+        var elem = document.getElementById('body');
+        elem.classList.add('remove-overflow');
     }
 
     hideModal = () => {
         this.setState({
             show: false
         });
+
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     async checkUserTrips() {

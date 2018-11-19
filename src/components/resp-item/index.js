@@ -17,12 +17,18 @@ class RespItem extends Component {
         this.setState({
             show: true
         });
+
+        var elem = document.getElementById('body');
+        elem.classList.add('remove-overflow');
     }
 
     hideModal = () => {
         this.setState({
             show: false
         });
+
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     toggle = () => {
@@ -36,8 +42,8 @@ class RespItem extends Component {
         return (
             <div className={"responsibilities" + (this.props.completed ? ' completed' : '')}>
                 <div className="x" onClick={() => { this.showModal(this.props.id) }}>&times;</div>
-                    {this.props.completed ? <p><s>{this.props.title}</s></p> : <p>{this.props.title}</p>}
-                    <p>Assigned to: <span><b>{this.props.name}</b></span></p>
+                {this.props.completed ? <p><s>{this.props.title}</s></p> : <p>{this.props.title}</p>}
+                <p>Assigned to: <span><b>{this.props.name}</b></span></p>
                 <div>
                     <button className="toggle-btn" onClick={this.toggle}>DETAILS</button>
                     <div className={"collapse" + (this.state.open ? ' in' : '')}>
