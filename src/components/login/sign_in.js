@@ -45,8 +45,8 @@ class SignIn extends Component {
                 </div>
                 <form onSubmit={handleSubmit(this.login)}>
                     <div className="inputs sign-in">
-                        <Field name="email" component={Input} className="login-input" placeholder="Enter Your Email" label="Email" />
-                        <Field name="password" type="password" className="login-input" placeholder="Enter Your Password" component={Input} label="Password" />
+                        <div className="inline-block"><Field name="email" component={Input} className="login-input" placeholder="Enter Your Email" label="Email" /></div>
+                        <div className="inline-block"><Field name="password" type="password" className="login-input" placeholder="Enter Your Password" component={Input} label="Password" /></div>
                         <div className="response">
                         </div>
                     </div>
