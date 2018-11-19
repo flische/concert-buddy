@@ -23,12 +23,18 @@ class SignUp extends Component {
         this.setState({
             show: true
         });
+
+        var elem = document.getElementById('body');
+        elem.classList.add('remove-overflow');
     }
 
     hideModal = () => {
         this.setState({
             show: false
         });
+
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     componentDidMount() {
@@ -49,7 +55,10 @@ class SignUp extends Component {
                             <Field type="password" className="signup-input signup" name="password" component={Input} label="Password" />
                             <Field type="password" className="signup-input signup" name="confirmPassword" component={Input} placeholder="Confirm Password" label="Confirm Password" />
                         </div>
-                        <div className="buttons"><button className="pink-btn" >SIGN UP!</button></div>
+                        <div className="buttons"><button className="pink-btn" >SIGN UP!</button>
+
+                        </div>
+                        <div className="buttons"><Link to='/sign-in'><div className="btn white-btn">LOGIN</div></Link></div>
                     </form>
                     {this.props.authError ? <Modal show={this.state.show} handleClose={this.hideModal} >
                         <p className="modal-p">Email already exists</p>

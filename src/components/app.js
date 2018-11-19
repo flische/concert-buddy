@@ -22,7 +22,7 @@ import AcceptancePage from '../components/acceptance-page';
 import AboutPage from '../components/about';
 
 
-class App extends Component{
+class App extends Component {
     constructor(props) {
         super(props);
 
@@ -30,30 +30,6 @@ class App extends Component{
             isHome: false
         };
     }
-
-    // componentDidMount() {
-    //     if (this.props.location.pathname === '/') {
-    //         this.setState({
-    //             isHome: true
-    //         });
-
-    //     } else {
-    //         this.setState({
-    //             isHome: false
-    //         });
-    //     }
-    //     this.props.history.listen((location) => {
-    //         if (location.pathname === '/') {
-    //             this.setState({
-    //                 isHome: true
-    //             });
-    //         } else {
-    //             this.setState({
-    //                 isHome: false
-    //             });
-    //         }
-    //     });           
-    // }
 
     render() {
         return (
@@ -65,7 +41,7 @@ class App extends Component{
                     <Route path='/concert-results' component={ConcertResults} />
                     <Route path='/concert-details' component={ConcertDetails} />
                     <Route path='/invite' component={InviteFriends} />
-                    <Route path='/sign-in' component={SignIn} /> 
+                    <Route path='/sign-in' component={SignIn} />
                     <Route path='/sign-up' component={SignUp} />
                     <Route path='/planner' component={auth(Planner)} />
                     <Route path='/new-trip-1' component={NewTrip1} />
@@ -73,8 +49,8 @@ class App extends Component{
                     <Route path='/add-responsibility' component={auth(AddResponsibility)} />
                     <Route path='/edit-responsibility' component={EditResponsibility} />
                     <Route path='/team' component={TeamPage} />
-                    <Route path='/acceptance-page' component = {AcceptancePage} />
-                    <Route path='/about-page' component = {AboutPage} />
+                    <Route path='/acceptance-page' component={AcceptancePage} />
+                    <Route path='/about-page' component={AboutPage} />
                     <Route component={NotFound} />
                 </Switch>
             </div>

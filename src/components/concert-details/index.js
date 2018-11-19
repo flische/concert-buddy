@@ -18,17 +18,24 @@ class ConcertDetails extends Component {
         this.setState({
             show: true
         })
+
+        var elem = document.getElementById('body');
+        elem.classList.add('remove-overflow');
     }
 
     hideModal = () => {
         this.setState({
             show: false
         })
+
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     componentDidMount() {
         this.props.get_user_details();
         this.parseParameters();
+        window.scrollTo(0, 0);
     }
 
     parseParameters() {

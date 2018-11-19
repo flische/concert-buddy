@@ -19,13 +19,20 @@ class AcceptancePage extends Component {
     }
     showModal = () => {
         this.setState({
-            show: true,
+            show: true
         })
+
+        var elem = document.getElementById('body');
+        elem.classList.add('remove-overflow');
     }
+
     hideModal = () => {
         this.setState({
-            show: false,
+            show: false
         })
+
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
     async acceptTrip() {
         if (this.props.auth) {

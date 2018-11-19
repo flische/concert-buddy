@@ -208,3 +208,8 @@ h3 {
     }
 }
 
+.remove-overflow{
+    overflow:hidden;
+   
+}
+
