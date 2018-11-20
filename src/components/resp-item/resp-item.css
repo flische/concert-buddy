@@ -31,14 +31,14 @@
     width: 250px;
     height: 45px;
     border-radius: 5px;
-    padding-top: 7px;
+    padding-top: 10px;
     margin: 5px;
     font-family: Quicksand, sans-serif;
     letter-spacing: 1px;
     font-weight: 700;
     font-size: 20px;
     text-align: center;
-    cursor: default;
+    cursor: pointer;
     box-sizing: border-box;
     border-width: 2px;
     text-transform: none;
@@ -50,6 +50,7 @@
     background-color: rgb(223, 219, 219);
     box-shadow: 0 3px #979696;
     color: #2A363B;
+
 }
 
 .collapse {
