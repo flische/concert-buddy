@@ -109,10 +109,11 @@ class ConcertResults extends Component {
                     <div className="title">CONCERT RESULTS</div>
                     <div className="no-concerts">
                         No concerts found. Try widening your search criteria.
-                       <div className="buttons"> <Link to="/search-concerts">
-                            <div className="btn pink-btn">BACK TO SEARCH</div>
-                        </Link></div>
-                    </div>
+                        </div>
+                    <div className="buttons"> <Link to="/search-concerts">
+                        <div className="btn pink-btn">BACK TO SEARCH</div>
+                    </Link></div>
+
                 </div>
             );
         }

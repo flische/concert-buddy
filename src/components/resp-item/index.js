@@ -45,7 +45,7 @@ class RespItem extends Component {
                 {this.props.completed ? <p><s>{this.props.title}</s></p> : <p>{this.props.title}</p>}
                 <p>Assigned to: <span><b>{this.props.name}</b></span></p>
                 <div>
-                    <button className="toggle-btn" onClick={this.toggle}>DETAILS</button>
+                    <div className="toggle-btn" onClick={this.toggle}>DETAILS</div>
                     <div className={"collapse" + (this.state.open ? ' in' : '')}>
                         <div>{this.props.details}</div>
                     </div>

@@ -27,7 +27,9 @@ export default () => {
     const pTagFontSize = {
         fontSize: '1.2em',
         fontFamily: 'Quicksand',
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingLeft: '3%',
+        paddingRight: '3%'
     }
     const viewHeight = {
         height: '35%'
