@@ -19,6 +19,8 @@ class ConcertDetails extends Component {
             show: true
         })
 
+        //this is to prevent scrolling of body when modal is open
+
         var elem = document.getElementById('body');
         elem.classList.add('remove-overflow');
     }
