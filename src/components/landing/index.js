@@ -10,6 +10,8 @@ class Landing extends Component {
     componentDidMount() {
         localStorage.clear();
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
     renderLinks() {
         const { auth } = this.props;

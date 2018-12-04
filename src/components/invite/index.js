@@ -39,6 +39,8 @@ class InviteFriends extends Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
 
         const config = {
             action: 'existing_login',

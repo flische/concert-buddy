@@ -21,6 +21,8 @@ class ConcertResults extends Component {
         this.callTicketMaster(this.parseParameters());
         window.scrollTo(0, 0);
         window.addEventListener('scroll', this.handleScroll);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
 
     }
 

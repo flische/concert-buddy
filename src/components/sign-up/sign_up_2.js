@@ -39,6 +39,8 @@ class SignUp extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     render() {
@@ -89,7 +91,6 @@ function validate(values) {
     else if (password !== confirmPassword) {
         errors.confirmPassword = 'Passwords do not match';
     }
-}
     return errors;
 }
 

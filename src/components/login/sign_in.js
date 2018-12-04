@@ -30,6 +30,8 @@ class SignIn extends Component {
     componentDidMount() {
         this.props.resetError();
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     render() {

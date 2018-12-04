@@ -34,6 +34,11 @@ class AcceptancePage extends Component {
         var elem = document.getElementById('body');
         elem.classList.remove('remove-overflow');
     }
+
+    componentDidMount() {
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
+    }
     async acceptTrip() {
         if (this.props.auth) {
             if (this.props.user_details.trip_id) {
