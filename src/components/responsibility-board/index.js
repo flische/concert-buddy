@@ -44,6 +44,8 @@ class Responsibilities extends Component {
             // calls get user details on componentDidMount THEN...
             this.checkResponsibilities(); // calls check responsibilities!
             window.scrollTo(0, 0);
+            var elem = document.getElementById('body');
+            elem.classList.remove('remove-overflow');
         });
     }
 

@@ -13,6 +13,11 @@ class RespItem extends Component {
         }
     }
 
+    componentDidMount() {
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
+    }
+
     showModal = () => {
         this.setState({
             show: true

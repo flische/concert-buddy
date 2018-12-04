@@ -39,6 +39,8 @@ class SignUp extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     render() {
@@ -85,11 +87,11 @@ function validate(values) {
     if (!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
 
     if (password) {
-        if (password.length < 8) errors.password = 'Password is too short'; 
-    else if (password !== confirmPassword) {
-        errors.confirmPassword = 'Passwords do not match';
+        if (password.length < 8) errors.password = 'Password is too short';
+        else if (password !== confirmPassword) {
+            errors.confirmPassword = 'Passwords do not match';
+        }
     }
-}
     return errors;
 }
 
