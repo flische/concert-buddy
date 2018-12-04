@@ -37,7 +37,16 @@
     display: inline-block;
 }
 
+.signin-error {
+    color: red; 
+}
 
+@media only screen and (min-width: 654px) {
+    .sign-in {
+        display: flex;
+        justify-content: center;
+    }
+}
 
    @media only screen and (min-width: 600px) {
  
@@ -284,6 +293,15 @@ and (orientation: landscape) {
 
 }
 
-/***** iPhone4 *****/
+/***** iPad Pro *****/
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .login-buttons {
+        padding-bottom: 15%;
+    }
+}
 
 
