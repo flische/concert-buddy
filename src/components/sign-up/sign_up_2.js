@@ -87,8 +87,8 @@ function validate(values) {
     if (!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
 
     if (password) {
-        if (password.length < 8) errors.password = 'Password must be at least 8 characters long'; 
-    else if (password !== confirmPassword) {
+        if (password.length < 8) errors.password = 'Password must be at least 8 characters long';
+    } else if (password !== confirmPassword) {
         errors.confirmPassword = 'Passwords do not match';
     }
     return errors;
