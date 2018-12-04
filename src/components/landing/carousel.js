@@ -11,7 +11,7 @@ const imageArray = [image1, image2, image3, image4, image5, image6, image7];
 
 export default () => {
     return (
-        <Carousel showThumbs={false} showArrows={false} showStatus={false} emulateTouch={true} autoPlay={true}>
+        <Carousel showThumbs={false} showArrows={true} showStatus={false} emulateTouch={false} autoPlay={true} >
             {imageArray.map((image, index) => {
                 return (
 
