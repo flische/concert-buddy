@@ -9,6 +9,9 @@
 .signup-inputs {
     text-align: center;
 }
+.signup-message {
+    padding: 10px;
+}
 .hidden {
     display:none;
 }
@@ -16,6 +19,7 @@
 .show {
     text-align: center;
 }
+
 
 
 .phone-sizing {

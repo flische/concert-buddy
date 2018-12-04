@@ -75,10 +75,10 @@ class InviteFriends extends Component {
             <div className="invite-emails">
                 {emails}
                 <div className="invite-emails" title="Add Recipient" onClick={() => { fields.push() }}>
-                    <button type="button" className="white-btn">ADD MORE</button>
+                    <button type="button" className="white-btn invite-buttons">ADD MORE</button>
                 </div>
                 <div className="invite-emails" title="Add Recipient" onClick={() => { if (fields.length > 1) { fields.pop() } }}>
-                    <button type="button" className="pink-btn">DELETE</button>
+                    <button type="button" className="pink-btn invite-buttons">DELETE</button>
                 </div>
             </div>
         );
@@ -114,7 +114,7 @@ class InviteFriends extends Component {
                     <h2 className="invite-friends">INVITE FRIENDS</h2>
                     <FieldArray name="emails" component={this.renderEmails} />
                     <div style={{ textAlign: 'center' }}>
-                        <button className="white-btn">SEND INVITE</button>
+                        <button className="invite-buttons white-btn">SEND INVITE</button>
                     </div>
                 </form>
                 <Modal show={this.state.show} handleClose={this.hideModal}>

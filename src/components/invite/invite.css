@@ -10,6 +10,9 @@
     text-align: center;
 }
 
+.invite-buttons {
+    cursor: pointer;
+}
 .invite-emails {
     margin: 0 auto;
     text-align: center;

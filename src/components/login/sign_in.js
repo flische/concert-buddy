@@ -54,10 +54,10 @@ class SignIn extends Component {
                     </div>
                     <div className="buttons">
                         <button className="pink-btn">LOGIN</button>
-                        <p>{authError}</p>
+                        <p className="signin-error">{authError}</p>
                     </div>
                 </form>
-                <div className="buttons">
+                <div className="buttons login-buttons">
                     <Link to="/sign-up"><div className="btn white-btn"> SIGN UP!</div></Link>
                 </div>
             </div>
@@ -71,8 +71,10 @@ function validate(values) {
     const errors = {};
 
     if (!email) errors.email = 'Please enter your email address';
+    
+    if (!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) errors.email = 'Invalid Email Address'
 
-    if (!password) errors.password = 'Please choose a password';
+    if (!password) errors.password = 'Please enter a password';
 
     return errors;
 }
