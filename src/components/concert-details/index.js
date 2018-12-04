@@ -38,6 +38,8 @@ class ConcertDetails extends Component {
         this.props.get_user_details();
         this.parseParameters();
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     parseParameters() {

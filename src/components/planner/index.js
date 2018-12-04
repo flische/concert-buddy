@@ -21,6 +21,8 @@ class Planner extends Component {
     componentDidMount() {
         this.checkUserTrips();
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     showModal = () => {

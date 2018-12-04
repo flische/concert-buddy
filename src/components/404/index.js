@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './404.css'
 import image from './404.jpg'
 import tape from './tape.png'
 
 
-class NotFound extends Component{
-    constructor(props){
+class NotFound extends Component {
+    constructor(props) {
         super(props)
     }
-    componentDidMount(){
-        document.querySelector('#menuToggle').classList.add('hideNav')
+    componentDidMount() {
+        document.querySelector('#menuToggle').classList.add('hideNav');
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
-    render(){
+    render() {
         const center = {
             color: 'lightblue'
         }

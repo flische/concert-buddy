@@ -55,6 +55,8 @@ class AddResponsibility extends Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
 

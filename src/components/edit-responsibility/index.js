@@ -31,6 +31,8 @@ class EditResponsibility extends Component {
     componentDidMount() {
         this.parseParameters();
         window.scrollTo(0, 0);
+        var elem = document.getElementById('body');
+        elem.classList.remove('remove-overflow');
     }
 
     parseParameters() {
