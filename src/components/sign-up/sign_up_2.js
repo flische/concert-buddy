@@ -43,7 +43,6 @@ class SignUp extends Component {
 
     render() {
         const { handleSubmit } = this.props;
-
         return (
             <div className="signup-container">
                 <div className="title su-title">SIGN UP FOR CONCERT BUDDY</div>
@@ -61,7 +60,7 @@ class SignUp extends Component {
                         <div className="buttons"><Link to='/sign-in'><div className="btn white-btn">LOGIN</div></Link></div>
                     </form>
                     {this.props.authError ? <Modal show={this.state.show} handleClose={this.hideModal} >
-                        <p className="modal-p">Email already exists</p>
+                        <p className="modal-p">{this.props.authError}</p>
                     </Modal> : <Modal show={this.state.show} handleClose={this.hideModal} >
                             <p className="modal-p">You have successfully signed up! Please log in with your new account</p>
                             <div className="buttons"><Link to="/sign-in"><div className="btn black-btn">SIGN IN</div></Link></div>
@@ -85,9 +84,12 @@ function validate(values) {
     }
     if (!password) errors.password = 'Please choose a password'; // <-- if statement on 1 line! 
 
-    if (password !== confirmPassword) {
+    if (password) {
+        if (password.length < 8) errors.password = 'Password is too short'; 
+    else if (password !== confirmPassword) {
         errors.confirmPassword = 'Passwords do not match';
     }
+}
     return errors;
 }
 

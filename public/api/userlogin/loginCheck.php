@@ -10,7 +10,7 @@ $output = [
 ];
 require_once('mysqlconnect.php');
 
-$query = "SELECT * FROM `user` WHERE `email` = '$email' AND `password` = '$password'";
+$query = "SELECT `Email`,`ID`, `Name` FROM `user` WHERE `email` = '$email' AND `password` = '$password'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {
