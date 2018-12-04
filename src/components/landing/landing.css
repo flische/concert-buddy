@@ -141,8 +141,13 @@
         height: 95%;
     }
 
+
 }
 @media only screen and (max-width: 600px) {
+
+    .control-arrow {
+        display: none;
+    }
 
     .carousel-container {
         height: 100%;
