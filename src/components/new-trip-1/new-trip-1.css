@@ -21,6 +21,10 @@
     padding-left: 15px;
 }
 
+.trip-btn {
+    padding-bottom: 8px;
+}
+
 @media only screen and (min-width: 601px) {
     .concert-info {
         width: 45%;
