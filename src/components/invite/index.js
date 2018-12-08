@@ -71,6 +71,7 @@ class InviteFriends extends Component {
                 return;
             }
         });
+        console.log(emails.length);
         return (
             <div className="invite-emails">
                 {emails}
@@ -78,7 +79,7 @@ class InviteFriends extends Component {
                     <button type="button" className="white-btn invite-buttons">ADD MORE</button>
                 </div>
                 <div className="invite-emails" title="Add Recipient" onClick={() => { if (fields.length > 1) { fields.pop() } }}>
-                    <button type="button" className="pink-btn invite-buttons">DELETE</button>
+                 <button type="button" className={emails.length === 1 ? 'grey-btn invite-buttons' : "pink-btn invite-buttons"}>DELETE</button>
                 </div>
             </div>
         );
