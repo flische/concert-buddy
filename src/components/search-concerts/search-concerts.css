@@ -12,6 +12,10 @@
     font-family: Quicksand;
 }
 
+.dropdown:hover {
+    cursor: pointer;
+}
+
 .date {
     font-size: 20px;
     color: #2A363B;
