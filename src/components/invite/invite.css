@@ -29,6 +29,15 @@
 
 }
 
+.grey-btn {
+    background-color: grey;
+    box-shadow: 0 5px #979696;
+    border: 0;
+    color:white;
+    text-shadow: #FFFFFF 0px 0px 2px;
+    -webkit-font-smoothing: antialiased;
+}
+
 /* iPhone 5 LANDSCAPE MODE* */
 @media only screen 
   and (min-device-width: 568px) 
