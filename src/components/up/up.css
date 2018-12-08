@@ -16,6 +16,10 @@
     color: white;
 }
 
+.up-btn:hover {
+    box-shadow: 1px 3px #c1635d;
+}
+
 .up {
     color: white; 
 }
