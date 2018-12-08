@@ -25,6 +25,10 @@
     margin-right: 10px;
 }
 
+.x:hover {
+    color: #c1635d;
+}
+
 .mark-complete-btn,
 .completed-btn,
 .toggle-btn {
@@ -50,7 +54,11 @@
     background-color: rgb(223, 219, 219);
     box-shadow: 0 3px #979696;
     color: #2A363B;
+}
 
+.toggle-btn:hover {
+    box-shadow: 3px 5px #979696;
+   
 }
 
 .collapse {
@@ -68,6 +76,10 @@
     font-weight: 700;
     color: #2A363B;
          
+}
+
+.edit:hover {
+    color: #c1635d;
 }
 
 .btn-grey {

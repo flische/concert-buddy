@@ -5,17 +5,14 @@ body {
     background-repeat: no-repeat;
     font-family: Quicksand, sans-serif;
     color: white;
-  
     height: 100vh;
     margin: 0 auto;
-    
 }
 
 .main {
     margin: 0 auto;
     padding-bottom: 5%;
     background: linear-gradient(to bottom, #2A363B, #100206);
-
 }
 
 @media only screen and (min-width: 601px){
@@ -97,13 +94,14 @@ button {
     background-color: #FF847C;
     box-shadow: 0 5px #c1635d;
     border: 0;
-    color: white;
+    color:white;
     text-shadow: #FFFFFF 0px 0px 2px;
     -webkit-font-smoothing: antialiased;
 }
 
-.pink-btn:hover{
+.pink-btn:hover {
     cursor: pointer;
+    box-shadow: 3px 5px #c1635d;
 }
 
 .pink-btn>a {
@@ -120,8 +118,9 @@ button {
     -webkit-font-smoothing: antialiased;
 }
 
-.pink-btn:hover{
+.white-btn:hover {
     cursor: pointer;
+    box-shadow: 3px 5px #979696;
 }
 
 .white-btn>a {
@@ -131,10 +130,15 @@ button {
 
 .black-btn {
     background-color: black;
-    box-shadow: 0 5px #97969610;
+    box-shadow: 0 5px #979696;
     color: whitesmoke;
     text-shadow: rgba(245, 245, 245, 0.276) 0px 0px 2px;
     -webkit-font-smoothing: antialiased;
+}
+
+.black-btn:hover {
+    cursor: pointer;
+    box-shadow: 3px 5px #979696;
 }
 
 .inputs {
